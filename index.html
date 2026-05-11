@@ -187,6 +187,28 @@
       background: var(--surface);
       display: inline-grid;
       place-items: center;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .icon-button:hover,
+    .menu-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .icon-button.is-active {
+      color: var(--canvas);
+      border-color: var(--near-black);
+      background: var(--near-black);
+    }
+
+    [data-theme="dark"] .icon-button.is-active {
+      color: #020617;
+    }
+
+    .icon-button.is-paused {
+      color: var(--near-black);
+      border-color: var(--near-black);
+      background: var(--stone);
     }
 
     .icon-button svg,
@@ -197,6 +219,249 @@
 
     .menu-button {
       display: none;
+    }
+
+    .voice-guide-bar {
+      display: none;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--canvas) 96%, transparent);
+    }
+
+    .voice-guide-bar.is-visible {
+      display: block;
+    }
+
+    .voice-guide-inner {
+      max-width: var(--container);
+      min-height: 54px;
+      margin: 0 auto;
+      padding: 8px 28px;
+      display: grid;
+      grid-template-columns: auto 96px minmax(180px, 1fr) auto auto;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .voice-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 30px;
+      padding: 6px 12px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: var(--surface);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .voice-chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--faint);
+    }
+
+    .voice-guide-bar.is-playing .voice-chip-dot {
+      background: var(--coral);
+      animation: voicePulse 950ms ease-in-out infinite;
+    }
+
+    .voice-guide-bar.is-paused .voice-chip-dot {
+      background: var(--coral);
+    }
+
+    .voice-guide-bar.is-error .voice-chip-dot {
+      background: var(--risk);
+    }
+
+    .voice-wave {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--coral);
+    }
+
+    .voice-wave span {
+      width: 4px;
+      height: 8px;
+      border-radius: var(--radius-pill);
+      background: currentColor;
+      opacity: 0.42;
+      transform-origin: center;
+    }
+
+    .voice-guide-bar.is-playing .voice-wave span {
+      opacity: 0.9;
+      animation: voiceBars 720ms ease-in-out infinite;
+    }
+
+    .voice-guide-bar.is-playing .voice-wave span:nth-child(2) {
+      animation-delay: 80ms;
+    }
+
+    .voice-guide-bar.is-playing .voice-wave span:nth-child(3) {
+      animation-delay: 160ms;
+    }
+
+    .voice-guide-bar.is-playing .voice-wave span:nth-child(4) {
+      animation-delay: 240ms;
+    }
+
+    .voice-guide-bar.is-playing .voice-wave span:nth-child(5) {
+      animation-delay: 320ms;
+    }
+
+    .voice-guide-bar.is-paused .voice-wave span {
+      opacity: 0.58;
+    }
+
+    .voice-guide-bar.is-paused .voice-wave span:nth-child(1),
+    .voice-guide-bar.is-paused .voice-wave span:nth-child(5) {
+      height: 10px;
+    }
+
+    .voice-guide-bar.is-paused .voice-wave span:nth-child(2),
+    .voice-guide-bar.is-paused .voice-wave span:nth-child(4) {
+      height: 16px;
+    }
+
+    .voice-guide-bar.is-paused .voice-wave span:nth-child(3) {
+      height: 22px;
+    }
+
+    .voice-timeline {
+      display: grid;
+      gap: 7px;
+    }
+
+    .voice-range {
+      --voice-progress: 0%;
+      width: 100%;
+      height: 22px;
+      margin: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .voice-range::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(90deg, var(--near-black) var(--voice-progress), var(--hairline) var(--voice-progress));
+    }
+
+    .voice-range::-moz-range-track {
+      height: 4px;
+      border-radius: var(--radius-pill);
+      background: var(--hairline);
+    }
+
+    .voice-range::-moz-range-progress {
+      height: 4px;
+      border-radius: var(--radius-pill);
+      background: var(--near-black);
+    }
+
+    .voice-range::-webkit-slider-thumb {
+      width: 16px;
+      height: 16px;
+      margin-top: -6px;
+      border: 2px solid var(--surface);
+      border-radius: 50%;
+      background: var(--near-black);
+      box-shadow: 0 0 0 1px var(--near-black);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .voice-range::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--surface);
+      border-radius: 50%;
+      background: var(--near-black);
+      box-shadow: 0 0 0 1px var(--near-black);
+    }
+
+    .voice-range:focus-visible {
+      outline: none;
+    }
+
+    .voice-range:focus-visible::-webkit-slider-thumb {
+      background: var(--focus);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--focus) 22%, transparent);
+    }
+
+    .voice-range:focus-visible::-moz-range-thumb {
+      background: var(--focus);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--focus) 22%, transparent);
+    }
+
+    .voice-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .voice-detail {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .voice-guide-bar.is-error .voice-detail {
+      color: var(--risk);
+    }
+
+    .voice-stop-button {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: var(--surface);
+      display: inline-grid;
+      place-items: center;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .voice-stop-button:hover {
+      border-color: var(--near-black);
+    }
+
+    .voice-stop-button svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @keyframes voicePulse {
+      0%, 100% {
+        transform: scale(0.8);
+      }
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    @keyframes voiceBars {
+      0%, 100% {
+        height: 8px;
+      }
+      50% {
+        height: 24px;
+      }
     }
 
     .btn {
@@ -1152,6 +1417,44 @@
         gap: 12px;
       }
 
+      .voice-guide-inner {
+        min-height: 88px;
+        padding: 12px 18px;
+        grid-template-columns: auto 1fr auto;
+        gap: 10px 14px;
+      }
+
+      .voice-wave {
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: flex-end;
+        justify-self: end;
+      }
+
+      .voice-stop-button {
+        grid-column: 3;
+        grid-row: 1;
+        justify-self: end;
+      }
+
+      .voice-timeline,
+      .voice-detail {
+        grid-column: 1 / -1;
+      }
+
+      .voice-timeline {
+        grid-row: 2;
+      }
+
+      .voice-detail {
+        display: none;
+        white-space: normal;
+      }
+
+      .voice-guide-bar.is-error .voice-detail {
+        display: block;
+      }
+
       .brand span {
         max-width: 136px;
         overflow: hidden;
@@ -1295,6 +1598,7 @@
             <path d="M17 9.5c.8.7 1.2 1.5 1.2 2.5s-.4 1.8-1.2 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </button>
+        <span class="sr-only" id="voiceStatus" aria-live="polite"></span>
         <button class="icon-button" id="themeBtn" type="button" aria-label="Toggle dark mode">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 3v2M12 19v2M4.6 4.6 6 6M18 18l1.4 1.4M3 12h2M19 12h2M4.6 19.4 6 18M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -1309,6 +1613,34 @@
         </button>
       </div>
     </nav>
+    <div class="voice-guide-bar" id="voiceGuideBar" data-voice-ui aria-hidden="true">
+      <div class="voice-guide-inner">
+        <div class="voice-chip" aria-hidden="true">
+          <span class="voice-chip-dot"></span>
+          <span id="voiceMode">VOICE GUIDE</span>
+        </div>
+        <div class="voice-wave" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="voice-timeline">
+          <input class="voice-range" id="voiceRange" type="range" min="0" max="0" value="0" aria-label="Voice guide timeline">
+          <div class="voice-meta" aria-hidden="true">
+            <span id="voiceProgressLabel">0%</span>
+            <span id="voiceChunkLabel">0 / 0</span>
+          </div>
+        </div>
+        <div class="voice-detail" id="voiceDetail">Ready</div>
+        <button class="voice-stop-button" id="voiceStopBtn" type="button" aria-label="Stop voice guide">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
     <div class="mobile-panel" id="mobilePanel">
       <a href="#company" data-i18n="navCompany">公司概覽</a>
       <a href="#finance" data-i18n="navFinance">財務績效</a>
@@ -2127,11 +2459,20 @@
     let score = 0;
     let answered = false;
     let voices = [];
+    let speechQueue = [];
+    let speechIndex = 0;
+    let speechActive = false;
+    let speechPaused = false;
+    let speechKeepAlive = null;
+    let speechRunId = 0;
+    let speechDragging = false;
+    let speechWasActiveBeforeDrag = false;
 
     const qs = (selector) => document.querySelector(selector);
     const qsa = (selector) => [...document.querySelectorAll(selector)];
 
     function applyLanguage(lang) {
+      if (speechActive || speechPaused) stopVoiceGuide();
       currentLang = lang;
       localStorage.setItem("nanya-lang", lang);
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
@@ -2142,6 +2483,9 @@
       qs("#langBtn").textContent = lang === "zh" ? "EN" : "繁";
       renderFlipCards();
       resetQuiz();
+      setVoiceState(false, false);
+      qs("#voiceStatus").textContent = "";
+      updateVoiceProgress();
     }
 
     function renderFlipCards() {
@@ -2244,20 +2588,245 @@
         || null;
     }
 
-    function speakGuide() {
-      if (!("speechSynthesis" in window)) {
-        alert(currentLang === "zh" ? "此瀏覽器不支援語音導覽。" : "This browser does not support speech synthesis.");
+    function clampSpeechIndex(index) {
+      if (!speechQueue.length) return 0;
+      return Math.min(Math.max(Number(index) || 0, 0), speechQueue.length - 1);
+    }
+
+    function updateVoiceProgress(index = speechIndex) {
+      const range = qs("#voiceRange");
+      if (!range) return;
+      const max = Math.max(speechQueue.length - 1, 0);
+      const safeIndex = clampSpeechIndex(index);
+      const percent = speechQueue.length > 1 ? Math.round((safeIndex / max) * 100) : 0;
+      range.max = String(max);
+      range.value = String(safeIndex);
+      range.style.setProperty("--voice-progress", `${percent}%`);
+      qs("#voiceProgressLabel").textContent = `${percent}%`;
+      qs("#voiceChunkLabel").textContent = speechQueue.length ? `${safeIndex + 1} / ${speechQueue.length}` : "0 / 0";
+      qs("#voiceDetail").textContent = speechActive
+        ? (currentLang === "zh" ? "正在朗讀網頁內容" : "Reading page content")
+        : speechPaused
+          ? (currentLang === "zh" ? "語音導覽已暫停" : "Voice guide paused")
+          : (currentLang === "zh" ? "語音導覽待命" : "Voice guide ready");
+    }
+
+    function setVoiceState(isActive, announce = true) {
+      speechActive = isActive;
+      const button = qs("#voiceBtn");
+      const bar = qs("#voiceGuideBar");
+      const isVisible = isActive || speechPaused;
+      const label = currentLang === "zh"
+        ? (isActive ? "暫停語音導覽" : speechPaused ? "繼續語音導覽" : "開始語音導覽")
+        : (isActive ? "Pause voice guide" : speechPaused ? "Resume voice guide" : "Start voice guide");
+      button.setAttribute("aria-label", label);
+      button.title = label;
+      qs("#voiceRange").setAttribute("aria-label", currentLang === "zh" ? "語音導覽時間軸" : "Voice guide timeline");
+      button.classList.toggle("is-active", isActive);
+      button.classList.toggle("is-paused", speechPaused);
+      bar.classList.toggle("is-visible", isVisible);
+      bar.classList.toggle("is-playing", isActive);
+      bar.classList.toggle("is-paused", speechPaused);
+      bar.classList.remove("is-error");
+      bar.setAttribute("aria-hidden", String(!isVisible));
+      qs("#voiceMode").textContent = isActive ? "PLAYING" : speechPaused ? "PAUSED" : "VOICE GUIDE";
+      qs("#voiceStopBtn").setAttribute("aria-label", currentLang === "zh" ? "停止語音導覽" : "Stop voice guide");
+      updateVoiceProgress();
+      if (announce) {
+        qs("#voiceStatus").textContent = currentLang === "zh"
+          ? (isActive ? "語音導覽播放中。" : speechPaused ? "語音導覽已暫停。" : "語音導覽已停止。")
+          : (isActive ? "Voice guide is playing." : speechPaused ? "Voice guide paused." : "Voice guide stopped.");
+      }
+    }
+
+    function stopVoiceGuide() {
+      speechRunId += 1;
+      speechQueue = [];
+      speechIndex = 0;
+      speechPaused = false;
+      speechDragging = false;
+      speechWasActiveBeforeDrag = false;
+      if (speechKeepAlive) {
+        clearInterval(speechKeepAlive);
+        speechKeepAlive = null;
+      }
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      setVoiceState(false);
+      updateVoiceProgress();
+    }
+
+    function pauseVoiceGuide() {
+      if (!speechActive) return;
+      speechActive = false;
+      speechPaused = true;
+      window.speechSynthesis.pause();
+      setVoiceState(false);
+    }
+
+    function resumeVoiceGuide() {
+      if (!speechPaused) return;
+      speechPaused = false;
+      setVoiceState(true);
+      window.speechSynthesis.resume();
+      if (!window.speechSynthesis.speaking && speechQueue.length) speakNextChunk();
+    }
+
+    function showVoiceError(message) {
+      const bar = qs("#voiceGuideBar");
+      bar.classList.add("is-visible", "is-error");
+      bar.classList.remove("is-playing", "is-paused");
+      bar.setAttribute("aria-hidden", "false");
+      qs("#voiceMode").textContent = "ERROR";
+      qs("#voiceDetail").textContent = message;
+      qs("#voiceStatus").textContent = message;
+    }
+
+    function isReadableTextNode(node) {
+      const parent = node.parentElement;
+      if (!parent) return false;
+      if (parent.closest("script, style, svg, noscript, .sr-only, [aria-hidden='true'], [data-voice-ui]")) return false;
+      let element = parent;
+      while (element && element !== document.body) {
+        const style = window.getComputedStyle(element);
+        if (style.display === "none" || style.visibility === "hidden" || Number(style.opacity) === 0) return false;
+        element = element.parentElement;
+      }
+      return Boolean(node.textContent.trim());
+    }
+
+    function collectReadableText() {
+      const roots = [qs(".announcement"), qs("header"), qs("main"), qs("footer")].filter(Boolean);
+      const parts = [];
+      const walkerOptions = {
+        acceptNode(node) {
+          return isReadableTextNode(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      };
+
+      roots.forEach((root) => {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, walkerOptions);
+        let node = walker.nextNode();
+        while (node) {
+          const text = node.textContent.replace(/\s+/g, " ").trim();
+          if (text) parts.push(text);
+          node = walker.nextNode();
+        }
+      });
+
+      return parts.join(currentLang === "zh" ? "。" : ". ")
+        .replace(/\s+([,.;:!?，。；：！？])/g, "$1")
+        .replace(/([。！？；])。+/g, "$1")
+        .replace(/([.!?;])\.+/g, "$1")
+        .trim();
+    }
+
+    function chunkSpeechText(text) {
+      const maxLength = currentLang === "zh" ? 170 : 230;
+      const sentences = text.match(/[^。！？；.!?;]+[。！？；.!?;]?/g) || [text];
+      const chunks = [];
+      let current = "";
+
+      sentences.forEach((sentence) => {
+        const next = sentence.trim();
+        if (!next) return;
+        if ((current + next).length <= maxLength) {
+          current += next;
+          return;
+        }
+        if (current) chunks.push(current);
+        if (next.length <= maxLength) {
+          current = next;
+          return;
+        }
+        for (let i = 0; i < next.length; i += maxLength) {
+          chunks.push(next.slice(i, i + maxLength));
+        }
+        current = "";
+      });
+
+      if (current) chunks.push(current);
+      return chunks;
+    }
+
+    function speakNextChunk() {
+      if (!speechActive || speechIndex >= speechQueue.length) {
+        stopVoiceGuide();
         return;
       }
-      window.speechSynthesis.cancel();
-      const text = currentLang === "zh"
-        ? "南亞科技研究網站。主軸是從 DRAM 景氣循環到 AI 記憶體供應鏈合作。請依序瀏覽公司概覽、財務績效、市場分析、資源評價、成長策略與小測驗。中文語音預設優先使用 Taiwan Yating。"
-        : "Nanya Technology research website. The main story moves from DRAM cycles to AI memory supply chain partnerships. Browse company overview, finance, market analysis, resources, growth strategy, and the quiz. The English voice preference is British male.";
-      const utterance = new SpeechSynthesisUtterance(text);
+
+      updateVoiceProgress();
+      const runId = speechRunId;
+      const utterance = new SpeechSynthesisUtterance(speechQueue[speechIndex]);
       utterance.lang = currentLang === "zh" ? "zh-TW" : "en-GB";
       const voice = pickVoice();
       if (voice) utterance.voice = voice;
+      utterance.onend = () => {
+        if (runId !== speechRunId || speechDragging || speechPaused) return;
+        speechIndex += 1;
+        updateVoiceProgress();
+        speakNextChunk();
+      };
+      utterance.onerror = () => {
+        if (runId === speechRunId) stopVoiceGuide();
+      };
       window.speechSynthesis.speak(utterance);
+    }
+
+    function speakGuide() {
+      if (!("speechSynthesis" in window)) {
+        showVoiceError(currentLang === "zh" ? "此瀏覽器不支援語音導覽。" : "This browser does not support speech synthesis.");
+        return;
+      }
+      if (speechActive) {
+        pauseVoiceGuide();
+        return;
+      }
+      if (speechPaused) {
+        resumeVoiceGuide();
+        return;
+      }
+      speechRunId += 1;
+      speechPaused = false;
+      window.speechSynthesis.cancel();
+      speechQueue = chunkSpeechText(collectReadableText());
+      speechIndex = 0;
+      if (!speechQueue.length) return;
+      setVoiceState(true);
+      speechKeepAlive = setInterval(() => {
+        if (!speechPaused && window.speechSynthesis.paused) window.speechSynthesis.resume();
+      }, 8000);
+      speakNextChunk();
+    }
+
+    function seekVoiceGuide(index, shouldResume) {
+      speechIndex = clampSpeechIndex(index);
+      updateVoiceProgress();
+      if (!speechQueue.length || !shouldResume) return;
+      speechRunId += 1;
+      speechPaused = false;
+      window.speechSynthesis.cancel();
+      setVoiceState(true, false);
+      speakNextChunk();
+    }
+
+    function beginVoiceDrag() {
+      speechDragging = true;
+      speechWasActiveBeforeDrag = speechActive;
+      if (speechActive) {
+        speechRunId += 1;
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function updateVoiceDrag(value) {
+      speechIndex = clampSpeechIndex(value);
+      updateVoiceProgress();
+    }
+
+    function endVoiceDrag(value) {
+      speechDragging = false;
+      seekVoiceGuide(value, speechWasActiveBeforeDrag);
+      speechWasActiveBeforeDrag = false;
     }
 
     function bindEvents() {
@@ -2267,6 +2836,11 @@
         applyTheme(current === "dark" ? "light" : "dark");
       });
       qs("#voiceBtn").addEventListener("click", speakGuide);
+      qs("#voiceStopBtn").addEventListener("click", stopVoiceGuide);
+      qs("#voiceRange").addEventListener("pointerdown", beginVoiceDrag);
+      qs("#voiceRange").addEventListener("touchstart", beginVoiceDrag, { passive: true });
+      qs("#voiceRange").addEventListener("input", (event) => updateVoiceDrag(event.target.value));
+      qs("#voiceRange").addEventListener("change", (event) => endVoiceDrag(event.target.value));
       qs("#nextBtn").addEventListener("click", nextQuestion);
       qs("#restartBtn").addEventListener("click", resetQuiz);
       qs("#menuBtn").addEventListener("click", () => {
