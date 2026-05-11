@@ -265,7 +265,7 @@
       max-width: var(--container);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
       gap: 40px;
       align-items: end;
     }
@@ -274,10 +274,11 @@
       margin: 0;
       max-width: 790px;
       font-family: var(--font-display);
-      font-size: clamp(54px, 8vw, 108px);
+      font-size: clamp(52px, 7.2vw, 96px);
       font-weight: 400;
       line-height: 1;
       letter-spacing: 0;
+      text-wrap: balance;
     }
 
     .hero-lead {
@@ -286,6 +287,7 @@
       color: var(--muted);
       font-size: 20px;
       line-height: 1.38;
+      text-wrap: balance;
     }
 
     .hero-actions {
@@ -421,15 +423,16 @@
 
     .stat strong {
       font-family: var(--font-display);
-      font-size: 26px;
+      font-size: clamp(22px, 1.7vw, 24px);
       font-weight: 400;
       line-height: 1.12;
+      text-wrap: balance;
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.45fr);
-      gap: 48px;
+      grid-template-columns: minmax(0, 1fr) minmax(420px, 0.52fr);
+      gap: 42px;
       align-items: end;
       margin-bottom: 50px;
     }
@@ -437,15 +440,17 @@
     .section-title {
       margin: 0;
       font-family: var(--font-display);
-      font-size: clamp(38px, 5vw, 64px);
+      font-size: clamp(34px, 4.05vw, 52px);
       font-weight: 400;
-      line-height: 1.05;
+      line-height: 1.08;
+      text-wrap: balance;
     }
 
     .section-copy {
       margin: 0;
       color: var(--muted);
       font-size: 17px;
+      text-wrap: balance;
     }
 
     .mono-label {
@@ -577,6 +582,54 @@
 
     .timeline {
       border-top: 1px solid var(--hairline);
+    }
+
+    .member-strip {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .member-strip-label {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .member-cell {
+      min-height: 82px;
+      padding: 16px 14px 14px;
+      border-right: 1px solid var(--hairline);
+    }
+
+    .member-cell:last-child {
+      border-right: 0;
+    }
+
+    .member-name {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .member-program {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
     }
 
     .timeline-item {
@@ -761,6 +814,8 @@
 
     .flip-card {
       min-height: 166px;
+      width: 100%;
+      display: block;
       border: 0;
       padding: 0;
       border-radius: var(--radius-sm);
@@ -770,6 +825,7 @@
     }
 
     .flip-card-inner {
+      display: block;
       position: relative;
       width: 100%;
       min-height: 166px;
@@ -784,6 +840,7 @@
     .flip-face {
       position: absolute;
       inset: 0;
+      display: block;
       padding: 22px;
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
@@ -850,6 +907,7 @@
     .career-card dd {
       margin: 6px 0 0;
       color: var(--ink);
+      text-wrap: balance;
     }
 
     .quiz-layout {
@@ -980,6 +1038,7 @@
       font-size: clamp(36px, 5vw, 62px);
       font-weight: 400;
       line-height: 1.04;
+      text-wrap: balance;
     }
 
     .footer p {
@@ -1061,6 +1120,22 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .member-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .member-cell {
+        border-top: 1px solid var(--hairline);
+      }
+
+      .member-cell:nth-child(-n + 4) {
+        border-top: 0;
+      }
+
+      .member-cell:nth-child(4n) {
+        border-right: 0;
+      }
+
       .strategy-steps {
         grid-template-columns: 1fr;
       }
@@ -1083,8 +1158,14 @@
         text-overflow: ellipsis;
       }
 
-      .nav-actions .btn {
-        display: none;
+      .nav-actions {
+        gap: 6px;
+      }
+
+      #langBtn {
+        min-width: 42px;
+        min-height: 42px;
+        padding: 0 12px;
       }
 
       .hero,
@@ -1123,6 +1204,35 @@
       .timeline-item {
         grid-template-columns: 1fr;
         gap: 12px;
+      }
+
+      .member-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .member-cell {
+        min-height: 92px;
+        border-top: 1px solid var(--hairline);
+      }
+
+      .member-cell:nth-child(-n + 4) {
+        border-top: 1px solid var(--hairline);
+      }
+
+      .member-cell:nth-child(-n + 2) {
+        border-top: 0;
+      }
+
+      .member-cell:nth-child(odd) {
+        border-right: 1px solid var(--hairline);
+      }
+
+      .member-cell:nth-child(even) {
+        border-right: 0;
+      }
+
+      .member-cell:last-child {
+        border-right: 0;
       }
 
       .vrin-table {
@@ -1250,11 +1360,11 @@
         <div class="quick-stats" aria-label="Nanya quick facts">
           <div class="stat">
             <span data-i18n="stat1Label">核心業務</span>
-            <strong data-i18n="stat1Value">DRAM 研發、設計、製造、銷售</strong>
+            <strong data-i18n="stat1Value">DRAM 研製與銷售</strong>
           </div>
           <div class="stat">
             <span data-i18n="stat2Label">全球位置</span>
-            <strong data-i18n="stat2Value">全球第 4 大 DRAM 公司</strong>
+            <strong data-i18n="stat2Value">全球第 4 大 DRAM</strong>
           </div>
           <div class="stat">
             <span data-i18n="stat3Label">2025 營收</span>
@@ -1280,7 +1390,7 @@
         <div class="grid-3">
           <article class="card">
             <h3 data-i18n="teamCard1Title">資料查核</h3>
-            <p data-i18n="teamCard1Body">共同比對南亞科技官方資料、投資人關係、新聞與 104 職缺頁面，降低錯誤引用風險。</p>
+            <p data-i18n="teamCard1Body">共同比對官方資料、投資人關係、新聞與 104 職缺，降低錯誤引用。</p>
           </article>
           <article class="card">
             <h3 data-i18n="teamCard2Title">雙語整合</h3>
@@ -1290,6 +1400,39 @@
             <h3 data-i18n="teamCard3Title">互動測試</h3>
             <p data-i18n="teamCard3Body">共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。</p>
           </article>
+        </div>
+        <div class="member-strip" aria-label="G6 team members">
+          <span class="member-strip-label" data-i18n="membersLabel">G6 Members</span>
+          <div class="member-grid">
+            <div class="member-cell">
+              <span class="member-name">楊承逸</span>
+              <span class="member-program" data-i18n="memberProgram1">國企系學士班 3 年級</span>
+            </div>
+            <div class="member-cell">
+              <span class="member-name">吳耀笙</span>
+              <span class="member-program" data-i18n="memberProgram2">東南亞系學士班 4 年級</span>
+            </div>
+            <div class="member-cell">
+              <span class="member-name">吳羽棠</span>
+              <span class="member-program" data-i18n="memberProgram3">管院學士班 4 年級</span>
+            </div>
+            <div class="member-cell">
+              <span class="member-name">葉芳辰</span>
+              <span class="member-program" data-i18n="memberProgram4">管院學士班 4 年級</span>
+            </div>
+            <div class="member-cell">
+              <span class="member-name">吳樹豫</span>
+              <span class="member-program" data-i18n="memberProgram5">管院學士班 3 年級</span>
+            </div>
+            <div class="member-cell">
+              <span class="member-name">王齡誼</span>
+              <span class="member-program" data-i18n="memberProgram6">國企系學士班 3 年級</span>
+            </div>
+            <div class="member-cell">
+              <span class="member-name">呂沛岑</span>
+              <span class="member-program" data-i18n="memberProgram7">國企系學士班 3 年級</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1542,7 +1685,7 @@
         <div class="strategy-steps">
           <article class="strategy-step">
             <span>1</span>
-            <h3 data-i18n="growth1Title">把握 DRAM 漲價與缺貨週期</h3>
+            <h3 data-i18n="growth1Title">把握 DRAM 上行週期</h3>
             <p data-i18n="growth1Body">短期策略是改善毛利率與現金流，承接市場供需吃緊帶來的報價回升。</p>
           </article>
           <article class="strategy-step">
@@ -1684,9 +1827,9 @@
         heroPrimary: "開始瀏覽",
         heroSecondary: "進入互動測驗",
         stat1Label: "核心業務",
-        stat1Value: "DRAM 研發、設計、製造、銷售",
+        stat1Value: "DRAM 研製與銷售",
         stat2Label: "全球位置",
-        stat2Value: "全球第 4 大 DRAM 公司",
+        stat2Value: "全球第 4 大 DRAM",
         stat3Label: "2025 營收",
         stat3Value: "新台幣 665.87 億元",
         stat4Label: "策略焦點",
@@ -1694,11 +1837,21 @@
         teamTitle: "共同編修，而不是章節拼貼。",
         teamLead: "本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。",
         teamCard1Title: "資料查核",
-        teamCard1Body: "共同比對南亞科技官方資料、投資人關係、新聞與 104 職缺頁面，降低錯誤引用風險。",
+        teamCard1Body: "共同比對官方資料、投資人關係、新聞與 104 職缺，降低錯誤引用。",
         teamCard2Title: "雙語整合",
         teamCard2Body: "中文與英文文案維持同一研究敘事，不使用自動翻譯結果直接上線。",
         teamCard3Title: "互動測試",
         teamCard3Body: "共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。",
+        membersLabel: "G6 Members",
+        memberProgramLabel: "系級",
+        memberGroupLabel: "組別",
+        memberProgram1: "國企系學士班 3 年級",
+        memberProgram2: "東南亞系學士班 4 年級",
+        memberProgram3: "管院學士班 4 年級",
+        memberProgram4: "管院學士班 4 年級",
+        memberProgram5: "管院學士班 3 年級",
+        memberProgram6: "國企系學士班 3 年級",
+        memberProgram7: "國企系學士班 3 年級",
         companyTitle: "台灣代表性的 DRAM 公司。",
         companyLead: "南亞科技成立於 1995 年，股票代號 2408，核心業務為 DRAM 研發、設計、製造與銷售。",
         companyRow1Title: "基本資料",
@@ -1760,7 +1913,7 @@
         cardsLead: "點擊字卡查看策略管理與記憶體產業關鍵詞說明。",
         growthTitle: "短期抓週期，中期升級產品，長期綁定供應鏈。",
         growthLead: "成長策略可拆成價格週期、產品組合與客戶合作三層。",
-        growth1Title: "把握 DRAM 漲價與缺貨週期",
+        growth1Title: "把握 DRAM 上行週期",
         growth1Body: "短期策略是改善毛利率與現金流，承接市場供需吃緊帶來的報價回升。",
         growth2Title: "提高 DDR5、LPDDR5 與 AI 產品比重",
         growth2Body: "中期策略是降低對低階成熟產品依賴，讓產品組合朝伺服器與 AI 應用移動。",
@@ -1776,7 +1929,7 @@
         career1Pay: "月薪 45,500–57,500 元",
         career2Title: "FAE 技術工程師",
         career2Work: "客戶認證、MCP/eMCP 客訴支援、技術交流與統計分析。",
-        career2Skill: "碩士以上、英文精通、電子或半導體物理基礎。",
+        career2Skill: "碩士以上、英文精通，具電子或半導體基礎。",
         career2Pay: "月薪 45,500–57,500 元",
         career3Title: "製程技術開發工程師",
         career3Work: "半導體製程整合、新技術開發與新製程開發。",
@@ -1790,7 +1943,7 @@
         restartQuiz: "重新開始",
         integrityTitle: "資料來源與 AI 使用揭露。",
         integrityBody: "本網站使用南亞科技官方網站、投資人關係資料、公開新聞、產業研究資料與 104 人力銀行職缺頁面作為公司介紹、財務資訊、市場分析與職涯洞察之基礎。AI 工具使用於資料初步整理、雙語文字草稿、網頁架構規劃、互動題目設計與程式碼輔助生成。所有關鍵數字、新聞事件與分析結論皆經人工查核與改寫。",
-        footerTitle: "南亞科技如何從 DRAM 景氣循環中重新轉盈，並建立下一階段成長動能。",
+        footerTitle: "南亞科從 DRAM 循環轉盈，建立下一階段成長動能。",
         footerBody: "資料更新日期：2026/05/11。建議正式繳交前再次確認股價、新聞與職缺內容。"
       },
       en: {
@@ -1822,6 +1975,16 @@
         teamCard2Body: "Chinese and English copy share the same strategic narrative instead of relying on direct machine translation.",
         teamCard3Title: "Interaction testing",
         teamCard3Body: "The team verified jumps, dark mode, voice guide, flip cards, and quiz behavior across desktop and mobile.",
+        membersLabel: "G6 Members",
+        memberProgramLabel: "Program / year",
+        memberGroupLabel: "Group",
+        memberProgram1: "International Business, Year 3",
+        memberProgram2: "Southeast Asian Studies, Year 4",
+        memberProgram3: "College of Management Bachelor Program, Year 4",
+        memberProgram4: "College of Management Bachelor Program, Year 4",
+        memberProgram5: "College of Management Bachelor Program, Year 3",
+        memberProgram6: "International Business, Year 3",
+        memberProgram7: "International Business, Year 3",
         companyTitle: "A representative Taiwanese DRAM company.",
         companyLead: "Founded in 1995 and listed as 2408, Nanya Technology focuses on DRAM R&D, design, manufacturing, and sales.",
         companyRow1Title: "Basic profile",
@@ -1943,7 +2106,7 @@
 
     const quizData = {
       zh: [
-        { q: "南亞科的核心產品是什麼？", options: ["DRAM", "OLED", "CPU", "太陽能板"], answer: 0, exp: "南亞科核心業務是 DRAM 研發、設計、製造與銷售。" },
+        { q: "南亞科核心產品？", options: ["DRAM", "OLED", "CPU", "太陽能板"], answer: 0, exp: "南亞科核心業務是 DRAM 研發、設計、製造與銷售。" },
         { q: "南亞科的願景是什麼？", options: ["智慧世代最佳記憶體夥伴", "全球最大手機品牌", "台灣最大零售商", "電動車整車製造商"], answer: 0, exp: "官方願景為成為智慧世代最佳記憶體夥伴。" },
         { q: "2025 年南亞科是否轉盈？", options: ["是", "否", "資料不足", "仍維持虧損"], answer: 0, exp: "2025 年稅後淨利 66.03 億元，EPS 2.13 元，重新轉盈。" },
         { q: "VRIN 主要用來分析什麼？", options: ["關鍵資源是否具有競爭優勢", "員工排班", "股票當日成交量", "網站色彩"], answer: 0, exp: "VRIN 用價值、稀少、模仿難度與替代性評估資源。" },
