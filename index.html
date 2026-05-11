@@ -1,0 +1,2131 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>南亞科技策略分析 | Nanya Technology Strategic Analysis</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #ffffff;
+      --surface: #ffffff;
+      --stone: #eeece7;
+      --pale-green: #edfce9;
+      --pale-blue: #f1f5ff;
+      --ink: #212121;
+      --muted: #75758a;
+      --faint: #93939f;
+      --hairline: #d9d9dd;
+      --border: #e5e7eb;
+      --black: #000000;
+      --near-black: #17171c;
+      --green: #003c33;
+      --navy: #071829;
+      --blue: #1863dc;
+      --coral: #ff7759;
+      --soft-coral: #ffad9b;
+      --growth: #22c55e;
+      --risk: #f97316;
+      --focus: #4c6ee6;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      --container: 1180px;
+      --shadow-none: none;
+      --font-display: "Space Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-body: Inter, Arial, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --canvas: #020617;
+      --surface: #071829;
+      --stone: #111827;
+      --pale-green: #06251f;
+      --pale-blue: #071829;
+      --ink: #f8fafc;
+      --muted: #b8bac7;
+      --faint: #8d91a3;
+      --hairline: rgba(255, 255, 255, 0.16);
+      --border: rgba(255, 255, 255, 0.12);
+      --near-black: #ffffff;
+      --black: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--canvas);
+      line-height: 1.5;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .announcement {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 8px 48px;
+      color: #fff;
+      background: #000;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .announcement a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--canvas) 92%, transparent);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      max-width: var(--container);
+      min-height: 72px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--green);
+    }
+
+    .brand-mark svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 10px 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      border-color: currentColor;
+    }
+
+    .nav-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-button,
+    .menu-button {
+      min-width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: var(--surface);
+      display: inline-grid;
+      place-items: center;
+    }
+
+    .icon-button svg,
+    .menu-button svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 11px 22px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: var(--canvas);
+      background: var(--near-black);
+    }
+
+    [data-theme="dark"] .btn-primary {
+      color: #020617;
+    }
+
+    .btn-secondary {
+      min-height: auto;
+      padding: 7px 0;
+      border-radius: 0;
+      color: var(--ink);
+      background: transparent;
+      border-bottom-color: currentColor;
+    }
+
+    .btn-outline {
+      color: var(--ink);
+      border-color: var(--hairline);
+      background: transparent;
+    }
+
+    .section {
+      padding: 96px 28px;
+    }
+
+    .section.tight {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 86px 28px 72px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+      gap: 40px;
+      align-items: end;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 790px;
+      font-family: var(--font-display);
+      font-size: clamp(54px, 8vw, 108px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .hero-lead {
+      max-width: 690px;
+      margin: 30px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.38;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .hero-media {
+      display: grid;
+      gap: 16px;
+    }
+
+    .console-card {
+      position: relative;
+      min-height: 470px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      color: #fff;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(255, 119, 89, 0.28), transparent 30%),
+        linear-gradient(160deg, #003c33 0%, #071829 58%, #17171c 100%);
+      overflow: hidden;
+    }
+
+    .console-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: radial-gradient(circle at 50% 22%, #000 0, transparent 72%);
+      pointer-events: none;
+    }
+
+    .console-inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      align-content: space-between;
+      gap: 22px;
+    }
+
+    .console-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(255,255,255,0.72);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .wafer {
+      width: min(310px, 74%);
+      aspect-ratio: 1;
+      margin: 6px auto 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.32);
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle, rgba(255,255,255,0.18), transparent 54%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 22px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 22px);
+      box-shadow: inset 0 0 70px rgba(255,255,255,0.10);
+    }
+
+    .wafer-core {
+      width: 34%;
+      aspect-ratio: 1;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.28);
+      font-family: var(--font-display);
+      font-size: 34px;
+    }
+
+    .console-metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: end;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: var(--radius-md);
+      background: rgba(0,0,0,0.24);
+    }
+
+    .console-metric strong {
+      display: block;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .console-metric span {
+      color: rgba(255,255,255,0.70);
+      font-size: 13px;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 72px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .stat {
+      min-height: 136px;
+      padding: 22px;
+      background: var(--canvas);
+    }
+
+    .stat span {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.12;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.45fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .mono-label {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .rule-list {
+      border-top: 1px solid var(--hairline);
+    }
+
+    .rule-row {
+      display: grid;
+      grid-template-columns: minmax(170px, 0.28fr) 1fr;
+      gap: 28px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .rule-row h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .rule-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stone-band {
+      background: var(--stone);
+    }
+
+    .green-band,
+    .navy-band {
+      color: #fff;
+      background: var(--green);
+    }
+
+    .navy-band {
+      background: var(--navy);
+    }
+
+    .green-band .section-copy,
+    .green-band .mono-label,
+    .navy-band .section-copy,
+    .navy-band .mono-label {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+    }
+
+    .green-band .card,
+    .navy-band .card {
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .card h3,
+    .card h4 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .green-band .card p,
+    .green-band .card li,
+    .navy-band .card p,
+    .navy-band .card li {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .card p {
+      margin: 0;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 14px;
+      border: 1px solid var(--soft-coral);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: color-mix(in srgb, var(--coral) 10%, transparent);
+      font-size: 13px;
+    }
+
+    .green-band .chip,
+    .navy-band .chip {
+      color: #fff;
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .timeline {
+      border-top: 1px solid var(--hairline);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .timeline-year {
+      font-family: var(--font-display);
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .finance-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.72fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .chart-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+    }
+
+    .chart-card h3 {
+      margin: 0 0 20px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .chart-wrap {
+      width: 100%;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--stone) 70%, var(--canvas));
+    }
+
+    .chart-wrap svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .metric-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .metric-row {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .metric-row span {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .metric-row strong {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .swot {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.16);
+      gap: 1px;
+    }
+
+    .swot-cell {
+      min-height: 260px;
+      padding: 24px;
+      background: rgba(0,0,0,0.18);
+    }
+
+    .swot-cell h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .swot-cell p {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .vrin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .vrin-table th,
+    .vrin-table td {
+      padding: 18px 14px;
+      border-bottom: 1px solid var(--hairline);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .vrin-table th {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .vrin-table td:not(:first-child) {
+      color: var(--muted);
+    }
+
+    .strategy-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .strategy-step {
+      min-height: 280px;
+      padding: 28px;
+      background: var(--canvas);
+    }
+
+    .strategy-step span {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      margin-bottom: 28px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green);
+      font-family: var(--font-display);
+      font-size: 20px;
+    }
+
+    .strategy-step h3 {
+      margin: 0 0 14px;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .strategy-step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .flip-card {
+      min-height: 166px;
+      border: 0;
+      padding: 0;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      perspective: 1000px;
+      text-align: left;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      min-height: 166px;
+      transition: transform 500ms ease;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.is-flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-face {
+      position: absolute;
+      inset: 0;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      backface-visibility: hidden;
+      background: var(--surface);
+    }
+
+    .flip-front {
+      display: grid;
+      align-content: space-between;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+      color: var(--muted);
+    }
+
+    .flip-front strong {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .flip-front span {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .career-card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+    }
+
+    .career-card h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .career-card dl {
+      margin: 0;
+    }
+
+    .career-card dt {
+      margin-top: 18px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .career-card dd {
+      margin: 6px 0 0;
+      color: var(--ink);
+    }
+
+    .quiz-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    .quiz-panel {
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: #fff;
+      color: #212121;
+    }
+
+    .quiz-question {
+      margin: 0 0 22px;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quiz-option {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d9d9dd;
+      border-radius: var(--radius-sm);
+      color: #212121;
+      background: #fff;
+      text-align: left;
+    }
+
+    .quiz-option:hover,
+    .quiz-option.is-selected {
+      border-color: var(--coral);
+      background: #fff1ed;
+    }
+
+    .quiz-feedback {
+      min-height: 54px;
+      margin-top: 18px;
+      color: #75758a;
+    }
+
+    .quiz-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .score-ring {
+      min-height: 310px;
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: var(--radius-md);
+      display: grid;
+      align-content: center;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .score-ring strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 82px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .score-ring span {
+      color: rgba(255,255,255,0.72);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .integrity {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(320px, 0.55fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .source-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--hairline);
+      color: var(--ink);
+    }
+
+    .source-list span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 70px 28px;
+      color: #fff;
+      background: #17171c;
+    }
+
+    .footer-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .footer h2 {
+      max-width: 670px;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 400;
+      line-height: 1.04;
+    }
+
+    .footer p {
+      margin: 22px 0 0;
+      color: rgba(255,255,255,0.64);
+    }
+
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      color: rgba(255,255,255,0.68);
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .mobile-panel {
+      display: none;
+      border-top: 1px solid var(--border);
+      padding: 12px 28px 22px;
+      background: var(--canvas);
+    }
+
+    .mobile-panel a {
+      display: block;
+      padding: 12px 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .nav {
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-grid;
+      }
+
+      .mobile-panel.is-open {
+        display: block;
+      }
+
+      .hero-grid,
+      .finance-layout,
+      .section-head,
+      .integrity,
+      .quiz-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-media {
+        max-width: 620px;
+      }
+
+      .quick-stats,
+      .swot,
+      .flip-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3,
+      .career-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .strategy-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .announcement {
+        padding-inline: 18px;
+      }
+
+      .nav {
+        min-height: 64px;
+        padding: 0 18px;
+        gap: 12px;
+      }
+
+      .brand span {
+        max-width: 136px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .hero,
+      .section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .hero h1 {
+        font-size: clamp(46px, 16vw, 64px);
+      }
+
+      .hero-lead {
+        font-size: 17px;
+      }
+
+      .console-card {
+        min-height: 390px;
+        padding: 18px;
+      }
+
+      .quick-stats,
+      .grid-2,
+      .grid-3,
+      .career-grid,
+      .swot,
+      .flip-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rule-row,
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .vrin-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-meta {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">
+    <span data-i18n="announcement">1142 國際策略管理 TP 公司研究網站</span>
+    <a href="#integrity" data-i18n="announcementLink">查看資料來源與 AI 揭露</a>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Nanya TP Website home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M4 10h3M4 14h3M17 10h3M17 14h3M10 4v3M14 4v3M10 17v3M14 17v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Nanya TP</span>
+      </a>
+
+      <div class="nav-links" aria-label="Section navigation">
+        <a href="#company" data-i18n="navCompany">公司概覽</a>
+        <a href="#finance" data-i18n="navFinance">財務績效</a>
+        <a href="#market" data-i18n="navMarket">市場分析</a>
+        <a href="#resources" data-i18n="navResources">資源評價</a>
+        <a href="#growth" data-i18n="navGrowth">成長策略</a>
+        <a href="#quiz" data-i18n="navQuiz">小測驗</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="voiceBtn" type="button" aria-label="Start voice guide">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 9v6h4l5 4V5L9 9H5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M17 9.5c.8.7 1.2 1.5 1.2 2.5s-.4 1.8-1.2 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="icon-button" id="themeBtn" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M4.6 4.6 6 6M18 18l1.4 1.4M3 12h2M19 12h2M4.6 19.4 6 18M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </button>
+        <button class="btn btn-outline" id="langBtn" type="button">EN</button>
+        <button class="menu-button" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="#company" data-i18n="navCompany">公司概覽</a>
+      <a href="#finance" data-i18n="navFinance">財務績效</a>
+      <a href="#market" data-i18n="navMarket">市場分析</a>
+      <a href="#resources" data-i18n="navResources">資源評價</a>
+      <a href="#growth" data-i18n="navGrowth">成長策略</a>
+      <a href="#quiz" data-i18n="navQuiz">小測驗</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div>
+          <h1 id="hero-title" data-i18n="heroTitle">從 DRAM 景氣循環到 AI 記憶體供應鏈合作。</h1>
+          <p class="hero-lead" data-i18n="heroLead">南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#company" data-i18n="heroPrimary">開始瀏覽</a>
+            <a class="btn btn-secondary" href="#quiz" data-i18n="heroSecondary">進入互動測驗</a>
+          </div>
+        </div>
+
+        <div class="hero-media" aria-hidden="true">
+          <div class="console-card">
+            <div class="console-inner">
+              <div class="console-top">
+                <span>NANYA / 2408</span>
+                <span>DRAM STRATEGY</span>
+              </div>
+              <div class="wafer">
+                <div class="wafer-core">AI</div>
+              </div>
+              <div class="console-metric">
+                <div>
+                  <strong>665.87</strong>
+                  <span>2025 revenue, NT$ hundred million</span>
+                </div>
+                <svg width="108" height="52" viewBox="0 0 108 52" fill="none">
+                  <path d="M2 45C16 42 20 32 32 35C45 38 49 16 61 20C72 24 77 8 88 10C97 12 102 7 106 4" stroke="#ff7759" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M2 45H106" stroke="rgba(255,255,255,.28)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="quick-stats" aria-label="Nanya quick facts">
+          <div class="stat">
+            <span data-i18n="stat1Label">核心業務</span>
+            <strong data-i18n="stat1Value">DRAM 研發、設計、製造、銷售</strong>
+          </div>
+          <div class="stat">
+            <span data-i18n="stat2Label">全球位置</span>
+            <strong data-i18n="stat2Value">全球第 4 大 DRAM 公司</strong>
+          </div>
+          <div class="stat">
+            <span data-i18n="stat3Label">2025 營收</span>
+            <strong data-i18n="stat3Value">新台幣 665.87 億元</strong>
+          </div>
+          <div class="stat">
+            <span data-i18n="stat4Label">策略焦點</span>
+            <strong data-i18n="stat4Value">DDR5、LPDDR5、AI memory</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight stone-band" id="team" aria-labelledby="team-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Team collaboration</span>
+            <h2 class="section-title" id="team-title" data-i18n="teamTitle">共同編修，而不是章節拼貼。</h2>
+          </div>
+          <p class="section-copy" data-i18n="teamLead">本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3 data-i18n="teamCard1Title">資料查核</h3>
+            <p data-i18n="teamCard1Body">共同比對南亞科技官方資料、投資人關係、新聞與 104 職缺頁面，降低錯誤引用風險。</p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="teamCard2Title">雙語整合</h3>
+            <p data-i18n="teamCard2Body">中文與英文文案維持同一研究敘事，不使用自動翻譯結果直接上線。</p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="teamCard3Title">互動測試</h3>
+            <p data-i18n="teamCard3Body">共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="company" aria-labelledby="company-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Company overview</span>
+            <h2 class="section-title" id="company-title" data-i18n="companyTitle">台灣代表性的 DRAM 公司。</h2>
+          </div>
+          <p class="section-copy" data-i18n="companyLead">南亞科技成立於 1995 年，股票代號 2408，核心業務為 DRAM 研發、設計、製造與銷售。</p>
+        </div>
+        <div class="rule-list">
+          <div class="rule-row">
+            <h3 data-i18n="companyRow1Title">基本資料</h3>
+            <p data-i18n="companyRow1Body">南亞科技股份有限公司，英文名稱 Nanya Technology Corporation，台灣證券交易所上市，實收資本額新台幣 309.9 億元，截至 2025/12/31 員工人數超過 3,700 人。</p>
+          </div>
+          <div class="rule-row">
+            <h3 data-i18n="companyRow2Title">產品矩陣</h3>
+            <p data-i18n="companyRow2Body">產品線包含標準型 DRAM、低功耗行動 DRAM、Known Good Die、MCP/eMCP/uMCP、記憶體模組與 Elixir 自有品牌。</p>
+          </div>
+          <div class="rule-row">
+            <h3 data-i18n="companyRow3Title">應用市場</h3>
+            <p data-i18n="companyRow3Body">應用橫跨智慧型手機、伺服器、資料中心、車用電子、工業控制、消費性電子與 AI 相關裝置。</p>
+          </div>
+          <div class="rule-row">
+            <h3 data-i18n="companyRow4Title">全球據點</h3>
+            <p data-i18n="companyRow4Body">台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green-band" aria-labelledby="values-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Vision / Mission / Values</span>
+            <h2 class="section-title" id="values-title" data-i18n="valuesTitle">智慧世代最佳記憶體夥伴。</h2>
+          </div>
+          <p class="section-copy" data-i18n="valuesLead">願景、使命與核心價值能把公司策略從產品規格拉回長期經營能力。</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Vision</h3>
+            <p data-i18n="visionBody">成為智慧世代最佳記憶體夥伴。</p>
+          </article>
+          <article class="card">
+            <h3>Mission</h3>
+            <p data-i18n="missionBody">持續獲利、永續經營；預防風險；善待員工；友善環境；支持在地。</p>
+          </article>
+          <article class="card">
+            <h3>Values</h3>
+            <p data-i18n="valuesBody">創新、誠信、當責、效率。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="finance" aria-labelledby="finance-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Financial performance</span>
+            <h2 class="section-title" id="finance-title" data-i18n="financeTitle">典型 DRAM 景氣循環，2025 重新轉盈。</h2>
+          </div>
+          <p class="section-copy" data-i18n="financeLead">2021 高獲利、2023 至 2024 承壓虧損、2025 受惠價格回升與需求改善而轉盈。</p>
+        </div>
+        <div class="finance-layout">
+          <div class="chart-card">
+            <h3 data-i18n="chartTitle">2021–2025 營收與 EPS</h3>
+            <div class="chart-wrap" role="img" aria-label="Revenue and EPS chart from 2021 to 2025">
+              <svg viewBox="0 0 760 390">
+                <rect width="760" height="390" fill="none"/>
+                <g stroke="#d9d9dd" stroke-width="1">
+                  <path d="M70 54H710M70 124H710M70 194H710M70 264H710M70 334H710"/>
+                </g>
+                <g font-family="Arial, sans-serif" font-size="13" fill="#75758a">
+                  <text x="32" y="338">0</text>
+                  <text x="24" y="268">250</text>
+                  <text x="24" y="198">500</text>
+                  <text x="24" y="128">750</text>
+                  <text x="18" y="58">1000</text>
+                  <text x="96" y="364">2021</text>
+                  <text x="232" y="364">2022</text>
+                  <text x="368" y="364">2023</text>
+                  <text x="504" y="364">2024</text>
+                  <text x="640" y="364">2025</text>
+                </g>
+                <path d="M112 94L248 174L384 251L520 239L656 148" fill="none" stroke="#1863dc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <g fill="#1863dc">
+                  <circle cx="112" cy="94" r="6"/><circle cx="248" cy="174" r="6"/><circle cx="384" cy="251" r="6"/><circle cx="520" cy="239" r="6"/><circle cx="656" cy="148" r="6"/>
+                </g>
+                <g fill="#ff7759">
+                  <rect x="92" y="118" width="40" height="216" rx="4"/>
+                  <rect x="228" y="179" width="40" height="155" rx="4"/>
+                  <rect x="364" y="334" width="40" height="55" rx="4"/>
+                  <rect x="500" y="334" width="40" height="38" rx="4"/>
+                  <rect x="636" y="272" width="40" height="62" rx="4"/>
+                </g>
+                <g font-family="Arial, sans-serif" font-size="12" fill="#212121">
+                  <text x="88" y="82">856.04</text>
+                  <text x="224" y="162">569.52</text>
+                  <text x="360" y="239">298.92</text>
+                  <text x="496" y="227">341.32</text>
+                  <text x="632" y="136">665.87</text>
+                </g>
+                <g font-family="Arial, sans-serif" font-size="13">
+                  <text x="470" y="34" fill="#1863dc">Revenue</text>
+                  <text x="552" y="34" fill="#ff7759">EPS direction</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <aside class="chart-card">
+            <h3 data-i18n="financeSideTitle">關鍵判讀</h3>
+            <div class="metric-list">
+              <div class="metric-row">
+                <span data-i18n="metric1Label">2025 Revenue</span>
+                <strong>665.87</strong>
+              </div>
+              <div class="metric-row">
+                <span data-i18n="metric2Label">2025 Net income</span>
+                <strong>66.03</strong>
+              </div>
+              <div class="metric-row">
+                <span data-i18n="metric3Label">2025 EPS</span>
+                <strong>2.13</strong>
+              </div>
+            </div>
+            <p class="section-copy" style="margin-top:22px" data-i18n="financeSideBody">單位為新台幣億元；EPS 為新台幣元。2025 年第 4 季營收達 300.94 億元，單季 EPS 為 3.58 元。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section navy-band" id="market" aria-labelledby="market-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Market analysis</span>
+            <h2 class="section-title" id="market-title" data-i18n="marketTitle">AI、伺服器與 DDR5 推動需求重估。</h2>
+          </div>
+          <p class="section-copy" data-i18n="marketLead">南亞科處在 DRAM 價格循環、成熟製程供需缺口與客戶策略投資交會的位置。</p>
+        </div>
+        <div class="swot">
+          <article class="swot-cell">
+            <h3>Strengths</h3>
+            <p data-i18n="swotS">台灣少數 DRAM 廠、自主技術、完整產品線與全球客戶支援網絡。</p>
+          </article>
+          <article class="swot-cell">
+            <h3>Weaknesses</h3>
+            <p data-i18n="swotW">規模小於 Samsung、SK hynix、Micron，技術與資本密集壓力高。</p>
+          </article>
+          <article class="swot-cell">
+            <h3>Opportunities</h3>
+            <p data-i18n="swotO">AI server、DDR5、成熟製程供應缺口與客戶策略入股。</p>
+          </article>
+          <article class="swot-cell">
+            <h3>Threats</h3>
+            <p data-i18n="swotT">DRAM 景氣反轉、價格下跌、大廠擴產與先進製程競爭。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resources" aria-labelledby="resources-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">VRIN resources</span>
+            <h2 class="section-title" id="resources-title" data-i18n="resourcesTitle">用 VRIN 看哪些資源能形成策略價值。</h2>
+          </div>
+          <p class="section-copy" data-i18n="resourcesLead">資源評價不只列優勢，而是判斷價值、稀少、模仿難度與替代性。</p>
+        </div>
+        <div class="chart-card" style="overflow:auto">
+          <table class="vrin-table">
+            <thead>
+              <tr>
+                <th data-i18n="vrinResource">Resource</th>
+                <th>V</th>
+                <th>R</th>
+                <th>I</th>
+                <th>N</th>
+                <th data-i18n="vrinJudgement">Judgement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="vrin1">DRAM 製程與研發能力</td>
+                <td data-i18n="vrin1v">支撐 DDR5、LPDDR5、10nm-class 產品</td>
+                <td data-i18n="vrin1r">台灣具完整 DRAM 能力的公司有限</td>
+                <td data-i18n="vrin1i">需要長期技術與資本投入</td>
+                <td data-i18n="vrin1n">短期難以外部採購取代</td>
+                <td data-i18n="vrin1j">策略性資源</td>
+              </tr>
+              <tr>
+                <td data-i18n="vrin2">全球客戶與銷售支援網絡</td>
+                <td data-i18n="vrin2v">連結美洲、歐洲、日本、中國與台灣客戶</td>
+                <td data-i18n="vrin2r">半導體大廠多有全球網絡</td>
+                <td data-i18n="vrin2i">需長期客戶認證</td>
+                <td data-i18n="vrin2n">客戶仍可改採其他大廠</td>
+                <td data-i18n="vrin2j">重要資源</td>
+              </tr>
+              <tr>
+                <td data-i18n="vrin3">新廠與產能擴建能力</td>
+                <td data-i18n="vrin3v">支撐下一世代產品與產能提升</td>
+                <td data-i18n="vrin3r">資本支出門檻高</td>
+                <td data-i18n="vrin3i">需要資金、土地、設備與工程能力</td>
+                <td data-i18n="vrin3n">產能無法短期完全外包替代</td>
+                <td data-i18n="vrin3j">策略性資源</td>
+              </tr>
+              <tr>
+                <td data-i18n="vrin4">客戶策略投資關係</td>
+                <td data-i18n="vrin4v">強化供應鏈綁定與長約穩定性</td>
+                <td data-i18n="vrin4r">客戶直接入股並不常見</td>
+                <td data-i18n="vrin4i">需要信任、供需條件與技術配合</td>
+                <td data-i18n="vrin4n">難由普通買賣關係取代</td>
+                <td data-i18n="vrin4j">高策略性資源</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section stone-band" aria-labelledby="cards-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Interactive cards</span>
+            <h2 class="section-title" id="cards-title" data-i18n="cardsTitle">翻轉關鍵字卡。</h2>
+          </div>
+          <p class="section-copy" data-i18n="cardsLead">點擊字卡查看策略管理與記憶體產業關鍵詞說明。</p>
+        </div>
+        <div class="flip-grid" id="flipGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="growth" aria-labelledby="growth-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Growth strategy</span>
+            <h2 class="section-title" id="growth-title" data-i18n="growthTitle">短期抓週期，中期升級產品，長期綁定供應鏈。</h2>
+          </div>
+          <p class="section-copy" data-i18n="growthLead">成長策略可拆成價格週期、產品組合與客戶合作三層。</p>
+        </div>
+        <div class="strategy-steps">
+          <article class="strategy-step">
+            <span>1</span>
+            <h3 data-i18n="growth1Title">把握 DRAM 漲價與缺貨週期</h3>
+            <p data-i18n="growth1Body">短期策略是改善毛利率與現金流，承接市場供需吃緊帶來的報價回升。</p>
+          </article>
+          <article class="strategy-step">
+            <span>2</span>
+            <h3 data-i18n="growth2Title">提高 DDR5、LPDDR5 與 AI 產品比重</h3>
+            <p data-i18n="growth2Body">中期策略是降低對低階成熟產品依賴，讓產品組合朝伺服器與 AI 應用移動。</p>
+          </article>
+          <article class="strategy-step">
+            <span>3</span>
+            <h3 data-i18n="growth3Title">新廠、10 奈米級製程與客戶策略投資</h3>
+            <p data-i18n="growth3Body">長期策略是建立更穩定的產能與需求來源，並透過客戶入股深化合作。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="career" aria-labelledby="career-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Career insights</span>
+            <h2 class="section-title" id="career-title" data-i18n="careerTitle">從 104 職缺看南亞科需要的人才。</h2>
+          </div>
+          <p class="section-copy" data-i18n="careerLead">職涯洞察把公司策略連回學生能理解的技能與職位需求。</p>
+        </div>
+        <div class="career-grid">
+          <article class="career-card">
+            <h3 data-i18n="career1Title">軟體開發工程師</h3>
+            <dl>
+              <dt data-i18n="careerWork">工作</dt>
+              <dd data-i18n="career1Work">MES 系統開發、異常分析、上線測試與排程系統開發。</dd>
+              <dt data-i18n="careerSkill">技能</dt>
+              <dd>C, C++, Java, VB.NET, DB2, MS SQL, Oracle</dd>
+              <dt data-i18n="careerPay">薪資</dt>
+              <dd data-i18n="career1Pay">月薪 45,500–57,500 元</dd>
+            </dl>
+          </article>
+          <article class="career-card">
+            <h3 data-i18n="career2Title">FAE 技術工程師</h3>
+            <dl>
+              <dt data-i18n="careerWork">工作</dt>
+              <dd data-i18n="career2Work">客戶認證、MCP/eMCP 客訴支援、技術交流與統計分析。</dd>
+              <dt data-i18n="careerSkill">技能</dt>
+              <dd data-i18n="career2Skill">碩士以上、英文精通、電子或半導體物理基礎。</dd>
+              <dt data-i18n="careerPay">薪資</dt>
+              <dd data-i18n="career2Pay">月薪 45,500–57,500 元</dd>
+            </dl>
+          </article>
+          <article class="career-card">
+            <h3 data-i18n="career3Title">製程技術開發工程師</h3>
+            <dl>
+              <dt data-i18n="careerWork">工作</dt>
+              <dd data-i18n="career3Work">半導體製程整合、新技術開發與新製程開發。</dd>
+              <dt data-i18n="careerSkill">技能</dt>
+              <dd data-i18n="career3Skill">碩士以上、工程相關科系、英文中等。</dd>
+              <dt data-i18n="careerPay">薪資</dt>
+              <dd data-i18n="career3Pay">月薪 41,000–57,000 元</dd>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section navy-band" id="quiz" aria-labelledby="quiz-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Interactive quiz</span>
+            <h2 class="section-title" id="quiz-title" data-i18n="quizTitle">五題小測驗。</h2>
+          </div>
+          <p class="section-copy" data-i18n="quizLead">答題後會顯示解析與分數，適合互評時快速互動。</p>
+        </div>
+        <div class="quiz-layout">
+          <div class="score-ring">
+            <span data-i18n="scoreLabel">Current score</span>
+            <strong id="scoreText">0/5</strong>
+            <p class="section-copy" id="scoreHint" data-i18n="scoreHint">完成每題後會更新分數。</p>
+          </div>
+          <div class="quiz-panel">
+            <p class="quiz-question" id="questionText"></p>
+            <div class="quiz-options" id="options"></div>
+            <div class="quiz-feedback" id="feedback" aria-live="polite"></div>
+            <div class="quiz-controls">
+              <button class="btn btn-primary" id="nextBtn" type="button" data-i18n="nextQuestion">下一題</button>
+              <button class="btn btn-outline" id="restartBtn" type="button" data-i18n="restartQuiz">重新開始</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="integrity" aria-labelledby="integrity-title">
+      <div class="container">
+        <div class="integrity">
+          <div>
+            <span class="mono-label">Academic integrity</span>
+            <h2 class="section-title" id="integrity-title" data-i18n="integrityTitle">資料來源與 AI 使用揭露。</h2>
+            <p class="section-copy" style="margin-top:24px" data-i18n="integrityBody">本網站使用南亞科技官方網站、投資人關係資料、公開新聞、產業研究資料與 104 人力銀行職缺頁面作為公司介紹、財務資訊、市場分析與職涯洞察之基礎。AI 工具使用於資料初步整理、雙語文字草稿、網頁架構規劃、互動題目設計與程式碼輔助生成。所有關鍵數字、新聞事件與分析結論皆經人工查核與改寫。</p>
+          </div>
+          <div class="source-list" aria-label="Reference links">
+            <a href="https://www.nanya.com/tw/About/2/%E5%85%AC%E5%8F%B8%E7%B0%A1%E4%BB%8B" target="_blank" rel="noreferrer">南亞科技公司簡介 <span>Official</span></a>
+            <a href="https://www.nanya.com/tw/About/28/%E4%BC%81%E6%A5%AD%E6%89%BF%E8%AB%BE" target="_blank" rel="noreferrer">南亞科技企業承諾 <span>Official</span></a>
+            <a href="https://www.trendforce.com.tw/presscenter/news/20260226-12938.html" target="_blank" rel="noreferrer">TrendForce DRAM 產業分析 <span>Research</span></a>
+            <a href="https://www.reuters.com/world/asia-pacific/nanya-technology-shares-surge-10-after-25-billion-private-placement-2026-03-26/" target="_blank" rel="noreferrer">Reuters 私募報導 <span>News</span></a>
+            <a href="https://www.104.com.tw/" target="_blank" rel="noreferrer">104 人力銀行職缺資料 <span>Career</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h2 data-i18n="footerTitle">南亞科技如何從 DRAM 景氣循環中重新轉盈，並建立下一階段成長動能。</h2>
+        <p data-i18n="footerBody">資料更新日期：2026/05/11。建議正式繳交前再次確認股價、新聞與職缺內容。</p>
+      </div>
+      <div class="footer-meta">
+        <span>1142 國際策略管理</span>
+        <span>授課教師：梅筱珍</span>
+        <span>GitHub Pages Ready</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      zh: {
+        announcement: "1142 國際策略管理 TP 公司研究網站",
+        announcementLink: "查看資料來源與 AI 揭露",
+        navCompany: "公司概覽",
+        navFinance: "財務績效",
+        navMarket: "市場分析",
+        navResources: "資源評價",
+        navGrowth: "成長策略",
+        navQuiz: "小測驗",
+        heroTitle: "從 DRAM 景氣循環到 AI 記憶體供應鏈合作。",
+        heroLead: "南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。",
+        heroPrimary: "開始瀏覽",
+        heroSecondary: "進入互動測驗",
+        stat1Label: "核心業務",
+        stat1Value: "DRAM 研發、設計、製造、銷售",
+        stat2Label: "全球位置",
+        stat2Value: "全球第 4 大 DRAM 公司",
+        stat3Label: "2025 營收",
+        stat3Value: "新台幣 665.87 億元",
+        stat4Label: "策略焦點",
+        stat4Value: "DDR5、LPDDR5、AI memory",
+        teamTitle: "共同編修，而不是章節拼貼。",
+        teamLead: "本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。",
+        teamCard1Title: "資料查核",
+        teamCard1Body: "共同比對南亞科技官方資料、投資人關係、新聞與 104 職缺頁面，降低錯誤引用風險。",
+        teamCard2Title: "雙語整合",
+        teamCard2Body: "中文與英文文案維持同一研究敘事，不使用自動翻譯結果直接上線。",
+        teamCard3Title: "互動測試",
+        teamCard3Body: "共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。",
+        companyTitle: "台灣代表性的 DRAM 公司。",
+        companyLead: "南亞科技成立於 1995 年，股票代號 2408，核心業務為 DRAM 研發、設計、製造與銷售。",
+        companyRow1Title: "基本資料",
+        companyRow1Body: "南亞科技股份有限公司，英文名稱 Nanya Technology Corporation，台灣證券交易所上市，實收資本額新台幣 309.9 億元，截至 2025/12/31 員工人數超過 3,700 人。",
+        companyRow2Title: "產品矩陣",
+        companyRow2Body: "產品線包含標準型 DRAM、低功耗行動 DRAM、Known Good Die、MCP/eMCP/uMCP、記憶體模組與 Elixir 自有品牌。",
+        companyRow3Title: "應用市場",
+        companyRow3Body: "應用橫跨智慧型手機、伺服器、資料中心、車用電子、工業控制、消費性電子與 AI 相關裝置。",
+        companyRow4Title: "全球據點",
+        companyRow4Body: "台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務。",
+        valuesTitle: "智慧世代最佳記憶體夥伴。",
+        valuesLead: "願景、使命與核心價值能把公司策略從產品規格拉回長期經營能力。",
+        visionBody: "成為智慧世代最佳記憶體夥伴。",
+        missionBody: "持續獲利、永續經營；預防風險；善待員工；友善環境；支持在地。",
+        valuesBody: "創新、誠信、當責、效率。",
+        financeTitle: "典型 DRAM 景氣循環，2025 重新轉盈。",
+        financeLead: "2021 高獲利、2023 至 2024 承壓虧損、2025 受惠價格回升與需求改善而轉盈。",
+        chartTitle: "2021–2025 營收與 EPS",
+        financeSideTitle: "關鍵判讀",
+        metric1Label: "2025 營收",
+        metric2Label: "2025 稅後淨利",
+        metric3Label: "2025 EPS",
+        financeSideBody: "單位為新台幣億元；EPS 為新台幣元。2025 年第 4 季營收達 300.94 億元，單季 EPS 為 3.58 元。",
+        marketTitle: "AI、伺服器與 DDR5 推動需求重估。",
+        marketLead: "南亞科處在 DRAM 價格循環、成熟製程供需缺口與客戶策略投資交會的位置。",
+        swotS: "台灣少數 DRAM 廠、自主技術、完整產品線與全球客戶支援網絡。",
+        swotW: "規模小於 Samsung、SK hynix、Micron，技術與資本密集壓力高。",
+        swotO: "AI server、DDR5、成熟製程供應缺口與客戶策略入股。",
+        swotT: "DRAM 景氣反轉、價格下跌、大廠擴產與先進製程競爭。",
+        resourcesTitle: "用 VRIN 看哪些資源能形成策略價值。",
+        resourcesLead: "資源評價不只列優勢，而是判斷價值、稀少、模仿難度與替代性。",
+        vrinResource: "資源",
+        vrinJudgement: "判斷",
+        vrin1: "DRAM 製程與研發能力",
+        vrin1v: "支撐 DDR5、LPDDR5、10nm-class 產品",
+        vrin1r: "台灣具完整 DRAM 能力的公司有限",
+        vrin1i: "需要長期技術與資本投入",
+        vrin1n: "短期難以外部採購取代",
+        vrin1j: "策略性資源",
+        vrin2: "全球客戶與銷售支援網絡",
+        vrin2v: "連結美洲、歐洲、日本、中國與台灣客戶",
+        vrin2r: "半導體大廠多有全球網絡",
+        vrin2i: "需長期客戶認證",
+        vrin2n: "客戶仍可改採其他大廠",
+        vrin2j: "重要資源",
+        vrin3: "新廠與產能擴建能力",
+        vrin3v: "支撐下一世代產品與產能提升",
+        vrin3r: "資本支出門檻高",
+        vrin3i: "需要資金、土地、設備與工程能力",
+        vrin3n: "產能無法短期完全外包替代",
+        vrin3j: "策略性資源",
+        vrin4: "客戶策略投資關係",
+        vrin4v: "強化供應鏈綁定與長約穩定性",
+        vrin4r: "客戶直接入股並不常見",
+        vrin4i: "需要信任、供需條件與技術配合",
+        vrin4n: "難由普通買賣關係取代",
+        vrin4j: "高策略性資源",
+        cardsTitle: "翻轉關鍵字卡。",
+        cardsLead: "點擊字卡查看策略管理與記憶體產業關鍵詞說明。",
+        growthTitle: "短期抓週期，中期升級產品，長期綁定供應鏈。",
+        growthLead: "成長策略可拆成價格週期、產品組合與客戶合作三層。",
+        growth1Title: "把握 DRAM 漲價與缺貨週期",
+        growth1Body: "短期策略是改善毛利率與現金流，承接市場供需吃緊帶來的報價回升。",
+        growth2Title: "提高 DDR5、LPDDR5 與 AI 產品比重",
+        growth2Body: "中期策略是降低對低階成熟產品依賴，讓產品組合朝伺服器與 AI 應用移動。",
+        growth3Title: "新廠、10 奈米級製程與客戶策略投資",
+        growth3Body: "長期策略是建立更穩定的產能與需求來源，並透過客戶入股深化合作。",
+        careerTitle: "從 104 職缺看南亞科需要的人才。",
+        careerLead: "職涯洞察把公司策略連回學生能理解的技能與職位需求。",
+        careerWork: "工作",
+        careerSkill: "技能",
+        careerPay: "薪資",
+        career1Title: "軟體開發工程師",
+        career1Work: "MES 系統開發、異常分析、上線測試與排程系統開發。",
+        career1Pay: "月薪 45,500–57,500 元",
+        career2Title: "FAE 技術工程師",
+        career2Work: "客戶認證、MCP/eMCP 客訴支援、技術交流與統計分析。",
+        career2Skill: "碩士以上、英文精通、電子或半導體物理基礎。",
+        career2Pay: "月薪 45,500–57,500 元",
+        career3Title: "製程技術開發工程師",
+        career3Work: "半導體製程整合、新技術開發與新製程開發。",
+        career3Skill: "碩士以上、工程相關科系、英文中等。",
+        career3Pay: "月薪 41,000–57,000 元",
+        quizTitle: "五題小測驗。",
+        quizLead: "答題後會顯示解析與分數，適合互評時快速互動。",
+        scoreLabel: "目前分數",
+        scoreHint: "完成每題後會更新分數。",
+        nextQuestion: "下一題",
+        restartQuiz: "重新開始",
+        integrityTitle: "資料來源與 AI 使用揭露。",
+        integrityBody: "本網站使用南亞科技官方網站、投資人關係資料、公開新聞、產業研究資料與 104 人力銀行職缺頁面作為公司介紹、財務資訊、市場分析與職涯洞察之基礎。AI 工具使用於資料初步整理、雙語文字草稿、網頁架構規劃、互動題目設計與程式碼輔助生成。所有關鍵數字、新聞事件與分析結論皆經人工查核與改寫。",
+        footerTitle: "南亞科技如何從 DRAM 景氣循環中重新轉盈，並建立下一階段成長動能。",
+        footerBody: "資料更新日期：2026/05/11。建議正式繳交前再次確認股價、新聞與職缺內容。"
+      },
+      en: {
+        announcement: "International Strategic Management TP company research website",
+        announcementLink: "View sources and AI disclosure",
+        navCompany: "Company",
+        navFinance: "Finance",
+        navMarket: "Market",
+        navResources: "Resources",
+        navGrowth: "Growth",
+        navQuiz: "Quiz",
+        heroTitle: "From DRAM cycles to AI memory supply chain partnerships.",
+        heroLead: "Nanya Technology shows how a Taiwanese memory company adapts through technology migration, capacity planning, and global customer relationships.",
+        heroPrimary: "Start exploring",
+        heroSecondary: "Take the quiz",
+        stat1Label: "Core business",
+        stat1Value: "DRAM R&D, design, manufacturing, sales",
+        stat2Label: "Global position",
+        stat2Value: "World's 4th largest DRAM company",
+        stat3Label: "2025 revenue",
+        stat3Value: "NT$66.587 billion",
+        stat4Label: "Strategic focus",
+        stat4Value: "DDR5, LPDDR5, AI memory",
+        teamTitle: "Collaborative editing, not stitched chapters.",
+        teamLead: "The site is built as an integrated research story across company background, finance, market analysis, resources, and growth strategy.",
+        teamCard1Title: "Fact checking",
+        teamCard1Body: "The team cross-checked official pages, investor relations, public news, and 104 job postings to reduce citation risk.",
+        teamCard2Title: "Bilingual refinement",
+        teamCard2Body: "Chinese and English copy share the same strategic narrative instead of relying on direct machine translation.",
+        teamCard3Title: "Interaction testing",
+        teamCard3Body: "The team verified jumps, dark mode, voice guide, flip cards, and quiz behavior across desktop and mobile.",
+        companyTitle: "A representative Taiwanese DRAM company.",
+        companyLead: "Founded in 1995 and listed as 2408, Nanya Technology focuses on DRAM R&D, design, manufacturing, and sales.",
+        companyRow1Title: "Basic profile",
+        companyRow1Body: "Nanya Technology Corporation is listed on the Taiwan Stock Exchange. Paid-in capital was NT$30.99 billion, and the company had more than 3,700 employees as of 2025/12/31.",
+        companyRow2Title: "Product matrix",
+        companyRow2Body: "Products include standard DRAM, low-power mobile DRAM, Known Good Die, MCP/eMCP/uMCP, DRAM modules, and Elixir branded memory.",
+        companyRow3Title: "Application markets",
+        companyRow3Body: "Applications span smartphones, servers, data centers, automotive electronics, industrial control, consumer electronics, and AI-related devices.",
+        companyRow4Title: "Global presence",
+        companyRow4Body: "The Taiwan headquarters supports Taiwan and Southeast Asia, while Silicon Valley, Tokyo, Dusseldorf, and Shenzhen provide sales, technical, and customer support.",
+        valuesTitle: "The best memory partner in the smart generation.",
+        valuesLead: "Vision, mission, and values connect product strategy back to long-term operating capability.",
+        visionBody: "To become the best memory partner in the smart generation.",
+        missionBody: "Sustained profitability, risk prevention, employee care, environmental friendliness, and local community support.",
+        valuesBody: "Innovation, integrity, accountability, and efficiency.",
+        financeTitle: "A classic DRAM cycle, with profitability returning in 2025.",
+        financeLead: "Nanya moved from strong 2021 profits through 2023-2024 losses, then returned to profit in 2025 as prices and demand improved.",
+        chartTitle: "2021-2025 revenue and EPS",
+        financeSideTitle: "Key reading",
+        metric1Label: "2025 revenue",
+        metric2Label: "2025 net income",
+        metric3Label: "2025 EPS",
+        financeSideBody: "Revenue and net income are in NT$ hundred million; EPS is in NT dollars. Q4 2025 revenue reached NT$30.094 billion, with quarterly EPS of NT$3.58.",
+        marketTitle: "AI, servers, and DDR5 are repricing demand.",
+        marketLead: "Nanya sits at the intersection of DRAM pricing cycles, mature-node supply gaps, and customer strategic investment.",
+        swotS: "One of Taiwan's few DRAM makers, with internal technology, a broad product line, and global customer support.",
+        swotW: "Smaller than Samsung, SK hynix, and Micron, with heavy technology and capital requirements.",
+        swotO: "AI servers, DDR5, mature-node supply gaps, and customer strategic shareholding.",
+        swotT: "DRAM downcycles, falling prices, large-player capacity expansion, and advanced-node competition.",
+        resourcesTitle: "VRIN clarifies which resources create strategic value.",
+        resourcesLead: "Resource evaluation should judge value, rarity, imitability, and substitutability instead of only listing strengths.",
+        vrinResource: "Resource",
+        vrinJudgement: "Judgement",
+        vrin1: "DRAM process and R&D capability",
+        vrin1v: "Supports DDR5, LPDDR5, and 10nm-class products",
+        vrin1r: "Few Taiwanese firms hold full DRAM capability",
+        vrin1i: "Requires long-term technology and capital investment",
+        vrin1n: "Hard to replace through short-term sourcing",
+        vrin1j: "Strategic resource",
+        vrin2: "Global customer and sales support network",
+        vrin2v: "Links customers across the Americas, Europe, Japan, China, and Taiwan",
+        vrin2r: "Many semiconductor firms have global networks",
+        vrin2i: "Requires long-term customer qualification",
+        vrin2n: "Customers can still shift to other major suppliers",
+        vrin2j: "Important resource",
+        vrin3: "New fab and capacity expansion capability",
+        vrin3v: "Supports next-generation products and capacity growth",
+        vrin3r: "High capital spending threshold",
+        vrin3i: "Requires capital, land, equipment, and engineering capability",
+        vrin3n: "Capacity cannot be fully outsourced in the short term",
+        vrin3j: "Strategic resource",
+        vrin4: "Customer strategic investment relationships",
+        vrin4v: "Strengthens supply-chain lock-in and long-term agreements",
+        vrin4r: "Direct customer equity investment is uncommon",
+        vrin4i: "Requires trust, supply-demand fit, and technical alignment",
+        vrin4n: "Hard to replace with ordinary buyer-seller relationships",
+        vrin4j: "Highly strategic resource",
+        cardsTitle: "Flip the keyword cards.",
+        cardsLead: "Click each card to review strategy and memory-industry terms.",
+        growthTitle: "Capture the cycle, upgrade the mix, and bind the supply chain.",
+        growthLead: "The growth strategy has three layers: pricing cycle, product mix, and customer partnership.",
+        growth1Title: "Capture DRAM price and shortage cycles",
+        growth1Body: "The short-term strategy improves margin and cash flow as tight supply lifts pricing.",
+        growth2Title: "Increase DDR5, LPDDR5, and AI product share",
+        growth2Body: "The mid-term strategy reduces dependence on lower-end mature products and shifts the mix toward servers and AI.",
+        growth3Title: "New fab, 10nm-class processes, and strategic customers",
+        growth3Body: "The long-term strategy builds more stable capacity and demand through customer equity investment and deeper cooperation.",
+        careerTitle: "104 job postings reveal Nanya's talent needs.",
+        careerLead: "Career insights connect corporate strategy to skills and roles that students can understand.",
+        careerWork: "Work",
+        careerSkill: "Skills",
+        careerPay: "Pay",
+        career1Title: "Software Development Engineer",
+        career1Work: "MES system development, exception analysis, launch testing, and scheduling systems.",
+        career1Pay: "NT$45,500-57,500 per month",
+        career2Title: "FAE Technical Engineer",
+        career2Work: "Customer qualification, MCP/eMCP issue support, technical communication, and analysis.",
+        career2Skill: "Master's degree or above, strong English, electronics or semiconductor physics background.",
+        career2Pay: "NT$45,500-57,500 per month",
+        career3Title: "Process Technology Development Engineer",
+        career3Work: "Semiconductor process integration, new technology development, and process development.",
+        career3Skill: "Master's degree or above, engineering background, intermediate English.",
+        career3Pay: "NT$41,000-57,000 per month",
+        quizTitle: "Five-question quiz.",
+        quizLead: "Answers show explanations and update the score for a quick peer-review interaction.",
+        scoreLabel: "Current score",
+        scoreHint: "The score updates after each answer.",
+        nextQuestion: "Next question",
+        restartQuiz: "Restart",
+        integrityTitle: "Sources and AI use disclosure.",
+        integrityBody: "This website uses Nanya Technology's official website, investor relations materials, public news sources, industry research, and 104 Job Bank postings as references for company introduction, financial information, market analysis, and career insights. AI tools were used for initial data organization, bilingual drafting, website structure planning, quiz design, and coding support. All key figures, news events, and analytical conclusions were manually checked and rewritten.",
+        footerTitle: "How Nanya Technology returned to profit from the DRAM cycle and built momentum for the next growth stage.",
+        footerBody: "Data updated: 2026/05/11. Before final submission, update stock price, news, and job posting details again."
+      }
+    };
+
+    const flipCards = {
+      zh: [
+        ["DRAM", "Dynamic Random Access Memory，南亞科核心產品。"],
+        ["DDR5", "新一代高速記憶體，支援伺服器與高效運算。"],
+        ["LPDDR5", "低功耗行動記憶體，常用於手機與行動裝置。"],
+        ["ASP", "Average Selling Price，記憶體景氣循環的重要指標。"],
+        ["VRIN", "判斷資源是否能形成持續競爭優勢的工具。"],
+        ["AI Memory", "受 AI server 與資料中心需求帶動的記憶體應用。"],
+        ["New Fab", "南亞科長期產能與製程升級的重要投資。"],
+        ["Strategic Customers", "SanDisk、Kioxia、Solidigm、Cisco 等策略投資者。"]
+      ],
+      en: [
+        ["DRAM", "Dynamic Random Access Memory, Nanya's core product."],
+        ["DDR5", "Next-generation high-speed memory for servers and high-performance computing."],
+        ["LPDDR5", "Low-power mobile memory commonly used in phones and mobile devices."],
+        ["ASP", "Average Selling Price, a key indicator of the memory cycle."],
+        ["VRIN", "A framework for judging whether resources can create sustained advantage."],
+        ["AI Memory", "Memory applications driven by AI server and data-center demand."],
+        ["New Fab", "A key long-term investment in capacity and process migration."],
+        ["Strategic Customers", "Strategic investors such as SanDisk, Kioxia, Solidigm, and Cisco."]
+      ]
+    };
+
+    const quizData = {
+      zh: [
+        { q: "南亞科的核心產品是什麼？", options: ["DRAM", "OLED", "CPU", "太陽能板"], answer: 0, exp: "南亞科核心業務是 DRAM 研發、設計、製造與銷售。" },
+        { q: "南亞科的願景是什麼？", options: ["智慧世代最佳記憶體夥伴", "全球最大手機品牌", "台灣最大零售商", "電動車整車製造商"], answer: 0, exp: "官方願景為成為智慧世代最佳記憶體夥伴。" },
+        { q: "2025 年南亞科是否轉盈？", options: ["是", "否", "資料不足", "仍維持虧損"], answer: 0, exp: "2025 年稅後淨利 66.03 億元，EPS 2.13 元，重新轉盈。" },
+        { q: "VRIN 主要用來分析什麼？", options: ["關鍵資源是否具有競爭優勢", "員工排班", "股票當日成交量", "網站色彩"], answer: 0, exp: "VRIN 用價值、稀少、模仿難度與替代性評估資源。" },
+        { q: "2026 年私募案中，哪類公司成為南亞科策略投資者？", options: ["客戶與科技供應鏈夥伴", "餐飲加盟商", "航空公司", "百貨通路"], answer: 0, exp: "SanDisk、Kioxia、Solidigm、Cisco 等客戶與科技供應鏈夥伴參與私募。" }
+      ],
+      en: [
+        { q: "What is Nanya's core product?", options: ["DRAM", "OLED", "CPU", "Solar panels"], answer: 0, exp: "Nanya's core business is DRAM R&D, design, manufacturing, and sales." },
+        { q: "What is Nanya's vision?", options: ["The best memory partner in the smart generation", "The world's largest phone brand", "Taiwan's largest retailer", "An electric vehicle maker"], answer: 0, exp: "The official vision is to become the best memory partner in the smart generation." },
+        { q: "Did Nanya return to profit in 2025?", options: ["Yes", "No", "Insufficient data", "It remained loss-making"], answer: 0, exp: "In 2025, net income was NT$6.603 billion and EPS was NT$2.13." },
+        { q: "What does VRIN mainly analyze?", options: ["Whether key resources create competitive advantage", "Employee scheduling", "Daily stock volume", "Website colors"], answer: 0, exp: "VRIN evaluates value, rarity, imitability, and non-substitutability." },
+        { q: "In the 2026 private placement, what type of firms became strategic investors?", options: ["Customers and technology supply-chain partners", "Restaurant franchisees", "Airlines", "Department stores"], answer: 0, exp: "SanDisk, Kioxia, Solidigm, and Cisco joined as customer and technology supply-chain partners." }
+      ]
+    };
+
+    let currentLang = localStorage.getItem("nanya-lang") || "zh";
+    let currentQuestion = 0;
+    let selectedAnswer = null;
+    let score = 0;
+    let answered = false;
+    let voices = [];
+
+    const qs = (selector) => document.querySelector(selector);
+    const qsa = (selector) => [...document.querySelectorAll(selector)];
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem("nanya-lang", lang);
+      document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+      qsa("[data-i18n]").forEach((node) => {
+        const key = node.getAttribute("data-i18n");
+        if (translations[lang][key]) node.textContent = translations[lang][key];
+      });
+      qs("#langBtn").textContent = lang === "zh" ? "EN" : "繁";
+      renderFlipCards();
+      resetQuiz();
+    }
+
+    function renderFlipCards() {
+      const grid = qs("#flipGrid");
+      grid.innerHTML = "";
+      flipCards[currentLang].forEach(([term, definition]) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "flip-card";
+        button.setAttribute("aria-label", term);
+        button.innerHTML = `
+          <span class="flip-card-inner">
+            <span class="flip-face flip-front">
+              <strong>${term}</strong>
+              <span>${currentLang === "zh" ? "點擊翻轉" : "Click to flip"}</span>
+            </span>
+            <span class="flip-face flip-back">${definition}</span>
+          </span>
+        `;
+        button.addEventListener("click", () => button.classList.toggle("is-flipped"));
+        grid.appendChild(button);
+      });
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      localStorage.setItem("nanya-theme", theme);
+    }
+
+    function renderQuiz() {
+      const data = quizData[currentLang][currentQuestion];
+      selectedAnswer = null;
+      answered = false;
+      qs("#questionText").textContent = data.q;
+      qs("#feedback").textContent = "";
+      qs("#options").innerHTML = "";
+      data.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "quiz-option";
+        btn.textContent = option;
+        btn.addEventListener("click", () => chooseAnswer(index, btn));
+        qs("#options").appendChild(btn);
+      });
+      updateScore();
+    }
+
+    function chooseAnswer(index, button) {
+      if (answered) return;
+      answered = true;
+      selectedAnswer = index;
+      const data = quizData[currentLang][currentQuestion];
+      qsa(".quiz-option").forEach((option) => option.classList.remove("is-selected"));
+      button.classList.add("is-selected");
+      if (selectedAnswer === data.answer) {
+        score += 1;
+        qs("#feedback").textContent = (currentLang === "zh" ? "答對。" : "Correct. ") + data.exp;
+      } else {
+        qs("#feedback").textContent = (currentLang === "zh" ? "答錯。" : "Not quite. ") + data.exp;
+      }
+      updateScore();
+    }
+
+    function updateScore() {
+      qs("#scoreText").textContent = `${score}/5`;
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData[currentLang].length - 1) {
+        currentQuestion += 1;
+        renderQuiz();
+      } else {
+        qs("#feedback").textContent = currentLang === "zh"
+          ? `測驗完成，總分 ${score}/5。`
+          : `Quiz complete. Final score: ${score}/5.`;
+      }
+    }
+
+    function resetQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      renderQuiz();
+    }
+
+    function loadVoices() {
+      voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    }
+
+    function pickVoice() {
+      if (!voices.length) loadVoices();
+      if (currentLang === "zh") {
+        return voices.find((voice) => /Taiwan-Yating/i.test(voice.name))
+          || voices.find((voice) => /zh-TW|Taiwan/i.test(`${voice.lang} ${voice.name}`))
+          || voices.find((voice) => /^zh/i.test(voice.lang))
+          || null;
+      }
+      return voices.find((voice) => /British.*Male|Daniel|George/i.test(voice.name))
+        || voices.find((voice) => /en-GB/i.test(voice.lang))
+        || voices.find((voice) => /^en/i.test(voice.lang))
+        || null;
+    }
+
+    function speakGuide() {
+      if (!("speechSynthesis" in window)) {
+        alert(currentLang === "zh" ? "此瀏覽器不支援語音導覽。" : "This browser does not support speech synthesis.");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const text = currentLang === "zh"
+        ? "南亞科技研究網站。主軸是從 DRAM 景氣循環到 AI 記憶體供應鏈合作。請依序瀏覽公司概覽、財務績效、市場分析、資源評價、成長策略與小測驗。中文語音預設優先使用 Taiwan Yating。"
+        : "Nanya Technology research website. The main story moves from DRAM cycles to AI memory supply chain partnerships. Browse company overview, finance, market analysis, resources, growth strategy, and the quiz. The English voice preference is British male.";
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = currentLang === "zh" ? "zh-TW" : "en-GB";
+      const voice = pickVoice();
+      if (voice) utterance.voice = voice;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function bindEvents() {
+      qs("#langBtn").addEventListener("click", () => applyLanguage(currentLang === "zh" ? "en" : "zh"));
+      qs("#themeBtn").addEventListener("click", () => {
+        const current = document.documentElement.dataset.theme || "light";
+        applyTheme(current === "dark" ? "light" : "dark");
+      });
+      qs("#voiceBtn").addEventListener("click", speakGuide);
+      qs("#nextBtn").addEventListener("click", nextQuestion);
+      qs("#restartBtn").addEventListener("click", resetQuiz);
+      qs("#menuBtn").addEventListener("click", () => {
+        const panel = qs("#mobilePanel");
+        const open = panel.classList.toggle("is-open");
+        qs("#menuBtn").setAttribute("aria-expanded", String(open));
+      });
+      qsa("#mobilePanel a").forEach((link) => {
+        link.addEventListener("click", () => {
+          qs("#mobilePanel").classList.remove("is-open");
+          qs("#menuBtn").setAttribute("aria-expanded", "false");
+        });
+      });
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+      }
+    }
+
+    applyTheme(localStorage.getItem("nanya-theme") || "light");
+    bindEvents();
+    applyLanguage(currentLang);
+  </script>
+</body>
+</html>
