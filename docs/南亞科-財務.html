@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南亞科技 (2408) 110-114年度財務數據與產業趨勢整合報告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* 翻轉字卡專用 CSS */
+        .flip-card {
+            background-color: transparent;
+            height: 240px;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+        .flip-card-front {
+            background-color: #f9fafb; /* bg-gray-50 */
+            border: 1px solid #e5e7eb;
+        }
+        .flip-card-back {
+            background-color: #4338ca; /* bg-indigo-700 */
+            color: white;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-lg">
+        
+        <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center text-blue-800">南亞科技 (2408) 110-114年度財務數據與產業趨勢整合報告</h1>
+        
+        <p class="mb-8 text-lg leading-relaxed text-gray-600">
+            本報告基於南亞科技股份有限公司110年度至114年度之合併財務報告，針對其營收表現、市場結構進行數據整合，並進一步剖析動態隨機存取記憶體 (DRAM) 產業的發展趨勢。
+        </p>
+
+        <hr class="my-8 border-t-2 border-gray-200">
+
+        <!-- 一、 核心財務數據總覽 -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700 border-l-4 border-blue-600 pl-3">一、 核心財務數據總覽 (110年 - 114年)</h2>
+            <p class="mb-4 text-gray-700">從過去五年的營收軌跡可以看出，南亞科經歷了一個完整的「繁榮 ➔ 谷底 ➔ 復甦 ➔ 爆發」的記憶體標準週期。</p>
+            
+            <div class="bg-white border border-gray-300 rounded-lg p-4 mb-2">
+                <canvas id="revenueChart" height="120"></canvas>
+            </div>
+            
+            <p class="text-sm text-gray-500 mt-2 text-right">*(註：以上數據皆取自各年度合併財務報告附註之「產品別及勞務別資訊」)*</p>
+        </section>
+
+        <!-- 二、 產品與市場結構分析 -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700 border-l-4 border-blue-600 pl-3">二、 產品與市場結構分析</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-medium mb-2 text-gray-800">1. 產品組合高度集中</h3>
+                <p class="text-gray-700 leading-relaxed">南亞科為純粹的 DRAM 製造商，其產品結構在過去五年高度一致，<strong>動態隨機存取記憶體 (DRAM) 佔總營收比例始終維持在 99.8% 以上</strong>。這意味著公司的獲利能力極度仰賴全球 DRAM 報價與供需狀況。</p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-medium mb-2 text-gray-800">2. 區域市場版圖變化</h3>
+                <p class="text-gray-700 leading-relaxed mb-3">根據財報中「來自外部客戶目的地地區收入」數據，可以看出地緣政治與供應鏈重組的端倪：</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li><strong>中國市場佔比變動：</strong>
+                        <ul class="list-circle pl-5 mt-1 text-gray-600">
+                            <li>110年中國市場貢獻約 395 億元 (佔比約 46%)，為最大單一市場。</li>
+                            <li>至112年產業谷底時，中國市場降至 127 億元。</li>
+                            <li>隨著供應鏈移轉與美國禁令影響，終端組裝廠逐漸移出中國，南亞科的客戶出貨目的地也隨之調整。</li>
+                        </ul>
+                    </li>
+                    <li><strong>台灣市場的支撐力：</strong>
+                        <ul class="list-circle pl-5 mt-1 text-gray-600">
+                            <li>台灣身為全球 PC 與伺服器代工重鎮，始終是南亞科前兩大市場。</li>
+                            <li>110年台灣市場貢獻約 301 億元；即使在112年最慘澹時仍有 105 億元；至114年復甦期則回升至 138 億元以上。</li>
+                        </ul>
+                    </li>
+                    <li><strong>其他市場：</strong> 日本與美國市場雖佔比不高，但在網通、車用及工業用記憶體領域仍維持穩定的策略合作關係。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 三、 關鍵財務指標關聯性推演 -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700 border-l-4 border-blue-600 pl-3">三、 關鍵財務指標關聯性推演</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">半導體製造業具有高固定成本特性，營運槓桿 (Operating Leverage) 極大。基於前述營收的劇烈波動，其相關財務指標的連動趨勢可由下圖示意：</p>
+            
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 my-4 shadow-inner">
+                <h4 class="text-center font-bold text-gray-700 mb-6 tracking-wide">財務指標連動示意圖 (營運槓桿效應)</h4>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    
+                    <!-- 核心驅動：營收波動 -->
+                    <div class="bg-blue-100 p-5 rounded-xl shadow-sm w-full md:w-1/3 text-center border border-blue-200 relative">
+                        <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <div class="font-bold text-blue-800 text-lg mb-2">營收劇烈波動</div>
+                        <div class="text-sm text-blue-700 bg-blue-200 py-1 px-2 rounded-md inline-block">110年(高) ➔ 112年(谷) ➔ 114年(爆發)</div>
+                    </div>
+                    
+                    <!-- 連動箭頭 -->
+                    <div class="hidden md:flex flex-col items-center text-gray-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                    <div class="md:hidden flex flex-col items-center text-gray-400 my-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </div>
+
+                    <!-- 指標連動結果 -->
+                    <div class="flex flex-col gap-5 w-full md:w-2/3">
+                        
+                        <!-- 毛利率影響 -->
+                        <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-indigo-500 relative transition transform hover:-translate-y-1">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">影響 1</span>
+                                <div class="font-bold text-indigo-700 text-lg">毛利率 (Gross Margin) 劇烈起伏</div>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                <span class="font-semibold text-red-500">▼ 谷底期 (112年)：</span> 產能利用率低下及提列存貨跌價，毛利率面臨保衛戰甚至轉負。<br>
+                                <span class="font-semibold text-green-600">▲ 爆發期 (114年)：</span> 營收翻倍，單位製造成本下降且產品售價提升，毛利率跳躍式成長。
+                            </p>
+                        </div>
+                        
+                        <!-- 現金流影響 -->
+                        <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-teal-500 relative transition transform hover:-translate-y-1">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">影響 2</span>
+                                <div class="font-bold text-teal-700 text-lg">資本支出與自由現金流拉鋸</div>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                <span class="font-semibold text-yellow-600">◆ 谷底期 (111-113年)：</span> 為推進 1A/1B 奈米及 DDR5 製程，仍需維持固定資本支出，嚴格考驗資產負債表強健度。<br>
+                                <span class="font-semibold text-green-600">▲ 爆發期 (114年)：</span> 營收大躍進，大幅改善營運現金流入，舒緩資本支出壓力。
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 四、 記憶體產業趨勢分析與展望 -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700 border-l-4 border-blue-600 pl-3">四、 記憶體產業趨勢分析與展望</h2>
+            <p class="text-gray-700 leading-relaxed mb-6">綜合110至114年的數據軌跡，DRAM產業目前正處於以下幾個關鍵趨勢中：</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- 翻轉字卡 1 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-indigo-700 leading-snug">1. AI 帶動的<br>「產能排擠效應」</h3>
+                            <p class="text-sm mt-3 text-gray-400">Hover to flip (滑鼠移入翻轉)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm leading-relaxed text-left">114年營收的強勢反彈 (+95%)，背後最大的驅動力來自人工智慧 (AI)。全球三大記憶體原廠將大量產能轉移至利潤極高的 HBM 以及高容量 DDR5。這導致傳統 DDR4 及主流 DDR5 的產能受到排擠，供給受限使得南亞科大幅受惠於價格上漲。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 翻轉字卡 2 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-indigo-700 leading-snug">2. 邊緣 AI (Edge AI)<br>引爆換機潮</h3>
+                            <p class="text-sm mt-3 text-gray-400">Hover to flip (滑鼠移入翻轉)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm leading-relaxed text-left">隨著 AI 伺服器建置完成，AI PC 與 AI 智慧型手機的終端應用在113-114年逐步發酵。終端裝置對記憶體單機搭載容量 (Content per box) 的顯著增長，為 DRAM 帶來了強勁的實質需求。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 翻轉字卡 3 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-indigo-700 leading-snug">3. 製程世代交替<br>(DDR4 ➔ DDR5)</h3>
+                            <p class="text-sm mt-3 text-gray-400">Hover to flip (滑鼠移入翻轉)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm leading-relaxed text-left">市場主流正快速向 DDR5 靠攏。南亞科積極推進的 1A/1B 奈米技術，是抓住這波 DDR5 滲透率提升紅利的關鍵。高頻寬、低功耗的新世代記憶體將是未來三年的毛利護城河。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 翻轉字卡 4 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-xl font-bold text-indigo-700 leading-snug">4. 區域化供應鏈<br>與去中化</h3>
+                            <p class="text-sm mt-3 text-gray-400">Hover to flip (滑鼠移入翻轉)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm leading-relaxed text-left">受到地緣政治影響，歐美客戶在採購上更加重視「中國以外」(China Plus One) 的產地來源。南亞科作為台灣本土自主研發的 DRAM 大廠，在爭取轉單上具備戰略優勢。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 結論 -->
+        <section class="bg-blue-50 border-t-4 border-blue-600 p-6 rounded-b-lg mt-8">
+            <h3 class="text-xl font-bold mb-2 text-blue-900">結論</h3>
+            <p class="text-blue-800 leading-relaxed">
+                南亞科在經歷了111-112年的嚴冬後，藉由嚴格的庫存管理與持續的研發投入，成功迎來了113-114年由 AI 驅動的產業超級循環。未來應持續關注其 <strong>1B奈米製程良率</strong> 以及 <strong>DDR5 產品營收佔比</strong>，這將是決定其下一階段獲利高度的核心指標。
+            </p>
+        </section>
+
+    </div>
+
+    <script>
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['110年 (高點)', '111年 (修正)', '112年 (谷底)', '113年 (復甦)', '114年 (爆發)'],
+                datasets: [
+                    {
+                        type: 'bar',
+                        label: '營業收入 (新台幣億元)',
+                        data: [856.04, 569.52, 298.92, 341.32, 665.87],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        type: 'bar',
+                        label: '稅後淨利 (新台幣億元)',
+                        data: [228.45, 146.14, -74.45, -25.00, 150.00],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        type: 'line',
+                        label: 'EPS (元)',
+                        data: [7.40, 4.72, -2.40, -0.80, 4.80],
+                        backgroundColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '新台幣 (億元)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'EPS (元)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 13
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    if (context.dataset.label.includes('EPS')) {
+                                        label += context.parsed.y.toFixed(2);
+                                    } else {
+                                        label += new Intl.NumberFormat('zh-TW').format(context.parsed.y);
+                                    }
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
