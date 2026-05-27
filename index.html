@@ -155,8 +155,8 @@
     .nav-links {
       display: flex;
       justify-content: center;
-      gap: 18px;
-      font-size: 13px;
+      gap: 14px;
+      font-size: 12px;
       color: var(--muted);
     }
 
@@ -897,6 +897,53 @@
       line-height: 1.35;
     }
 
+    .process-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 28px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .process-step {
+      min-height: 188px;
+      padding: 22px;
+      background: var(--surface);
+    }
+
+    .process-step span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .process-step span::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .process-step h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
     .timeline-item {
       display: grid;
       grid-template-columns: 130px 1fr;
@@ -920,6 +967,52 @@
     .timeline-item p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .org-map {
+      display: grid;
+      grid-template-columns: minmax(190px, 0.8fr) repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 32px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .org-node {
+      min-height: 176px;
+      padding: 24px;
+      background: var(--surface);
+    }
+
+    .org-node.is-root {
+      color: #fff;
+      background: var(--green);
+    }
+
+    .org-node span {
+      display: block;
+      margin-bottom: 16px;
+      color: inherit;
+      opacity: 0.68;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .org-node h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .org-node p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .org-node.is-root p {
+      color: rgba(255,255,255,0.78);
     }
 
     .finance-layout {
@@ -981,6 +1074,99 @@
       line-height: 1.05;
     }
 
+    .interactive-panel {
+      margin-top: 28px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+    }
+
+    .interactive-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .interactive-head h3,
+    .insight-panel h3 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .interactive-head p,
+    .insight-panel p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .segmented {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .segment-button {
+      min-height: 38px;
+      padding: 8px 14px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: transparent;
+      font-size: 13px;
+      transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .segment-button:hover,
+    .segment-button.is-active {
+      color: #fff;
+      border-color: var(--near-black);
+      background: var(--near-black);
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .evidence-cell {
+      min-height: 122px;
+      padding: 18px;
+      background: var(--canvas);
+    }
+
+    .evidence-cell span {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .evidence-cell strong {
+      display: block;
+      margin-top: 14px;
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .insight-panel {
+      margin-top: 20px;
+      padding: 22px;
+      border-left: 3px solid var(--coral);
+      background: color-mix(in srgb, var(--stone) 68%, var(--canvas));
+    }
+
     .swot {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1003,6 +1189,88 @@
 
     .swot-cell p {
       margin: 0;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .market-lab {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .market-card {
+      padding: 26px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-md);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .market-card h3 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .share-row {
+      display: grid;
+      grid-template-columns: 92px 1fr 54px;
+      gap: 12px;
+      align-items: center;
+      padding: 11px 0;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .share-bar {
+      height: 13px;
+      overflow: hidden;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .share-bar span {
+      display: block;
+      height: 100%;
+      width: var(--bar-width);
+      border-radius: inherit;
+      background: var(--action-blue);
+    }
+
+    .share-row.is-nanya .share-bar span {
+      background: var(--coral);
+    }
+
+    .force-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .force-button {
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-pill);
+      color: #fff;
+      background: transparent;
+      font-size: 13px;
+    }
+
+    .force-button.is-active,
+    .force-button:hover {
+      color: var(--near-black);
+      background: #fff;
+    }
+
+    .force-detail {
+      min-height: 178px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .force-detail p,
+    .market-card p {
       color: rgba(255,255,255,0.72);
     }
 
@@ -1173,6 +1441,330 @@
       margin: 6px 0 0;
       color: var(--ink);
       text-wrap: balance;
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .analysis-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+    }
+
+    .analysis-card h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.18;
+    }
+
+    .analysis-meta {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .analysis-points {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .analysis-points li {
+      padding-top: 12px;
+      border-top: 1px solid var(--hairline);
+      color: var(--muted);
+    }
+
+    .analysis-note {
+      margin: auto 0 0;
+      padding-top: 18px;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .analysis-note strong {
+      font-weight: 600;
+    }
+
+    .analysis-table-card {
+      margin-top: 24px;
+      overflow: auto;
+    }
+
+    .analysis-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .analysis-table th,
+    .analysis-table td {
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--hairline);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .analysis-table th {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .analysis-table td:not(:first-child) {
+      color: var(--muted);
+    }
+
+    .portfolio-tool {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.68fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .portfolio-chart {
+      position: relative;
+      min-height: 440px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(90deg, transparent calc(50% - .5px), var(--hairline) calc(50% - .5px), var(--hairline) calc(50% + .5px), transparent calc(50% + .5px)),
+        linear-gradient(0deg, transparent calc(50% - .5px), var(--hairline) calc(50% - .5px), var(--hairline) calc(50% + .5px), transparent calc(50% + .5px)),
+        var(--surface);
+    }
+
+    .axis-label {
+      position: absolute;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .axis-label.top { top: 18px; left: 50%; transform: translateX(-50%); }
+    .axis-label.bottom { bottom: 18px; left: 50%; transform: translateX(-50%); }
+    .axis-label.left { left: 18px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; }
+    .axis-label.right { right: 18px; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: right center; }
+
+    .portfolio-dot {
+      position: absolute;
+      left: var(--x);
+      bottom: var(--y);
+      transform: translate(-50%, 50%);
+      min-width: 88px;
+      padding: 8px 12px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: var(--canvas);
+      font-size: 13px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .portfolio-dot::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .portfolio-dot.is-active,
+    .portfolio-dot:hover {
+      color: #fff;
+      border-color: var(--near-black);
+      background: var(--near-black);
+    }
+
+    .portfolio-detail {
+      min-height: 440px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+    }
+
+    .portfolio-detail h3 {
+      margin: 14px 0 12px;
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border: 1px solid var(--soft-coral);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: color-mix(in srgb, var(--coral) 10%, transparent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .framework-router {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-bottom: 24px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .framework-route {
+      min-height: 220px;
+      padding: 24px;
+      background: var(--surface);
+    }
+
+    .framework-route span {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .framework-route h3 {
+      margin: 18px 0 12px;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.16;
+    }
+
+    .framework-route p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .confidence-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 22px;
+    }
+
+    .confidence-button {
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      background: transparent;
+      font-size: 13px;
+    }
+
+    .confidence-button.is-active,
+    .confidence-button:hover {
+      color: #fff;
+      border-color: var(--near-black);
+      background: var(--near-black);
+    }
+
+    .analysis-card.is-hidden {
+      display: none;
+    }
+
+    .analysis-card .status-chip {
+      margin-bottom: 14px;
+    }
+
+    .value-net-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 24px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .value-node {
+      min-height: 116px;
+      padding: 16px;
+      border: 0;
+      color: var(--ink);
+      background: var(--surface);
+      text-align: left;
+    }
+
+    .value-node span {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .value-node strong {
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .value-node.is-active,
+    .value-node:hover {
+      color: #fff;
+      background: var(--green);
+    }
+
+    .value-node.is-active span,
+    .value-node:hover span {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .value-detail {
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+    }
+
+    .integrity-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 24px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .integrity-step {
+      padding: 20px;
+      background: var(--canvas);
+    }
+
+    .integrity-step h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .integrity-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .quiz-layout {
@@ -1381,7 +1973,15 @@
 
       .hero-grid,
       .finance-layout,
+      .framework-router,
+      .interactive-head,
+      .market-lab,
+      .org-map,
+      .portfolio-tool,
+      .process-flow,
       .section-head,
+      .analysis-grid,
+      .integrity-flow,
       .integrity,
       .quiz-layout {
         grid-template-columns: 1fr;
@@ -1514,10 +2114,35 @@
       .quick-stats,
       .grid-2,
       .grid-3,
+      .analysis-grid,
       .career-grid,
+      .evidence-grid,
+      .framework-router,
+      .integrity-flow,
+      .org-map,
+      .portfolio-tool,
+      .process-flow,
       .swot,
+      .value-net-map,
       .flip-grid {
         grid-template-columns: 1fr;
+      }
+
+      .market-lab {
+        grid-template-columns: 1fr;
+      }
+
+      .interactive-head {
+        gap: 16px;
+      }
+
+      .segmented {
+        justify-content: flex-start;
+      }
+
+      .portfolio-chart,
+      .portfolio-detail {
+        min-height: 360px;
       }
 
       .rule-row,
@@ -1600,11 +2225,14 @@
       </a>
 
       <div class="nav-links" aria-label="Section navigation">
+        <a href="#team" data-i18n="navTeam">小組協作</a>
         <a href="#company" data-i18n="navCompany">公司概覽</a>
         <a href="#finance" data-i18n="navFinance">財務績效</a>
         <a href="#market" data-i18n="navMarket">市場分析</a>
         <a href="#resources" data-i18n="navResources">資源評價</a>
+        <a href="#portfolio" data-i18n="navPortfolio">產品配置</a>
         <a href="#growth" data-i18n="navGrowth">成長策略</a>
+        <a href="#deep-analysis" data-i18n="navDeep">深化分析</a>
         <a href="#quiz" data-i18n="navQuiz">小測驗</a>
       </div>
 
@@ -1659,11 +2287,14 @@
       </div>
     </div>
     <div class="mobile-panel" id="mobilePanel">
+      <a href="#team" data-i18n="navTeam">小組協作</a>
       <a href="#company" data-i18n="navCompany">公司概覽</a>
       <a href="#finance" data-i18n="navFinance">財務績效</a>
       <a href="#market" data-i18n="navMarket">市場分析</a>
       <a href="#resources" data-i18n="navResources">資源評價</a>
+      <a href="#portfolio" data-i18n="navPortfolio">產品配置</a>
       <a href="#growth" data-i18n="navGrowth">成長策略</a>
+      <a href="#deep-analysis" data-i18n="navDeep">深化分析</a>
       <a href="#quiz" data-i18n="navQuiz">小測驗</a>
     </div>
   </header>
@@ -1750,6 +2381,28 @@
             <p data-i18n="teamCard3Body">共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。</p>
           </article>
         </div>
+        <div class="process-flow" aria-label="Team production workflow">
+          <article class="process-step">
+            <span data-i18n="teamProcess1Label">Step 01</span>
+            <h3 data-i18n="teamProcess1Title">資料查核</h3>
+            <p data-i18n="teamProcess1Body">先把官方網站、投資人關係、新聞、產業研究與 104 職缺分開標記來源狀態。</p>
+          </article>
+          <article class="process-step">
+            <span data-i18n="teamProcess2Label">Step 02</span>
+            <h3 data-i18n="teamProcess2Title">敘事整合</h3>
+            <p data-i18n="teamProcess2Body">把財務、市場、資源與成長策略收斂到同一條 DRAM 週期與 AI memory 主軸。</p>
+          </article>
+          <article class="process-step">
+            <span data-i18n="teamProcess3Label">Step 03</span>
+            <h3 data-i18n="teamProcess3Title">雙語校對</h3>
+            <p data-i18n="teamProcess3Body">中英文維持同一結論，不讓英文版變成中文逐字翻譯。</p>
+          </article>
+          <article class="process-step">
+            <span data-i18n="teamProcess4Label">Step 04</span>
+            <h3 data-i18n="teamProcess4Title">互動驗收</h3>
+            <p data-i18n="teamProcess4Body">共同檢查跳轉、明暗模式、語音導覽、翻轉字卡、小測驗與手機版版面。</p>
+          </article>
+        </div>
         <div class="member-strip" aria-label="G6 team members">
           <span class="member-strip-label" data-i18n="membersLabel">G6 Members</span>
           <div class="member-grid">
@@ -1831,10 +2484,27 @@
             <div><h3 data-i18n="history2020sTitle">DDR5 與新廠投資</h3><p data-i18n="history2020s">DDR5、LPDDR5、10 奈米級製程與新廠投資，成為下一階段成長基礎。</p></div>
           </div>
         </div>
-        <div class="grid-3" style="margin-top:28px" aria-label="Organization and strategy levels">
-          <article class="card"><h3 data-i18n="orgBusinessTitle">事業層級</h3><p data-i18n="orgBusiness">DRAM 產品線連結標準型 DRAM、低功耗行動 DRAM、KGD、模組與 Elixir 品牌。</p></article>
-          <article class="card"><h3 data-i18n="orgMarketTitle">市場層級</h3><p data-i18n="orgMarket">服務智慧型手機、伺服器、資料中心、車用、工業與消費性電子客戶。</p></article>
-          <article class="card"><h3 data-i18n="orgFunctionalTitle">功能層級</h3><p data-i18n="orgFunctional">研發製程、製造產能、銷售支援、財務永續與人力資源共同支撐策略執行。</p></article>
+        <div class="org-map" aria-label="Organization structure map">
+          <article class="org-node is-root">
+            <span data-i18n="orgRootLabel">Root</span>
+            <h3 data-i18n="orgRootTitle">南亞科技</h3>
+            <p data-i18n="orgRootBody">以 DRAM 研發、設計、製造與銷售為核心的記憶體公司。</p>
+          </article>
+          <article class="org-node">
+            <span data-i18n="orgBusinessLabel">Business</span>
+            <h3 data-i18n="orgBusinessMapTitle">產品事業</h3>
+            <p data-i18n="orgBusinessMapBody">DDR4、DDR5、LPDDR5、KGD、MCP/eMCP/uMCP 與模組產品形成事業組合。</p>
+          </article>
+          <article class="org-node">
+            <span data-i18n="orgMarketLabel">Market</span>
+            <h3 data-i18n="orgMarketMapTitle">應用市場</h3>
+            <p data-i18n="orgMarketMapBody">伺服器、行動裝置、車用、工業與消費性電子決定需求組合。</p>
+          </article>
+          <article class="org-node">
+            <span data-i18n="orgFunctionLabel">Function</span>
+            <h3 data-i18n="orgFunctionMapTitle">功能支援</h3>
+            <p data-i18n="orgFunctionMapBody">研發製程、晶圓製造、銷售支援、財務永續與人力資源支撐策略執行。</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1945,6 +2615,18 @@
           <article class="card"><h3 data-i18n="financeInterpret2Title">營運槓桿</h3><p data-i18n="financeInterpret2Body">半導體製造固定成本高，從谷底復甦時，產能利用率、毛利率與營運現金流可能被放大改善。</p></article>
           <article class="card"><h3 data-i18n="financeInterpret3Title">資本支出壓力</h3><p data-i18n="financeInterpret3Body">即使 2022-2024 景氣低谷，1A/1B 奈米、DDR5 與新廠投資仍需資本支出，考驗資產負債表與現金流韌性。</p></article>
         </div>
+        <div class="interactive-panel" aria-labelledby="finance-explorer-title">
+          <div class="interactive-head">
+            <div>
+              <span class="mono-label">Interactive financial cycle</span>
+              <h3 id="finance-explorer-title" data-i18n="financeExplorerTitle">切換財務指標，看轉盈是否只是週期反彈。</h3>
+              <p data-i18n="financeExplorerLead">用同一組資料視角比較營收、EPS、自由現金流與 DuPont 判讀。</p>
+            </div>
+            <div class="segmented" id="financeTabs" aria-label="Financial metric tabs"></div>
+          </div>
+          <div class="evidence-grid" id="financeMetricGrid"></div>
+          <div class="insight-panel" id="financeInsight" aria-live="polite"></div>
+        </div>
       </div>
     </section>
 
@@ -1973,6 +2655,20 @@
           <article class="swot-cell">
             <h3>Threats</h3>
             <p data-i18n="swotT">DRAM 景氣反轉、價格下跌、大廠擴產與先進製程競爭。</p>
+          </article>
+        </div>
+        <div class="market-lab" aria-label="Interactive industry pressure lab">
+          <article class="market-card">
+            <span class="mono-label">Market share</span>
+            <h3 data-i18n="marketShareTitle">三大廠寡占壓縮南亞科策略空間。</h3>
+            <p data-i18n="marketShareLead">水平長條圖先建立產業壓力，再用五力互動切換壓力來源。</p>
+            <div id="marketShareBars" style="margin-top:18px"></div>
+          </article>
+          <article class="market-card">
+            <span class="mono-label">Five forces</span>
+            <h3 data-i18n="forceTitle">點選五力，看哪一種壓力最關鍵。</h3>
+            <div class="force-buttons" id="forceButtons"></div>
+            <div class="force-detail" id="forceDetail" aria-live="polite"></div>
           </article>
         </div>
       </div>
@@ -2048,6 +2744,27 @@
           <p class="section-copy" data-i18n="cardsLead">點擊字卡查看策略管理與記憶體產業關鍵詞說明。</p>
         </div>
         <div class="flip-grid" id="flipGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Product portfolio</span>
+            <h2 class="section-title" id="portfolio-title" data-i18n="portfolioTitle">產品組合用象限圖，而不是框架定義。</h2>
+          </div>
+          <p class="section-copy" data-i18n="portfolioLead">點擊產品點位，查看 DDR4、DDR5、LPDDR5 與 KGD 在成長性、資本優先順序與資料信心上的差異。</p>
+        </div>
+        <div class="portfolio-tool">
+          <div class="portfolio-chart" id="portfolioChart" aria-label="Product portfolio quadrant">
+            <span class="axis-label top" data-i18n="portfolioAxisTop">Higher growth</span>
+            <span class="axis-label bottom" data-i18n="portfolioAxisBottom">Lower growth</span>
+            <span class="axis-label left" data-i18n="portfolioAxisLeft">Lower share</span>
+            <span class="axis-label right" data-i18n="portfolioAxisRight">Higher share</span>
+          </div>
+          <aside class="portfolio-detail" id="portfolioDetail" aria-live="polite"></aside>
+        </div>
       </div>
     </section>
 
@@ -2127,6 +2844,55 @@
       </div>
     </section>
 
+    <section class="section stone-band" id="deep-analysis" aria-labelledby="deep-analysis-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono-label">Cross-disciplinary analysis</span>
+            <h2 class="section-title" id="deep-analysis-title" data-i18n="deepTitle">十個分析框架改成分流地圖。</h2>
+          </div>
+          <p class="section-copy" data-i18n="deepLead">框架不再集中成一段長文，而是分別放到市場壓力、產品配置、財務風險、能力與組織四條線。</p>
+        </div>
+        <div class="framework-router" aria-label="Framework routing map">
+          <article class="framework-route">
+            <span data-i18n="framework1Label">Market</span>
+            <h3 data-i18n="framework1Title">五力 / PESTEL</h3>
+            <p data-i18n="framework1Body">解釋三大廠寡占、出口管制、ESG 與區域供應鏈如何影響南亞科。</p>
+          </article>
+          <article class="framework-route">
+            <span data-i18n="framework2Label">Portfolio</span>
+            <h3 data-i18n="framework2Title">BCG / GE / Ansoff</h3>
+            <p data-i18n="framework2Body">把 DDR4、DDR5、LPDDR5、KGD 與新廠投資放進產品組合與成長路徑。</p>
+          </article>
+          <article class="framework-route">
+            <span data-i18n="framework3Label">Finance</span>
+            <h3 data-i18n="framework3Title">DuPont / FCF / CAPM</h3>
+            <p data-i18n="framework3Body">拆解 ROE、自由現金流與 Beta，避免只用 EPS 判斷公司狀態。</p>
+          </article>
+          <article class="framework-route">
+            <span data-i18n="framework4Label">Capability</span>
+            <h3 data-i18n="framework4Title">VRIN / 價值鏈 / 組織</h3>
+            <p data-i18n="framework4Body">把製程能力、FAE、智慧製造與人才策略連到可執行的組織能力。</p>
+          </article>
+        </div>
+        <div class="confidence-tools" id="confidenceTools" aria-label="Source confidence filters"></div>
+        <div class="analysis-grid" id="deepAnalysisGrid" aria-label="Deep strategy analysis cards"></div>
+        <div class="chart-card analysis-table-card">
+          <h3 data-i18n="valueNetMapTitle">Value Net 互動節點圖</h3>
+          <div class="value-net-map" id="valueNetMap" aria-label="Value Net relationship nodes"></div>
+          <div class="value-detail" id="valueNetDetail" aria-live="polite"></div>
+        </div>
+        <div class="chart-card analysis-table-card">
+          <h3 data-i18n="valueNetTitle">Value Net 生態系彙整</h3>
+          <table class="analysis-table" id="valueNetTable"></table>
+        </div>
+        <div class="chart-card analysis-table-card">
+          <h3 data-i18n="theoryMapTitle">理論整合地圖</h3>
+          <table class="analysis-table" id="theoryMapTable"></table>
+        </div>
+      </div>
+    </section>
+
     <section class="section navy-band" id="quiz" aria-labelledby="quiz-title">
       <div class="container">
         <div class="section-head">
@@ -2162,6 +2928,20 @@
             <span class="mono-label">Academic integrity</span>
             <h2 class="section-title" id="integrity-title" data-i18n="integrityTitle">資料來源與 AI 使用揭露。</h2>
             <p class="section-copy" style="margin-top:24px" data-i18n="integrityBody">本網站使用南亞科技官方網站、投資人關係資料、公開新聞、產業研究資料與 104 人力銀行職缺頁面作為公司介紹、財務資訊、市場分析與職涯洞察之基礎。AI 工具使用於資料初步整理、雙語文字草稿、網頁架構規劃、互動題目設計與程式碼輔助生成。所有關鍵數字、新聞事件與分析結論皆經人工查核與改寫。</p>
+            <div class="integrity-flow" aria-label="Source and AI handling process">
+              <article class="integrity-step">
+                <h3 data-i18n="integrityStep1Title">來源</h3>
+                <p data-i18n="integrityStep1Body">官方網站、年度合併財報、投資人關係、新聞、產業研究與 104 職缺。</p>
+              </article>
+              <article class="integrity-step">
+                <h3 data-i18n="integrityStep2Title">AI 用途</h3>
+                <p data-i18n="integrityStep2Body">資料整理、雙語草稿、網站結構、測驗題目與程式碼輔助。</p>
+              </article>
+              <article class="integrity-step">
+                <h3 data-i18n="integrityStep3Title">人工查核</h3>
+                <p data-i18n="integrityStep3Body">關鍵數字、事件與結論由組員查核、改寫與整合後才放入網站。</p>
+              </article>
+            </div>
           </div>
           <div class="source-list" aria-label="Reference links">
             <a href="https://www.nanya.com/tw/About/2/%E5%85%AC%E5%8F%B8%E7%B0%A1%E4%BB%8B" target="_blank" rel="noreferrer">南亞科技公司簡介 / Company profile <span>Official</span></a>
@@ -2196,11 +2976,14 @@
       zh: {
         announcement: "1142 國際策略管理 TP 公司研究網站",
         announcementLink: "查看資料來源與 AI 揭露",
+        navTeam: "小組協作",
         navCompany: "公司概覽",
         navFinance: "財務績效",
         navMarket: "市場分析",
         navResources: "資源評價",
+        navPortfolio: "產品配置",
         navGrowth: "成長策略",
+        navDeep: "深化分析",
         navQuiz: "小測驗",
         heroTitle: "從 DRAM 景氣循環到 AI 記憶體供應鏈合作。",
         heroLead: "南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。",
@@ -2214,14 +2997,26 @@
         stat3Value: "新台幣 665.87 億元",
         stat4Label: "策略焦點",
         stat4Value: "DDR5、LPDDR5、AI memory",
-        teamTitle: "共同編修，而不是章節拼貼。",
-        teamLead: "本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。",
+        teamTitle: "小組成員介紹與共同製作歷程。",
+        teamLead: "本網站以共同整合方式完成，重點不是列個人分工，而是說明小組如何共同查核、整合與測試。",
         teamCard1Title: "資料查核",
         teamCard1Body: "共同比對官方資料、投資人關係、新聞與 104 職缺，降低錯誤引用。",
         teamCard2Title: "雙語整合",
         teamCard2Body: "中文與英文文案維持同一研究敘事，不使用自動翻譯結果直接上線。",
         teamCard3Title: "互動測試",
         teamCard3Body: "共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。",
+        teamProcess1Label: "Step 01",
+        teamProcess1Title: "資料查核",
+        teamProcess1Body: "先把官方網站、投資人關係、新聞、產業研究與 104 職缺分開標記來源狀態。",
+        teamProcess2Label: "Step 02",
+        teamProcess2Title: "敘事整合",
+        teamProcess2Body: "把財務、市場、資源與成長策略收斂到同一條 DRAM 週期與 AI memory 主軸。",
+        teamProcess3Label: "Step 03",
+        teamProcess3Title: "雙語校對",
+        teamProcess3Body: "中英文維持同一結論，不讓英文版變成中文逐字翻譯。",
+        teamProcess4Label: "Step 04",
+        teamProcess4Title: "互動驗收",
+        teamProcess4Body: "共同檢查跳轉、明暗模式、語音導覽、翻轉字卡、小測驗與手機版版面。",
         membersLabel: "G6 Members",
         memberProgramLabel: "系級",
         memberGroupLabel: "組別",
@@ -2256,6 +3051,18 @@
         orgMarket: "服務智慧型手機、伺服器、資料中心、車用、工業與消費性電子客戶。",
         orgFunctionalTitle: "功能層級",
         orgFunctional: "研發製程、製造產能、銷售支援、財務永續與人力資源共同支撐策略執行。",
+        orgRootLabel: "Root",
+        orgRootTitle: "南亞科技",
+        orgRootBody: "以 DRAM 研發、設計、製造與銷售為核心的記憶體公司。",
+        orgBusinessLabel: "Business",
+        orgBusinessMapTitle: "產品事業",
+        orgBusinessMapBody: "DDR4、DDR5、LPDDR5、KGD、MCP/eMCP/uMCP 與模組產品形成事業組合。",
+        orgMarketLabel: "Market",
+        orgMarketMapTitle: "應用市場",
+        orgMarketMapBody: "伺服器、行動裝置、車用、工業與消費性電子決定需求組合。",
+        orgFunctionLabel: "Function",
+        orgFunctionMapTitle: "功能支援",
+        orgFunctionMapBody: "研發製程、晶圓製造、銷售支援、財務永續與人力資源支撐策略執行。",
         valuesTitle: "智慧世代最佳記憶體夥伴。",
         valuesLead: "願景、使命與核心價值能把公司策略從產品規格拉回長期經營能力。",
         visionBody: "成為智慧世代最佳記憶體夥伴。",
@@ -2275,8 +3082,13 @@
         financeInterpret2Body: "半導體製造固定成本高，從谷底復甦時，產能利用率、毛利率與營運現金流可能被放大改善。",
         financeInterpret3Title: "資本支出壓力",
         financeInterpret3Body: "即使 2022-2024 景氣低谷，1A/1B 奈米、DDR5 與新廠投資仍需資本支出，考驗資產負債表與現金流韌性。",
+        financeExplorerTitle: "切換財務指標，看轉盈是否只是週期反彈。",
+        financeExplorerLead: "用同一組資料視角比較營收、EPS、自由現金流與 DuPont 判讀。",
         marketTitle: "AI、伺服器與 DDR5 推動需求重估。",
         marketLead: "南亞科位在 DRAM 報價循環、AI 產能排擠、DDR5 轉換與區域供應鏈重組的交會點。",
+        marketShareTitle: "三大廠寡占壓縮南亞科策略空間。",
+        marketShareLead: "水平長條圖先建立產業壓力，再用五力互動切換壓力來源。",
+        forceTitle: "點選五力，看哪一種壓力最關鍵。",
         swotS: "台灣少數 DRAM 廠、自主技術、完整產品線與全球客戶支援網絡。",
         swotW: "規模小於 Samsung、SK hynix、Micron，技術與資本密集壓力高。",
         swotO: "AI/HBM 產能排擠帶動 DDR4 與主流 DDR5 供給吃緊；Edge AI、AI PC 與 AI smartphone 提高單機記憶體含量；China Plus One 提升台灣 DRAM 供應的策略價值。",
@@ -2311,6 +3123,12 @@
         vrin4j: "高策略性資源",
         cardsTitle: "翻轉關鍵字卡。",
         cardsLead: "點擊字卡查看策略管理與記憶體產業關鍵詞說明。",
+        portfolioTitle: "產品組合用象限圖，而不是框架定義。",
+        portfolioLead: "點擊產品點位，查看 DDR4、DDR5、LPDDR5 與 KGD 在成長性、資本優先順序與資料信心上的差異。",
+        portfolioAxisTop: "高成長",
+        portfolioAxisBottom: "低成長",
+        portfolioAxisLeft: "低市占",
+        portfolioAxisRight: "高市占",
         growthTitle: "短期抓週期，中期升級產品，長期綁定供應鏈。",
         growthLead: "成長策略可拆成價格週期、產品組合與客戶合作三層。",
         growth1Title: "把握 DRAM 上行週期",
@@ -2335,6 +3153,23 @@
         career3Work: "半導體製程整合、新技術開發與新製程開發。",
         career3Skill: "碩士以上、工程相關科系、英文中等。",
         career3Pay: "月薪 41,000–57,000 元",
+        deepTitle: "十個分析框架改成分流地圖。",
+        deepLead: "框架不再集中成一段長文，而是分別放到市場壓力、產品配置、財務風險、能力與組織四條線。",
+        framework1Label: "Market",
+        framework1Title: "五力 / PESTEL",
+        framework1Body: "解釋三大廠寡占、出口管制、ESG 與區域供應鏈如何影響南亞科。",
+        framework2Label: "Portfolio",
+        framework2Title: "BCG / GE / Ansoff",
+        framework2Body: "把 DDR4、DDR5、LPDDR5、KGD 與新廠投資放進產品組合與成長路徑。",
+        framework3Label: "Finance",
+        framework3Title: "DuPont / FCF / CAPM",
+        framework3Body: "拆解 ROE、自由現金流與 Beta，避免只用 EPS 判斷公司狀態。",
+        framework4Label: "Capability",
+        framework4Title: "VRIN / 價值鏈 / 組織",
+        framework4Body: "把製程能力、FAE、智慧製造與人才策略連到可執行的組織能力。",
+        valueNetMapTitle: "Value Net 互動節點圖",
+        valueNetTitle: "Value Net 生態系彙整",
+        theoryMapTitle: "理論整合地圖",
         quizTitle: "五題小測驗。",
         quizLead: "答題後會顯示解析與分數，適合互評時快速互動。",
         scoreLabel: "目前分數",
@@ -2343,6 +3178,12 @@
         restartQuiz: "重新開始",
         integrityTitle: "資料來源與 AI 使用揭露。",
         integrityBody: "本網站使用南亞科技官方網站、年度合併財務報告、投資人關係資料、公開新聞、產業研究資料與 104 人力銀行職缺頁面，作為公司介紹、財務資訊、市場分析與職涯洞察之參考。AI 工具使用於資料初步整理、雙語文字草稿、網站架構規劃、互動題目設計與程式碼輔助；最終數字、事件與結論皆由組員人工查核、改寫與整合。圖表與視覺元素由小組依公開資訊自行製作，未使用外部圖片或影片素材。",
+        integrityStep1Title: "來源",
+        integrityStep1Body: "官方網站、年度合併財報、投資人關係、新聞、產業研究與 104 職缺。",
+        integrityStep2Title: "AI 用途",
+        integrityStep2Body: "資料整理、雙語草稿、網站結構、測驗題目與程式碼輔助。",
+        integrityStep3Title: "人工查核",
+        integrityStep3Body: "關鍵數字、事件與結論由組員查核、改寫與整合後才放入網站。",
         footerTitle: "南亞科從 DRAM 循環轉盈，建立下一階段成長動能。",
         footerBody: "資料更新日期：2026/05/25。財務數字以南亞科官方投資人關係資料為準，正式繳交前仍建議再次確認新聞與職缺內容。",
         footerCourse: "1142 國際策略管理",
@@ -2352,11 +3193,14 @@
       en: {
         announcement: "International Strategic Management TP company research website",
         announcementLink: "View sources and AI disclosure",
+        navTeam: "Team",
         navCompany: "Company",
         navFinance: "Finance",
         navMarket: "Market",
         navResources: "Resources",
+        navPortfolio: "Portfolio",
         navGrowth: "Growth",
+        navDeep: "Deep analysis",
         navQuiz: "Quiz",
         heroTitle: "From DRAM cycles to AI memory supply chain partnerships.",
         heroLead: "Nanya Technology shows how a Taiwanese memory company adapts through technology migration, capacity planning, and global customer relationships.",
@@ -2370,14 +3214,26 @@
         stat3Value: "NT$66.587 billion",
         stat4Label: "Strategic focus",
         stat4Value: "DDR5, LPDDR5, AI memory",
-        teamTitle: "Collaborative editing, not stitched chapters.",
-        teamLead: "The site is built as an integrated research story across company background, finance, market analysis, resources, and growth strategy.",
+        teamTitle: "Team members and shared production process.",
+        teamLead: "This section explains how the team jointly checked, integrated, and tested the website, instead of listing individual task ownership.",
         teamCard1Title: "Fact checking",
         teamCard1Body: "The team cross-checked official pages, investor relations, public news, and 104 job postings to reduce citation risk.",
         teamCard2Title: "Bilingual refinement",
         teamCard2Body: "Chinese and English copy share the same strategic narrative instead of relying on direct machine translation.",
         teamCard3Title: "Interaction testing",
         teamCard3Body: "The team verified jumps, dark mode, voice guide, flip cards, and quiz behavior across desktop and mobile.",
+        teamProcess1Label: "Step 01",
+        teamProcess1Title: "Source checking",
+        teamProcess1Body: "Official pages, investor relations, news, industry research, and 104 postings were separated by source status.",
+        teamProcess2Label: "Step 02",
+        teamProcess2Title: "Narrative integration",
+        teamProcess2Body: "Finance, market, resources, and growth strategy were tied to one DRAM cycle and AI memory thesis.",
+        teamProcess3Label: "Step 03",
+        teamProcess3Title: "Bilingual editing",
+        teamProcess3Body: "Chinese and English versions keep the same conclusion instead of using literal translation.",
+        teamProcess4Label: "Step 04",
+        teamProcess4Title: "Interaction review",
+        teamProcess4Body: "The team checked anchor jumps, theme mode, voice guide, flip cards, quiz behavior, and mobile layout.",
         membersLabel: "G6 Members",
         memberProgramLabel: "Program / year",
         memberGroupLabel: "Group",
@@ -2412,6 +3268,18 @@
         orgMarket: "Nanya serves smartphone, server, data-center, automotive, industrial, and consumer-electronics customers.",
         orgFunctionalTitle: "Functional level",
         orgFunctional: "R&D/process, manufacturing/capacity, sales/customer support, finance/sustainability, and HR jointly support execution.",
+        orgRootLabel: "Root",
+        orgRootTitle: "Nanya Technology",
+        orgRootBody: "A memory company centered on DRAM R&D, design, manufacturing, and sales.",
+        orgBusinessLabel: "Business",
+        orgBusinessMapTitle: "Product business",
+        orgBusinessMapBody: "DDR4, DDR5, LPDDR5, KGD, MCP/eMCP/uMCP, and module products form the business portfolio.",
+        orgMarketLabel: "Market",
+        orgMarketMapTitle: "Application markets",
+        orgMarketMapBody: "Servers, mobile devices, automotive, industrial, and consumer electronics shape demand mix.",
+        orgFunctionLabel: "Function",
+        orgFunctionMapTitle: "Functional support",
+        orgFunctionMapBody: "R&D/process, wafer fabrication, sales support, finance/sustainability, and HR support execution.",
         valuesTitle: "The best memory partner in the smart generation.",
         valuesLead: "Vision, mission, and values connect product strategy back to long-term operating capability.",
         visionBody: "To become the best memory partner in the smart generation.",
@@ -2431,8 +3299,13 @@
         financeInterpret2Body: "Semiconductor manufacturing carries high fixed costs, so recovery from the trough can amplify capacity utilization, gross margin, and operating cash flow.",
         financeInterpret3Title: "Capital spending pressure",
         financeInterpret3Body: "Even during the 2022-2024 trough, 1A/1B nm, DDR5, and fab investment still required spending, testing balance-sheet and cash-flow resilience.",
+        financeExplorerTitle: "Switch financial indicators to test whether recovery is only cyclical.",
+        financeExplorerLead: "Compare revenue, EPS, free cash flow, and DuPont interpretation through one interactive view.",
         marketTitle: "AI, servers, and DDR5 are repricing demand.",
         marketLead: "Nanya sits where DRAM pricing cycles, AI-driven capacity crowding, DDR5 migration, and regionalized supply chains intersect.",
+        marketShareTitle: "Top-three oligopoly compresses Nanya's strategic room.",
+        marketShareLead: "The bar chart establishes industry pressure, then the Five Forces controls explain where that pressure comes from.",
+        forceTitle: "Select a force to see the key pressure.",
         swotS: "One of Taiwan's few DRAM makers, with internal technology, a broad product line, and global customer support.",
         swotW: "Smaller than Samsung, SK hynix, and Micron, with heavy technology and capital requirements.",
         swotO: "AI/HBM capacity crowding tightens mainstream DDR4 and DDR5 supply; Edge AI, AI PCs, and AI smartphones raise memory content per device; China Plus One increases the strategic value of Taiwan-based supply.",
@@ -2467,6 +3340,12 @@
         vrin4j: "Highly strategic resource",
         cardsTitle: "Flip the keyword cards.",
         cardsLead: "Click each card to review strategy and memory-industry terms.",
+        portfolioTitle: "Use a quadrant for product portfolio, not framework definitions.",
+        portfolioLead: "Click each product point to compare DDR4, DDR5, LPDDR5, and KGD by growth, capital priority, and confidence status.",
+        portfolioAxisTop: "Higher growth",
+        portfolioAxisBottom: "Lower growth",
+        portfolioAxisLeft: "Lower share",
+        portfolioAxisRight: "Higher share",
         growthTitle: "Capture the cycle, upgrade the mix, and bind the supply chain.",
         growthLead: "The growth strategy has three layers: pricing cycle, product mix, and customer partnership.",
         growth1Title: "Capture DRAM price and shortage cycles",
@@ -2491,6 +3370,23 @@
         career3Work: "Semiconductor process integration, new technology development, and process development.",
         career3Skill: "Master's degree or above, engineering background, intermediate English.",
         career3Pay: "NT$41,000-57,000 per month",
+        deepTitle: "The ten frameworks become a routing map.",
+        deepLead: "The frameworks are no longer concentrated in one long essay; they are routed into market pressure, portfolio choices, financial risk, and capability building.",
+        framework1Label: "Market",
+        framework1Title: "Five Forces / PESTEL",
+        framework1Body: "Explains how oligopoly, export controls, ESG, and regional supply chains affect Nanya.",
+        framework2Label: "Portfolio",
+        framework2Title: "BCG / GE / Ansoff",
+        framework2Body: "Places DDR4, DDR5, LPDDR5, KGD, and new-fab investment into portfolio and growth paths.",
+        framework3Label: "Finance",
+        framework3Title: "DuPont / FCF / CAPM",
+        framework3Body: "Decomposes ROE, free cash flow, and Beta so the company is not judged only by EPS.",
+        framework4Label: "Capability",
+        framework4Title: "VRIN / Value Chain / Org",
+        framework4Body: "Connects process capability, FAE, smart manufacturing, and talent strategy to executable organization capability.",
+        valueNetMapTitle: "Interactive Value Net node map",
+        valueNetTitle: "Value Net ecosystem summary",
+        theoryMapTitle: "Theory integration map",
         quizTitle: "Five-question quiz.",
         quizLead: "Answers show explanations and update the score for a quick peer-review interaction.",
         scoreLabel: "Current score",
@@ -2499,6 +3395,12 @@
         restartQuiz: "Restart",
         integrityTitle: "Sources and AI use disclosure.",
         integrityBody: "This website uses Nanya Technology's official website, annual consolidated financial reports, investor-relations materials, public news sources, industry research, and 104 Job Bank postings as references for company introduction, financial information, market analysis, and career insights. AI tools were used for initial data organization, bilingual drafting, website-structure planning, quiz design, and coding support; final figures, events, and conclusions were manually checked, rewritten, and integrated by team members. Charts and visual elements were produced by the team from public information; no external image or video assets are used.",
+        integrityStep1Title: "Sources",
+        integrityStep1Body: "Official pages, annual financial reports, investor relations, news, industry research, and 104 postings.",
+        integrityStep2Title: "AI use",
+        integrityStep2Body: "Data organization, bilingual drafting, website structure, quiz design, and coding support.",
+        integrityStep3Title: "Human review",
+        integrityStep3Body: "Key figures, events, and conclusions were checked, rewritten, and integrated by team members before publication.",
         footerTitle: "How Nanya Technology returned to profit from the DRAM cycle and built momentum for the next growth stage.",
         footerBody: "Data updated: 2026/05/25. Financial figures follow Nanya Technology's official investor-relations materials; news and job-posting details should still be checked again before final submission.",
         footerCourse: "1142 International Strategic Management",
@@ -2516,6 +3418,14 @@
         ["Operating Leverage", "高固定成本產業中，營收變動會放大毛利率與現金流變化。"],
         ["China Plus One", "供應鏈分散到中國以外地區，以降低地緣政治與集中風險。"],
         ["VRIN", "用價值、稀少、模仿難度與不可替代性判斷資源是否形成優勢。"],
+        ["Five Forces", "用供應商、買方、替代品、進入者與競爭者判斷產業吸引力。"],
+        ["PESTEL", "從政治、經濟、社會、科技、環境與法律檢查總體風險。"],
+        ["Value Chain", "拆解進料、製造、出貨、銷售、服務與支援活動的價值來源。"],
+        ["BCG Matrix", "用市場成長與相對市占判斷產品線資源分配。"],
+        ["STP / 4P", "先選市場與定位，再調整產品、價格、通路與推廣。"],
+        ["Value Net", "把客戶、供應商、競爭者與互補者放進同一張競合地圖。"],
+        ["DuPont", "用淨利率、資產週轉率與權益乘數拆解 ROE 變化。"],
+        ["CAPM", "用 Beta 連結系統風險與投資人要求報酬率。"],
         ["AI Memory", "由 AI server、Edge AI、AI PC 與資料中心需求帶動的記憶體應用。"],
         ["New Fab", "新廠投資代表長期產能、製程升級與資本支出承諾。"],
         ["Strategic Customers", "SanDisk、Kioxia、Solidigm、Cisco 等策略投資者強化供應鏈合作。"]
@@ -2528,10 +3438,366 @@
         ["Operating Leverage", "In high-fixed-cost industries, revenue changes can amplify gross margin and cash-flow movement."],
         ["China Plus One", "A sourcing strategy that diversifies supply beyond China to reduce geopolitical and concentration risk."],
         ["VRIN", "A framework for judging whether resources can create sustained advantage."],
+        ["Five Forces", "A framework for judging industry attractiveness through suppliers, buyers, substitutes, entrants, and rivalry."],
+        ["PESTEL", "A macro-risk scan across political, economic, social, technological, environmental, and legal forces."],
+        ["Value Chain", "A breakdown of value creation across logistics, operations, sales, service, and support activities."],
+        ["BCG Matrix", "A portfolio tool that maps product lines by market growth and relative market share."],
+        ["STP / 4P", "A marketing sequence from segmentation, targeting, and positioning to product, price, place, and promotion."],
+        ["Value Net", "A co-opetition map of customers, suppliers, competitors, and complementors."],
+        ["DuPont", "A decomposition of ROE into net margin, asset turnover, and equity multiplier."],
+        ["CAPM", "A model connecting Beta, systematic risk, and investors' required return."],
         ["AI Memory", "Memory applications driven by AI servers, Edge AI, AI PCs, and data-center demand."],
         ["New Fab", "A key long-term investment in capacity, process migration, and capital spending."],
         ["Strategic Customers", "Strategic investors such as SanDisk, Kioxia, Solidigm, and Cisco."]
       ]
+    };
+
+    const interactiveData = {
+      zh: {
+        finance: [
+          {
+            id: "revenue",
+            label: "營收",
+            title: "營收在 2025 回升，但仍要看產品組合。",
+            body: "2025 年營收回到 665.87 億元，顯示景氣回升與需求改善；但是否能延續，取決於 DDR5、LPDDR5 與 AI 應用占比。",
+            cells: [["2021", "856.04"], ["2023", "298.92"], ["2025", "665.87"], ["判讀", "回升"]]
+          },
+          {
+            id: "eps",
+            label: "EPS",
+            title: "EPS 從虧損轉正，反映價格與稼動率修復。",
+            body: "EPS 從 2023 年 -2.40 回到 2025 年 2.13，適合搭配毛利率與產能利用率觀察，而不是單獨判斷策略成功。",
+            cells: [["2021", "7.40"], ["2023", "-2.40"], ["2025", "2.13"], ["判讀", "轉盈"]]
+          },
+          {
+            id: "fcf",
+            label: "FCF",
+            title: "自由現金流提醒新廠與製程投資仍是壓力。",
+            body: "FCF 能把營運現金流與資本支出放在一起看；若新廠與製程升級加速，現金流紀律比短期 EPS 更重要。",
+            cells: [["2023", "-193 億"], ["2024", "-141.5 億"], ["2025", "52 億"], ["判讀", "修復"]]
+          },
+          {
+            id: "dupont",
+            label: "DuPont",
+            title: "ROE 波動主因來自淨利率，而不是單一銷售量。",
+            body: "DuPont 拆解顯示淨利率從高峰、虧損到修復，是 ROE 變動主因；這和 DRAM 報價、庫存與固定成本結構高度相關。",
+            cells: [["2021 ROE", "13.2%"], ["2023 ROE", "-4.5%"], ["2025 ROE", "3.9%"], ["主因", "淨利率"]]
+          }
+        ],
+        shares: [
+          ["SK hynix", 36.0],
+          ["Samsung", 33.7],
+          ["Micron", 24.3],
+          ["Nanya", 0.81]
+        ],
+        forces: [
+          ["rivalry", "同業競爭", "三大廠合計市占超過 94%，南亞科更像價格接受者，不能用規模成本戰正面對抗。"],
+          ["supplier", "供應商", "先進設備、材料與製程工具替代性低，會提高資本支出與製程升級壓力。"],
+          ["buyer", "買方", "雲端、OEM 與模組客戶可向三大廠比價，長約與策略投資是降低議價壓力的方式。"],
+          ["substitute", "替代品", "HBM、CXL 與 NAND+DRAM 架構會改變記憶體需求結構，傳統 DRAM 需找到利基位置。"],
+          ["entrant", "新進入者", "CXMT 等競爭者擴張會影響成熟製程與區域市場價格。"]
+        ],
+        portfolio: [
+          { id: "ddr4", label: "DDR4", x: 30, y: 30, status: "confirmed", title: "DDR4 / Cash Cow", body: "成熟產品成長趨緩，但仍能支撐現金流與成熟製程稼動率。" },
+          { id: "ddr5", label: "DDR5", x: 72, y: 74, status: "confirmed", title: "DDR5 / Star", body: "伺服器與 AI 相關需求推動升級，是短中期最需要資本與良率支援的產品線。" },
+          { id: "lpddr5", label: "LPDDR5", x: 40, y: 68, status: "inference", title: "LPDDR5 / Question Mark", body: "行動與 Edge AI 成長性高，但南亞科相對市占仍需更多公開資料驗證。" },
+          { id: "kgd", label: "KGD", x: 64, y: 42, status: "mixed", title: "KGD / Real Option", body: "利基與客製價值較高，適合作為 AI memory 與策略客戶合作的選擇權。" }
+        ],
+        confidence: [
+          ["all", "全部"],
+          ["confirmed", "已確認"],
+          ["inference", "推論"],
+          ["mixed", "混合"],
+          ["unverified", "待核實"]
+        ]
+      },
+      en: {
+        finance: [
+          {
+            id: "revenue",
+            label: "Revenue",
+            title: "Revenue recovered in 2025, but product mix still matters.",
+            body: "Revenue returned to NT$66.587 billion in 2025, showing cycle recovery and demand improvement; continuation depends on DDR5, LPDDR5, and AI application mix.",
+            cells: [["2021", "856.04"], ["2023", "298.92"], ["2025", "665.87"], ["Read", "Recovery"]]
+          },
+          {
+            id: "eps",
+            label: "EPS",
+            title: "EPS turned positive as pricing and utilization repaired.",
+            body: "EPS moved from -2.40 in 2023 to 2.13 in 2025, so it should be read with gross margin and utilization rather than alone.",
+            cells: [["2021", "7.40"], ["2023", "-2.40"], ["2025", "2.13"], ["Read", "Profit"]]
+          },
+          {
+            id: "fcf",
+            label: "FCF",
+            title: "Free cash flow shows new-fab and process investment pressure.",
+            body: "FCF combines operating cash flow and capital spending; if fab and process upgrades accelerate, cash-flow discipline matters more than short-term EPS.",
+            cells: [["2023", "-19.3b"], ["2024", "-14.15b"], ["2025", "5.2b"], ["Read", "Repair"]]
+          },
+          {
+            id: "dupont",
+            label: "DuPont",
+            title: "ROE swings mainly come from net margin.",
+            body: "DuPont decomposition shows net margin moving from peak to loss to repair, closely tied to DRAM pricing, inventory, and fixed-cost structure.",
+            cells: [["2021 ROE", "13.2%"], ["2023 ROE", "-4.5%"], ["2025 ROE", "3.9%"], ["Driver", "Margin"]]
+          }
+        ],
+        shares: [
+          ["SK hynix", 36.0],
+          ["Samsung", 33.7],
+          ["Micron", 24.3],
+          ["Nanya", 0.81]
+        ],
+        forces: [
+          ["rivalry", "Rivalry", "The top three suppliers exceed 94% share, so Nanya behaves more like a price taker than a scale leader."],
+          ["supplier", "Suppliers", "Advanced tools, materials, and process equipment have few substitutes, raising capital and migration pressure."],
+          ["buyer", "Buyers", "Cloud, OEM, and module customers can benchmark against the top three; long-term agreements reduce this pressure."],
+          ["substitute", "Substitutes", "HBM, CXL, and NAND+DRAM architectures can reshape memory demand and require Nanya to find niches."],
+          ["entrant", "Entrants", "CXMT and other expanding suppliers can affect mature-node and regional market pricing."]
+        ],
+        portfolio: [
+          { id: "ddr4", label: "DDR4", x: 30, y: 30, status: "confirmed", title: "DDR4 / Cash Cow", body: "A mature product with slower growth, but it can still support cash flow and utilization on mature nodes." },
+          { id: "ddr5", label: "DDR5", x: 72, y: 74, status: "confirmed", title: "DDR5 / Star", body: "Server and AI-related demand make this the near- and mid-term product line that needs capital and yield support." },
+          { id: "lpddr5", label: "LPDDR5", x: 40, y: 68, status: "inference", title: "LPDDR5 / Question Mark", body: "Mobile and Edge AI growth is attractive, but Nanya's relative share needs more public evidence." },
+          { id: "kgd", label: "KGD", x: 64, y: 42, status: "mixed", title: "KGD / Real Option", body: "Niche and custom value is higher, making it an option for AI memory and strategic-customer collaboration." }
+        ],
+        confidence: [
+          ["all", "All"],
+          ["confirmed", "Confirmed"],
+          ["inference", "Inference"],
+          ["mixed", "Mixed"],
+          ["unverified", "Unverified"]
+        ]
+      }
+    };
+
+    const deepAnalysisData = {
+      zh: {
+        cards: [
+          {
+            title: "Porter 五力：寡占結構壓縮南亞科議價空間",
+            meta: "Porter (1980) / Bain (1956) / Williamson (1985)",
+            points: [
+              "現有競爭者最強：2025 Q1 SK hynix 36.0%、Samsung 33.7%、Micron 24.3%，三大廠合計 94% 以上；南亞科約 0.81%，更像價格接受者。",
+              "供應商議價力高：EUV、先進製程設備與特用化學材料替代性低；南亞科仍以 DUV 為主，EUV 進入開發階段但未公開確認裝機。",
+              "買方議價力高：雲端、OEM、模組廠可在三大廠間比價；SanDisk、Kioxia 多年度供應協議則把交易從現貨市場拉向關係型合約。",
+              "替代品與進入者壓力來自 HBM、CXL、NAND+DRAM 架構，以及 CXMT 約 4% 市占與 2026 年底 HBM 計畫。"
+            ],
+            note: "策略建議：避免正面價格戰，把資源集中在可被長約鎖定的 DDR5、LPDDR5/5X、KGD 與客製 AI memory。"
+          },
+          {
+            title: "PESTEL：外部制度環境同時放大機會與限制",
+            meta: "Dunning (1981) / Schumpeter (1942) / ESG-SRI",
+            points: [
+              "Political：美國關閉中國外資晶圓廠出口管制漏洞，Samsung、SK hynix 中國廠擴產與升級受限，台灣本地供應的相對地位提高。",
+              "Economic：2021 EPS 7.40、2023 EPS -2.40、2025 EPS 2.13，顯示 DRAM 短週期波動直接穿透損益表。",
+              "Technological：1B 已量產、1C/1D/EUV 開發中；HBM 與 AI server 需求造成傳統 DRAM 與高頻寬記憶體的路線分叉。",
+              "Environmental/Legal：2024 回收再利用水量 5,590 千立方公尺、CDP 氣候與水安全雙 A；但 CHIPS Act 直接補貼未見南亞科受益來源。"
+            ],
+            note: "策略建議：把台灣區位優勢與 ESG 評級轉成國際客戶供應鏈風險分散的採購理由。"
+          },
+          {
+            title: "價值鏈：競爭力集中在製程、客戶認證與服務",
+            meta: "Porter (1985) / Grant (1991) / Kogut & Zander (1992)",
+            points: [
+              "主要活動中，Operations 是核心：1B 製程、DDR5 RDIMM 驗證與新廠 2027 early equipment move-in 決定產品升級速度。",
+              "Service 的 FAE 支援不是附屬功能，而是 B2B 工業行銷的信任機制，會影響客戶認證與長約續約。",
+              "支援活動中，2025 研發費用 70.37 億、約占營收 10.6%；2024 AI 應用 134 件、年效益 4 億元，顯示知識管理正轉向智慧製造。",
+              "上游具體供應商多未公開確認，矽晶圓、光阻、封測關係應標示為推論，不能寫成已確認採購。"
+            ],
+            note: "策略建議：用製程知識、FAE 客戶資料與智慧製造數據形成內部化優勢，而不是只比設備規格。"
+          },
+          {
+            title: "BCG/GE 與 Ansoff：產品組合需要資本排序",
+            meta: "BCG (1970) / Ansoff (1957) / Myers (1977)",
+            points: [
+              "DDR4 是 Cash Cow：成熟市場成長趨緩，但仍可支撐現金流與成熟製程稼動率。",
+              "DDR5 是 Star：2026 Q1 約占南亞科營收 10%，且 server DDR5 與高容量需求受到 AI 採購支撐。",
+              "LPDDR5/5X 與 MCP/eMCP/uMCP 是 Question Mark：應用成長高，但南亞科市占偏低，NVIDIA Vera Rubin 供應鏈主張必須標注【待核實】。",
+              "KGD 介於 Star 與 Question Mark：利基較高、規模較小，適合用 Real Options 觀點保留 AI memory 升級彈性。"
+            ],
+            note: "策略建議：CapEx 應先支援 DDR5 與 AI 客製產品，再用 DDR4 現金流降低新廠升級的資金壓力。"
+          },
+          {
+            title: "STP + 4P：小市占廠商不適合成本領導",
+            meta: "Kotler & Armstrong / Perlmutter (1969) / Porter (1980)",
+            points: [
+              "Segmentation 應以 AI server、企業伺服器、PC、Mobile 與工業車用分層，再疊加北美、歐洲、亞太與策略聯盟客戶。",
+              "Targeting 應從大眾 DRAM 轉向 AI server、策略 NAND 夥伴與需要第二供應源的國際客戶。",
+              "Positioning：南亞科約 0.81% 市占不適合與三大廠打規模成本戰，應定位為可信任、可協作、台灣製造的專業供應者。",
+              "Price/Promotion：DRAM 合約價具黏著性，FAE 技術支援、長期供應協議與品質認證比廣告更能形成 B2B 行銷效果。"
+            ],
+            note: "策略建議：用差異化與關係行銷避免 stuck in the middle，不把價格當作唯一競爭工具。"
+          },
+          {
+            title: "競合策略：競爭者、互補者與客戶開始重疊",
+            meta: "Brandenburger & Nalebuff (1996) / Nash (1950)",
+            points: [
+              "Samsung、SK hynix、Micron 是價格與技術競爭者，但同時透過 JEDEC 等標準框架維持規格相容性。",
+              "Solidigm Inc. 是 SK hynix 旗下獨立子公司，作為南亞科私募投資者時是互補者；不應寫成「SK Hynix NAND 部門」。",
+              "SanDisk、Kioxia、Solidigm、Cisco 參與 787.18 億私募，使 DRAM 供應、NAND 儲存與網通設備形成 Value Net。",
+              "2024-2025 CapEx 低於原預算可用賽局觀點解讀為避免供給再度過剩，但不能暗示非法默契性勾結。"
+            ],
+            note: "策略建議：把私募聯盟管理成共同創造價值的互補網絡，同時保留定價與產能決策的法律邊界。"
+          },
+          {
+            title: "財務深化：DuPont 與 FCF 顯示波動主因是利潤率",
+            meta: "DuPont / Jensen (1986) / CAPM",
+            points: [
+              "DuPont：2021 ROE 約 13.2%，2023 約 -4.5%，2025 約 3.9%；淨利率從 26.7% 跌到 -24.9% 再回到 9.9%，是最大波動來源。",
+              "FCF = CFO - CapEx：2020 約 137.5 億、2021 約 332 億、2022 約 4 億、2023 約 -193 億、2024 約 -141.5 億、2025 約 52 億。",
+              "Beta：原始資料找到 2408.TW 5Y Monthly Beta 1.69、Micron 1.92，可用 CAPM 說明投資人要求較高風險溢酬。",
+              "行為財務：EPS 從 7.40 到 -2.40 再到 2.13，容易引發投資人過度反應與景氣反轉動能。"
+            ],
+            note: "策略建議：對外溝通應同時揭露毛利率修復、CFO 與 CapEx 紀律，降低市場只看 EPS 循環的波動放大。"
+          },
+          {
+            title: "組織設計：從防守者走向分析者",
+            meta: "Miles & Snow (1978) / Chandler (1962) / Becker (1964)",
+            points: [
+              "南亞科原本偏 Defender：專注 DRAM 製程、成本、良率與既有市場；私募聯盟與 AI memory 使其逐步靠近 Analyzer。",
+              "新廠 2027 early move-in 若要支援 AI 客製專案，組織需從功能制強化到跨製程、產品、客戶的矩陣協作。",
+              "3,700+ 員工與製程工程師的 firm-specific human capital 是護城河；一般性語言與程式技能必須轉化成南亞科製程資料與良率知識。",
+              "AI/ML 人才對應 Dynamic Capability：把 134 件 AI 應用從局部改善推向智慧製造系統能力。"
+            ],
+            note: "策略建議：把人才策略從補職缺升級為新廠、AI memory 與智慧製造的組織能力建置。"
+          }
+        ],
+        valueNetHeaders: ["公司", "象限", "關係類型", "核心關聯", "依賴", "確認狀態"],
+        valueNetRows: [
+          ["ASML", "上游供應商", "供應", "EUV/DUV 設備影響 10nm+ 製程節奏", "高", "推論；EUV 裝機未確認"],
+          ["SanDisk", "下游客戶＋互補者", "策略聯盟＋供應", "多年期 DRAM 供應協議支援 AI SSD", "中", "已確認"],
+          ["Kioxia", "下游客戶＋互補者", "策略聯盟＋供應", "NAND 夥伴需要穩定 DRAM 搭配", "中", "已確認"],
+          ["Solidigm Inc.", "下游客戶＋互補者", "策略聯盟", "SK hynix 旗下獨立子公司；DRAM+NAND 互補", "中", "私募已確認，供應細節待確認"],
+          ["Cisco", "下游客戶＋互補者", "策略聯盟", "多元 DRAM 穩定供應與網通/AI 基礎設施", "中", "已確認私募"],
+          ["CXMT", "橫向競爭者", "競爭", "約 4% 市占、2026 年底 HBM 計畫", "低", "已確認公開報導"],
+          ["TSMC", "技術合作假設", "技術合作", "Vera Rubin/LPDDR5X 主張尚無可靠來源", "不明", "待核實"]
+        ],
+        theoryHeaders: ["框架", "提出者", "學科", "南亞科應用"],
+        theoryRows: [
+          ["五力分析", "Porter (1980)", "產業組織 / 競爭策略", "解釋三大廠寡占、供應商集中與買方議價力如何壓縮南亞科策略空間。"],
+          ["PESTEL", "管理策略常用總體框架", "國際企業 / 制度理論", "把出口管制、DRAM 景氣、ESG、CHIPS Act 與台灣區位放進同一外部環境。"],
+          ["Value Chain", "Porter (1985)", "策略管理 / 知識基礎觀點", "拆解製造、FAE、研發、採購與集團基礎設施的價值創造位置。"],
+          ["BCG / GE / Ansoff", "BCG (1970), Ansoff (1957)", "投資組合 / 資本配置", "判斷 DDR4、DDR5、LPDDR5/5X、KGD、MCP 的資源分配優先順序。"],
+          ["STP + 4P", "Kotler & Armstrong", "行銷管理 / 國際行銷", "重新定位南亞科為小市占、高信任、策略供應的 B2B DRAM 夥伴。"],
+          ["Value Net", "Brandenburger & Nalebuff (1996)", "競合理論", "說明 SanDisk、Kioxia、Solidigm、Cisco 同時是客戶、互補者與策略投資人。"],
+          ["DuPont / FCF / CAPM", "DuPont, Jensen (1986), Sharpe (1964)", "投資學 / 會計 / 財務", "把 ROE 波動、自由現金流與高 Beta 系統風險連回 DRAM 循環。"],
+          ["組織型態", "Miles & Snow (1978), Chandler (1962)", "組織理論", "說明新廠、AI memory 與智慧製造如何推動從 Defender 到 Analyzer 的轉型。"]
+        ]
+      },
+      en: {
+        cards: [
+          {
+            title: "Porter's Five Forces: oligopoly limits Nanya's bargaining room",
+            meta: "Porter (1980) / Bain (1956) / Williamson (1985)",
+            points: [
+              "Rivalry is the strongest force: in 1Q25 SK hynix held 36.0%, Samsung 33.7%, and Micron 24.3%; the top three exceeded 94%, while Nanya was about 0.81%.",
+              "Supplier power is high because EUV, advanced process tools, wafers, and specialty chemicals have limited substitutes; Nanya remains DUV-led while EUV is still in development.",
+              "Buyer power is high because cloud, OEM, and module customers can benchmark against the top three suppliers; long-term SanDisk and Kioxia agreements reduce spot-market exposure.",
+              "Substitution and entry pressure comes from HBM, CXL, NAND+DRAM architectures, and CXMT's roughly 4% share plus its planned HBM production."
+            ],
+            note: "Recommendation: avoid price wars and focus on DDR5, LPDDR5/5X, KGD, and custom AI memory that can be locked in through long-term relationships."
+          },
+          {
+            title: "PESTEL: institutions create both upside and constraints",
+            meta: "Dunning (1981) / Schumpeter (1942) / ESG-SRI",
+            points: [
+              "Political: U.S. export-control changes constrain Samsung and SK hynix China-fab upgrades, making Taiwan-based supply relatively more valuable.",
+              "Economic: EPS moved from 7.40 in 2021 to -2.40 in 2023 and 2.13 in 2025, showing how DRAM cycles flow directly into earnings.",
+              "Technological: 1B is in production and 1C/1D/EUV are in development; HBM and AI-server demand split the memory technology roadmap.",
+              "Environmental/Legal: 2024 recycled and reused water reached 5.59 million cubic meters and CDP awarded dual A ratings, while no direct CHIPS Act subsidy for Nanya was found."
+            ],
+            note: "Recommendation: turn Taiwan location and ESG ratings into procurement arguments for customers that need resilient supply."
+          },
+          {
+            title: "Value Chain: advantage sits in process, qualification, and service",
+            meta: "Porter (1985) / Grant (1991) / Kogut & Zander (1992)",
+            points: [
+              "Operations is the core activity: 1B process execution, DDR5 RDIMM validation, and the 2027 early equipment move-in schedule shape product migration speed.",
+              "FAE service is not a support detail; in B2B industrial marketing it builds trust, qualification, and contract renewal.",
+              "Support activities matter: 2025 R&D was NT$7.037 billion, about 10.6% of revenue; 134 AI applications generated NT$400 million in 2024 benefits.",
+              "Many supplier names are not publicly confirmed; wafer, photoresist, and packaging relationships should be labeled as inferences."
+            ],
+            note: "Recommendation: convert process know-how, FAE customer data, and smart-manufacturing data into internalized capabilities instead of competing only on tool specs."
+          },
+          {
+            title: "BCG/GE and Ansoff: product mix needs capital sequencing",
+            meta: "BCG (1970) / Ansoff (1957) / Myers (1977)",
+            points: [
+              "DDR4 is a Cash Cow: mature demand slows, but it can still support cash flow and utilization on mature nodes.",
+              "DDR5 is a Star: it represented about 10% of Nanya revenue in 1Q26, and server DDR5 demand is supported by AI procurement.",
+              "LPDDR5/5X and MCP/eMCP/uMCP are Question Marks: markets grow, but Nanya's share is small and any NVIDIA Vera Rubin claim must stay unverified.",
+              "KGD sits between Star and Question Mark: niche value is high but market size is smaller, making it a real-options path into AI memory."
+            ],
+            note: "Recommendation: use DDR4 cash flow to fund DDR5 and custom AI products before committing capital to less-proven growth bets."
+          },
+          {
+            title: "STP + 4P: a small-share supplier should not chase cost leadership",
+            meta: "Kotler & Armstrong / Perlmutter (1969) / Porter (1980)",
+            points: [
+              "Segmentation should cross application, geography, and customer type: AI server, enterprise server, PC, mobile, industrial/auto, North America, Europe, Asia-Pacific, OEMs, modules, and alliance partners.",
+              "Targeting should move from broad commodity DRAM toward AI servers, strategic NAND partners, and customers seeking a second source.",
+              "Positioning: with roughly 0.81% share, Nanya should avoid scale-based cost leadership and position as a trusted, collaborative, Taiwan-based DRAM supplier.",
+              "Price/Promotion: sticky contract pricing, FAE support, qualification, and long-term supply agreements are more useful B2B marketing tools than mass promotion."
+            ],
+            note: "Recommendation: differentiate through reliability and relationship marketing to avoid being stuck in the middle."
+          },
+          {
+            title: "Co-opetition: competitors, complements, and customers overlap",
+            meta: "Brandenburger & Nalebuff (1996) / Nash (1950)",
+            points: [
+              "Samsung, SK hynix, and Micron are technology and pricing competitors, but compatibility still depends on shared standards such as JEDEC.",
+              "Solidigm Inc. is a standalone SK hynix subsidiary; as Nanya's private-placement investor it is a complementor, not simply an SK hynix department.",
+              "SanDisk, Kioxia, Solidigm, and Cisco joined the NT$78.718 billion private placement, linking DRAM, NAND storage, and networking/AI infrastructure.",
+              "Lower-than-budgeted 2024-2025 CapEx can be read through game theory as avoiding renewed oversupply, but should not imply illegal tacit collusion."
+            ],
+            note: "Recommendation: manage the private-placement alliance as a value-creating complementor network while keeping pricing and capacity decisions legally independent."
+          },
+          {
+            title: "Financial deep dive: DuPont and FCF point to margin as the swing factor",
+            meta: "DuPont / Jensen (1986) / CAPM",
+            points: [
+              "DuPont: ROE was about 13.2% in 2021, -4.5% in 2023, and 3.9% in 2025; net margin moved from 26.7% to -24.9% to 9.9%, making it the main driver.",
+              "FCF = CFO - CapEx: 2020 about NT$13.75b, 2021 NT$33.2b, 2022 NT$0.4b, 2023 -NT$19.3b, 2024 -NT$14.15b, and 2025 NT$5.2b.",
+              "Beta: the raw file found 2408.TW 5Y monthly Beta at 1.69 and Micron at 1.92, supporting a higher CAPM risk premium for DRAM stocks.",
+              "Behavioral finance: EPS moving from 7.40 to -2.40 and back to 2.13 can invite investor overreaction and reversal momentum."
+            ],
+            note: "Recommendation: communicate margin repair, CFO, and CapEx discipline together so investors do not over-amplify the EPS cycle."
+          },
+          {
+            title: "Organization design: from Defender toward Analyzer",
+            meta: "Miles & Snow (1978) / Chandler (1962) / Becker (1964)",
+            points: [
+              "Nanya has historically looked like a Defender focused on DRAM process, cost, yield, and existing markets; AI memory and the private-placement alliance push it toward Analyzer.",
+              "The 2027 early move-in schedule will require stronger matrix coordination across process, product, customer, and fab teams.",
+              "More than 3,700 employees and process engineers' firm-specific human capital form a moat when general skills are converted into Nanya-specific yield knowledge.",
+              "AI/ML hiring connects to dynamic capability: 134 AI applications should evolve from local improvements into a smart-manufacturing system."
+            ],
+            note: "Recommendation: treat hiring as capability building for the new fab, AI memory, and smart manufacturing, not as isolated vacancy filling."
+          }
+        ],
+        valueNetHeaders: ["Company", "Quadrant", "Relationship", "Core link", "Dependence", "Status"],
+        valueNetRows: [
+          ["ASML", "Upstream supplier", "Supply", "EUV/DUV tools affect 10nm+ process timing", "High", "Inference; EUV install not confirmed"],
+          ["SanDisk", "Customer + complementor", "Alliance + supply", "Long-term DRAM supply for AI SSD demand", "Medium", "Confirmed"],
+          ["Kioxia", "Customer + complementor", "Alliance + supply", "NAND partner needs stable DRAM supply", "Medium", "Confirmed"],
+          ["Solidigm Inc.", "Customer + complementor", "Alliance", "Standalone SK hynix subsidiary; DRAM+NAND complement", "Medium", "Placement confirmed; supply details pending"],
+          ["Cisco", "Customer + complementor", "Alliance", "Diverse DRAM supply for networking and AI infrastructure", "Medium", "Private placement confirmed"],
+          ["CXMT", "Horizontal competitor", "Competition", "About 4% share with planned HBM production", "Low", "Confirmed public reporting"],
+          ["TSMC", "Technology cooperation hypothesis", "Technology cooperation", "Vera Rubin/LPDDR5X claim lacks reliable source", "Unknown", "Unverified"]
+        ],
+        theoryHeaders: ["Framework", "Originator", "Discipline", "Nanya application"],
+        theoryRows: [
+          ["Five Forces", "Porter (1980)", "Industrial organization / strategy", "Explains how top-three oligopoly, supplier concentration, and buyer power constrain Nanya."],
+          ["PESTEL", "Common strategy macro framework", "International business / institutions", "Connects export controls, DRAM cycles, ESG, CHIPS Act, and Taiwan location."],
+          ["Value Chain", "Porter (1985)", "Strategy / knowledge-based view", "Locates value creation in operations, FAE, R&D, procurement, and group infrastructure."],
+          ["BCG / GE / Ansoff", "BCG (1970), Ansoff (1957)", "Portfolio strategy / capital allocation", "Prioritizes DDR4, DDR5, LPDDR5/5X, KGD, and MCP resource allocation."],
+          ["STP + 4P", "Kotler & Armstrong", "Marketing / international marketing", "Positions Nanya as a trusted, collaborative, Taiwan-based B2B DRAM partner."],
+          ["Value Net", "Brandenburger & Nalebuff (1996)", "Co-opetition", "Shows SanDisk, Kioxia, Solidigm, and Cisco as customers, complementors, and investors."],
+          ["DuPont / FCF / CAPM", "DuPont, Jensen (1986), Sharpe (1964)", "Finance / accounting / investment", "Links ROE swings, free cash flow, and high Beta to DRAM cyclicality."],
+          ["Organization type", "Miles & Snow (1978), Chandler (1962)", "Organization theory", "Explains how the new fab, AI memory, and smart manufacturing push Nanya from Defender toward Analyzer."]
+        ]
+      }
     };
 
     const quizData = {
@@ -2556,6 +3822,11 @@
     let selectedAnswer = null;
     let score = 0;
     let answered = false;
+    let financeFocus = "revenue";
+    let forceFocus = "rivalry";
+    let portfolioFocus = "ddr5";
+    let confidenceFilter = "all";
+    let valueNetFocus = "SanDisk";
     let voices = [];
     let speechQueue = [];
     let speechIndex = 0;
@@ -2580,6 +3851,10 @@
       });
       qs("#langBtn").textContent = lang === "zh" ? "EN" : "繁";
       renderFlipCards();
+      renderFinanceExplorer();
+      renderMarketLab();
+      renderPortfolioTool();
+      renderDeepAnalysis();
       resetQuiz();
       setVoiceState(false, false);
       qs("#voiceStatus").textContent = "";
@@ -2606,6 +3881,199 @@
         button.addEventListener("click", () => button.classList.toggle("is-flipped"));
         grid.appendChild(button);
       });
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function renderTable(table, headers, rows) {
+      table.innerHTML = `
+        <thead>
+          <tr>${headers.map((header) => `<th>${escapeHtml(header)}</th>`).join("")}</tr>
+        </thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>
+          `).join("")}
+        </tbody>
+      `;
+    }
+
+    function statusLabel(status) {
+      const labels = {
+        zh: {
+          confirmed: "已確認",
+          inference: "推論",
+          mixed: "混合",
+          unverified: "待核實"
+        },
+        en: {
+          confirmed: "Confirmed",
+          inference: "Inference",
+          mixed: "Mixed",
+          unverified: "Unverified"
+        }
+      };
+      return labels[currentLang][status] || status;
+    }
+
+    function renderFinanceExplorer() {
+      const data = interactiveData[currentLang].finance;
+      const active = data.find((item) => item.id === financeFocus) || data[0];
+      financeFocus = active.id;
+      const tabs = qs("#financeTabs");
+      const grid = qs("#financeMetricGrid");
+      const insight = qs("#financeInsight");
+      if (!tabs || !grid || !insight) return;
+      tabs.innerHTML = data.map((item) => `
+        <button class="segment-button ${item.id === active.id ? "is-active" : ""}" type="button" data-finance="${escapeHtml(item.id)}">${escapeHtml(item.label)}</button>
+      `).join("");
+      grid.innerHTML = active.cells.map(([label, value]) => `
+        <div class="evidence-cell">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+        </div>
+      `).join("");
+      insight.innerHTML = `<h3>${escapeHtml(active.title)}</h3><p>${escapeHtml(active.body)}</p>`;
+      tabs.querySelectorAll("[data-finance]").forEach((button) => {
+        button.addEventListener("click", () => {
+          financeFocus = button.dataset.finance;
+          renderFinanceExplorer();
+        });
+      });
+    }
+
+    function renderMarketLab() {
+      const data = interactiveData[currentLang];
+      const bars = qs("#marketShareBars");
+      const buttons = qs("#forceButtons");
+      const detail = qs("#forceDetail");
+      if (!bars || !buttons || !detail) return;
+      const maxShare = Math.max(...data.shares.map(([, share]) => share));
+      bars.innerHTML = data.shares.map(([name, share]) => `
+        <div class="share-row ${name === "Nanya" ? "is-nanya" : ""}">
+          <span>${escapeHtml(name)}</span>
+          <div class="share-bar" style="--bar-width:${Math.max((share / maxShare) * 100, 4)}%"><span></span></div>
+          <strong>${escapeHtml(String(share))}%</strong>
+        </div>
+      `).join("");
+      const active = data.forces.find(([id]) => id === forceFocus) || data.forces[0];
+      forceFocus = active[0];
+      buttons.innerHTML = data.forces.map(([id, label]) => `
+        <button class="force-button ${id === active[0] ? "is-active" : ""}" type="button" data-force="${escapeHtml(id)}">${escapeHtml(label)}</button>
+      `).join("");
+      detail.innerHTML = `<h3>${escapeHtml(active[1])}</h3><p>${escapeHtml(active[2])}</p>`;
+      buttons.querySelectorAll("[data-force]").forEach((button) => {
+        button.addEventListener("click", () => {
+          forceFocus = button.dataset.force;
+          renderMarketLab();
+        });
+      });
+    }
+
+    function renderPortfolioTool() {
+      const data = interactiveData[currentLang].portfolio;
+      const chart = qs("#portfolioChart");
+      const detail = qs("#portfolioDetail");
+      if (!chart || !detail) return;
+      chart.querySelectorAll(".portfolio-dot").forEach((node) => node.remove());
+      const active = data.find((item) => item.id === portfolioFocus) || data[0];
+      portfolioFocus = active.id;
+      data.forEach((item) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `portfolio-dot ${item.id === active.id ? "is-active" : ""}`;
+        button.dataset.product = item.id;
+        button.style.setProperty("--x", `${item.x}%`);
+        button.style.setProperty("--y", `${item.y}%`);
+        button.textContent = item.label;
+        button.addEventListener("click", () => {
+          portfolioFocus = item.id;
+          renderPortfolioTool();
+        });
+        chart.appendChild(button);
+      });
+      detail.innerHTML = `
+        <span class="status-chip">${escapeHtml(statusLabel(active.status))}</span>
+        <h3>${escapeHtml(active.title)}</h3>
+        <p>${escapeHtml(active.body)}</p>
+      `;
+    }
+
+    function renderConfidenceTools() {
+      const tools = qs("#confidenceTools");
+      if (!tools) return;
+      tools.innerHTML = interactiveData[currentLang].confidence.map(([id, label]) => `
+        <button class="confidence-button ${id === confidenceFilter ? "is-active" : ""}" type="button" data-confidence="${escapeHtml(id)}">${escapeHtml(label)}</button>
+      `).join("");
+      tools.querySelectorAll("[data-confidence]").forEach((button) => {
+        button.addEventListener("click", () => {
+          confidenceFilter = button.dataset.confidence;
+          renderDeepAnalysis();
+        });
+      });
+    }
+
+    function renderValueNetMap() {
+      const data = deepAnalysisData[currentLang];
+      const map = qs("#valueNetMap");
+      const detail = qs("#valueNetDetail");
+      if (!map || !detail) return;
+      const rows = data.valueNetRows;
+      const active = rows.find((row) => row[0] === valueNetFocus) || rows[0];
+      valueNetFocus = active[0];
+      map.innerHTML = rows.map((row) => `
+        <button class="value-node ${row[0] === active[0] ? "is-active" : ""}" type="button" data-company="${escapeHtml(row[0])}">
+          <span>${escapeHtml(row[1])}</span>
+          <strong>${escapeHtml(row[0])}</strong>
+        </button>
+      `).join("");
+      detail.innerHTML = `
+        <span class="status-chip">${escapeHtml(active[5])}</span>
+        <h3>${escapeHtml(active[0])}</h3>
+        <p><strong>${escapeHtml(active[2])}</strong> · ${escapeHtml(active[3])}</p>
+        <p>${escapeHtml(data.valueNetHeaders[4])}: ${escapeHtml(active[4])}</p>
+      `;
+      map.querySelectorAll("[data-company]").forEach((button) => {
+        button.addEventListener("click", () => {
+          valueNetFocus = button.dataset.company;
+          renderValueNetMap();
+        });
+      });
+    }
+
+    function renderDeepAnalysis() {
+      const data = deepAnalysisData[currentLang];
+      const grid = qs("#deepAnalysisGrid");
+      renderConfidenceTools();
+      grid.innerHTML = "";
+      const statusCycle = ["confirmed", "confirmed", "mixed", "inference", "inference", "confirmed", "confirmed", "inference"];
+      data.cards.forEach((item, index) => {
+        const status = item.status || statusCycle[index] || "mixed";
+        if (confidenceFilter !== "all" && confidenceFilter !== status) return;
+        const article = document.createElement("article");
+        article.className = "analysis-card";
+        const visiblePoints = item.points.slice(0, 2);
+        article.innerHTML = `
+          <span class="status-chip">${escapeHtml(statusLabel(status))}</span>
+          <h3>${escapeHtml(item.title)}</h3>
+          <p class="analysis-meta">${escapeHtml(item.meta)}</p>
+          <ul class="analysis-points">
+            ${visiblePoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
+          </ul>
+          <p class="analysis-note"><strong>${currentLang === "zh" ? "策略建議：" : "Recommendation:"}</strong>${escapeHtml(item.note.replace(/^策略建議：|^Recommendation:/, ""))}</p>
+        `;
+        grid.appendChild(article);
+      });
+      renderTable(qs("#valueNetTable"), data.valueNetHeaders, data.valueNetRows);
+      renderTable(qs("#theoryMapTable"), data.theoryHeaders, data.theoryRows);
+      renderValueNetMap();
     }
 
     function applyTheme(theme) {
