@@ -1736,7 +1736,6 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .signal-grid,
     .signal-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1868,8 +1867,7 @@
       .capability-flow,
       .positioning-panel,
       .mini-stat-grid,
-      .allocation-grid,
-      .career-link-grid {
+      .allocation-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -1886,7 +1884,6 @@
       .positioning-panel,
       .mini-stat-grid,
       .allocation-grid,
-      .career-link-grid,
       .stp-grid,
       .micro-grid {
         grid-template-columns: 1fr;
@@ -2404,7 +2401,6 @@
       .portfolio-tool,
       .process-flow,
       .section-head,
-      .integrity-flow,
       .integrity,
       .quiz-layout {
         grid-template-columns: 1fr;
@@ -2420,8 +2416,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .grid-3,
-      .career-grid {
+      .grid-3 {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -2545,9 +2540,7 @@
       .quick-stats,
       .grid-2,
       .grid-3,
-      .career-grid,
       .evidence-grid,
-      .integrity-flow,
       .org-map,
       .portfolio-tool,
       .process-flow,
@@ -3069,16 +3062,16 @@
             <p data-takeaway data-i18n="valuesTakeaway">願景、使命與核心價值將策略從短期產品規格拉回長期永續經營與防範景氣波動風險能力。</p>
           </div>
         </div>
-        <div class="grid-3">
-          <article class="card">
+        <div class="team-rule-grid">
+          <article class="team-rule-card">
             <h3>Vision</h3>
             <p data-i18n="visionBody">成為智慧世代最佳記憶體夥伴。</p>
           </article>
-          <article class="card">
+          <article class="team-rule-card">
             <h3>Mission</h3>
             <p data-i18n="missionBody">持續獲利、永續經營；預防風險；善待員工；友善環境；支持在地。</p>
           </article>
-          <article class="card">
+          <article class="team-rule-card">
             <h3>Values</h3>
             <p data-i18n="valuesBody">創新、誠信、當責、效率。</p>
           </article>
@@ -3237,10 +3230,10 @@
         <!-- Financial source of truth: Nanya Technology official Q4 2025 results press release, retrieved 2026-05-25. Final 2025 annual values: revenue NT$66,587 million, net income NT$6,603 million, EPS NT$2.13. Official IR source takes priority over the teammate finance draft values. -->
         <details class="narrative-details">
           <summary data-i18n="summaryFinanceInterpret">展開財務比率與獲利品質分析</summary>
-          <div class="grid-3" style="margin-top:16px" aria-label="Financial strategy interpretation">
-            <article class="card"><h3 data-i18n="financeInterpret1Title">DRAM 營收集中度</h3><p data-i18n="financeInterpret1Body">財務研究顯示 DRAM 長期占營收 99.8% 以上，使獲利高度連動全球 DRAM 報價、庫存與供需循環。</p></article>
-            <article class="card"><h3 data-i18n="financeInterpret2Title">營運槓桿</h3><p data-i18n="financeInterpret2Body">半導體製造固定成本高，從谷底復甦時，產能利用率、毛利率與營運現金流可能被放大改善。</p></article>
-            <article class="card"><h3 data-i18n="financeInterpret3Title">資本支出壓力</h3><p data-i18n="financeInterpret3Body">即使 2022-2024 景氣低谷，1A/1B 奈米、DDR5 與新廠投資仍需資本支出，考驗資產負債表與現金流韌性。</p></article>
+          <div class="team-rule-grid" style="margin-top:16px" aria-label="Financial strategy interpretation">
+            <article class="team-rule-card"><h3 data-i18n="financeInterpret1Title">DRAM 營收集中度</h3><p data-i18n="financeInterpret1Body">財務研究顯示 DRAM 長期占營收 99.8% 以上，使獲利高度連動全球 DRAM 報價、庫存與供需循環。</p></article>
+            <article class="team-rule-card"><h3 data-i18n="financeInterpret2Title">營運槓桿</h3><p data-i18n="financeInterpret2Body">半導體製造固定成本高，從谷底復甦時，產能利用率、毛利率與營運現金流可能被放大改善。</p></article>
+            <article class="team-rule-card"><h3 data-i18n="financeInterpret3Title">資本支出壓力</h3><p data-i18n="financeInterpret3Body">即使 2022-2024 景氣低谷，1A/1B 奈米、DDR5 與新廠投資仍需資本支出，考驗資產負債表與現金流韌性。</p></article>
           </div>
         </details>
         <div class="interactive-panel" aria-labelledby="finance-explorer-title">
@@ -3747,7 +3740,7 @@
     <div class="footer-grid">
       <div>
         <h2 data-i18n="footerTitle">南亞科技如何從 DRAM 景氣循環中重新轉盈，並建立下一階段成長動能。</h2>
-        <p data-i18n="footerBody">資料更新日期：2026/05/11。建議正式繳交前再次確認股價、新聞與職缺內容。</p>
+        <p data-i18n="footerBody">資料更新日期：2026/05/25。</p>
       </div>
       <div class="footer-meta">
         <span data-i18n="footerCourse">1142 國際策略管理</span>
@@ -3977,7 +3970,7 @@
         integrityStep3Title: "人工查核",
         integrityStep3Body: "關鍵數字、事件與結論由組員查核、改寫與整合後才放入網站。",
         footerTitle: "南亞科從 DRAM 循環轉盈，建立下一階段成長動能。",
-        footerBody: "資料更新日期：2026/05/25。財務數字以南亞科官方投資人關係資料為準，正式繳交前仍建議再次確認新聞與職缺內容。",
+        footerBody: "資料更新日期：2026/05/25。",
         footerCourse: "1142 國際策略管理",
         footerTeacher: "授課教師：梅筱珍",
         footerDeploy: "GitHub Pages Ready",
@@ -4235,7 +4228,7 @@
         integrityStep3Title: "Human review",
         integrityStep3Body: "Key figures, events, and conclusions were checked, rewritten, and integrated by team members before publication.",
         footerTitle: "How Nanya Technology returned to profit from the DRAM cycle and built momentum for the next growth stage.",
-        footerBody: "Data updated: 2026/05/25. Financial figures follow Nanya Technology's official investor-relations materials; news and job-posting details should still be checked again before final submission.",
+        footerBody: "Data updated: 2026/05/25.",
         footerCourse: "1142 International Strategic Management",
         footerTeacher: "Instructor: Hsiao-Chen Mei",
         footerDeploy: "GitHub Pages Ready",
