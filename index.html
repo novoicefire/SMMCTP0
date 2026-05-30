@@ -38,9 +38,9 @@
       --radius-full: 9999px;
       --container: 1180px;
       --shadow-none: none;
-      --font-display: "Space Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-body: Inter, Arial, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --font-display: "CohereText", "Space Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-body: "Unica77 Cohere Web", Inter, Arial, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "CohereMono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     }
 
     [data-theme="dark"] {
@@ -1371,16 +1371,16 @@
     }
 
     .strategy-step .strategy-index {
-      display: inline-grid;
-      place-items: center;
-      width: 46px;
-      height: 46px;
-      margin-bottom: 28px;
-      border-radius: 50%;
-      color: #fff;
-      background: var(--green);
-      font-family: var(--font-display);
-      font-size: 20px;
+      display: block;
+      width: auto;
+      height: auto;
+      margin-bottom: 22px;
+      border-radius: 0;
+      color: var(--muted);
+      background: transparent;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
     }
 
     .strategy-step h3 {
@@ -1461,42 +1461,54 @@
       text-transform: uppercase;
     }
 
-    .career-grid {
+    .career-list {
+      margin-top: 34px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .career-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: minmax(220px, 0.34fr) 1fr;
+      gap: 34px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--hairline);
     }
 
-    .career-card {
-      padding: 26px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--surface);
-    }
-
-    .career-card h3 {
-      margin: 0 0 16px;
-      font-size: 24px;
+    .career-row h3 {
+      margin: 0;
+      font-size: 26px;
       font-weight: 400;
       line-height: 1.2;
     }
 
-    .career-card dl {
+    .career-row dl {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 10px 18px;
       margin: 0;
     }
 
-    .career-card dt {
-      margin-top: 18px;
+    .career-row dt {
       color: var(--muted);
       font-family: var(--font-mono);
       font-size: 12px;
       text-transform: uppercase;
     }
 
-    .career-card dd {
-      margin: 6px 0 0;
+    .career-row dd {
+      margin: 0;
       color: var(--ink);
-      text-wrap: balance;
+    }
+
+    @media (max-width: 760px) {
+      .career-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .career-row dl {
+        grid-template-columns: 1fr;
+      }
     }
 
 
@@ -1533,8 +1545,7 @@
     }
 
     .mini-stat-grid,
-    .allocation-grid,
-    .career-link-grid {
+    .allocation-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
@@ -1543,7 +1554,6 @@
 
     .mini-stat,
     .allocation-card,
-    .career-link-card,
     .micro-card {
       padding: 14px;
       border: 1px solid var(--border);
@@ -1559,7 +1569,6 @@
 
     .mini-stat span,
     .allocation-card span,
-    .career-link-card span,
     .micro-card span {
       display: block;
       color: var(--muted);
@@ -1570,13 +1579,38 @@
 
     .mini-stat strong,
     .allocation-card strong,
-    .career-link-card strong,
     .micro-card strong {
       display: block;
       margin-top: 6px;
       color: var(--ink);
       font-size: 20px;
       line-height: 1.2;
+    }
+
+    .capability-link-list {
+      margin-top: 18px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .capability-link-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .capability-link-row span {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .capability-link-row strong {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.25;
     }
 
     .navy-band .mini-stat span,
@@ -1670,10 +1704,10 @@
       min-height: 34px;
       margin-bottom: 18px;
       padding: 7px 14px;
-      border: 1px solid var(--coral);
+      border: 1px solid var(--soft-coral);
       border-radius: var(--radius-sm);
       color: var(--ink);
-      background: color-mix(in srgb, var(--coral) 14%, var(--canvas));
+      background: transparent;
       font-family: var(--font-body);
       font-size: 13px;
       font-weight: 500;
@@ -1696,29 +1730,21 @@
 
     .allocation-bar span:nth-child(2) { background: var(--blue); }
     .allocation-bar span:nth-child(3) { background: var(--green); }
-    .allocation-bar span:nth-child(4) { background: #d8a24a; }
+    .allocation-bar span:nth-child(4) { background: var(--soft-coral); }
 
     .allocation-grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .signal-grid,
-    .capability-flow,
-    .organization-summary,
-    .positioning-panel {
-      display: grid;
-      gap: 14px;
-    }
-
     .signal-grid {
+      display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
       margin-top: 18px;
     }
 
-    .signal-card,
-    .capability-step,
-    .organization-item,
-    .positioning-item {
+    .signal-card {
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 18px;
@@ -1762,18 +1788,41 @@
     }
 
     .capability-flow {
+      display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
       margin-top: 18px;
+    }
+
+    .capability-step {
+      border-top: 1px solid var(--hairline);
+      padding: 18px 0 0;
+      background: transparent;
     }
 
     .organization-summary {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-bottom: 18px;
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 24px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .organization-item {
+      border-bottom: 1px solid var(--hairline);
+      padding: 16px 0;
+      background: transparent;
     }
 
     .positioning-panel {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 18px;
+      display: block;
+      margin-top: 24px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .positioning-item {
+      border-bottom: 1px solid var(--hairline);
+      padding: 16px 0;
+      background: transparent;
     }
 
     .detail-list {
@@ -1932,7 +1981,7 @@
       color: var(--ink);
       background: var(--canvas);
       font-size: 13px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      box-shadow: none;
     }
 
     .portfolio-dot::before {
@@ -2018,31 +2067,41 @@
       background: var(--surface);
     }
 
-    .integrity-flow {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1px;
+    .integrity-list {
+      border-top: 1px solid var(--hairline);
       margin-top: 24px;
-      border: 1px solid var(--hairline);
-      background: var(--hairline);
     }
 
-    .integrity-step {
-      padding: 20px;
-      background: var(--canvas);
+    .integrity-row {
+      display: grid;
+      grid-template-columns: 48px minmax(150px, 0.28fr) 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--hairline);
     }
 
-    .integrity-step h3 {
-      margin: 0 0 8px;
+    .integrity-row span {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .integrity-row h3 {
+      margin: 0;
       font-size: 20px;
       font-weight: 400;
-      line-height: 1.2;
     }
 
-    .integrity-step p {
+    .integrity-row p {
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .integrity-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
     }
 
     .quiz-layout {
@@ -2150,22 +2209,36 @@
     }
 
     .source-list {
-      display: grid;
-      gap: 10px;
+      border-top: 1px solid var(--hairline);
+      gap: 0;
     }
 
     .source-list a {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 20px;
-      padding: 14px 0;
+      padding: 18px 0;
       border-bottom: 1px solid var(--hairline);
       color: var(--ink);
     }
 
+    .source-list a:hover {
+      color: var(--blue);
+    }
+
     .source-list span {
       color: var(--muted);
-      font-size: 13px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .source-list a {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
     }
 
     .footer {
@@ -2230,6 +2303,80 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border: 0;
+    }
+
+    .team-rule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 24px;
+    }
+
+    .team-rule-card {
+      padding-top: 20px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .team-rule-card h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .team-rule-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      .team-rule-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .trust-strip {
+      margin-top: 72px;
+      padding: 34px 0 8px;
+      border-top: 1px solid var(--hairline);
+      text-align: center;
+    }
+
+    .trust-strip-label {
+      display: block;
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28px;
+    }
+
+    .trust-strip-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(28px, 7vw, 86px);
+    }
+
+    .trust-strip-logos strong {
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2vw, 26px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      opacity: 0.78;
+    }
+
+    @media (max-width: 640px) {
+      .trust-strip {
+        margin-top: 48px;
+      }
+
+      .trust-strip-logos {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 28px;
+      }
     }
 
     @media (max-width: 1024px) {
@@ -2522,15 +2669,15 @@
     }
     
     .nav-links a.is-current {
-      color: var(--ink) !important;
-      border-bottom: 2px solid var(--coral) !important;
-      font-weight: 500;
+      color: var(--ink);
+      border-color: currentColor;
+      font-weight: 400;
     }
     .mobile-panel a.is-current {
-      color: var(--ink) !important;
-      font-weight: 600;
-      border-left: 3px solid var(--coral);
-      padding-left: 8px;
+      color: var(--ink);
+      font-weight: 400;
+      border-left: 0;
+      padding-left: 0;
     }
 
     /* --- Narrative Meta Tags (Rule-bounded, flat, publishing layout) --- */
@@ -2792,6 +2939,17 @@
           <div class="stat">
             <span data-i18n="stat4Label">新廠節點</span>
             <strong data-i18n="stat4Value">2027 年初裝機</strong>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="trust-strip" aria-label="Strategic partners">
+          <span class="trust-strip-label" data-i18n="trustStripLabel">Strategic investors / supply-chain partners</span>
+          <div class="trust-strip-logos">
+            <strong>SanDisk</strong>
+            <strong>Kioxia</strong>
+            <strong>Cisco</strong>
+            <strong>Solidigm</strong>
           </div>
         </div>
       </div>
@@ -3307,15 +3465,30 @@
           </div>
         </div>
         <div class="organization-summary" id="organizationSummary" aria-label="Organization capability summary"></div>
-        <div class="career-link-grid" aria-label="Career capability linkage">
-          <article class="career-link-card"><span>MES</span><strong data-i18n="careerLink1">軟體開發工程師：智慧製造資料系統</strong></article>
-          <article class="career-link-card"><span>1C / 1D</span><strong data-i18n="careerLink2">製程技術開發工程師：新廠與製程升級</strong></article>
-          <article class="career-link-card"><span>FAE</span><strong data-i18n="careerLink3">FAE 技術工程師：客戶驗證與技術服務</strong></article>
-          <article class="career-link-card"><span>KBV</span><strong data-i18n="careerLink4">人才與經驗形成可累積能力</strong></article>
+        <div class="capability-link-list" aria-label="Career capability linkage">
+          <div class="capability-link-row">
+            <span>MES</span>
+            <strong data-i18n="careerLink1">軟體開發工程師：智慧製造資料系統</strong>
+          </div>
+          <div class="capability-link-row">
+            <span>1C / 1D</span>
+            <strong data-i18n="careerLink2">製程技術開發工程師：新廠與製程升級</strong>
+          </div>
+          <div class="capability-link-row">
+            <span>FAE</span>
+            <strong data-i18n="careerLink3">FAE 技術工程師：客戶驗證與技術服務</strong>
+          </div>
+          <div class="capability-link-row">
+            <span>KBV</span>
+            <strong data-i18n="careerLink4">人才與經驗形成可累積能力</strong>
+          </div>
         </div>
-        <div class="career-grid">
-          <article class="career-card">
-            <h3 data-i18n="career1Title">軟體開發工程師</h3>
+        <div class="career-list" aria-label="Career roles linked to strategy">
+          <article class="career-row">
+            <div>
+              <span class="mono-label">MES / Smart manufacturing</span>
+              <h3 data-i18n="career1Title">軟體開發工程師</h3>
+            </div>
             <dl>
               <dt data-i18n="careerWork">工作</dt>
               <dd data-i18n="career1Work">MES 系統開發、異常分析、上線測試與排程系統開發。</dd>
@@ -3325,8 +3498,11 @@
               <dd data-i18n="career1Pay">月薪 45,500–57,500 元</dd>
             </dl>
           </article>
-          <article class="career-card">
-            <h3 data-i18n="career2Title">FAE 技術工程師</h3>
+          <article class="career-row">
+            <div>
+              <span class="mono-label">FAE / Technical support</span>
+              <h3 data-i18n="career2Title">FAE 技術工程師</h3>
+            </div>
             <dl>
               <dt data-i18n="careerWork">工作</dt>
               <dd data-i18n="career2Work">客戶認證、MCP/eMCP 客訴支援、技術交流與統計分析。</dd>
@@ -3336,8 +3512,11 @@
               <dd data-i18n="career2Pay">月薪 45,500–57,500 元</dd>
             </dl>
           </article>
-          <article class="career-card">
-            <h3 data-i18n="career3Title">製程技術開發工程師</h3>
+          <article class="career-row">
+            <div>
+              <span class="mono-label">R&D / Process Integration</span>
+              <h3 data-i18n="career3Title">製程技術開發工程師</h3>
+            </div>
             <dl>
               <dt data-i18n="careerWork">工作</dt>
               <dd data-i18n="career3Work">半導體製程整合、新技術開發與新製程開發。</dd>
@@ -3425,16 +3604,19 @@
           <summary data-i18n="summaryIntegrity">展開資料來源與 AI 處理詳細歷程</summary>
           <div class="integrity" style="margin-top:16px;">
             <div>
-              <div class="integrity-flow" aria-label="Source and AI handling process">
-                <article class="integrity-step">
+              <div class="integrity-list" aria-label="Source and AI handling process">
+                <article class="integrity-row">
+                  <span>01</span>
                   <h3 data-i18n="integrityStep1Title">來源</h3>
                   <p data-i18n="integrityStep1Body">官方網站、年度合併財報、投資人關係、新聞、產業研究與 104 職缺。</p>
                 </article>
-                <article class="integrity-step">
+                <article class="integrity-row">
+                  <span>02</span>
                   <h3 data-i18n="integrityStep2Title">AI 用途</h3>
                   <p data-i18n="integrityStep2Body">資料整理、雙語草稿、網站結構、測驗題目與程式碼輔助。</p>
                 </article>
-                <article class="integrity-step">
+                <article class="integrity-row">
+                  <span>03</span>
                   <h3 data-i18n="integrityStep3Title">人工查核</h3>
                   <p data-i18n="integrityStep3Body">關鍵數字、事件與結論由組員查核、改寫與整合後才放入網站。</p>
                 </article>
@@ -3483,16 +3665,16 @@
             <p data-takeaway data-i18n="teamTakeaway">全組共同決定分析主軸、整理資料、選擇模型、檢查雙語/互動/資料來源，並共同測試網站體驗，而非分工割裂拼貼。</p>
           </div>
         </div>
-        <div class="grid-3">
-          <article class="card">
+        <div class="team-rule-grid">
+          <article class="team-rule-card">
             <h3 data-i18n="teamCard1Title">資料查核</h3>
             <p data-i18n="teamCard1Body">共同比對官方資料、投資人關係、新聞與 104 職缺，降低錯誤引用。</p>
           </article>
-          <article class="card">
+          <article class="team-rule-card">
             <h3 data-i18n="teamCard2Title">雙語整合</h3>
             <p data-i18n="teamCard2Body">中文與英文文案維持同一研究敘事，不使用自動翻譯結果直接上線。</p>
           </article>
-          <article class="card">
+          <article class="team-rule-card">
             <h3 data-i18n="teamCard3Title">互動測試</h3>
             <p data-i18n="teamCard3Body">共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。</p>
           </article>
@@ -3591,6 +3773,7 @@
         navQuiz: "小測驗",
         navIntegrity: "資料揭露",
         heroTitle: "從 DRAM 景氣循環到 AI 記憶體供應鏈合作。",
+        trustStripLabel: "策略投資者 / 供應鏈合作夥伴",
         heroLead: "南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。",
         heroPrimary: "開始瀏覽",
         heroSecondary: "進入互動測驗",
@@ -3848,6 +4031,7 @@
         navQuiz: "Quiz",
         navIntegrity: "Sources",
         heroTitle: "From DRAM cycles to AI memory supply chain partnerships.",
+        trustStripLabel: "Strategic investors / supply-chain partners",
         heroLead: "Nanya Technology shows how a Taiwanese memory company adapts through technology migration, capacity planning, and global customer relationships.",
         heroPrimary: "Start exploring",
         heroSecondary: "Take the quiz",
