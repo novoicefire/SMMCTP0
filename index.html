@@ -238,6 +238,14 @@
       background: var(--stone);
     }
 
+    .present-button {
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
     .icon-button svg,
     .menu-button svg {
       width: 18px;
@@ -595,6 +603,19 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 18px;
+    }
+
+    .lab-launch {
+      gap: 9px;
+      background: transparent;
+    }
+
+    .lab-launch::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--coral);
     }
 
     .hero-media {
@@ -1717,23 +1738,62 @@
 
     .allocation-bar {
       display: flex;
-      min-height: 28px;
+      min-height: 92px;
       overflow: hidden;
-      border-radius: var(--radius-pill);
+      border-radius: var(--radius-sm);
       background: var(--hairline);
     }
 
-    .allocation-bar span {
-      width: var(--allocation-width);
-      background: var(--coral);
+    .allocation-segment {
+      min-width: 0;
+      flex: 0 0 var(--allocation-width);
+      display: grid;
+      align-content: center;
+      gap: 6px;
+      padding: 14px;
+      color: #fff;
+      background: var(--allocation-color);
     }
 
-    .allocation-bar span:nth-child(2) { background: var(--blue); }
-    .allocation-bar span:nth-child(3) { background: var(--green); }
-    .allocation-bar span:nth-child(4) { background: var(--soft-coral); }
+    .allocation-segment.is-light {
+      color: var(--near-black);
+    }
+
+    .allocation-share {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      opacity: 0.78;
+    }
+
+    .allocation-segment strong {
+      font-size: clamp(14px, 1.2vw, 18px);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .allocation-segment em {
+      font-style: normal;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .allocation-note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
     .allocation-grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .allocation-relation {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     .signal-grid {
@@ -1893,6 +1953,30 @@
         grid-template-columns: 1fr;
       }
 
+      .allocation-bar {
+        display: grid;
+        min-height: 0;
+        border-radius: var(--radius-sm);
+      }
+
+      .allocation-segment {
+        min-height: 72px;
+        grid-template-columns: 52px minmax(0, 1fr) auto;
+        align-items: center;
+        align-content: center;
+        gap: 10px;
+        padding: 14px 16px;
+      }
+
+      .allocation-segment strong {
+        font-size: 16px;
+      }
+
+      .allocation-segment em {
+        justify-self: end;
+        white-space: nowrap;
+      }
+
       .share-row {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -1979,6 +2063,12 @@
       background: var(--canvas);
       font-size: 13px;
       box-shadow: none;
+      transition:
+        left 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        background 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease;
     }
 
     .portfolio-dot::before {
@@ -2062,6 +2152,551 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       background: var(--surface);
+    }
+
+    .lab-modal,
+    .story-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(0, 0, 0, 0.46);
+    }
+
+    .lab-modal.is-open,
+    .story-overlay.is-open {
+      display: flex;
+    }
+
+    .lab-drawer {
+      width: min(720px, 100%);
+      max-height: min(720px, calc(100vh - 56px));
+      overflow: auto;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-md);
+      color: var(--ink);
+      background: var(--canvas);
+    }
+
+    .lab-drawer-head,
+    .story-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .lab-drawer-head h2,
+    .story-slide h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .lab-drawer-head h2 {
+      font-size: clamp(30px, 5vw, 46px);
+    }
+
+    .lab-close,
+    .story-close,
+    .story-nav,
+    .story-auto {
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-full);
+      color: inherit;
+      background: transparent;
+    }
+
+    .lab-close {
+      min-width: 42px;
+      height: 42px;
+      border-color: var(--hairline);
+    }
+
+    .lab-list {
+      padding: 0 24px 24px;
+    }
+
+    .lab-row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 20px 0;
+      border: 0;
+      border-bottom: 1px solid var(--hairline);
+      color: var(--ink);
+      background: transparent;
+      text-align: left;
+    }
+
+    .lab-row span,
+    .lab-kicker,
+    .scenario-meta,
+    .story-kicker {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .lab-row strong {
+      display: block;
+      margin: 4px 0 8px;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .lab-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .lab-row:hover {
+      transform: translateX(3px);
+    }
+
+    .asp-lab,
+    .universe-lab,
+    .reactor-lab,
+    .scenario-lab {
+      margin-top: 30px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .asp-lab {
+      color: #fff;
+      background: var(--navy);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .asp-grid,
+    .reactor-grid,
+    .universe-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(320px, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.14);
+    }
+
+    .asp-panel,
+    .reactor-panel,
+    .universe-panel,
+    .scenario-panel {
+      padding: 24px;
+      background: inherit;
+    }
+
+    .asp-lab .asp-panel {
+      background: var(--navy);
+    }
+
+    .asp-lab h3,
+    .universe-lab h3,
+    .reactor-lab h3,
+    .scenario-lab h3 {
+      margin: 0;
+      font-size: clamp(25px, 3vw, 34px);
+      font-weight: 400;
+      line-height: 1.16;
+    }
+
+    .asp-lab p,
+    .universe-lab p,
+    .reactor-lab p,
+    .scenario-lab p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .asp-lab p,
+    .asp-lab .lab-kicker {
+      color: rgba(255,255,255,0.68);
+    }
+
+    .asp-control {
+      display: grid;
+      gap: 10px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .asp-control label,
+    .reactor-panel h4 {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .asp-control input[type="range"] {
+      width: 100%;
+      accent-color: var(--blue);
+    }
+
+    .asp-control-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(255,255,255,0.58);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .asp-segmented,
+    .scenario-buttons,
+    .reactor-chips,
+    .reactor-buckets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .asp-segmented button,
+    .scenario-buttons button,
+    .reactor-chip,
+    .reactor-bucket {
+      min-height: 42px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-full);
+      color: inherit;
+      background: transparent;
+      font-size: 14px;
+    }
+
+    .asp-segmented button {
+      color: #fff;
+      border-color: rgba(255,255,255,0.22);
+      padding: 0 16px;
+    }
+
+    .asp-segmented button.is-active {
+      color: var(--navy);
+      background: #fff;
+    }
+
+    .asp-output-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .asp-output-card {
+      padding: 18px;
+      background: rgba(255,255,255,0.045);
+    }
+
+    .asp-output-card span {
+      display: block;
+      color: rgba(255,255,255,0.58);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .asp-output-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .asp-revenue-bar {
+      height: 4px;
+      margin-top: 12px;
+      background: rgba(255,255,255,0.14);
+    }
+
+    .asp-revenue-bar span {
+      display: block;
+      width: min(var(--bar-width), 100%);
+      height: 100%;
+      background: var(--blue);
+    }
+
+    .asp-readout {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.78);
+    }
+
+    .scenario-lab {
+      padding: 24px;
+    }
+
+    .scenario-buttons {
+      margin-top: 18px;
+    }
+
+    .scenario-buttons button {
+      padding: 0 16px;
+      color: var(--ink);
+      background: var(--surface);
+    }
+
+    .scenario-buttons button.is-active {
+      border-color: var(--near-black);
+      background: color-mix(in srgb, var(--soft-coral) 24%, var(--surface));
+    }
+
+    .scenario-panel {
+      margin-top: 18px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-sm);
+    }
+
+    .scenario-score-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 16px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .scenario-score-grid div {
+      padding: 14px;
+      background: var(--surface);
+    }
+
+    .scenario-score-grid span {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .scenario-score-grid strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .scenario-allocation {
+      height: 8px;
+      display: flex;
+      gap: 2px;
+      margin-top: 16px;
+      background: var(--border);
+    }
+
+    .scenario-allocation span {
+      width: var(--allocation);
+      background: var(--blue);
+    }
+
+    .scenario-allocation span:nth-child(2) { background: var(--green); }
+    .scenario-allocation span:nth-child(3) { background: var(--coral); }
+
+    .universe-lab,
+    .reactor-lab {
+      padding: 24px;
+    }
+
+    .universe-grid,
+    .reactor-grid {
+      margin-top: 22px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .universe-panel,
+    .reactor-panel {
+      background: var(--surface);
+    }
+
+    .universe-map {
+      width: 100%;
+      min-height: 420px;
+    }
+
+    .universe-node {
+      cursor: pointer;
+    }
+
+    .universe-node circle {
+      fill: var(--surface);
+      stroke: var(--hairline);
+      stroke-width: 1.5;
+    }
+
+    .universe-node.is-active circle,
+    .universe-node:hover circle {
+      fill: var(--near-black);
+      stroke: var(--near-black);
+    }
+
+    .universe-node text {
+      fill: var(--ink);
+      font-size: 13px;
+      text-anchor: middle;
+      pointer-events: none;
+    }
+
+    .universe-node.is-active text,
+    .universe-node:hover text {
+      fill: var(--canvas);
+    }
+
+    .universe-line {
+      stroke-width: 1.7;
+      opacity: 0.18;
+    }
+
+    .universe-line.is-active {
+      opacity: 0.95;
+      stroke-dasharray: 7 7;
+      animation: universeDash 1.6s linear infinite;
+    }
+
+    .universe-list-mobile {
+      display: none;
+      margin-top: 18px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .universe-list-mobile button {
+      width: 100%;
+      padding: 16px 0;
+      border: 0;
+      border-bottom: 1px solid var(--hairline);
+      color: var(--ink);
+      background: transparent;
+      text-align: left;
+    }
+
+    .universe-detail dl,
+    .reactor-readout dl {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+    }
+
+    .universe-detail dt,
+    .reactor-readout dt {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .universe-detail dd,
+    .reactor-readout dd {
+      margin: -8px 0 0;
+    }
+
+    .reactor-chips,
+    .reactor-buckets {
+      margin-top: 14px;
+    }
+
+    .reactor-chip,
+    .reactor-bucket {
+      padding: 0 16px;
+      color: var(--ink);
+      background: var(--surface);
+    }
+
+    .reactor-chip[aria-pressed="true"] {
+      border-color: var(--blue);
+      box-shadow: inset 0 0 0 1px var(--blue);
+    }
+
+    .reactor-bucket.is-success {
+      border-color: var(--blue);
+      background: color-mix(in srgb, var(--blue) 8%, var(--surface));
+    }
+
+    .reactor-readout {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .story-overlay {
+      color: #fff;
+      background: color-mix(in srgb, var(--navy) 94%, #000);
+    }
+
+    .story-frame {
+      width: min(980px, 100%);
+      min-height: min(640px, calc(100vh - 56px));
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: var(--radius-md);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .story-head {
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .story-slide {
+      display: grid;
+      align-content: center;
+      gap: 26px;
+      padding: clamp(28px, 6vw, 72px);
+    }
+
+    .story-slide h2 {
+      max-width: 820px;
+      font-size: clamp(34px, 6vw, 70px);
+    }
+
+    .story-slide p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255,255,255,0.74);
+      font-size: 18px;
+    }
+
+    .story-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 24px 24px;
+      border-top: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .story-nav,
+    .story-auto,
+    .story-close {
+      min-height: 42px;
+      padding: 0 16px;
+    }
+
+    .story-progress {
+      flex: 1;
+      height: 2px;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .story-progress span {
+      display: block;
+      width: var(--progress);
+      height: 100%;
+      background: #fff;
+    }
+
+    @keyframes universeDash {
+      to { stroke-dashoffset: -28; }
     }
 
     .integrity-list {
@@ -2397,6 +3032,9 @@
       .finance-layout,
       .interactive-head,
       .market-lab,
+      .asp-grid,
+      .reactor-grid,
+      .universe-grid,
       .org-map,
       .portfolio-tool,
       .process-flow,
@@ -2438,6 +3076,14 @@
 
       .strategy-steps {
         grid-template-columns: 1fr;
+      }
+
+      .universe-map-desktop {
+        display: none;
+      }
+
+      .universe-list-mobile {
+        display: block;
       }
     }
 
@@ -2565,6 +3211,19 @@
       .portfolio-chart,
       .portfolio-detail {
         min-height: 360px;
+      }
+
+      .scenario-score-grid,
+      .asp-output-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .universe-map-desktop {
+        display: none;
+      }
+
+      .universe-list-mobile {
+        display: block;
       }
 
       .rule-row,
@@ -2770,6 +3429,59 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
+    @media (max-width: 520px) {
+      .lab-modal,
+      .story-overlay {
+        padding: 14px;
+      }
+
+      .lab-drawer-head,
+      .story-head,
+      .story-foot {
+        padding: 18px;
+      }
+
+      .lab-list,
+      .asp-panel,
+      .reactor-panel,
+      .universe-panel,
+      .scenario-lab,
+      .universe-lab,
+      .reactor-lab {
+        padding: 18px;
+      }
+
+      .story-foot {
+        flex-wrap: wrap;
+      }
+
+      .story-progress {
+        flex-basis: 100%;
+        order: -1;
+      }
+
+      .present-button {
+        width: 42px;
+        padding: 0;
+        font-size: 0;
+        overflow: hidden;
+      }
+
+      .present-button::before {
+        content: "P";
+        font-size: 13px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .portfolio-dot,
+      .universe-line.is-active,
+      .lab-row {
+        animation: none;
+        transition: none;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2805,6 +3517,7 @@
       </div>
 
       <div class="nav-actions">
+        <button class="btn btn-outline present-button" id="presentBtn" type="button" data-i18n="presentBtn" aria-label="Open presentation mode" title="Presentation mode">Present</button>
         <button class="icon-button" id="voiceBtn" type="button" aria-label="Start voice guide">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 9v6h4l5 4V5L9 9H5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -2868,6 +3581,19 @@
     </div>
   </header>
 
+  <div class="lab-modal" id="strategyLabModal" aria-hidden="true">
+    <section class="lab-drawer" id="strategyLabDrawer" role="dialog" aria-modal="true" aria-labelledby="strategyLabTitle" tabindex="-1">
+      <div class="lab-drawer-head">
+        <div>
+          <span class="lab-kicker">Strategy Lab</span>
+          <h2 id="strategyLabTitle" data-i18n="strategyLabTitle">Nanya Strategy Lab</h2>
+        </div>
+        <button class="lab-close" id="strategyLabClose" type="button" aria-label="Close Strategy Lab">×</button>
+      </div>
+      <div class="lab-list" id="strategyLabList"></div>
+    </section>
+  </div>
+
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
@@ -2887,6 +3613,7 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="#company" data-i18n="heroPrimary">開始瀏覽</a>
             <a class="btn btn-secondary" href="#quiz" data-i18n="heroSecondary">進入互動測驗</a>
+            <button class="btn btn-outline lab-launch" id="strategyLabBtn" type="button" aria-haspopup="dialog" aria-controls="strategyLabDrawer" data-i18n="strategyLabLaunch">Launch Strategy Lab</button>
           </div>
         </div>
 
@@ -3252,6 +3979,34 @@
             <p data-i18n="financeCapexSourceNote">來源：南亞科技 2025 Q4 Results Press Release；2025 實際 CapEx 為 134 億元，2026 計畫 CapEx 約 500 億元且待董事會核准，新廠設備預計 2027 年初進駐。</p>
           </details>
         </div>
+        <div id="asp-shock-lab" class="asp-lab" data-voice-summary="Strategy Lab ASP Shock Lab teaching scenario">
+          <div class="asp-grid">
+            <div class="asp-panel">
+              <span class="lab-kicker">Teaching scenario / sensitivity index</span>
+              <h3 data-i18n="aspLabTitle">ASP Shock Lab｜DRAM 景氣敏感度模擬器</h3>
+              <p data-i18n="aspLabLead">拖曳 DRAM 報價、稼動率與 CapEx 壓力，觀察營收指數、毛利壓力、EPS 方向與新廠投資韌性如何變化。此模擬為教學用策略敏感度情境，不代表南亞科財務預測。</p>
+              <div class="asp-control">
+                <label for="aspChange">ASP change <strong id="aspChangeValue">0%</strong></label>
+                <input id="aspChange" type="range" min="-30" max="50" step="5" value="0">
+                <div class="asp-control-meta"><span>-30%</span><span>+50%</span></div>
+              </div>
+              <div class="asp-control">
+                <label for="aspUtilization">Capacity utilization <strong id="aspUtilizationValue">85%</strong></label>
+                <input id="aspUtilization" type="range" min="70" max="95" step="5" value="85">
+                <div class="asp-control-meta"><span>70%</span><span>95%</span></div>
+              </div>
+              <div class="asp-control">
+                <label data-i18n="aspCapexLabel">CapEx pressure</label>
+                <div class="asp-segmented" id="aspCapexButtons" aria-label="CapEx pressure"></div>
+              </div>
+            </div>
+            <div class="asp-panel">
+              <span class="lab-kicker">Scenario output</span>
+              <div class="asp-output-grid" id="aspOutputGrid"></div>
+              <div class="asp-readout" id="aspReadout" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -3273,6 +4028,13 @@
             <span class="mono-label">Key Takeaway</span>
             <p data-takeaway data-i18n="portfolioTakeaway">DDR4 作為現金流基礎，DDR5 與 RDIMM 為轉型主力，LPDDR5/KGD 為高潛力以控制紅海風險。產品升級不是單純的市場選擇，還需要研發、製程、客戶關係與組織知識支撐，因此下一步檢驗核心資源。</p>
           </div>
+        </div>
+        <div id="portfolio-scenario-switcher" class="scenario-lab" data-voice-summary="Strategy Lab Portfolio Scenario Switcher">
+          <span class="scenario-meta">Strategy simulation</span>
+          <h3 data-i18n="scenarioTitle">Portfolio Scenario Switcher｜產品策略情境切換器</h3>
+          <p data-i18n="scenarioLead">切換策略情境，觀察產品點位、資本配置、風險回報與策略意涵如何改變。</p>
+          <div class="scenario-buttons" id="scenarioButtons" aria-label="Portfolio scenarios"></div>
+          <div class="scenario-panel" id="scenarioPanel" aria-live="polite"></div>
         </div>
         <div class="portfolio-tool">
           <div class="portfolio-chart" id="portfolioChart" aria-label="Product portfolio quadrant">
@@ -3424,6 +4186,20 @@
           <div class="value-net-map" id="valueNetMap" aria-label="Value Net relationship nodes"></div>
           <div class="value-detail" id="valueNetDetail" aria-live="polite"></div>
         </div>
+        <div id="coopetition-universe" class="universe-lab" data-voice-summary="Strategy Lab Co-opetition Universe Value Net relationship map">
+          <span class="lab-kicker">Value Net relationship map</span>
+          <h3 data-i18n="universeTitle">Co-opetition Universe｜競合宇宙圖</h3>
+          <p data-i18n="universeLead">把南亞科放在 Value Net 中央，觀察客戶、供應商、競爭者與互補者如何同時產生合作與競爭。</p>
+          <div class="universe-grid">
+            <div class="universe-panel universe-map-desktop">
+              <div id="universeMap" class="universe-map" aria-label="Value Net relationship map"></div>
+            </div>
+            <div class="universe-panel">
+              <div class="universe-detail" id="universeDetail" aria-live="polite"></div>
+              <div class="universe-list-mobile" id="universeMobileList"></div>
+            </div>
+          </div>
+        </div>
         <details class="narrative-details">
           <summary data-i18n="summaryValueNet">展開 Value Net 生態系競合彙整表</summary>
           <div class="chart-card analysis-table-card" style="margin-top:16px;">
@@ -3458,6 +4234,22 @@
           </div>
         </div>
         <div class="organization-summary" id="organizationSummary" aria-label="Organization capability summary"></div>
+        <div id="capability-reactor" class="reactor-lab" data-voice-summary="Strategy Lab Capability Reactor maps job skills to strategic capabilities">
+          <span class="lab-kicker">KBV / skills to capability</span>
+          <h3 data-i18n="reactorTitle">Capability Reactor｜技能到策略能力反應爐</h3>
+          <p data-i18n="reactorLead">將 104 職缺中的技能配對到南亞科的策略能力，理解 KBV：個人技能如何累積成組織知識。</p>
+          <div class="reactor-grid">
+            <div class="reactor-panel">
+              <h4 data-i18n="reactorSkillLabel">Select a skill</h4>
+              <div class="reactor-chips" id="reactorSkills"></div>
+            </div>
+            <div class="reactor-panel">
+              <h4 data-i18n="reactorBucketLabel">Match to a capability</h4>
+              <div class="reactor-buckets" id="reactorBuckets"></div>
+              <div class="reactor-readout" id="reactorReadout" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
         <div class="capability-link-list" aria-label="Career capability linkage">
           <div class="capability-link-row">
             <span>MES</span>
@@ -3736,6 +4528,22 @@
     </section>
   </main>
 
+  <div class="story-overlay" id="storyMode" aria-hidden="true">
+    <section class="story-frame" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+      <div class="story-head">
+        <span class="story-kicker" id="storyCount" aria-live="polite">STRATEGY STORY / 01</span>
+        <button class="story-close" id="storyCloseBtn" type="button" aria-label="Close presentation" data-i18n="storyClose">Close</button>
+      </div>
+      <div class="story-slide" id="storySlide"></div>
+      <div class="story-foot">
+        <button class="story-nav" id="storyPrevBtn" type="button" aria-label="Previous slide" data-i18n="storyPrev">Prev</button>
+        <div class="story-progress" aria-hidden="true"><span id="storyProgress"></span></div>
+        <button class="story-auto" id="storyAutoBtn" type="button" data-i18n="storyAuto">Auto</button>
+        <button class="story-nav" id="storyNextBtn" type="button" aria-label="Next slide" data-i18n="storyNext">Next</button>
+      </div>
+    </section>
+  </div>
+
   <footer class="footer">
     <div class="footer-grid">
       <div>
@@ -3770,6 +4578,11 @@
         heroLead: "南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。",
         heroPrimary: "開始瀏覽",
         heroSecondary: "進入互動測驗",
+        storyClose: "關閉",
+        storyPrev: "上一頁",
+        storyAuto: "自動",
+        storyStop: "停止",
+        storyNext: "下一頁",
         stat1Label: "2025 營收",
         stat1Value: "665.87 億元",
         stat2Label: "2025 EPS",
@@ -3974,6 +4787,20 @@
         footerCourse: "1142 國際策略管理",
         footerTeacher: "授課教師：梅筱珍",
         footerDeploy: "GitHub Pages Ready",
+        presentBtn: "Present",
+        strategyLabLaunch: "Launch Strategy Lab",
+        strategyLabTitle: "Nanya Strategy Lab",
+        aspLabTitle: "ASP Shock Lab｜DRAM 景氣敏感度模擬器",
+        aspLabLead: "拖曳 DRAM 報價、稼動率與 CapEx 壓力，觀察營收指數、毛利壓力、EPS 方向與新廠投資韌性如何變化。此模擬為教學用策略敏感度情境，不代表南亞科財務預測。",
+        aspCapexLabel: "CapEx 壓力",
+        scenarioTitle: "Portfolio Scenario Switcher｜產品策略情境切換器",
+        scenarioLead: "切換策略情境，觀察產品點位、資本配置、風險回報與策略意涵如何改變。",
+        universeTitle: "Co-opetition Universe｜競合宇宙圖",
+        universeLead: "把南亞科放在 Value Net 中央，觀察客戶、供應商、競爭者與互補者如何同時產生合作與競爭。",
+        reactorTitle: "Capability Reactor｜技能到策略能力反應爐",
+        reactorLead: "將 104 職缺中的技能配對到南亞科的策略能力，理解 KBV：個人技能如何累積成組織知識。",
+        reactorSkillLabel: "選擇一個技能",
+        reactorBucketLabel: "配對到策略能力",
 
         // Add missing keys
         heroQuestion: "南亞科如何在三大 DRAM 巨頭寡占、AI 需求重估與私募策略夥伴加入之下，重新定位自己的產品、資源與成長路徑？",
@@ -4028,6 +4855,11 @@
         heroLead: "Nanya Technology shows how a Taiwanese memory company adapts through technology migration, capacity planning, and global customer relationships.",
         heroPrimary: "Start exploring",
         heroSecondary: "Take the quiz",
+        storyClose: "Close",
+        storyPrev: "Prev",
+        storyAuto: "Auto",
+        storyStop: "Stop",
+        storyNext: "Next",
         stat1Label: "2025 revenue",
         stat1Value: "NT$66.587B",
         stat2Label: "2025 EPS",
@@ -4232,6 +5064,20 @@
         footerCourse: "1142 International Strategic Management",
         footerTeacher: "Instructor: Hsiao-Chen Mei",
         footerDeploy: "GitHub Pages Ready",
+        presentBtn: "Present",
+        strategyLabLaunch: "Launch Strategy Lab",
+        strategyLabTitle: "Nanya Strategy Lab",
+        aspLabTitle: "ASP Shock Lab | DRAM Cycle Sensitivity Simulator",
+        aspLabLead: "Adjust ASP, utilization, and CapEx pressure to observe revenue index, margin pressure, EPS direction, and investment resilience. This is a teaching-oriented sensitivity scenario, not a financial forecast for Nanya Technology.",
+        aspCapexLabel: "CapEx pressure",
+        scenarioTitle: "Portfolio Scenario Switcher | Product Strategy Simulation",
+        scenarioLead: "Switch strategy scenarios to see how product positions, capital allocation, risk-return, and strategic implication change.",
+        universeTitle: "Co-opetition Universe | Value Net Relationship Map",
+        universeLead: "Place Nanya at the center of the Value Net and examine how customers, suppliers, competitors, and complementors create both cooperation and competition.",
+        reactorTitle: "Capability Reactor | From Job Skills to Strategic Capabilities",
+        reactorLead: "Match job-posting skills to Nanya's strategic capabilities and see how individual skills accumulate into organizational knowledge through the KBV lens.",
+        reactorSkillLabel: "Select a skill",
+        reactorBucketLabel: "Match to a capability",
 
         // Add missing keys
         heroQuestion: "How does Nanya Technology reposition its products, resources, and growth paths amidst the oligopoly of three DRAM giants, the re-evaluation of AI demand, and the addition of strategic private placement partners?",
@@ -4593,6 +5439,115 @@
       }
     };
 
+    const labData = {
+      zh: {
+        strategyRows: [
+          { target: "asp-shock-lab", label: "ASP Shock Lab", body: "拖曳 DRAM 報價與稼動率，觀察財務敏感度。" },
+          { target: "coopetition-universe", label: "Co-opetition Universe", body: "用 Value Net 看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
+          { target: "capability-reactor", label: "Capability Reactor", body: "把 104 職缺技能配對到策略能力，理解 KBV。" },
+          { target: "portfolio-scenario-switcher", label: "Portfolio Scenario", body: "切換產品策略情境，觀察 DDR4、DDR5、KGD 與 LPDDR5 的定位變化。" }
+        ],
+        asp: {
+          capex: [["low", "Low"], ["base", "Base"], ["high", "High"]],
+          labels: {
+            revenue: "Revenue Index",
+            margin: "Margin Pressure",
+            eps: "EPS Direction",
+            resilience: "CapEx Resilience",
+            readout: "Strategy Readout"
+          },
+          readouts: {
+            upside: "高 ASP 與高稼動率放大營運槓桿，南亞科更有能力支應 2026 CapEx 與新廠投資，但仍需避免把短期價格循環誤判為長期競爭優勢。",
+            stress: "價格反轉會讓固定成本與折舊壓力被放大，策略重點應轉向現金流防守、產品組合升級與客戶長約。",
+            utilization: "稼動率下降會削弱高固定成本產業的規模效率，即使 ASP 沒有明顯下跌，獲利品質仍可能承壓。",
+            base: "基準情境顯示 2025 轉盈提供再投資空間，但長期韌性仍取決於 DDR5、RDIMM、KGD 與高階應用比重。"
+          }
+        },
+        scenarios: [
+          { id: "base", label: "Base Case", implication: "維持目前產品配置：DDR4 提供現金流，DDR5 / RDIMM 作為升級主力，LPDDR5 / KGD 以選擇性投資控制風險。", risk: "Medium", return: "Medium", capex: "Balanced", allocation: [34, 46, 20], positions: {} },
+          { id: "ai", label: "AI Server Upside", implication: "AI 伺服器與高容量模組需求升溫，使 DDR5 / RDIMM 的成長性與資本優先順序上升。", risk: "Medium-high", return: "High", capex: "Server-led", allocation: [18, 64, 18], positions: { "ddr5": [78, 80], "ddr5-rdimm": [84, 88], "kgd": [64, 58] } },
+          { id: "downcycle", label: "Price Downcycle", implication: "DRAM 價格反轉時，DDR4 現金流壓力增加，策略重心轉向防守、現金流與客戶長約。", risk: "High", return: "Low", capex: "Defensive", allocation: [52, 30, 18], positions: { "ddr4": [22, 20], "ddr5": [60, 60], "ddr5-rdimm": [68, 70], "lpddr5": [38, 56] } },
+          { id: "partner", label: "Strategic Partner Boost", implication: "策略私募與供應協議提高 KGD / LPDDR5 / MCP 的合作價值，南亞科可藉互補方案提高客戶轉換成本。", risk: "Medium", return: "Medium-high", capex: "Partner-linked", allocation: [24, 42, 34], positions: { "kgd": [70, 64], "lpddr5": [52, 72], "mcp": [46, 50] } }
+        ],
+        universe: [
+          { id: "sandisk", label: "SanDisk", group: "Customers", line: "cooperation", x: 300, y: 86, role: "客戶 / 互補者", cooperation: "DRAM 供應協議與策略私募，連結 NAND + DRAM 解決方案互補。", competition: "採購談判與替代供應商風險仍存在。", move: "透過長約與共同產品規劃提高轉換成本。" },
+          { id: "kioxia", label: "Kioxia", group: "Customers", line: "cooperation", x: 470, y: 160, role: "客戶 / 互補者", cooperation: "DRAM 供應協議、策略私募、NAND + DRAM 解決方案互補。", competition: "採購談判、替代供應商風險、技術路線依賴。", move: "透過 KGD、MCP 與 LPDDR5 合作提高轉換成本，深化 design-in 關係。" },
+          { id: "cisco", label: "Cisco", group: "Customers", line: "dependency", x: 514, y: 306, role: "網通客戶 / 投資者", cooperation: "伺服器與網通設備需求回饋可加速客戶驗證。", competition: "買方規格與價格談判會壓縮供應商彈性。", move: "用 FAE 與客戶驗證能力深化 B2B design-in。" },
+          { id: "solidigm", label: "Solidigm", group: "Complementors", line: "technology", x: 422, y: 462, role: "互補者 / 企業 SSD 生態", cooperation: "企業級儲存生態與伺服器需求互補。", competition: "母公司競爭背景使合作邊界需清楚控管。", move: "維持技術與商務分工，避免把合作推論成技術承諾。" },
+          { id: "piecemakers", label: "PieceMakers", group: "Complementors", line: "technology", x: 240, y: 510, role: "技術互補者", cooperation: "客製化超高頻寬記憶體與 Edge AI 應用方案。", competition: "需談判 IP、利潤分配與量產責任。", move: "作為 KGD 與客製化記憶體選擇權。" },
+          { id: "samsung", label: "Samsung", group: "Competitors", line: "competition", x: 92, y: 344, role: "競爭者", cooperation: "高階產能排擠可能間接創造成熟 DRAM 價格空間。", competition: "規模、製程與價格領導壓力。", move: "避免價格戰，轉向利基產品與策略客戶。" },
+          { id: "skhynix", label: "SK hynix", group: "Competitors", line: "competition", x: 116, y: 180, role: "競爭者", cooperation: "HBM 產能配置可能間接牽動主流 DDR5 供給。", competition: "高容量伺服器與先進製程標竿壓力。", move: "以 RDIMM 驗證與客製化記憶體縮小差距。" },
+          { id: "suppliers", label: "Equipment / wafers", group: "Suppliers", line: "dependency", x: 300, y: 300, role: "供應商", cooperation: "設備、矽晶圓與材料供應支撐節點遷移。", competition: "關鍵設備與材料集中度提高交期與成本依賴。", move: "用長期採購、製程規劃與資本紀律降低依賴風險。" }
+        ],
+        reactor: {
+          prompt: "先選左側技能，再點右側能力桶。",
+          hint: "這項技能比較接近客戶端驗證，而不是製程良率。試著把它配對到 Customer design-in。",
+          partial: "此能力可作為部分配對，但需要永續、供應鏈與國際客戶溝通能力；本頁不新增未查證 ESG 職缺。",
+          skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "English communication", "FAE support", "Customer validation"],
+          buckets: [
+            { id: "yield", label: "1B / 1C process yield", skills: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "製程整合與良率分析是難以快速外包的隱性知識，會累積成製程升級能力。" },
+            { id: "fab", label: "Smart fab automation", skills: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "當 MES、資料庫與程式能力被嵌入排程、異常分析與新廠營運流程，個人技能會轉化為智慧製造知識。" },
+            { id: "design", label: "Customer design-in", skills: ["FAE support", "Customer validation", "English communication"], role: "FAE Technical Engineer", kbv: "FAE 與客戶驗證能力能把產品規格轉化成客戶 switching cost，是 B2B 記憶體供應商的重要隱性資產。" },
+            { id: "support", label: "Global B2B support", skills: ["English communication", "FAE support", "Customer validation"], role: "FAE / Sales support", kbv: "跨國客戶溝通與驗證經驗能累積成全球 B2B 支援能力。" },
+            { id: "esg", label: "ESG supply-chain compliance", skills: ["English communication"], role: "Partially matched capability", partial: true, kbv: "需要永續、供應鏈與國際客戶溝通能力；本頁只作策略能力提示，不新增未查證職缺。" }
+          ]
+        }
+      },
+      en: {
+        strategyRows: [
+          { target: "asp-shock-lab", label: "ASP Shock Lab", body: "Adjust ASP and utilization to test financial sensitivity." },
+          { target: "coopetition-universe", label: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
+          { target: "capability-reactor", label: "Capability Reactor", body: "Match job skills to strategic capabilities through a KBV lens." },
+          { target: "portfolio-scenario-switcher", label: "Portfolio Scenario", body: "Switch product scenarios to see how portfolio positioning changes." }
+        ],
+        asp: {
+          capex: [["low", "Low"], ["base", "Base"], ["high", "High"]],
+          labels: {
+            revenue: "Revenue Index",
+            margin: "Margin Pressure",
+            eps: "EPS Direction",
+            resilience: "CapEx Resilience",
+            readout: "Strategy Readout"
+          },
+          readouts: {
+            upside: "Higher ASP and utilization amplify operating leverage, improving the ability to support 2026 CapEx and new-fab investment. The risk is mistaking a cyclical price rebound for durable advantage.",
+            stress: "A pricing reversal magnifies fixed-cost and depreciation pressure. Strategic focus shifts to cash-flow defense, product-mix upgrade, and long-term customer agreements.",
+            utilization: "Lower utilization weakens scale efficiency in a high-fixed-cost industry. Even without a sharp ASP decline, earnings quality may remain under pressure.",
+            base: "The base case shows that 2025 profitability gives room for reinvestment, but long-term resilience still depends on DDR5, RDIMM, KGD, and higher-value applications."
+          }
+        },
+        scenarios: [
+          { id: "base", label: "Base Case", implication: "Maintain the current portfolio: DDR4 supports cash flow, DDR5/RDIMM drives migration, and LPDDR5/KGD are selectively built to control risk.", risk: "Medium", return: "Medium", capex: "Balanced", allocation: [34, 46, 20], positions: {} },
+          { id: "ai", label: "AI Server Upside", implication: "AI server and high-capacity module demand increase the growth profile and capital priority of DDR5/RDIMM.", risk: "Medium-high", return: "High", capex: "Server-led", allocation: [18, 64, 18], positions: { "ddr5": [78, 80], "ddr5-rdimm": [84, 88], "kgd": [64, 58] } },
+          { id: "downcycle", label: "Price Downcycle", implication: "When DRAM pricing reverses, DDR4 cash-flow pressure increases and strategy shifts toward defense, cash flow, and long-term agreements.", risk: "High", return: "Low", capex: "Defensive", allocation: [52, 30, 18], positions: { "ddr4": [22, 20], "ddr5": [60, 60], "ddr5-rdimm": [68, 70], "lpddr5": [38, 56] } },
+          { id: "partner", label: "Strategic Partner Boost", implication: "Strategic private placements and supply agreements raise the collaboration value of KGD/LPDDR5/MCP, helping Nanya increase customer switching costs through complementary solutions.", risk: "Medium", return: "Medium-high", capex: "Partner-linked", allocation: [24, 42, 34], positions: { "kgd": [70, 64], "lpddr5": [52, 72], "mcp": [46, 50] } }
+        ],
+        universe: [
+          { id: "sandisk", label: "SanDisk", group: "Customers", line: "cooperation", x: 300, y: 86, role: "Customer / Complementor", cooperation: "DRAM supply agreement and private placement link NAND + DRAM solution complementarity.", competition: "Procurement bargaining and supplier replacement risk remain.", move: "Use long-term agreements and co-planning to raise switching cost." },
+          { id: "kioxia", label: "Kioxia", group: "Customers", line: "cooperation", x: 470, y: 160, role: "Customer / Complementor", cooperation: "DRAM supply agreement, private placement, NAND + DRAM solution complementarity.", competition: "Procurement bargaining, supplier replacement risk, technical roadmap dependency.", move: "Use KGD / MCP / LPDDR5 cooperation to raise switching cost and deepen design-in relationship." },
+          { id: "cisco", label: "Cisco", group: "Customers", line: "dependency", x: 514, y: 306, role: "Networking customer / Investor", cooperation: "Server and networking demand feedback can accelerate qualification.", competition: "Buyer specifications and price negotiations constrain supplier flexibility.", move: "Deepen B2B design-in with FAE and customer validation." },
+          { id: "solidigm", label: "Solidigm", group: "Complementors", line: "technology", x: 422, y: 462, role: "Complementor / Enterprise SSD ecosystem", cooperation: "Enterprise storage ecosystem complements server memory demand.", competition: "Parent-company competition means cooperation boundaries need control.", move: "Separate technical and commercial scope without overstating commitments." },
+          { id: "piecemakers", label: "PieceMakers", group: "Complementors", line: "technology", x: 240, y: 510, role: "Technology complementor", cooperation: "Customized ultra-high-bandwidth memory and Edge AI application work.", competition: "IP, profit sharing, and production responsibility need negotiation.", move: "Treat as an option for KGD and custom-memory capability." },
+          { id: "samsung", label: "Samsung", group: "Competitors", line: "competition", x: 92, y: 344, role: "Competitor", cooperation: "High-end capacity shifts can indirectly create mature DRAM pricing room.", competition: "Scale, process, and pricing leadership pressure.", move: "Avoid price wars and move toward niche products and strategic customers." },
+          { id: "skhynix", label: "SK hynix", group: "Competitors", line: "competition", x: 116, y: 180, role: "Competitor", cooperation: "HBM capacity allocation can indirectly affect mainstream DDR5 supply.", competition: "High-capacity server and advanced-node benchmark pressure.", move: "Use RDIMM validation and custom memory to narrow the gap." },
+          { id: "suppliers", label: "Equipment / wafers", group: "Suppliers", line: "dependency", x: 300, y: 300, role: "Suppliers", cooperation: "Equipment, wafer, and material supply supports node migration.", competition: "Concentrated equipment and material sources raise lead-time and cost dependence.", move: "Use long-term sourcing, process planning, and capital discipline to reduce dependency risk." }
+        ],
+        reactor: {
+          prompt: "Select a skill on the left, then choose a capability bucket.",
+          hint: "This skill is closer to customer-side validation than process yield. Try matching it with Customer design-in.",
+          partial: "This is a partial match, but it requires sustainability, supply-chain, and international customer communication capability; this page does not invent ESG job postings.",
+          skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "English communication", "FAE support", "Customer validation"],
+          buckets: [
+            { id: "yield", label: "1B / 1C process yield", skills: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "Process integration and yield analysis are tacit capabilities that cannot be quickly outsourced, accumulating into process-migration capability." },
+            { id: "fab", label: "Smart fab automation", skills: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "When MES, database, and programming skills are embedded in scheduling, exception analysis, and fab operations, individual skills become smart-manufacturing knowledge." },
+            { id: "design", label: "Customer design-in", skills: ["FAE support", "Customer validation", "English communication"], role: "FAE Technical Engineer", kbv: "FAE and customer-validation capabilities turn product specifications into customer switching costs, becoming a key tacit asset for a B2B memory supplier." },
+            { id: "support", label: "Global B2B support", skills: ["English communication", "FAE support", "Customer validation"], role: "FAE / Sales support", kbv: "International communication and validation experience accumulate into global B2B support capability." },
+            { id: "esg", label: "ESG supply-chain compliance", skills: ["English communication"], role: "Partially matched capability", partial: true, kbv: "This needs sustainability, supply-chain, and international customer communication capability; it is a strategic capability note, not an invented job posting." }
+          ]
+        }
+      }
+    };
+
     const quizData = {
       zh: [
         { q: "2025 年南亞科 EPS 是多少？", options: ["2.13 元", "3.58 元", "0.81 元", "7.40 元"], answer: 0, exp: "2025 全年 EPS 為 2.13 元；3.58 元是 2025 Q4 單季 EPS。" },
@@ -4612,6 +5567,135 @@
       ]
     };
 
+    const labSelectorData = {
+      zh: [
+        { target: "asp-shock-lab", label: "01", title: "ASP Shock Lab", body: "拖曳 DRAM 報價與稼動率，觀察財務敏感度。" },
+        { target: "coopetition-universe", label: "02", title: "Co-opetition Universe", body: "用 Value Net 看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
+        { target: "capability-reactor", label: "03", title: "Capability Reactor", body: "把 104 職缺技能配對到策略能力，理解 KBV。" },
+        { target: "portfolio-scenario-switcher", label: "04", title: "Portfolio Scenario", body: "切換產品策略情境，觀察 DDR4、DDR5、KGD 與 LPDDR5 的定位變化。" }
+      ],
+      en: [
+        { target: "asp-shock-lab", label: "01", title: "ASP Shock Lab", body: "Adjust ASP and utilization to test financial sensitivity." },
+        { target: "coopetition-universe", label: "02", title: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
+        { target: "capability-reactor", label: "03", title: "Capability Reactor", body: "Match job skills to strategic capabilities through a KBV lens." },
+        { target: "portfolio-scenario-switcher", label: "04", title: "Portfolio Scenario", body: "Switch product scenarios to see how portfolio positioning changes." }
+      ]
+    };
+
+    const capexLevels = ["low", "base", "high"];
+    const aspLabels = {
+      zh: {
+        revenue: "Revenue Index",
+        margin: "Margin Pressure",
+        eps: "EPS Direction",
+        resilience: "CapEx Resilience",
+        readout: "Strategy Readout",
+        capex: { low: "Low", base: "Base", high: "High" },
+        marginValues: { low: "Low", moderate: "Moderate", high: "High", severe: "Severe" },
+        epsValues: { positive: "Positive acceleration", stable: "Stable recovery", pressure: "Under pressure", loss: "Loss risk" },
+        resilienceValues: { strong: "Strong", watch: "Watch", constrained: "Constrained", defensive: "Defensive" },
+        highCase: "高 ASP 與高稼動率放大營運槓桿，南亞科更有能力支應 2026 CapEx 與新廠投資，但仍需避免把短期價格循環誤判為長期競爭優勢。",
+        downCase: "價格反轉會讓固定成本與折舊壓力被放大，策略重點應轉向現金流防守、產品組合升級與客戶長約。",
+        baseCase: "基準情境顯示 2025 轉盈提供再投資空間，但長期韌性仍取決於 DDR5、RDIMM、KGD 與高階應用比重。",
+        utilCase: "稼動率下降會削弱高固定成本產業的規模效率，即使 ASP 沒有明顯下跌，獲利品質仍可能承壓。"
+      },
+      en: {
+        revenue: "Revenue Index",
+        margin: "Margin Pressure",
+        eps: "EPS Direction",
+        resilience: "CapEx Resilience",
+        readout: "Strategy Readout",
+        capex: { low: "Low", base: "Base", high: "High" },
+        marginValues: { low: "Low", moderate: "Moderate", high: "High", severe: "Severe" },
+        epsValues: { positive: "Positive acceleration", stable: "Stable recovery", pressure: "Under pressure", loss: "Loss risk" },
+        resilienceValues: { strong: "Strong", watch: "Watch", constrained: "Constrained", defensive: "Defensive" },
+        highCase: "Higher ASP and utilization amplify operating leverage, improving the ability to support 2026 CapEx and new-fab investment. The risk is mistaking a cyclical price rebound for durable advantage.",
+        downCase: "A pricing reversal magnifies fixed-cost and depreciation pressure. Strategic focus shifts to cash-flow defense, product-mix upgrade, and long-term customer agreements.",
+        baseCase: "The base case shows that 2025 profitability gives room for reinvestment, but long-term resilience still depends on DDR5, RDIMM, KGD, and higher-value applications.",
+        utilCase: "Lower utilization weakens scale efficiency in a high-fixed-cost industry. Even without a sharp ASP decline, earnings quality may remain under pressure."
+      }
+    };
+
+    const scenarioData = {
+      zh: [
+        { id: "base", label: "Base Case", title: "Base Case", implication: "維持目前產品配置：DDR4 提供現金流，DDR5 / RDIMM 作為升級主力，LPDDR5 / KGD 以選擇性投資控制風險。", risk: "Balanced", return: "Medium", capex: "DDR5 45% / KGD 25% / DDR4 30%", allocation: [45, 25, 30], positions: { ddr4: [28, 28], ddr5: [70, 72], "ddr5-rdimm": [76, 82], lpddr5: [42, 68], kgd: [58, 48], mcp: [36, 42] } },
+        { id: "ai", label: "AI Server Upside", title: "AI Server Upside", implication: "AI 伺服器與高容量模組需求升溫，使 DDR5 / RDIMM 的成長性與資本優先順序上升。", risk: "Execution", return: "Higher", capex: "DDR5 58% / KGD 24% / DDR4 18%", allocation: [58, 24, 18], positions: { ddr4: [24, 24], ddr5: [78, 82], "ddr5-rdimm": [84, 88], lpddr5: [44, 70], kgd: [64, 58], mcp: [34, 38] } },
+        { id: "downcycle", label: "Price Downcycle", title: "Price Downcycle", implication: "DRAM 價格反轉時，DDR4 現金流壓力增加，策略重心轉向防守、現金流與客戶長約。", risk: "High", return: "Lower", capex: "DDR5 34% / KGD 18% / DDR4 48%", allocation: [34, 18, 48], positions: { ddr4: [24, 20], ddr5: [62, 60], "ddr5-rdimm": [68, 68], lpddr5: [36, 55], kgd: [50, 42], mcp: [30, 32] } },
+        { id: "partner", label: "Strategic Partner Boost", title: "Strategic Partner Boost", implication: "策略私募與供應協議提高 KGD / LPDDR5 / MCP 的合作價值，南亞科可藉互補方案提高客戶轉換成本。", risk: "Partner dependency", return: "Selective upside", capex: "DDR5 42% / KGD 38% / DDR4 20%", allocation: [42, 38, 20], positions: { ddr4: [26, 30], ddr5: [72, 76], "ddr5-rdimm": [78, 80], lpddr5: [52, 72], kgd: [68, 64], mcp: [48, 50] } }
+      ],
+      en: [
+        { id: "base", label: "Base Case", title: "Base Case", implication: "Maintain the current portfolio: DDR4 supports cash flow, DDR5/RDIMM drives migration, and LPDDR5/KGD are selectively built to control risk.", risk: "Balanced", return: "Medium", capex: "DDR5 45% / KGD 25% / DDR4 30%", allocation: [45, 25, 30], positions: { ddr4: [28, 28], ddr5: [70, 72], "ddr5-rdimm": [76, 82], lpddr5: [42, 68], kgd: [58, 48], mcp: [36, 42] } },
+        { id: "ai", label: "AI Server Upside", title: "AI Server Upside", implication: "AI server and high-capacity module demand increase the growth profile and capital priority of DDR5/RDIMM.", risk: "Execution", return: "Higher", capex: "DDR5 58% / KGD 24% / DDR4 18%", allocation: [58, 24, 18], positions: { ddr4: [24, 24], ddr5: [78, 82], "ddr5-rdimm": [84, 88], lpddr5: [44, 70], kgd: [64, 58], mcp: [34, 38] } },
+        { id: "downcycle", label: "Price Downcycle", title: "Price Downcycle", implication: "When DRAM pricing reverses, DDR4 cash-flow pressure increases and strategy shifts toward defense, cash flow, and long-term agreements.", risk: "High", return: "Lower", capex: "DDR5 34% / KGD 18% / DDR4 48%", allocation: [34, 18, 48], positions: { ddr4: [24, 20], ddr5: [62, 60], "ddr5-rdimm": [68, 68], lpddr5: [36, 55], kgd: [50, 42], mcp: [30, 32] } },
+        { id: "partner", label: "Strategic Partner Boost", title: "Strategic Partner Boost", implication: "Strategic private placements and supply agreements raise the collaboration value of KGD/LPDDR5/MCP, helping Nanya increase customer switching costs through complementary solutions.", risk: "Partner dependency", return: "Selective upside", capex: "DDR5 42% / KGD 38% / DDR4 20%", allocation: [42, 38, 20], positions: { ddr4: [26, 30], ddr5: [72, 76], "ddr5-rdimm": [78, 80], lpddr5: [52, 72], kgd: [68, 64], mcp: [48, 50] } }
+      ]
+    };
+
+    const universeData = {
+      zh: [
+        { id: "sandisk", category: "Customers", company: "SanDisk", x: 300, y: 88, type: "cooperation", role: "客戶 / 策略投資者", cooperation: "DRAM 供應協議、策略私募與長期需求 visibility。", competition: "採購談判、價格壓力與供應商替代風險。", move: "以穩定供應與客製化記憶體設計提高 design-in 深度。" },
+        { id: "kioxia", category: "Customers", company: "Kioxia", x: 456, y: 148, type: "cooperation", role: "客戶 / 互補者", cooperation: "DRAM 供應協議、策略私募、NAND + DRAM 解決方案互補。", competition: "採購談判、替代供應商風險、技術路線依賴。", move: "透過 KGD、MCP 與 LPDDR5 合作提高轉換成本，深化 design-in 關係。" },
+        { id: "cisco", category: "Customers", company: "Cisco", x: 512, y: 300, type: "technology", role: "網通客戶 / 策略投資者", cooperation: "網路設備與資料中心伺服器需求讓產品驗證更貼近終端應用。", competition: "大型客戶議價能力高，會比較多家記憶體供應商。", move: "以 RDIMM、DDR5 與 FAE 技術支援鎖定網通設計驗證。" },
+        { id: "server", category: "Customers", company: "Server customers", x: 456, y: 452, type: "dependency", role: "高容量需求端", cooperation: "高容量伺服器記憶體需求支撐 DDR5 / RDIMM 升級。", competition: "標準品容易被大廠供應規模壓制。", move: "聚焦客製化、高容量與供應穩定性，而非價格戰。" },
+        { id: "solidigm", category: "Complementors", company: "Solidigm", x: 300, y: 512, type: "technology", role: "互補者 / 儲存生態系", cooperation: "SSD 與 DRAM 組合可形成資料中心記憶體與儲存方案。", competition: "互補方案仍需分配價值與控制路線依賴。", move: "用互補方案擴大 KGD / MCP 合作空間。" },
+        { id: "piecemakers", category: "Complementors", company: "PieceMakers", x: 144, y: 452, type: "technology", role: "客製化記憶體夥伴", cooperation: "共同發展超高頻寬與客製化 AI 記憶體方向。", competition: "技術專案仍有量產與客戶採用不確定性。", move: "把研發投資連到高階應用，而非只追逐標準規格。" },
+        { id: "samsung", category: "Competitors", company: "Samsung / SK hynix / Micron", x: 88, y: 300, type: "competition", role: "全球 DRAM 三大競爭者", cooperation: "共同擴大 DDR5 與 AI memory 市場標準。", competition: "規模、製程與客戶覆蓋率壓縮南亞科價格權力。", move: "避開正面價格戰，以 B2B 利基與策略客戶關係突圍。" },
+        { id: "suppliers", category: "Suppliers", company: "Equipment / wafer / materials", x: 144, y: 148, type: "dependency", role: "設備、矽晶圓與材料供應商", cooperation: "長約與供應穩定支撐 1B/1C 製程與新廠節點。", competition: "設備交期、價格與技術限制會影響升級速度。", move: "用資本紀律與台塑集團信用支撐長期設備與材料配置。" }
+      ],
+      en: [
+        { id: "sandisk", category: "Customers", company: "SanDisk", x: 300, y: 88, type: "cooperation", role: "Customer / strategic investor", cooperation: "DRAM supply agreement, private placement, and long-term demand visibility.", competition: "Procurement bargaining, price pressure, and supplier replacement risk.", move: "Deepen design-in through stable supply and custom-memory support." },
+        { id: "kioxia", category: "Customers", company: "Kioxia", x: 456, y: 148, type: "cooperation", role: "Customer / complementor", cooperation: "DRAM supply agreement, private placement, NAND + DRAM solution complementarity.", competition: "Procurement bargaining, supplier replacement risk, technical roadmap dependency.", move: "Use KGD / MCP / LPDDR5 cooperation to raise switching cost and deepen design-in relationship." },
+        { id: "cisco", category: "Customers", company: "Cisco", x: 512, y: 300, type: "technology", role: "Networking customer / strategic investor", cooperation: "Networking and data-center demand brings product qualification closer to end use.", competition: "Large customers compare multiple memory suppliers and hold bargaining power.", move: "Use RDIMM, DDR5, and FAE support to lock into networking design validation." },
+        { id: "server", category: "Customers", company: "Server customers", x: 456, y: 452, type: "dependency", role: "High-capacity demand side", cooperation: "Server memory demand supports DDR5 / RDIMM migration.", competition: "Standard products can be squeezed by larger suppliers.", move: "Focus on customization, capacity, and supply stability rather than price war." },
+        { id: "solidigm", category: "Complementors", company: "Solidigm", x: 300, y: 512, type: "technology", role: "Complementor / storage ecosystem", cooperation: "SSD and DRAM combinations can support data-center memory and storage solutions.", competition: "Complementary solutions still require value sharing and roadmap control.", move: "Use complementary solutions to expand KGD / MCP cooperation space." },
+        { id: "piecemakers", category: "Complementors", company: "PieceMakers", x: 144, y: 452, type: "technology", role: "Custom-memory partner", cooperation: "Collaborates on ultra-bandwidth and custom AI memory directions.", competition: "Technology projects carry ramp and customer adoption uncertainty.", move: "Link R&D investment to higher-value applications, not only standard specs." },
+        { id: "samsung", category: "Competitors", company: "Samsung / SK hynix / Micron", x: 88, y: 300, type: "competition", role: "Top-three global DRAM rivals", cooperation: "Collectively expand DDR5 and AI memory standards.", competition: "Scale, process nodes, and customer reach compress Nanya's pricing power.", move: "Avoid frontal price wars and compete through B2B niches and strategic customer ties." },
+        { id: "suppliers", category: "Suppliers", company: "Equipment / wafer / materials", x: 144, y: 148, type: "dependency", role: "Equipment, silicon wafer, and materials suppliers", cooperation: "Long-term supply stability supports 1B/1C migration and new-fab timing.", competition: "Lead time, cost, and technology limits affect migration speed.", move: "Use capital discipline and Formosa Group credit support for long-term input planning." }
+      ]
+    };
+
+    const universeLineColors = {
+      cooperation: "#003c33",
+      competition: "#ff7759",
+      technology: "#1863dc",
+      dependency: "#93939f"
+    };
+
+    const reactorData = {
+      zh: {
+        skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "English communication", "FAE support", "Customer validation"],
+        buckets: [
+          { id: "yield", label: "1B / 1C process yield", matches: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "製程整合與良率分析是難以快速外包的隱性知識，會累積成製程升級能力。" },
+          { id: "fab", label: "Smart fab automation", matches: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "當 MES、資料庫與程式能力被嵌入排程、異常分析與新廠營運流程，個人技能會轉化為智慧製造知識。" },
+          { id: "design", label: "Customer design-in", matches: ["FAE support", "Customer validation", "English communication"], role: "FAE Technical Engineer", kbv: "FAE 與客戶驗證能力能把產品規格轉化成客戶 switching cost，是 B2B 記憶體供應商的重要隱性資產。" },
+          { id: "global", label: "Global B2B support", matches: ["English communication", "FAE support", "Customer validation"], role: "FAE Technical Engineer", kbv: "國際客戶溝通、驗證與支援能力能把技術交付轉化為可重複的 B2B 服務流程。" },
+          { id: "esg", label: "ESG supply-chain compliance", matches: ["English communication"], role: "Partially matched capability", kbv: "此 bucket 需要永續、供應鏈與國際客戶溝通能力；目前不新增未查證 ESG 職缺。" }
+        ],
+        prompt: "先選擇一項技能，再點選右側策略能力。",
+        success: "合理配對。",
+        hintDesign: "這項技能比較接近客戶端驗證，而不是製程良率。試著把它配對到 Customer design-in。",
+        hintFab: "這項技能比較接近資料系統或智慧製造，試著配對到 Smart fab automation。",
+        hintYield: "這項技能更接近製程整合與良率，試著配對到 1B / 1C process yield。",
+        genericHint: "這個配對不是最直接的策略能力連結，換一個 bucket 試試。"
+      },
+      en: {
+        skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "English communication", "FAE support", "Customer validation"],
+        buckets: [
+          { id: "yield", label: "1B / 1C process yield", matches: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "Process integration and yield analysis are tacit capabilities that cannot be quickly outsourced, accumulating into process-migration capability." },
+          { id: "fab", label: "Smart fab automation", matches: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "When MES, database, and programming skills are embedded in scheduling, exception analysis, and fab operations, individual skills become smart-manufacturing knowledge." },
+          { id: "design", label: "Customer design-in", matches: ["FAE support", "Customer validation", "English communication"], role: "FAE Technical Engineer", kbv: "FAE and customer-validation capabilities turn product specifications into customer switching costs, becoming a key tacit asset for a B2B memory supplier." },
+          { id: "global", label: "Global B2B support", matches: ["English communication", "FAE support", "Customer validation"], role: "FAE Technical Engineer", kbv: "International communication, validation, and support capabilities turn technical delivery into a repeatable B2B service process." },
+          { id: "esg", label: "ESG supply-chain compliance", matches: ["English communication"], role: "Partially matched capability", kbv: "This bucket needs sustainability, supply-chain, and international customer communication capability; no unverified ESG job posting is added." }
+        ],
+        prompt: "Select a skill, then match it to a strategic capability.",
+        success: "Reasonable match.",
+        hintDesign: "This skill is closer to customer-side validation than process yield. Try matching it with Customer design-in.",
+        hintFab: "This skill is closer to data systems or smart manufacturing. Try matching it with Smart fab automation.",
+        hintYield: "This skill is closer to process integration and yield. Try matching it with 1B / 1C process yield.",
+        genericHint: "This is not the most direct capability link. Try another bucket."
+      }
+    };
+
     let currentLang = localStorage.getItem("nanya-lang") || "zh";
     let currentQuestion = 0;
     let selectedAnswer = null;
@@ -4622,7 +5706,24 @@
     let marketFocus = "industry";
     let stpFocus = "server";
     let portfolioFocus = "ddr5";
+    let portfolioScenario = "base";
     let valueNetFocus = "SanDisk";
+    let aspCapexLevel = "base";
+    let universeFocus = "kioxia";
+    let reactorSelectedSkill = null;
+    let reactorLastBucket = null;
+    let storyIndex = 0;
+    let storyTimer = null;
+    let storyAutoActive = false;
+    let lastDialogTrigger = null;
+    const focusableSelector = [
+      "a[href]",
+      "button:not([disabled])",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "textarea:not([disabled])",
+      "[tabindex]:not([tabindex='-1'])"
+    ].join(",");
     let voices = [];
     let speechQueue = [];
     let speechIndex = 0;
@@ -4646,14 +5747,20 @@
         if (translations[lang][key]) node.textContent = translations[lang][key];
       });
       qs("#langBtn").textContent = lang === "zh" ? "EN" : "繁";
+      renderLabSelector();
+      renderAspLab();
+      renderPortfolioScenario();
       renderFlipCards();
       renderFinanceExplorer();
       renderMarketLab();
       renderPortfolioTool();
       renderCapabilityFlow();
       renderGrowthNetwork();
+      renderUniverseLab();
       renderOrganizationSummary();
+      renderCapabilityReactor();
       renderTheoryMap();
+      if (qs("#storyMode")?.classList.contains("is-open")) renderStorySlide();
       resetQuiz();
       setVoiceState(false, false);
       qs("#voiceStatus").textContent = "";
@@ -4706,6 +5813,374 @@
           `).join("")}
         </tbody>
       `;
+    }
+
+    function renderLabSelector() {
+      const list = qs("#strategyLabList");
+      if (!list) return;
+      list.innerHTML = labSelectorData[currentLang].map((item) => `
+        <button class="lab-row" type="button" data-lab-target="${escapeHtml(item.target)}">
+          <span>
+            <span>${escapeHtml(item.label)}</span>
+            <strong>${escapeHtml(item.title)}</strong>
+            <p>${escapeHtml(item.body)}</p>
+          </span>
+          <span aria-hidden="true">→</span>
+        </button>
+      `).join("");
+      list.querySelectorAll("[data-lab-target]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = qs(`#${button.dataset.labTarget}`);
+          closeStrategyLab(false);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    }
+
+    function trapDialogFocus(event, container) {
+      if (event.key !== "Tab" || !container) return;
+      const focusable = [...container.querySelectorAll(focusableSelector)].filter((element) => {
+        const style = window.getComputedStyle(element);
+        return style.display !== "none" && style.visibility !== "hidden";
+      });
+      if (!focusable.length) {
+        event.preventDefault();
+        container.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (document.activeElement === container) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!container.contains(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    function openStrategyLab() {
+      const modal = qs("#strategyLabModal");
+      const drawer = qs("#strategyLabDrawer");
+      if (!modal || !drawer) return;
+      lastDialogTrigger = document.activeElement;
+      renderLabSelector();
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      requestAnimationFrame(() => drawer.focus());
+    }
+
+    function closeStrategyLab(restoreFocus = true) {
+      const modal = qs("#strategyLabModal");
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      if (restoreFocus && lastDialogTrigger && typeof lastDialogTrigger.focus === "function") {
+        lastDialogTrigger.focus();
+      }
+    }
+
+    function calculateAspScenario() {
+      const aspChange = Number(qs("#aspChange")?.value || 0);
+      const utilization = Number(qs("#aspUtilization")?.value || 85);
+      const capexPenalty = { low: 0, base: 8, high: 16 }[aspCapexLevel] || 8;
+      const aspFactor = 1 + aspChange / 100;
+      const utilFactor = utilization / 85;
+      const revenueIndex = Math.round(100 * aspFactor * utilFactor);
+      let stressScore = 50;
+      stressScore -= aspChange * 0.9;
+      stressScore -= (utilization - 85) * 1.2;
+      stressScore += capexPenalty;
+      const marginKey = stressScore < 30 ? "low" : stressScore < 50 ? "moderate" : stressScore < 70 ? "high" : "severe";
+      const epsKey = revenueIndex >= 118 && stressScore < 45 ? "positive" : revenueIndex >= 98 && stressScore < 58 ? "stable" : stressScore < 72 ? "pressure" : "loss";
+      const resilienceKey = stressScore < 35 ? "strong" : stressScore < 55 ? "watch" : stressScore < 72 ? "constrained" : "defensive";
+      let readoutKey = "baseCase";
+      if (aspChange >= 15 && utilization >= 90) readoutKey = "highCase";
+      else if (aspChange <= -10 && aspCapexLevel === "high") readoutKey = "downCase";
+      else if (utilization <= 75) readoutKey = "utilCase";
+      return { aspChange, utilization, revenueIndex, marginKey, epsKey, resilienceKey, readoutKey };
+    }
+
+    function renderAspLab() {
+      const grid = qs("#aspOutputGrid");
+      const readout = qs("#aspReadout");
+      const buttons = qs("#aspCapexButtons");
+      if (!grid || !readout || !buttons) return;
+      const labels = aspLabels[currentLang];
+      const result = calculateAspScenario();
+      const aspValue = qs("#aspChangeValue");
+      const utilValue = qs("#aspUtilizationValue");
+      if (aspValue) aspValue.textContent = `${result.aspChange > 0 ? "+" : ""}${result.aspChange}%`;
+      if (utilValue) utilValue.textContent = `${result.utilization}%`;
+      buttons.innerHTML = capexLevels.map((level) => `
+        <button class="${level === aspCapexLevel ? "is-active" : ""}" type="button" data-capex-level="${level}" aria-pressed="${level === aspCapexLevel}">
+          ${escapeHtml(labels.capex[level])}
+        </button>
+      `).join("");
+      buttons.querySelectorAll("[data-capex-level]").forEach((button) => {
+        button.addEventListener("click", () => {
+          aspCapexLevel = button.dataset.capexLevel;
+          renderAspLab();
+        });
+      });
+      grid.innerHTML = `
+        <div class="asp-output-card">
+          <span>${escapeHtml(labels.revenue)}</span>
+          <strong>${result.revenueIndex}</strong>
+          <div class="asp-revenue-bar" aria-hidden="true"><span style="--bar-width:${Math.max(12, Math.min(result.revenueIndex, 150))}%"></span></div>
+        </div>
+        <div class="asp-output-card"><span>${escapeHtml(labels.margin)}</span><strong>${escapeHtml(labels.marginValues[result.marginKey])}</strong></div>
+        <div class="asp-output-card"><span>${escapeHtml(labels.eps)}</span><strong>${escapeHtml(labels.epsValues[result.epsKey])}</strong></div>
+        <div class="asp-output-card"><span>${escapeHtml(labels.resilience)}</span><strong>${escapeHtml(labels.resilienceValues[result.resilienceKey])}</strong></div>
+      `;
+      readout.innerHTML = `<span class="lab-kicker">${escapeHtml(labels.readout)}</span><p>${escapeHtml(labels[result.readoutKey])}</p>`;
+    }
+
+    function getCurrentScenario() {
+      const data = scenarioData[currentLang];
+      return data.find((item) => item.id === portfolioScenario) || data[0];
+    }
+
+    function renderPortfolioScenario() {
+      const buttons = qs("#scenarioButtons");
+      const panel = qs("#scenarioPanel");
+      if (!buttons || !panel) return;
+      const rows = scenarioData[currentLang];
+      const active = getCurrentScenario();
+      portfolioScenario = active.id;
+      buttons.innerHTML = rows.map((item) => `
+        <button class="${item.id === active.id ? "is-active" : ""}" type="button" data-scenario="${escapeHtml(item.id)}" aria-pressed="${item.id === active.id}">
+          ${escapeHtml(item.label)}
+        </button>
+      `).join("");
+      buttons.querySelectorAll("[data-scenario]").forEach((button) => {
+        button.addEventListener("click", () => {
+          portfolioScenario = button.dataset.scenario;
+          renderPortfolioScenario();
+          renderPortfolioTool();
+        });
+      });
+      panel.innerHTML = `
+        <h4>${escapeHtml(active.title)}</h4>
+        <p>${escapeHtml(active.implication)}</p>
+        <div class="scenario-score-grid">
+          <div><span>Risk</span><strong>${escapeHtml(active.risk)}</strong></div>
+          <div><span>Return</span><strong>${escapeHtml(active.return)}</strong></div>
+          <div><span>CapEx allocation</span><strong>${escapeHtml(active.capex)}</strong></div>
+        </div>
+        <div class="scenario-allocation" aria-hidden="true">
+          ${active.allocation.map((value) => `<span style="--allocation:${value}%"></span>`).join("")}
+        </div>
+      `;
+    }
+
+    function renderUniverseLab() {
+      const map = qs("#universeMap");
+      const detail = qs("#universeDetail");
+      const mobile = qs("#universeMobileList");
+      if (!map || !detail || !mobile) return;
+      const rows = universeData[currentLang];
+      const active = rows.find((item) => item.id === universeFocus) || rows[0];
+      universeFocus = active.id;
+      const lines = rows.map((item) => `
+        <line class="universe-line ${item.id === active.id ? "is-active" : ""}" x1="300" y1="300" x2="${item.x}" y2="${item.y}" stroke="${universeLineColors[item.type]}" ${item.type === "competition" ? "stroke-dasharray=\"6 7\"" : ""}/>
+      `).join("");
+      const nodes = rows.map((item) => `
+        <g class="universe-node ${item.id === active.id ? "is-active" : ""}" role="button" tabindex="0" data-universe="${escapeHtml(item.id)}" aria-label="${escapeHtml(item.company)}">
+          <circle cx="${item.x}" cy="${item.y}" r="52"></circle>
+          <text x="${item.x}" y="${item.y - 5}">${escapeHtml(item.company.split(" / ")[0])}</text>
+          <text x="${item.x}" y="${item.y + 13}">${escapeHtml(item.category)}</text>
+        </g>
+      `).join("");
+      map.innerHTML = `
+        <svg class="universe-map" viewBox="0 0 600 600" role="img" aria-label="Co-opetition Universe">
+          ${lines}
+          <circle cx="300" cy="300" r="72" fill="var(--near-black)"></circle>
+          <text x="300" y="294" fill="var(--canvas)" font-size="18" text-anchor="middle">Nanya</text>
+          <text x="300" y="316" fill="var(--canvas)" font-size="12" text-anchor="middle">Technology</text>
+          ${nodes}
+        </svg>
+      `;
+      map.querySelectorAll("[data-universe]").forEach((node) => {
+        const activate = () => {
+          universeFocus = node.getAttribute("data-universe");
+          renderUniverseLab();
+        };
+        node.addEventListener("click", activate);
+        node.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activate();
+          }
+        });
+      });
+      detail.innerHTML = `
+        <span class="lab-kicker">${escapeHtml(active.category)}</span>
+        <h4>${escapeHtml(active.company)}</h4>
+        <dl>
+          <dt>Role</dt><dd>${escapeHtml(active.role)}</dd>
+          <dt>Cooperation</dt><dd>${escapeHtml(active.cooperation)}</dd>
+          <dt>Competition</dt><dd>${escapeHtml(active.competition)}</dd>
+          <dt>Strategic move</dt><dd>${escapeHtml(active.move)}</dd>
+        </dl>
+      `;
+      mobile.innerHTML = rows.map((item) => `
+        <button class="${item.id === active.id ? "is-active" : ""}" type="button" data-universe-mobile="${escapeHtml(item.id)}" aria-expanded="${item.id === active.id}">
+          <span class="lab-kicker">${escapeHtml(item.category)}</span>
+          <strong>${escapeHtml(item.company)}</strong>
+          ${item.id === active.id ? `<p>${escapeHtml(item.move)}</p>` : ""}
+        </button>
+      `).join("");
+      mobile.querySelectorAll("[data-universe-mobile]").forEach((button) => {
+        button.addEventListener("click", () => {
+          universeFocus = button.dataset.universeMobile;
+          renderUniverseLab();
+        });
+      });
+    }
+
+    function reactorHint(skill) {
+      const data = reactorData[currentLang];
+      if (["FAE support", "Customer validation", "English communication"].includes(skill)) return data.hintDesign;
+      if (["C++", "MES system", "SQL / Oracle"].includes(skill)) return data.hintFab;
+      if (["Yield analysis", "Process integration", "Semiconductor physics"].includes(skill)) return data.hintYield;
+      return data.genericHint;
+    }
+
+    function renderCapabilityReactor(message = null) {
+      const skills = qs("#reactorSkills");
+      const buckets = qs("#reactorBuckets");
+      const readout = qs("#reactorReadout");
+      if (!skills || !buckets || !readout) return;
+      const data = reactorData[currentLang];
+      skills.innerHTML = data.skills.map((skill) => `
+        <button class="reactor-chip" type="button" data-skill="${escapeHtml(skill)}" aria-pressed="${skill === reactorSelectedSkill}">
+          ${escapeHtml(skill)}
+        </button>
+      `).join("");
+      buckets.innerHTML = data.buckets.map((bucket) => `
+        <button class="reactor-bucket ${bucket.id === reactorLastBucket ? "is-success" : ""}" type="button" data-bucket="${escapeHtml(bucket.id)}">
+          ${escapeHtml(bucket.label)}
+        </button>
+      `).join("");
+      skills.querySelectorAll("[data-skill]").forEach((button) => {
+        button.addEventListener("click", () => {
+          reactorSelectedSkill = button.dataset.skill;
+          renderCapabilityReactor();
+        });
+      });
+      buckets.querySelectorAll("[data-bucket]").forEach((button) => {
+        const bucket = data.buckets.find((item) => item.id === button.dataset.bucket);
+        button.addEventListener("click", () => {
+          if (!reactorSelectedSkill) {
+            renderCapabilityReactor(data.prompt);
+            return;
+          }
+          if (bucket.matches.includes(reactorSelectedSkill)) {
+            reactorLastBucket = bucket.id;
+            renderCapabilityReactor(data.success);
+            return;
+          }
+          reactorLastBucket = null;
+          renderCapabilityReactor(reactorHint(reactorSelectedSkill));
+        });
+      });
+      const matchedBucket = data.buckets.find((bucket) => bucket.id === reactorLastBucket);
+      if (matchedBucket) {
+        readout.innerHTML = `
+          <span class="lab-kicker">${escapeHtml(message || data.success)}</span>
+          <dl>
+            <dt>Skill</dt><dd>${escapeHtml(reactorSelectedSkill)}</dd>
+            <dt>Job role</dt><dd>${escapeHtml(matchedBucket.role)}</dd>
+            <dt>KBV</dt><dd>${escapeHtml(matchedBucket.kbv)}</dd>
+          </dl>
+        `;
+      } else {
+        readout.innerHTML = `<p>${escapeHtml(message || data.prompt)}</p>`;
+      }
+    }
+
+    function buildStorySlides() {
+      const sectionIds = ["top", "company", "market", "finance", "portfolio", "resources", "growth", "career", "quiz", "integrity", "team"];
+      return sectionIds.map((id) => {
+        const section = id === "top" ? qs(".hero") : qs(`#${id}`);
+        if (!section) return null;
+        const title = section.querySelector(".section-title, #hero-title")?.textContent.trim() || id;
+        const question = section.querySelector(".narrative-tag.is-question p")?.textContent.trim() || "";
+        const takeaway = section.querySelector("[data-takeaway]")?.textContent.trim() || "";
+        return { id, title, question, takeaway };
+      }).filter(Boolean);
+    }
+
+    function renderStorySlide() {
+      const slide = qs("#storySlide");
+      const count = qs("#storyCount");
+      const progress = qs("#storyProgress");
+      if (!slide || !count || !progress) return;
+      const slides = buildStorySlides();
+      if (!slides.length) return;
+      storyIndex = Math.min(Math.max(storyIndex, 0), slides.length - 1);
+      const item = slides[storyIndex];
+      count.textContent = `STRATEGY STORY / ${String(storyIndex + 1).padStart(2, "0")}`;
+      progress.style.setProperty("--progress", `${((storyIndex + 1) / slides.length) * 100}%`);
+      slide.innerHTML = `
+        <span class="story-kicker">${escapeHtml(item.id.toUpperCase())}</span>
+        <h2 id="storyTitle">${escapeHtml(item.title)}</h2>
+        ${item.question ? `<p><strong>${currentLang === "zh" ? "研究問題" : "Research question"}:</strong> ${escapeHtml(item.question)}</p>` : ""}
+        ${item.takeaway ? `<p><strong>${currentLang === "zh" ? "關鍵結論" : "Key takeaway"}:</strong> ${escapeHtml(item.takeaway)}</p>` : ""}
+      `;
+    }
+
+    function openStoryMode() {
+      const overlay = qs("#storyMode");
+      if (!overlay) return;
+      lastDialogTrigger = document.activeElement;
+      storyIndex = 0;
+      overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
+      renderStorySlide();
+      qs("#storyCloseBtn")?.focus();
+    }
+
+    function closeStoryMode(restoreFocus = true) {
+      const overlay = qs("#storyMode");
+      if (!overlay) return;
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      stopStoryAuto();
+      if (restoreFocus && lastDialogTrigger && typeof lastDialogTrigger.focus === "function") lastDialogTrigger.focus();
+    }
+
+    function stepStory(delta) {
+      const slides = buildStorySlides();
+      if (!slides.length) return;
+      storyIndex = (storyIndex + delta + slides.length) % slides.length;
+      renderStorySlide();
+    }
+
+    function stopStoryAuto() {
+      if (storyTimer) clearInterval(storyTimer);
+      storyTimer = null;
+      storyAutoActive = false;
+      const button = qs("#storyAutoBtn");
+      if (button) button.textContent = translations[currentLang].storyAuto;
+    }
+
+    function toggleStoryAuto() {
+      if (storyAutoActive) {
+        stopStoryAuto();
+        return;
+      }
+      storyAutoActive = true;
+      const button = qs("#storyAutoBtn");
+      if (button) button.textContent = translations[currentLang].storyStop;
+      storyTimer = setInterval(() => stepStory(1), 10000);
     }
 
     function renderFinanceExplorer() {
@@ -4868,13 +6343,15 @@
       chart.querySelectorAll(".portfolio-dot").forEach((node) => node.remove());
       const active = data.find((item) => item.id === portfolioFocus) || data[0];
       portfolioFocus = active.id;
+      const scenario = getCurrentScenario();
       data.forEach((item) => {
         const button = document.createElement("button");
         button.type = "button";
         button.className = `portfolio-dot ${item.id === active.id ? "is-active" : ""}`;
         button.dataset.product = item.id;
-        button.style.setProperty("--x", `${item.x}%`);
-        button.style.setProperty("--y", `${item.y}%`);
+        const position = scenario.positions[item.id] || [item.x, item.y];
+        button.style.setProperty("--x", `${position[0]}%`);
+        button.style.setProperty("--y", `${position[1]}%`);
         button.textContent = item.label;
         button.addEventListener("click", () => {
           portfolioFocus = item.id;
@@ -4980,15 +6457,29 @@
       if (!visual) return;
       const data = placementData[currentLang];
       const total = verifiedFacts.placement.totalTwdBnApprox;
+      const colors = ["#ff7759", "#1863dc", "#003c33", "#ffad9b"];
+      const amountText = (item) => currentLang === "zh" ? `約 NT$${item.amount * 10} 億` : `Approx. NT$${item.amount}B`;
+      const shareText = (item) => `${Math.round((item.amount / total) * 100)}%`;
+      const note = currentLang === "zh"
+        ? "色塊寬度代表概約投資金額占比；下方卡片只補充合作關係。"
+        : "Segment width shows approximate investment share; cards below add relationship context only.";
+
       visual.innerHTML = `
-        <div class="allocation-bar" aria-hidden="true">
-          ${data.map((item) => `<span style="--allocation-width:${(item.amount / total) * 100}%"></span>`).join("")}
+        <div class="allocation-bar" role="img" aria-label="${escapeHtml(data.map((item) => `${item.name} ${shareText(item)} ${amountText(item)}`).join(", "))}">
+          ${data.map((item, index) => `
+            <span class="allocation-segment ${index === 3 ? "is-light" : ""}" style="--allocation-width:${(item.amount / total) * 100}%; --allocation-color:${colors[index]}">
+              <span class="allocation-share">${shareText(item)}</span>
+              <strong>${escapeHtml(item.name)}</strong>
+              <em>${escapeHtml(amountText(item))}</em>
+            </span>
+          `).join("")}
         </div>
+        <p class="allocation-note">${escapeHtml(note)}</p>
         <div class="allocation-grid">
           ${data.map((item) => `
             <article class="allocation-card">
-              <span>${escapeHtml(item.relation)}</span>
-              <strong>${escapeHtml(item.name)} · ${currentLang === "zh" ? `約 NT$${item.amount * 10} 億` : `Approx. NT$${item.amount}B`}</strong>
+              <span>${escapeHtml(item.name)}</span>
+              <p class="allocation-relation">${escapeHtml(item.relation)}</p>
             </article>
           `).join("")}
         </div>
@@ -5199,6 +6690,9 @@
       const heroLead = qs(".hero-lead") ? qs(".hero-lead").textContent : "";
       if (heroTitle) parts.push(heroTitle);
       if (heroLead) parts.push(heroLead);
+      parts.push(currentLang === "zh"
+        ? "Nanya Strategy Lab 提供景氣敏感度、競合宇宙、能力反應爐與產品情境切換，用教學模擬串連策略判讀。"
+        : "Nanya Strategy Lab connects cycle sensitivity, co-opetition mapping, capability matching, and portfolio scenarios as teaching simulations.");
 
       // 2. Sections
       const sections = ["company", "market", "finance", "portfolio", "resources", "growth", "career", "quiz", "integrity", "team"];
@@ -5340,6 +6834,37 @@
     }
 
     function bindEvents() {
+      qs("#strategyLabBtn")?.addEventListener("click", openStrategyLab);
+      qs("#strategyLabClose")?.addEventListener("click", closeStrategyLab);
+      qs("#strategyLabModal")?.addEventListener("click", (event) => {
+        if (event.target === qs("#strategyLabModal")) closeStrategyLab();
+      });
+      qs("#aspChange")?.addEventListener("input", renderAspLab);
+      qs("#aspUtilization")?.addEventListener("input", renderAspLab);
+      qs("#presentBtn")?.addEventListener("click", openStoryMode);
+      qs("#storyCloseBtn")?.addEventListener("click", closeStoryMode);
+      qs("#storyPrevBtn")?.addEventListener("click", () => stepStory(-1));
+      qs("#storyNextBtn")?.addEventListener("click", () => stepStory(1));
+      qs("#storyAutoBtn")?.addEventListener("click", toggleStoryAuto);
+      qs("#storyMode")?.addEventListener("click", (event) => {
+        if (event.target === qs("#storyMode")) closeStoryMode();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (qs("#strategyLabModal")?.classList.contains("is-open")) {
+          trapDialogFocus(event, qs("#strategyLabDrawer"));
+        }
+        if (qs("#storyMode")?.classList.contains("is-open")) {
+          trapDialogFocus(event, qs("#storyMode"));
+        }
+        if (event.key === "Escape") {
+          if (qs("#strategyLabModal")?.classList.contains("is-open")) closeStrategyLab();
+          if (qs("#storyMode")?.classList.contains("is-open")) closeStoryMode();
+        }
+        if (qs("#storyMode")?.classList.contains("is-open")) {
+          if (event.key === "ArrowRight") stepStory(1);
+          if (event.key === "ArrowLeft") stepStory(-1);
+        }
+      });
       qs("#langBtn").addEventListener("click", () => applyLanguage(currentLang === "zh" ? "en" : "zh"));
       qs("#themeBtn").addEventListener("click", () => {
         const current = document.documentElement.dataset.theme || "light";
