@@ -2973,6 +2973,24 @@
       background: var(--canvas);
     }
 
+    .mobile-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .mobile-actions .btn {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .mobile-actions .icon-button {
+      flex-shrink: 0;
+    }
+
     .mobile-panel a {
       display: block;
       padding: 12px 0;
@@ -3072,6 +3090,12 @@
       }
 
       .nav-links {
+        display: none;
+      }
+
+      .nav-actions #presentBtn,
+      .nav-actions #themeBtn,
+      .nav-actions #langBtn {
         display: none;
       }
 
@@ -3521,18 +3545,6 @@
         flex-basis: 100%;
         order: -1;
       }
-
-      .present-button {
-        width: 42px;
-        padding: 0;
-        font-size: 0;
-        overflow: hidden;
-      }
-
-      .present-button::before {
-        content: "P";
-        font-size: 13px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -3637,6 +3649,16 @@
       </div>
     </div>
     <div class="mobile-panel" id="mobilePanel">
+      <div class="mobile-actions">
+        <button class="btn btn-outline present-button" id="presentBtnMobile" type="button" data-i18n="presentBtn" aria-label="開啟簡報模式" title="簡報模式" data-i18n-aria-label="presentAriaLabel" data-i18n-title="presentTitle">簡報</button>
+        <button class="icon-button" id="themeBtnMobile" type="button" aria-label="切換深色模式" data-i18n-aria-label="themeBtnLabel">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M4.6 4.6 6 6M18 18l1.4 1.4M3 12h2M19 12h2M4.6 19.4 6 18M18 6l1.4-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </button>
+        <button class="btn btn-outline" id="langBtnMobile" type="button">EN</button>
+      </div>
       <a href="#company" data-i18n="navCompany">公司概覽</a>
       <a href="#market" data-i18n="navMarket">市場分析</a>
       <a href="#finance" data-i18n="navFinance">財務績效</a>
@@ -3667,16 +3689,16 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div>
-          <h1 id="hero-title" data-i18n="heroTitle">從 DRAM 景氣循環到 AI 記憶體供應鏈合作。</h1>
+          <h1 id="hero-title" data-i18n="heroTitle">乘風破浪：從景氣循環邁向 AI 記憶體供應鏈</h1>
           <p class="hero-lead" data-i18n="heroLead">南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。</p>
           <div class="narrative-meta">
             <div class="narrative-tag is-question">
               <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-              <p data-i18n="heroQuestion">南亞科如何在三大 DRAM 巨頭寡占、AI 需求重估與私募策略夥伴加入之下，重新定位自己的產品、資源與成長路徑？</p>
+              <p data-i18n="heroQuestion">面對三大 DRAM 巨頭寡占與 AI 時代的爆發需求，南亞科如何突圍？</p>
             </div>
             <div class="narrative-tag is-takeaway">
               <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-              <p data-takeaway data-i18n="heroTakeaway">把握景氣循環轉折，引進策略私募，並朝高頻寬與高階伺服器記憶體升級。</p>
+              <p data-takeaway data-i18n="heroTakeaway">把握景氣回溫契機，藉由策略私募與自主研發，全面朝高頻寬及高階伺服器記憶體轉型。</p>
             </div>
           </div>
           <div class="hero-actions">
@@ -3749,18 +3771,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="companyKicker">公司概覽</span>
-            <h2 class="section-title" id="company-title" data-i18n="companyTitle">台灣代表性的 DRAM 公司。</h2>
+            <h2 class="section-title" id="company-title" data-i18n="companyTitle">立足台灣：看見 DRAM 領導品牌</h2>
           </div>
           <p class="section-copy" data-i18n="companyLead">南亞科技成立於 1995 年，股票代號 2408，核心業務為 DRAM 研發、設計、製造與銷售。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="companyQuestion">南亞科是誰？它的業務、歷史、組織與產品基礎是什麼？</p>
+            <p data-i18n="companyQuestion">南亞科在產業中扮演什麼樣的角色？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="companyTakeaway">作為台灣 DRAM 代表大廠，南亞科已建立 10nm 級自主製程與新廠規劃基礎。建立公司輪廓後，下一步檢視 DRAM 產業結構與外部環境如何限制南亞科的策略選擇。</p>
+            <p data-takeaway data-i18n="companyTakeaway">作為台灣 DRAM 領導指標，南亞科已具備 10nm 級自主製程實力，並正積極展開新廠佈局，為下一波成長備足子彈。</p>
           </div>
         </div>
         <div class="rule-list">
@@ -3851,11 +3873,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="valuesQuestion">南亞科的核心願景與經營使命如何導引其長期資源配置？</p>
+            <p data-i18n="valuesQuestion">什麼是驅動南亞科長期發展的核心信念？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="valuesTakeaway">願景、使命與核心價值將策略從短期產品規格拉回長期永續經營與防範景氣波動風險能力。</p>
+            <p data-takeaway data-i18n="valuesTakeaway">將焦點從短期的產品規格戰，拉高至企業永續經營層次，藉由扎實的價值觀來抵禦產業劇烈的景氣波動。</p>
           </div>
         </div>
         <div class="team-rule-grid">
@@ -3880,18 +3902,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="marketKicker">市場分析</span>
-            <h2 class="section-title" id="market-title" data-i18n="marketTitle">AI、伺服器與 DDR5 推動需求重估。</h2>
+            <h2 class="section-title" id="market-title" data-i18n="marketTitle">市場浪潮：AI 與 DDR5 驅動的全新格局</h2>
           </div>
           <p class="section-copy" data-i18n="marketLead">南亞科處在 DRAM 價格循環、成熟製程供需缺口與客戶策略投資交會的位置。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="marketQuestion">南亞科面對哪些外部壓力與產業環境限制？</p>
+            <p data-i18n="marketQuestion">寡占市場與外部環境為南亞科帶來哪些挑戰？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="marketTakeaway">三大廠寡占 90.5% 造成嚴重規模擠壓，需透過五力與 PESTEL 尋求利基突圍。外部壓力最終反映在營收、毛利與 EPS 上，因此下一區用財務數據檢驗南亞科是否真正走出景氣谷底。</p>
+            <p data-takeaway data-i18n="marketTakeaway">雖然面臨三大廠高達 90.5% 的市佔擠壓，但南亞科持續在夾縫中尋求利基市場，力拚在嚴峻的外部壓力下成功突圍。</p>
           </div>
         </div>
         <details class="narrative-details">
@@ -3944,18 +3966,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="financeKicker">財務績效</span>
-            <h2 class="section-title" id="finance-title" data-i18n="financeTitle">典型 DRAM 景氣循環，2025 重新轉盈。</h2>
+            <h2 class="section-title" id="finance-title" data-i18n="financeTitle">獲利突圍：穿越景氣谷底，迎來 2025 轉盈曙光</h2>
           </div>
           <p class="section-copy" data-i18n="financeLead">2021 高獲利、2023 至 2024 承壓虧損、2025 受惠價格回升與需求改善而轉盈。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="financeQuestion">南亞科的轉盈是週期反彈，還是策略品質改善？</p>
+            <p data-i18n="financeQuestion">近期的財務好轉，是乘著景氣順風車，還是體質真有改善？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="financeTakeaway">2025 年重新轉盈（EPS 2.13），但 2026 計畫 CapEx 約 500 億元代表未來折舊壓力與新廠機會並存。財務反彈若要延續，不能只依賴價格循環，還必須透過產品組合升級提高長期獲利品質。</p>
+            <p data-takeaway data-i18n="financeTakeaway">2025 年的轉盈是個好的開始，但未來的鉅額資本支出（CapEx）將帶來折舊考驗。要維持獲利，必須靠產品組合升級，而非單純依賴市場報價。</p>
           </div>
         </div>
         <div class="finance-layout">
@@ -4084,18 +4106,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="portfolioKicker">產品組合</span>
-            <h2 class="section-title" id="portfolio-title" data-i18n="portfolioTitle">產品組合用象限圖，而不是框架定義。</h2>
+            <h2 class="section-title" id="portfolio-title" data-i18n="portfolioTitle">主力佈局：告別紅海，高潛力與轉型產品組合</h2>
           </div>
           <p class="section-copy" data-i18n="portfolioLead">點擊產品點位，查看 DDR4、DDR5、LPDDR5 與 KGD 在成長性、資本優先順序與資料信心上的差異。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="portfolioQuestion">哪些產品是南亞科未來應該加碼、維持或控管的？</p>
+            <p data-i18n="portfolioQuestion">南亞科的產品線該如何佈局才能兼顧獲利與未來？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="portfolioTakeaway">DDR4 作為現金流基礎，DDR5 與 RDIMM 為轉型主力，LPDDR5/KGD 為高潛力以控制紅海風險。產品升級不是單純的市場選擇，還需要研發、製程、客戶關係與組織知識支撐，因此下一步檢驗核心資源。</p>
+            <p data-takeaway data-i18n="portfolioTakeaway">以 DDR4 穩固現金流，將資源集中投注於 DDR5 與 RDIMM 轉型；同時佈局 LPDDR5 等高潛力產品，藉此跳脫紅海價格戰。</p>
           </div>
         </div>
         <div id="portfolio-scenario-switcher" class="scenario-lab" data-voice-summary="Strategy Lab Portfolio Scenario Switcher">
@@ -4130,18 +4152,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="resourcesKicker">VRIN 資源</span>
-            <h2 class="section-title" id="resources-title" data-i18n="resourcesTitle">用 VRIN 看哪些資源能形成策略價值。</h2>
+            <h2 class="section-title" id="resources-title" data-i18n="resourcesTitle">核心優勢：築起難以複製的競爭護城河</h2>
           </div>
           <p class="section-copy" data-i18n="resourcesLead">資源評價不只列優勢，而是判斷價值、稀少、模仿難度與替代性。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="resourcesQuestion">南亞科是否真的有能力支撐產品升級與策略合作？</p>
+            <p data-i18n="resourcesQuestion">南亞科具備哪些難以被競爭對手複製的核心優勢？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="resourcesTakeaway">自主研發、台塑集團週期資金韌性以及策略客戶的長期合作關係，共同構成不易被模仿的競爭護城河。確認資源基礎後，將這些能力轉化為短中長期的投資、合作與市場進入路徑。</p>
+            <p data-takeaway data-i18n="resourcesTakeaway">堅持自主研發的技術底氣、台塑集團豐沛的資金後盾，加上與客戶間長期的信任關係，共同築起了強大的競爭護城河。</p>
           </div>
         </div>
         <details class="narrative-details">
@@ -4208,18 +4230,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="growthKicker">成長策略</span>
-            <h2 class="section-title" id="growth-title" data-i18n="growthTitle">短期抓週期，中期升級產品，長期綁定供應鏈。</h2>
+            <h2 class="section-title" id="growth-title" data-i18n="growthTitle">成長引擎：短中長期的生態系競合戰略</h2>
           </div>
           <p class="section-copy" data-i18n="growthLead">成長策略可拆成價格週期、產品組合與客戶合作三層。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="growthQuestion">南亞科接下來應該如何成長並建立競合生態？</p>
+            <p data-i18n="growthQuestion">短、中、長期的成長動能與合作策略是什麼？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="growthTakeaway">短期抓價格週期，中期推動 1B/1C 製程與客製化產品，長期透過私募與 Value Net 競合深化夥伴關係。策略能否落地，取決於組織能力，最後回到人力資源與職缺需求。</p>
+            <p data-takeaway data-i18n="growthTakeaway">短期乘著價格回溫積累實力；中期衝刺 1B/1C 先進製程與客製化；長期則透過策略私募與生態系競合，綁定關鍵夥伴深化佈局。</p>
           </div>
         </div>
         <div class="strategy-steps">
@@ -4283,18 +4305,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="careerKicker">職涯洞察</span>
-            <h2 class="section-title" id="career-title" data-i18n="careerTitle">從 104 職缺看南亞科需要的人才。</h2>
+            <h2 class="section-title" id="career-title" data-i18n="careerTitle">人才戰略：邁向「智動化」組織的關鍵拼圖</h2>
           </div>
           <p class="section-copy" data-i18n="careerLead">職涯洞察把公司策略連回學生能理解的技能與職位需求。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="careerQuestion">南亞科的策略升級需要哪些人才來執行？</p>
+            <p data-i18n="careerQuestion">企業轉型的背後，需要什麼樣的人才戰力？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="careerTakeaway">104 職缺實證了從防守型向分析型與智動化組織轉變：製程整合對應 1B/1C 良率，軟體對應智慧新廠，FAE 對應客製化導入需求。</p>
+            <p data-takeaway data-i18n="careerTakeaway">從招募動向可看出南亞科正邁向「智動化」與「分析型」組織：大舉延攬製程整合、軟體開發與 FAE 人才，以支撐新廠與客製化需求。</p>
           </div>
         </div>
         <div class="organization-summary" id="organizationSummary" aria-label="Organization capability summary"></div>
@@ -4404,11 +4426,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="quizQuestion">如何檢驗讀者對本研究核心結論的理解程度？</p>
+            <p data-i18n="quizQuestion">準備好驗收您的策略洞察了嗎？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="quizTakeaway">通過封閉式互動問題，強化對南亞科在財務、產品、市場、資源與合作策略的邏輯串聯。</p>
+            <p data-takeaway data-i18n="quizTakeaway">透過互動式的實境問答，一起重新梳理南亞科在財務、產品、市場與資源分配上的關鍵決策。</p>
           </div>
         </div>
         <div class="quiz-layout">
@@ -4435,18 +4457,18 @@
         <div class="section-head" style="margin-bottom:24px;">
           <div>
             <span class="mono-label" data-i18n="integrityKicker">學術誠信</span>
-            <h2 class="section-title" id="integrity-title" data-i18n="integrityTitle">資料來源與 AI 使用揭露。</h2>
+            <h2 class="section-title" id="integrity-title" data-i18n="integrityTitle">研究透明度：資料來源與分析聲明</h2>
           </div>
           <p class="section-copy" data-i18n="integrityBody">本網站使用南亞科技官方網站、年度合併財務報告、投資人關係資料、公開新聞、產業研究資料與 104 人力銀行職缺頁面。外部數據以官方投資人關係、官方產品資料、TrendForce 與 Reuters 交叉核對後呈現；課堂策略模型與公司已發布事實分開標示。AI 工具使用於資料整理、雙語草稿、網站架構、互動題目與程式碼輔助。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="integrityQuestion">如何確保分析的學術誠信與數據透明度？</p>
+            <p data-i18n="integrityQuestion">我們的數據來源與分析標準是什麼？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="integrityTakeaway">揭露主要資料來源（官方 IR 與 TrendForce/Reuters）、AI 使用範圍與人工查核機制，體現學術誠信。</p>
+            <p data-takeaway data-i18n="integrityTakeaway">嚴格把關資料來源（如官方 IR 與研調機構），並詳細揭露 AI 工具的輔助範圍與人工查核機制，確保研究客觀透明。</p>
           </div>
         </div>
         <details class="narrative-details">
@@ -4500,18 +4522,18 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="teamKicker">小組協作</span>
-            <h2 class="section-title" id="team-title" data-i18n="teamTitle">共同編修，而不是章節拼貼。</h2>
+            <h2 class="section-title" id="team-title" data-i18n="teamTitle">團隊協作：拒絕拼貼，堅持高品質共創</h2>
           </div>
           <p class="section-copy" data-i18n="teamLead">本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="teamQuestion">本專案如何共同負責品質與一致性？</p>
+            <p data-i18n="teamQuestion">團隊如何確保專案的品質與連貫性？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="teamTakeaway">全組共同決定分析主軸、整理資料、選擇模型、檢查雙語/互動/資料來源，並共同測試網站體驗，而非分工割裂拼貼。</p>
+            <p data-takeaway data-i18n="teamTakeaway">我們拒絕碎片化的分工。從策略定調、資料處理到網站體驗，全由團隊共同決策與反覆測試，確保論述的一致性與高品質。</p>
           </div>
         </div>
         <div class="team-rule-grid">
@@ -4699,7 +4721,7 @@
         navCareer: "組織人才",
         navQuiz: "小測驗",
         navIntegrity: "資料揭露",
-        heroTitle: "從 DRAM 景氣循環到 AI 記憶體供應鏈合作。",
+        heroTitle: "乘風破浪：從景氣循環邁向 AI 記憶體供應鏈",
         trustStripLabel: "策略投資者／供應鏈夥伴",
         heroLead: "南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。",
         heroPrimary: "開始瀏覽",
@@ -4717,7 +4739,7 @@
         stat3Value: "約 500 億元",
         stat4Label: "新廠節點",
         stat4Value: "2027 年初裝機",
-        teamTitle: "共同編修，而不是章節拼貼。",
+        teamTitle: "團隊協作：拒絕拼貼，堅持高品質共創",
         teamLead: "本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。",
         teamCard1Title: "資料查核",
         teamCard1Body: "共同比對官方資料、投資人關係、新聞與 104 職缺，降低錯誤引用。",
@@ -4747,7 +4769,7 @@
         memberProgram5: "管院學士班 3 年級",
         memberProgram6: "國企系學士班 3 年級",
         memberProgram7: "國企系學士班 3 年級",
-        companyTitle: "台灣代表性的 DRAM 公司。",
+        companyTitle: "立足台灣：看見 DRAM 領導品牌",
         companyLead: "南亞科技成立於 1995 年，股票代號 2408，核心業務為 DRAM 研發、設計、製造與銷售。",
         companyRow1Title: "基本資料",
         companyRow1Body: "南亞科技股份有限公司，英文名稱 Nanya Technology Corporation，台灣證券交易所上市，資本額新台幣 345 億元，截至 2026 年 4 月；員工人數超過 3,700 人。",
@@ -4794,7 +4816,7 @@
         visionBody: "成為智慧世代最佳記憶體夥伴。",
         missionBody: "持續獲利、永續經營；預防風險；善待員工；友善環境；支持在地。",
         valuesBody: "創新、誠信、當責、效率。",
-        financeTitle: "典型 DRAM 景氣循環，2025 重新轉盈。",
+        financeTitle: "獲利突圍：穿越景氣谷底，迎來 2025 轉盈曙光",
         financeLead: "2021 高獲利、2023 至 2024 承壓虧損、2025 受惠價格回升與需求改善而轉盈。",
         chartTitle: "2021–2025 營收與 EPS",
         financeSideTitle: "關鍵判讀",
@@ -4810,7 +4832,7 @@
         financeInterpret3Body: "即使 2022-2024 景氣低谷，1A/1B 奈米、DDR5 與新廠投資仍需資本支出，考驗資產負債表與現金流韌性。",
         financeExplorerTitle: "切換財務指標，看轉盈是否只是週期反彈。",
         financeExplorerLead: "用同一組資料視角比較營收、EPS、自由現金流與 DuPont 判讀。",
-        marketTitle: "AI、伺服器與 DDR5 推動需求重估。",
+        marketTitle: "市場浪潮：AI 與 DDR5 驅動的全新格局",
         marketLead: "南亞科處在 DRAM 價格循環、成熟製程供需缺口與客戶策略投資交會的位置。",
         marketShareTitle: "三大廠寡占壓縮南亞科策略空間。",
         marketShareLead: "水平長條圖先建立產業壓力，再用五力互動切換壓力來源。",
@@ -4827,7 +4849,7 @@
         swotW: "規模小於 Samsung、SK hynix、Micron，技術與資本密集壓力高。",
         swotO: "AI/HBM 產能排擠帶動 DDR4 與主流 DDR5 供給吃緊；Edge AI、AI PC 與 AI smartphone 提高單機記憶體含量；China Plus One 提升台灣 DRAM 供應的策略價值。",
         swotT: "DRAM 下行循環、價格回落、大廠擴產、先進製程差距、資本支出壓力與中國市場需求波動，仍會影響復甦品質。",
-        resourcesTitle: "用 VRIN 看哪些資源能形成策略價值。",
+        resourcesTitle: "核心優勢：築起難以複製的競爭護城河",
         resourcesLead: "資源評價不只列優勢，而是判斷價值、稀少、模仿難度與替代性。",
         vrinResource: "資源",
         vrinJudgement: "判斷",
@@ -4857,13 +4879,13 @@
         vrin4j: "高策略性資源",
         cardsTitle: "翻轉關鍵字卡。",
         cardsLead: "點擊字卡查看策略管理與記憶體產業關鍵詞說明。",
-        portfolioTitle: "產品組合用象限圖，而不是框架定義。",
+        portfolioTitle: "主力佈局：告別紅海，高潛力與轉型產品組合",
         portfolioLead: "點擊產品點位，查看 DDR4、DDR5、LPDDR5 與 KGD 在成長性、資本優先順序與資料信心上的差異。",
         portfolioAxisTop: "高成長",
         portfolioAxisBottom: "低成長",
         portfolioAxisLeft: "低市占",
         portfolioAxisRight: "高市占",
-        growthTitle: "短期抓週期，中期升級產品，長期綁定供應鏈。",
+        growthTitle: "成長引擎：短中長期的生態系競合戰略",
         growthLead: "成長策略可拆成價格週期、產品組合與客戶合作三層。",
         growth1Title: "把握 DRAM 上行週期",
         growth1Body: "短期策略是改善毛利率與現金流，承接市場供需吃緊帶來的報價回升。",
@@ -4871,7 +4893,7 @@
         growth2Body: "中期策略是降低對低階成熟產品依賴，讓產品組合朝伺服器與 AI 應用移動。",
         growth3Title: "新廠、10 奈米級製程與客戶策略投資",
         growth3Body: "長期策略是建立更穩定的產能與需求來源，並透過客戶入股深化合作。",
-        careerTitle: "從 104 職缺看南亞科需要的人才。",
+        careerTitle: "人才戰略：邁向「智動化」組織的關鍵拼圖",
         careerLead: "職涯洞察把公司策略連回學生能理解的技能與職位需求。",
         careerWork: "工作",
         careerSkill: "技能",
@@ -4899,7 +4921,7 @@
         scoreHint: "完成每題後會更新分數。",
         nextQuestion: "下一題",
         restartQuiz: "重新開始",
-        integrityTitle: "資料來源與 AI 使用揭露。",
+        integrityTitle: "研究透明度：資料來源與分析聲明",
         integrityBody: "本網站使用南亞科技官方網站、年度合併財務報告、投資人關係資料、公開新聞、產業研究資料與 104 人力銀行職缺頁面。外部數據以官方投資人關係、官方產品資料、TrendForce 與 Reuters 交叉核對後呈現；課堂策略模型與公司已發布事實分開標示。AI 工具使用於資料整理、雙語草稿、網站架構、互動題目與程式碼輔助。",
         integrityStep1Title: "來源",
         integrityStep1Body: "官方網站、年度合併財報、投資人關係、新聞、產業研究與 104 職缺。",
@@ -4930,38 +4952,38 @@
         reactorBucketLabel: "配對到策略能力",
 
         // Add missing keys
-        heroQuestion: "南亞科如何在三大 DRAM 巨頭寡占、AI 需求重估與私募策略夥伴加入之下，重新定位自己的產品、資源與成長路徑？",
-        heroTakeaway: "把握景氣循環轉折，引進策略私募，並朝高頻寬與高階伺服器記憶體升級。",
-        companyQuestion: "南亞科是誰？它的業務、歷史、組織與產品基礎是什麼？",
-        companyTakeaway: "作為台灣 DRAM 代表大廠，南亞科已建立 10nm 級自主製程與新廠規劃基礎。建立公司輪廓後，下一步檢視 DRAM 產業結構與外部環境如何限制南亞科的策略選擇。",
+        heroQuestion: "面對三大 DRAM 巨頭寡占與 AI 時代的爆發需求，南亞科如何突圍？",
+        heroTakeaway: "把握景氣回溫契機，藉由策略私募與自主研發，全面朝高頻寬及高階伺服器記憶體轉型。",
+        companyQuestion: "南亞科在產業中扮演什麼樣的角色？",
+        companyTakeaway: "作為台灣 DRAM 領導指標，南亞科已具備 10nm 級自主製程實力，並正積極展開新廠佈局，為下一波成長備足子彈。",
         summaryTimeline: "展開完整發展歷程時間軸",
-        valuesQuestion: "南亞科的核心願景與經營使命如何導引其長期資源配置？",
-        valuesTakeaway: "願景、使命與核心價值將策略從短期產品規格拉回長期永續經營與防範景氣波動風險能力。",
-        marketQuestion: "南亞科面對哪些外部壓力與產業環境限制？",
-        marketTakeaway: "三大廠寡占 90.5% 造成嚴重規模擠壓，需透過五力與 PESTEL 尋求利基突圍。外部壓力最終反映在營收、毛利與 EPS 上，因此下一區用財務數據檢驗南亞科是否真正走出景氣谷底。",
+        valuesQuestion: "什麼是驅動南亞科長期發展的核心信念？",
+        valuesTakeaway: "將焦點從短期的產品規格戰，拉高至企業永續經營層次，藉由扎實的價值觀來抵禦產業劇烈的景氣波動。",
+        marketQuestion: "寡占市場與外部環境為南亞科帶來哪些挑戰？",
+        marketTakeaway: "雖然面臨三大廠高達 90.5% 的市佔擠壓，但南亞科持續在夾縫中尋求利基市場，力拚在嚴峻的外部壓力下成功突圍。",
         summarySwot: "展開 SWOT 交叉分析",
-        financeQuestion: "南亞科的轉盈是週期反彈，還是策略品質改善？",
-        financeTakeaway: "2025 年重新轉盈（EPS 2.13），但 2026 計畫 CapEx 約 500 億元代表未來折舊壓力與新廠機會並存。財務反彈若要延續，不能只依賴價格循環，還必須透過產品組合升級提高長期獲利品質。",
+        financeQuestion: "近期的財務好轉，是乘著景氣順風車，還是體質真有改善？",
+        financeTakeaway: "2025 年的轉盈是個好的開始，但未來的鉅額資本支出（CapEx）將帶來折舊考驗。要維持獲利，必須靠產品組合升級，而非單純依賴市場報價。",
         summaryFinanceInterpret: "展開財務比率與獲利品質分析",
-        portfolioQuestion: "哪些產品是南亞科未來應該加碼、維持或控管的？",
-        portfolioTakeaway: "DDR4 作為現金流基礎，DDR5 與 RDIMM 為轉型主力，LPDDR5/KGD 為高潛力以控制紅海風險。產品升級不是單純的市場選擇，還需要研發、製程、客戶關係與組織知識支撐，因此下一步檢驗核心資源。",
+        portfolioQuestion: "南亞科的產品線該如何佈局才能兼顧獲利與未來？",
+        portfolioTakeaway: "以 DDR4 穩固現金流，將資源集中投注於 DDR5 與 RDIMM 轉型；同時佈局 LPDDR5 等高潛力產品，藉此跳脫紅海價格戰。",
         summaryPositioning: "展開 B2B 利基定位分析",
-        resourcesQuestion: "南亞科是否真的有能力支撐產品升級與策略合作？",
-        resourcesTakeaway: "自主研發、台塑集團週期資金韌性以及策略客戶的長期合作關係，共同構成不易被模仿的競爭護城河。確認資源基礎後，將這些能力轉化為短中長期的投資、合作與市場進入路徑。",
+        resourcesQuestion: "南亞科具備哪些難以被競爭對手複製的核心優勢？",
+        resourcesTakeaway: "堅持自主研發的技術底氣、台塑集團豐沛的資金後盾，加上與客戶間長期的信任關係，共同築起了強大的競爭護城河。",
         summaryVRIN: "展開完整 VRIN 資源評價表",
-        growthQuestion: "南亞科接下來應該如何成長並建立競合生態？",
-        growthTakeaway: "短期抓價格週期，中期推動 1B/1C 製程與客製化產品，長期透過私募與 Value Net 競合深化夥伴關係。策略能否落地，取決於組織能力，最後回到人力資源與職缺需求。",
+        growthQuestion: "短、中、長期的成長動能與合作策略是什麼？",
+        growthTakeaway: "短期乘著價格回溫積累實力；中期衝刺 1B/1C 先進製程與客製化；長期則透過策略私募與生態系競合，綁定關鍵夥伴深化佈局。",
         summaryValueNet: "展開四類節點完整彙整表",
-        careerQuestion: "南亞科的策略升級需要哪些人才來執行？",
-        careerTakeaway: "104 職缺實證了從防守型向分析型與智動化組織轉變：製程整合對應 1B/1C 良率，軟體對應智慧新廠，FAE 對應客製化導入需求。",
+        careerQuestion: "企業轉型的背後，需要什麼樣的人才戰力？",
+        careerTakeaway: "從招募動向可看出南亞科正邁向「智動化」與「分析型」組織：大舉延攬製程整合、軟體開發與 FAE 人才，以支撐新廠與客製化需求。",
         summaryCareers: "展開 104 職缺詳細工作與薪資規範",
-        quizQuestion: "如何檢驗讀者對本研究核心結論的理解程度？",
+        quizQuestion: "準備好驗收您的策略洞察了嗎？",
         quizTakeaway: "通過包含市場、財務、產品、資源、策略與揭露的互動小測驗，鞏固對南亞科競合定位之學習成效。",
-        integrityQuestion: "如何確保分析的學術誠信與數據透明度？",
-        integrityTakeaway: "揭露主要資料來源（官方 IR 與 TrendForce/Reuters）、AI 使用範圍與人工查核機制，體現學術誠信。",
+        integrityQuestion: "我們的數據來源與分析標準是什麼？",
+        integrityTakeaway: "嚴格把關資料來源（如官方 IR 與研調機構），並詳細揭露 AI 工具的輔助範圍與人工查核機制，確保研究客觀透明。",
         summaryIntegrity: "展開資料來源與 AI 處理詳細歷程",
-        teamQuestion: "本專案如何共同負責品質與一致性？",
-        teamTakeaway: "全組共同決定分析主軸、整理資料、選擇模型、檢查雙語/互動/資料來源，並共同測試網站體驗，而非分工割裂拼貼。",
+        teamQuestion: "團隊如何確保專案的品質與連貫性？",
+        teamTakeaway: "我們拒絕碎片化的分工。從策略定調、資料處理到網站體驗，全由團隊共同決策與反覆測試，確保論述的一致性與高品質。",
         summaryTeam: "展開小組共同製作歷程與工作流"
       },
       en: {
@@ -5909,7 +5931,9 @@
         const key = node.getAttribute("data-i18n-title");
         if (translations[lang][key]) node.setAttribute("title", translations[lang][key]);
       });
-      qs("#langBtn").textContent = lang === "zh" ? "EN" : "繁";
+      qsa("#langBtn, #langBtnMobile").forEach((btn) => {
+        if (btn) btn.textContent = lang === "zh" ? "EN" : "繁";
+      });
       renderLabSelector();
       renderAspLab();
       renderPortfolioScenario();
@@ -6551,7 +6575,7 @@
     }
 
     function buildStorySlides() {
-      const sectionIds = ["top", "company", "market", "finance", "portfolio", "resources", "growth", "career", "quiz", "integrity", "team"];
+      const sectionIds = ["top", "company", "market", "finance", "portfolio", "resources", "growth", "career", "integrity", "team"];
       return sectionIds.map((id) => {
         const section = id === "top" ? qs(".hero") : qs(`#${id}`);
         if (!section) return null;
@@ -6572,7 +6596,16 @@
       storyIndex = Math.min(Math.max(storyIndex, 0), slides.length - 1);
       const item = slides[storyIndex];
       count.textContent = `STRATEGY STORY / ${String(storyIndex + 1).padStart(2, "0")}`;
-      progress.style.setProperty("--progress", `${((storyIndex + 1) / slides.length) * 100}%`);
+      if (storyAutoActive) {
+        progress.style.transition = "none";
+        progress.style.width = `${(storyIndex / slides.length) * 100}%`;
+        void progress.offsetWidth;
+        progress.style.transition = "width 10s linear";
+        progress.style.width = `${((storyIndex + 1) / slides.length) * 100}%`;
+      } else {
+        progress.style.transition = "none";
+        progress.style.width = `${((storyIndex + 1) / slides.length) * 100}%`;
+      }
       slide.innerHTML = `
         <span class="story-kicker">${escapeHtml(item.id.toUpperCase())}</span>
         <h2 id="storyTitle">${escapeHtml(item.title)}</h2>
@@ -6605,6 +6638,10 @@
       const slides = buildStorySlides();
       if (!slides.length) return;
       storyIndex = (storyIndex + delta + slides.length) % slides.length;
+      if (storyAutoActive) {
+        clearInterval(storyTimer);
+        storyTimer = setInterval(() => stepStory(1), 10000);
+      }
       renderStorySlide();
     }
 
@@ -6614,6 +6651,13 @@
       storyAutoActive = false;
       const button = qs("#storyAutoBtn");
       if (button) button.textContent = translations[currentLang].storyAuto;
+      
+      const progress = qs("#storyProgress");
+      if (progress) {
+        const computedWidth = window.getComputedStyle(progress).width;
+        progress.style.transition = "none";
+        progress.style.width = computedWidth;
+      }
     }
 
     function toggleStoryAuto() {
@@ -6625,6 +6669,16 @@
       const button = qs("#storyAutoBtn");
       if (button) button.textContent = translations[currentLang].storyStop;
       storyTimer = setInterval(() => stepStory(1), 10000);
+      
+      const progress = qs("#storyProgress");
+      const slides = buildStorySlides();
+      if (progress && slides.length) {
+        progress.style.transition = "none";
+        progress.style.width = `${(storyIndex / slides.length) * 100}%`;
+        void progress.offsetWidth;
+        progress.style.transition = "width 10s linear";
+        progress.style.width = `${((storyIndex + 1) / slides.length) * 100}%`;
+      }
     }
 
     function renderFinanceExplorer() {
@@ -7247,7 +7301,7 @@
       });
       qs("#aspChange")?.addEventListener("input", renderAspLab);
       qs("#aspUtilization")?.addEventListener("input", renderAspLab);
-      qs("#presentBtn")?.addEventListener("click", openStoryMode);
+      qsa("#presentBtn, #presentBtnMobile").forEach((btn) => btn?.addEventListener("click", openStoryMode));
       qs("#storyCloseBtn")?.addEventListener("click", closeStoryMode);
       qs("#storyPrevBtn")?.addEventListener("click", () => stepStory(-1));
       qs("#storyNextBtn")?.addEventListener("click", () => stepStory(1));
@@ -7271,10 +7325,14 @@
           if (event.key === "ArrowLeft") stepStory(-1);
         }
       });
-      qs("#langBtn").addEventListener("click", () => applyLanguage(currentLang === "zh" ? "en" : "zh"));
-      qs("#themeBtn").addEventListener("click", () => {
-        const current = document.documentElement.dataset.theme || "light";
-        applyTheme(current === "dark" ? "light" : "dark");
+      qsa("#langBtn, #langBtnMobile").forEach((btn) => {
+        btn?.addEventListener("click", () => applyLanguage(currentLang === "zh" ? "en" : "zh"));
+      });
+      qsa("#themeBtn, #themeBtnMobile").forEach((btn) => {
+        btn?.addEventListener("click", () => {
+          const current = document.documentElement.dataset.theme || "light";
+          applyTheme(current === "dark" ? "light" : "dark");
+        });
       });
       qs("#voiceBtn").addEventListener("click", speakGuide);
       qs("#voiceStopBtn").addEventListener("click", stopVoiceGuide);
