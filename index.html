@@ -3563,6 +3563,187 @@
       }
     }
 
+    /* --- Apple Liquid Glass Bottom Section Rail --- */
+    .section-rail {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: max(18px, env(safe-area-inset-bottom));
+      z-index: 99;
+      display: none; /* hidden on desktop */
+      width: min(92vw, 430px);
+      min-height: 76px;
+      border-radius: 34px;
+      padding: 8px;
+      box-sizing: border-box;
+      isolation: isolate;
+      
+      /* Cohere flat style with slight translucency for modern feel */
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(24px) saturate(200%);
+      -webkit-backdrop-filter: blur(24px) saturate(200%);
+      
+      border: 1px solid var(--border-light, #e5e7eb);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+      
+      mask-image: none;
+      -webkit-mask-image: none;
+      
+      transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    /* Compact state (scroll down) */
+    .section-rail.is-compact {
+      transform: translateX(-50%) translateY(4px) scale(0.97);
+    }
+    .section-rail.is-compact .liquid-section-link:not(.is-current) {
+      opacity: 0.4;
+    }
+    
+    /* Dark Mode flat style */
+    [data-theme="dark"] .section-rail {
+      background: rgba(35, 35, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+    
+    .rail-container {
+      position: relative;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+    
+    .rail-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* The moving liquid selection blob */
+    .liquid-blob {
+      position: absolute;
+      top: 0;
+      left: var(--blob-left, 0px);
+      width: var(--blob-width, 62px);
+      height: 100%;
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: 0;
+      background: var(--ink); /* Flat near-black for active background */
+      box-shadow: none; /* Removed heavy inset shadow */
+      transition:
+        left 460ms cubic-bezier(.22, 1, .36, 1),
+        width 460ms cubic-bezier(.22, 1, .36, 1),
+        transform 460ms cubic-bezier(.22, 1, .36, 1),
+        filter 460ms cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .liquid-blob.is-morphing {
+      filter: blur(.2px);
+      transform: scaleX(1.08) scaleY(.98);
+    }
+    
+    .liquid-section-link {
+      position: relative;
+      z-index: 1; /* Above the blob */
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      width: 62px;
+      min-width: 62px;
+      height: 58px;
+      display: grid;
+      grid-template-rows: 24px 1fr;
+      place-items: center;
+      gap: 4px;
+      padding: 7px 8px;
+      border-radius: 24px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink); /* Darker base color for visibility */
+      opacity: 0.65;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: color 250ms ease, transform 180ms ease, opacity 250ms ease;
+      letter-spacing: 0.2px;
+    }
+    
+    [data-theme="dark"] .liquid-section-link {
+      color: #fff;
+      opacity: 0.75; /* Brighter inactive items in dark mode */
+    }
+    
+    /* Hover effect */
+    @media (hover: hover) {
+      .liquid-section-link:hover {
+        color: var(--ink);
+        opacity: 1;
+      }
+      [data-theme="dark"] .liquid-section-link:hover {
+        color: #fff;
+      }
+    }
+    
+    .liquid-section-link:active {
+      transform: scale(0.94);
+    }
+    
+    /* Active link style */
+    .liquid-section-link.is-current {
+      color: var(--canvas);
+      opacity: 1;
+      transform: translateY(-3px) scale(1.04);
+    }
+
+    .rail-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 180ms ease;
+    }
+
+    .liquid-section-link.is-current .rail-icon {
+      transform: scale(1.08);
+    }
+    
+    /* Media query to display rail and add padding to body */
+    @media (max-width: 1024px) {
+      .section-rail {
+        display: block;
+      }
+      body {
+        padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important;
+      }
+      .mobile-panel:not(:has(a)) .mobile-actions {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+    
+    /* Reduce motion overrides */
+    @media (prefers-reduced-motion: reduce) {
+      .liquid-section-link,
+      .rail-container,
+      .section-rail,
+      .liquid-blob {
+        transition: none !important;
+        scroll-behavior: auto !important;
+        transform: none !important;
+      }
+      .liquid-section-link:active,
+      .liquid-section-link.is-current {
+        transform: none !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3659,18 +3840,74 @@
         </button>
         <button class="btn btn-outline" id="langBtnMobile" type="button">EN</button>
       </div>
-      <a href="#company" data-i18n="navCompany">公司概覽</a>
-      <a href="#market" data-i18n="navMarket">市場分析</a>
-      <a href="#finance" data-i18n="navFinance">財務績效</a>
-      <a href="#portfolio" data-i18n="navPortfolio">產品配置</a>
-      <a href="#resources" data-i18n="navResources">資源評價</a>
-      <a href="#growth" data-i18n="navGrowth">成長策略</a>
-      <a href="#career" data-i18n="navCareer">組織人才</a>
-      <a href="#quiz" data-i18n="navQuiz">小測驗</a>
-      <a href="#integrity" data-i18n="navIntegrity">資料揭露</a>
-      <a href="#team" data-i18n="navTeam">小組協作</a>
     </div>
   </header>
+
+  <nav class="section-rail" id="sectionRail" aria-label="章節快速導覽" data-i18n-aria-label="railAriaLabel">
+    <div class="rail-container" id="railContainer">
+      <span class="liquid-blob" id="liquidBlob" aria-hidden="true"></span>
+      <a href="#company" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 21h18 M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16 M9 7h6 M9 11h6 M9 15h6"/>
+        </svg>
+        <span data-i18n="railCompany">公司</span>
+      </a>
+      <a href="#market" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><path d="M2 12h20 M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span data-i18n="railMarket">市場</span>
+      </a>
+      <a href="#finance" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 3v18h18 M18 9l-5 5-4-4-5 5 M18 9v4 M18 9h-4"/>
+        </svg>
+        <span data-i18n="railFinance">財務</span>
+      </a>
+      <a href="#portfolio" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><path d="M9 9h6v6H9z M9 1v3 M15 1v3 M9 20v3 M15 20v3 M20 9h3 M20 14h3 M1 9h3 M1 14h3"/>
+        </svg>
+        <span data-i18n="railPortfolio">產品</span>
+      </a>
+      <a href="#resources" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/>
+        </svg>
+        <span data-i18n="railResources">資源</span>
+      </a>
+      <a href="#growth" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+        </svg>
+        <span data-i18n="railGrowth">成長</span>
+      </a>
+      <a href="#career" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        </svg>
+        <span data-i18n="railCareer">人才</span>
+      </a>
+      <a href="#quiz" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <span data-i18n="railQuiz">測驗</span>
+      </a>
+      <a href="#integrity" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span data-i18n="railIntegrity">揭露</span>
+      </a>
+      <a href="#team" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span data-i18n="railTeam">團隊</span>
+      </a>
+    </div>
+  </nav>
 
   <div class="lab-modal" id="strategyLabModal" aria-hidden="true">
     <section class="lab-drawer" id="strategyLabDrawer" role="dialog" aria-modal="true" aria-labelledby="strategyLabTitle" tabindex="-1">
@@ -4653,6 +4890,17 @@
         primaryNavLabel: "主要導覽",
         brandHomeLabel: "Nanya TP 網站首頁",
         sectionNavLabel: "章節導覽",
+        railAriaLabel: "章節快速導覽",
+        railCompany: "公司",
+        railMarket: "市場",
+        railFinance: "財務",
+        railPortfolio: "產品",
+        railResources: "資源",
+        railGrowth: "成長",
+        railCareer: "人才",
+        railQuiz: "測驗",
+        railIntegrity: "揭露",
+        railTeam: "團隊",
         presentAriaLabel: "開啟簡報模式",
         presentTitle: "簡報模式",
         voiceBtnLabel: "開始語音導覽",
@@ -4993,6 +5241,17 @@
         primaryNavLabel: "Primary navigation",
         brandHomeLabel: "Nanya TP Website home",
         sectionNavLabel: "Section navigation",
+        railAriaLabel: "Section quick navigation",
+        railCompany: "Company",
+        railMarket: "Market",
+        railFinance: "Finance",
+        railPortfolio: "Portfolio",
+        railResources: "Resources",
+        railGrowth: "Growth",
+        railCareer: "Talent",
+        railQuiz: "Quiz",
+        railIntegrity: "Sources",
+        railTeam: "Team",
         presentAriaLabel: "Open presentation mode",
         presentTitle: "Presentation mode",
         voiceBtnLabel: "Start voice guide",
@@ -5912,6 +6171,27 @@
 
     const qs = (selector) => document.querySelector(selector);
     const qsa = (selector) => [...document.querySelectorAll(selector)];
+
+    let blobTimeout = null;
+    function updateLiquidBlob() {
+      const rail = qs("#sectionRail");
+      if (!rail || window.getComputedStyle(rail).display === "none") return;
+      const blob = qs("#liquidBlob");
+      const currentLink = qs(".liquid-section-link.is-current");
+      const container = qs("#railContainer");
+      if (blob && currentLink && container) {
+        const left = currentLink.offsetLeft;
+        const width = currentLink.offsetWidth;
+        blob.style.setProperty("--blob-left", `${left}px`);
+        blob.style.setProperty("--blob-width", `${width}px`);
+        
+        blob.classList.add("is-morphing");
+        if (blobTimeout) clearTimeout(blobTimeout);
+        blobTimeout = setTimeout(() => {
+          blob.classList.remove("is-morphing");
+        }, 420);
+      }
+    }
 
     function applyLanguage(lang) {
       if (speechActive || speechPaused) stopVoiceGuide();
@@ -7293,7 +7573,72 @@
       speechWasActiveBeforeDrag = false;
     }
 
+    function navigateToNextChapter() {
+      const chapters = [
+        "#company", "#market", "#finance", "#portfolio",
+        "#resources", "#growth", "#career", "#quiz",
+        "#integrity", "#team"
+      ];
+      const currentLink = qs(".liquid-section-link.is-current");
+      let currentIndex = -1;
+      if (currentLink) {
+        const href = currentLink.getAttribute("href");
+        currentIndex = chapters.indexOf(href);
+      }
+      if (currentIndex < chapters.length - 1) {
+        const targetId = chapters[currentIndex + 1];
+        const targetElement = qs(targetId);
+        if (targetElement) {
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          targetElement.scrollIntoView({
+            behavior: prefersReduced ? "auto" : "smooth"
+          });
+          history.pushState(null, null, targetId);
+        }
+      }
+    }
+
+    function navigateToPrevChapter() {
+      const chapters = [
+        "#company", "#market", "#finance", "#portfolio",
+        "#resources", "#growth", "#career", "#quiz",
+        "#integrity", "#team"
+      ];
+      const currentLink = qs(".liquid-section-link.is-current");
+      let currentIndex = -1;
+      if (currentLink) {
+        const href = currentLink.getAttribute("href");
+        currentIndex = chapters.indexOf(href);
+      }
+      if (currentIndex > 0) {
+        const targetId = chapters[currentIndex - 1];
+        const targetElement = qs(targetId);
+        if (targetElement) {
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          targetElement.scrollIntoView({
+            behavior: prefersReduced ? "auto" : "smooth"
+          });
+          history.pushState(null, null, targetId);
+        }
+      }
+    }
+
     function bindEvents() {
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        const rail = qs("#sectionRail");
+        if (rail && window.getComputedStyle(rail).display !== "none") {
+          if (currentScrollY > lastScrollY + 6) {
+            rail.classList.add("is-compact");
+          } else if (currentScrollY < lastScrollY - 6 || currentScrollY < 50) {
+            rail.classList.remove("is-compact");
+          }
+        }
+        lastScrollY = currentScrollY;
+      }, { passive: true });
+      window.addEventListener("resize", updateLiquidBlob, { passive: true });
+
       qs("#strategyLabBtn")?.addEventListener("click", openStrategyLab);
       qs("#strategyLabClose")?.addEventListener("click", closeStrategyLab);
       qs("#strategyLabModal")?.addEventListener("click", (event) => {
@@ -7347,10 +7692,18 @@
         const open = panel.classList.toggle("is-open");
         qs("#menuBtn").setAttribute("aria-expanded", String(open));
       });
-      qsa("#mobilePanel a").forEach((link) => {
-        link.addEventListener("click", () => {
-          qs("#mobilePanel").classList.remove("is-open");
-          qs("#menuBtn").setAttribute("aria-expanded", "false");
+      qsa(".liquid-section-link").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href");
+          const targetElement = qs(targetId);
+          if (targetElement) {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            targetElement.scrollIntoView({
+              behavior: prefersReduced ? "auto" : "smooth"
+            });
+            history.pushState(null, null, targetId);
+          }
         });
       });
       const closeAnnouncementBtn = qs("#closeAnnouncementBtn");
@@ -7362,6 +7715,57 @@
           }
         });
       }
+      // Swipe gesture on sectionRail using touch events (for mobile) and pointer events (fallback)
+      const rail = qs("#sectionRail");
+      if (rail) {
+        let startX = 0;
+        let startY = 0;
+        let startTime = 0;
+        
+        const handleStart = (clientX, clientY) => {
+          startX = clientX;
+          startY = clientY;
+          startTime = Date.now();
+        };
+        
+        const handleEnd = (clientX, clientY) => {
+          const dx = clientX - startX;
+          const dy = clientY - startY;
+          const duration = Date.now() - startTime;
+          
+          if (Math.abs(dx) > 48 && Math.abs(dy) < 24 && duration < 300) {
+            if (dx < 0) {
+              navigateToNextChapter();
+            } else {
+              navigateToPrevChapter();
+            }
+          }
+        };
+        
+        rail.addEventListener("touchstart", (e) => {
+          if (e.touches.length === 1) {
+            handleStart(e.touches[0].clientX, e.touches[0].clientY);
+          }
+        }, { passive: true });
+        
+        rail.addEventListener("touchend", (e) => {
+          if (e.changedTouches.length === 1) {
+            handleEnd(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+          }
+        }, { passive: true });
+
+        rail.addEventListener("pointerdown", (e) => {
+          if (e.pointerType === "touch") return; // Let touch events handle it
+          if (e.button !== 0) return;
+          handleStart(e.clientX, e.clientY);
+        });
+
+        rail.addEventListener("pointerup", (e) => {
+          if (e.pointerType === "touch") return;
+          handleEnd(e.clientX, e.clientY);
+        });
+      }
+
       if ("speechSynthesis" in window) {
         window.speechSynthesis.onvoiceschanged = loadVoices;
         loadVoices();
@@ -7385,21 +7789,24 @@
           const id = entry.target.id;
           if (!id) return;
           
-          qsa(".nav-links a").forEach((link) => {
+          qsa(".nav-links a, .liquid-section-link").forEach((link) => {
             const href = link.getAttribute("href");
             if (href === `#${id}`) {
               link.classList.add("is-current");
+              link.setAttribute("aria-current", "true");
+              
+              if (link.classList.contains("liquid-section-link")) {
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                link.scrollIntoView({
+                  inline: "center",
+                  block: "nearest",
+                  behavior: prefersReduced ? "auto" : "smooth"
+                });
+                requestAnimationFrame(updateLiquidBlob);
+              }
             } else {
               link.classList.remove("is-current");
-            }
-          });
-
-          qsa(".mobile-panel a").forEach((link) => {
-            const href = link.getAttribute("href");
-            if (href === `#${id}`) {
-              link.classList.add("is-current");
-            } else {
-              link.classList.remove("is-current");
+              link.removeAttribute("aria-current");
             }
           });
         }
