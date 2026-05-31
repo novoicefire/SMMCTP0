@@ -2103,57 +2103,6 @@
       line-height: 1.15;
     }
 
-    .value-net-map {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      margin-top: 24px;
-      border: 1px solid var(--hairline);
-      background: var(--hairline);
-    }
-
-    .value-node {
-      min-height: 116px;
-      padding: 16px;
-      border: 0;
-      color: var(--ink);
-      background: var(--surface);
-      text-align: left;
-    }
-
-    .value-node span {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-    }
-
-    .value-node strong {
-      font-size: 20px;
-      font-weight: 400;
-    }
-
-    .value-node.is-active,
-    .value-node:hover {
-      color: #fff;
-      background: var(--green);
-    }
-
-    .value-node.is-active span,
-    .value-node:hover span {
-      color: rgba(255,255,255,0.72);
-    }
-
-    .value-detail {
-      margin-top: 18px;
-      padding: 22px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--surface);
-    }
-
     .lab-modal,
     .story-overlay {
       position: fixed;
@@ -2520,25 +2469,63 @@
       background: var(--surface);
     }
 
-    .universe-map {
+    div.universe-map {
+      display: grid;
+      place-items: center;
       width: 100%;
-      min-height: 420px;
+      min-width: 0;
+      --universe-active-orb: var(--near-black);
+      --universe-active-label: var(--canvas);
     }
 
-    .universe-node {
+    .universe-map-shell {
+      position: relative;
+      width: min(100%, 600px);
+      aspect-ratio: 1 / 1;
+      margin-inline: auto;
+      overflow: visible;
+    }
+
+    svg.universe-map {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: auto;
+    }
+
+    .universe-hotspot {
+      position: absolute;
+      left: var(--node-x);
+      top: var(--node-y);
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      width: 124px;
+      height: 124px;
+      padding: 0;
+      border: 0;
+      border-radius: var(--radius-full);
+      color: transparent;
+      background: transparent;
       cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .universe-hotspot:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 4px;
     }
 
     .universe-node circle {
       fill: var(--surface);
       stroke: var(--hairline);
       stroke-width: 1.5;
+      transition: stroke 140ms ease, opacity 140ms ease;
     }
 
-    .universe-node.is-active circle,
-    .universe-node:hover circle {
-      fill: var(--near-black);
-      stroke: var(--near-black);
+    .universe-node.is-active circle {
+      fill: transparent;
+      stroke: transparent;
     }
 
     .universe-node text {
@@ -2546,20 +2533,87 @@
       font-size: 13px;
       text-anchor: middle;
       pointer-events: none;
+      transition: fill 120ms ease;
     }
 
-    .universe-node.is-active text,
-    .universe-node:hover text {
+    .universe-node.is-active text {
       fill: var(--canvas);
+    }
+
+    .universe-node:not(.is-active):hover circle,
+    .universe-node.is-hovered:not(.is-active) circle {
+      stroke: var(--near-black);
+    }
+
+    .universe-node:not(.is-active):hover text,
+    .universe-node.is-hovered:not(.is-active) text {
+      fill: var(--ink);
+    }
+
+    .universe-liquid-layer {
+      pointer-events: none;
+    }
+
+    .universe-liquid-main,
+    .universe-liquid-ghost {
+      fill: var(--universe-active-orb);
+    }
+
+    .universe-liquid-trail {
+      fill: none;
+      stroke: var(--universe-active-orb);
+      stroke-linecap: round;
+      opacity: 0;
+    }
+
+    .universe-center-core {
+      fill: var(--universe-active-orb);
+    }
+
+    .universe-center-label {
+      fill: var(--universe-active-label);
+    }
+
+    [data-theme="dark"] div.universe-map {
+      --universe-active-orb: var(--ink);
+      --universe-active-label: var(--canvas);
+    }
+
+    [data-theme="dark"] .universe-liquid-main,
+    [data-theme="dark"] .universe-liquid-ghost {
+      fill: var(--universe-active-orb);
+    }
+
+    [data-theme="dark"] .universe-liquid-trail {
+      stroke: var(--universe-active-orb);
+    }
+
+    [data-theme="dark"] .universe-node.is-active text,
+    [data-theme="dark"] .universe-center-label {
+      fill: var(--universe-active-label);
+    }
+
+    [data-theme="dark"] .universe-node.is-active text {
+      fill: var(--canvas) !important;
+    }
+
+    [data-theme="dark"] .universe-center-core {
+      fill: var(--universe-active-orb);
+    }
+
+    [data-theme="dark"] .universe-node.is-active circle {
+      fill: transparent;
+      stroke: transparent;
     }
 
     .universe-line {
       stroke-width: 1.7;
       opacity: 0.18;
+      transition: opacity 140ms ease;
     }
 
     .universe-line.is-active {
-      opacity: 0.95;
+      opacity: 0.9;
       stroke-dasharray: 7 7;
       animation: universeDash 1.6s linear infinite;
     }
@@ -2598,6 +2652,7 @@
     .universe-detail dd,
     .reactor-readout dd {
       margin: -8px 0 0;
+      overflow-wrap: anywhere;
     }
 
     .reactor-chips,
@@ -3079,11 +3134,15 @@
       }
 
       .universe-map-desktop {
-        display: none;
+        display: block;
+      }
+
+      .universe-panel.universe-map-desktop {
+        padding-inline: 10px;
       }
 
       .universe-list-mobile {
-        display: block;
+        display: none;
       }
     }
 
@@ -3191,7 +3250,6 @@
       .portfolio-tool,
       .process-flow,
       .swot,
-      .value-net-map,
       .flip-grid {
         grid-template-columns: 1fr;
       }
@@ -3219,11 +3277,15 @@
       }
 
       .universe-map-desktop {
-        display: none;
+        display: block;
+      }
+
+      .universe-panel.universe-map-desktop {
+        padding-inline: 8px;
       }
 
       .universe-list-mobile {
-        display: block;
+        display: none;
       }
 
       .rule-row,
@@ -3477,8 +3539,15 @@
       .portfolio-dot,
       .universe-line.is-active,
       .lab-row {
-        animation: none;
-        transition: none;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .universe-liquid-main,
+      .universe-liquid-ghost,
+      .universe-liquid-trail {
+        animation: none !important;
+        transition: none !important;
       }
     }
 
@@ -4181,15 +4250,10 @@
             <p data-i18n="placementSourceNote">Reuters 2026/03/26；金額為概約值，交易性質為策略私募增資。</p>
           </details>
         </div>
-        <div class="chart-card analysis-table-card">
-          <h3 data-i18n="valueNetMapTitle">Value Net 互動節點圖</h3>
-          <div class="value-net-map" id="valueNetMap" aria-label="Value Net relationship nodes"></div>
-          <div class="value-detail" id="valueNetDetail" aria-live="polite"></div>
-        </div>
-        <div id="coopetition-universe" class="universe-lab" data-voice-summary="Strategy Lab Co-opetition Universe Value Net relationship map">
-          <span class="lab-kicker">Value Net relationship map</span>
-          <h3 data-i18n="universeTitle">Co-opetition Universe｜競合宇宙圖</h3>
-          <p data-i18n="universeLead">把南亞科放在 Value Net 中央，觀察客戶、供應商、競爭者與互補者如何同時產生合作與競爭。</p>
+        <div id="coopetition" class="universe-lab" data-voice-summary="Strategy Lab Co-opetition Universe Value Net relationship map">
+          <span class="lab-kicker" data-i18n="universeKicker">Value Net / Co-opetition</span>
+          <h3 data-i18n="universeTitle">Co-opetition Universe｜南亞科的 Value Net：從 DRAM 供應商到策略生態系節點</h3>
+          <p data-i18n="universeLead">Value Net 不只列出利害關係人，而是檢視南亞科如何在 DRAM 寡占市場中，同時合作、競爭、綁定需求並降低供應鏈風險。</p>
           <div class="universe-grid">
             <div class="universe-panel universe-map-desktop">
               <div id="universeMap" class="universe-map" aria-label="Value Net relationship map"></div>
@@ -4199,18 +4263,18 @@
               <div class="universe-list-mobile" id="universeMobileList"></div>
             </div>
           </div>
+          <details class="narrative-details">
+            <summary data-i18n="summaryValueNet">展開四類節點完整彙整表</summary>
+            <div class="chart-card analysis-table-card" style="margin-top:16px;">
+              <h3 data-i18n="valueNetTitle">Value Net 四類角色彙整</h3>
+              <table class="analysis-table" id="valueNetTable"></table>
+              <details class="source-note">
+                <summary data-i18n="sourceSummary">來源 / Sources</summary>
+                <p data-i18n="valueNetSourceNote">來源：Reuters 2026/03/26 與南亞科技 Corporate Milestone；SanDisk、Kioxia 供應協議與各投資者私募角色依公開資料呈現。</p>
+              </details>
+            </div>
+          </details>
         </div>
-        <details class="narrative-details">
-          <summary data-i18n="summaryValueNet">展開 Value Net 生態系競合彙整表</summary>
-          <div class="chart-card analysis-table-card" style="margin-top:16px;">
-            <h3 data-i18n="valueNetTitle">Value Net 生態系彙整</h3>
-            <table class="analysis-table" id="valueNetTable"></table>
-            <details class="source-note">
-              <summary data-i18n="sourceSummary">來源 / Sources</summary>
-              <p data-i18n="valueNetSourceNote">來源：Reuters 2026/03/26 與南亞科技 Corporate Milestone；SanDisk、Kioxia 供應協議與各投資者私募角色依公開資料呈現。</p>
-            </details>
-          </div>
-        </details>
       </div>
     </section>
 
@@ -4765,8 +4829,7 @@
         careerLink2: "製程技術開發工程師：新廠與製程升級",
         careerLink3: "FAE 技術工程師：客戶驗證與技術服務",
         careerLink4: "人才與經驗形成可累積能力",
-        valueNetMapTitle: "Value Net 互動節點圖",
-        valueNetTitle: "Value Net 生態系彙整",
+        valueNetTitle: "Value Net 四類角色彙整",
         frameworkDisclosureTitle: "本研究採用之分析工具",
         quizTitle: "互動小測驗。",
         quizLead: "答題後會顯示解析與分數，適合互評時快速互動。",
@@ -4795,8 +4858,9 @@
         aspCapexLabel: "CapEx 壓力",
         scenarioTitle: "Portfolio Scenario Switcher｜產品策略情境切換器",
         scenarioLead: "切換策略情境，觀察產品點位、資本配置、風險回報與策略意涵如何改變。",
-        universeTitle: "Co-opetition Universe｜競合宇宙圖",
-        universeLead: "把南亞科放在 Value Net 中央，觀察客戶、供應商、競爭者與互補者如何同時產生合作與競爭。",
+        universeKicker: "Value Net / Co-opetition",
+        universeTitle: "Co-opetition Universe｜南亞科的 Value Net：從 DRAM 供應商到策略生態系節點",
+        universeLead: "Value Net 不只列出利害關係人，而是檢視南亞科如何在 DRAM 寡占市場中，同時合作、競爭、綁定需求並降低供應鏈風險。",
         reactorTitle: "Capability Reactor｜技能到策略能力反應爐",
         reactorLead: "將 104 職缺中的技能配對到南亞科的策略能力，理解 KBV：個人技能如何累積成組織知識。",
         reactorSkillLabel: "選擇一個技能",
@@ -4824,7 +4888,7 @@
         summaryVRIN: "展開完整 VRIN 資源評價表",
         growthQuestion: "南亞科接下來應該如何成長並建立競合生態？",
         growthTakeaway: "短期抓價格週期，中期推動 1B/1C 製程與客製化產品，長期透過私募與 Value Net 競合深化夥伴關係。策略能否落地，取決於組織能力，最後回到人力資源與職缺需求。",
-        summaryValueNet: "展開 Value Net 生態系競合彙整表",
+        summaryValueNet: "展開四類節點完整彙整表",
         careerQuestion: "南亞科的策略升級需要哪些人才來執行？",
         careerTakeaway: "104 職缺實證了從防守型向分析型與智動化組織轉變：製程整合對應 1B/1C 良率，軟體對應智慧新廠，FAE 對應客製化導入需求。",
         summaryCareers: "展開 104 職缺詳細工作與薪資規範",
@@ -5042,8 +5106,7 @@
         careerLink2: "Process engineer: new fab and process migration",
         careerLink3: "FAE engineer: customer qualification and technical service",
         careerLink4: "Talent and experience build accumulative capability",
-        valueNetMapTitle: "Interactive Value Net node map",
-        valueNetTitle: "Value Net ecosystem summary",
+        valueNetTitle: "Value Net four-role summary",
         frameworkDisclosureTitle: "Analytical frameworks used in this study",
         quizTitle: "Interactive quiz.",
         quizLead: "Answers show explanations and update the score for a quick peer-review interaction.",
@@ -5072,8 +5135,9 @@
         aspCapexLabel: "CapEx pressure",
         scenarioTitle: "Portfolio Scenario Switcher | Product Strategy Simulation",
         scenarioLead: "Switch strategy scenarios to see how product positions, capital allocation, risk-return, and strategic implication change.",
-        universeTitle: "Co-opetition Universe | Value Net Relationship Map",
-        universeLead: "Place Nanya at the center of the Value Net and examine how customers, suppliers, competitors, and complementors create both cooperation and competition.",
+        universeKicker: "Value Net / Co-opetition",
+        universeTitle: "Co-opetition Universe | Nanya’s Value Net: From DRAM Supplier to Strategic Ecosystem Node",
+        universeLead: "The Value Net shows how Nanya manages customers, suppliers, competitors, and complementors through cooperation, competition, demand lock-in, and supply-chain risk reduction.",
         reactorTitle: "Capability Reactor | From Job Skills to Strategic Capabilities",
         reactorLead: "Match job-posting skills to Nanya's strategic capabilities and see how individual skills accumulate into organizational knowledge through the KBV lens.",
         reactorSkillLabel: "Select a skill",
@@ -5101,7 +5165,7 @@
         summaryVRIN: "Expand Full VRIN Resource Evaluation Matrix",
         growthQuestion: "How should Nanya grow next and build its co-opetition ecosystem?",
         growthTakeaway: "Short-term capturing cycles, mid-term advancing processes, long-term deepening alliances via private placements and Value Net. Strategy execution depends on organization. Next: Scan human resources and 104 job postings.",
-        summaryValueNet: "Expand Value Net Coopetition Ecosystem Table",
+        summaryValueNet: "Expand the full Value Net summary table",
         careerQuestion: "Who is needed to execute these strategies?",
         careerTakeaway: "104 postings prove Nanya's shift to an analyzer and automated organization; MES, process integration, and FAE roles align with strategy.",
         summaryCareers: "Expand 104 Job Postings & Salary Regulations",
@@ -5255,142 +5319,128 @@
       }
     };
 
-        const valueNetData = {
+    const valueNetNodes = {
       zh: {
-        headers: ["公司", "角色", "合作面 (Cooperation)", "競爭面 (Competition)", "策略判讀"],
+        labels: {
+          centerTop: "南亞科",
+          centerBottom: "Nanya Technology",
+          rolePosition: "角色定位",
+          representatives: "代表對象",
+          cooperation: "合作面",
+          competition: "競爭面",
+          implication: "策略意義"
+        },
+        headers: ["角色", "代表對象", "合作面", "競爭面", "策略意義"],
         rows: [
           {
-            company: "SanDisk",
-            role: "顧客 + 互補者 + 策略私募股東",
-            category: "顧客 / 互補者",
-            cooperation: "引進私募資金約 310 億元，並簽署多年期 DRAM 供應長約，確保雙方在 SSD 等 NAND 互補市場的長期產能合作。",
-            competition: "無直接 DRAM 產能競爭，但長期供應合約價格（ASP）仍會受市況與談判波動影響。",
-            reading: "以資本與供應協議提高合作黏著度，穩定晶圓廠基底。"
+            id: "customer",
+            role: "Customer / 顧客",
+            rolePosition: "需求端與策略入股者，透過 design-in、LTA 與驗證流程決定南亞科能否跳脫標準品價格競爭。",
+            representatives: "Cisco、車用與工控客戶、伺服器與網通客戶、模組廠",
+            cooperation: "Design-in、長期供貨承諾、LTA、股權綁定與 FAE 技術支援。",
+            competition: "買方壓價、替代供應商比價、TCO 談判與嚴格驗證規範。",
+            implication: "把南亞科從標準品價格接受者，推向具備客戶黏著度的利基型策略夥伴。",
+            x: 300,
+            y: 88,
+            type: "cooperation"
           },
           {
-            company: "Kioxia",
-            role: "顧客 + 互補者 + 策略私募股東",
-            category: "顧客 / 互補者",
-            cooperation: "引進私募資金約 160 億元，簽訂長期 DRAM 供應合約，並在 VCT DRAM 技術進行合作，共同對抗三大記憶體巨頭。",
-            competition: "Kioxia 本身無 DRAM 生產線，不構成競爭，但雙方需在技術開發良率與出貨時程上維持緊密對齊。",
-            reading: "NAND 夥伴關係與技術授權支撐互補供應與先進技術儲備。"
+            id: "supplier",
+            role: "Supplier / 供應商",
+            rolePosition: "製程與產能升級的上游瓶頸，決定新廠、1B/1C/1D 節點與材料穩定性。",
+            representatives: "ASML、Applied Materials、矽晶圓與化學品供應商、台塑集團",
+            cooperation: "設備、材料、製程支援與母集團反週期資本支持。",
+            competition: "先進設備交期競爭、CAPEX 排擠、上游議價力高。",
+            implication: "供應商網絡決定南亞科能否延續 1B、1C、1D 製程推進。",
+            x: 512,
+            y: 300,
+            type: "dependency"
           },
           {
-            company: "Solidigm",
-            role: "互補者 + 策略私募股東",
-            category: "互補者 / 投資者",
-            cooperation: "引進私募資金約 160 億元，作為企業級 SSD 互補控制晶片與控制系統合作夥伴，強化 B2B 伺服器供應鏈。",
-            competition: "由於母公司為 SK hynix（三大廠之一），需注意技術外洩風險與母公司競爭策略對合作關係的干擾。",
-            reading: "提供資金並強化伺服器儲存生態鏈的多元訊號。"
+            id: "competitor",
+            role: "Competitor / 競爭者",
+            rolePosition: "全球 DRAM 寡占者，同時是標準制定與價格週期的共同參與者。",
+            representatives: "Samsung、SK Hynix、Micron、CXMT",
+            cooperation: "共同遵循 JEDEC 標準，維持 DRAM 生態系相容性。",
+            competition: "製程節點、產能規模、HBM、DDR5 與價格週期競爭。",
+            implication: "南亞科避開 HBM 正面戰場，承接 DDR4、LPDDR、工控與網通的殘餘需求。",
+            x: 300,
+            y: 512,
+            type: "competition"
           },
           {
-            company: "Cisco",
-            role: "顧客 + 策略私募股東",
-            category: "顧客 / 投資者",
-            cooperation: "引進私募資金約 160 億元，使網通龍頭直接入股，取得第一手網路設備與資料中心伺服器記憶體需求，提升產品設計驗證速度。",
-            competition: "身為下游買方，採購合約價格與驗證規範極為嚴格，對毛利率與客戶技術服務（FAE）構成談判壓力。",
-            reading: "網通龍頭入股，提高利基伺服器記憶體的設計導入能見度。"
-          },
-          {
-            company: "PieceMakers",
-            role: "技術與投資合作夥伴",
-            category: "互補者",
-            cooperation: "共同開發客製化超高頻寬記憶體與 Edge AI 應用方案，提供南亞科高利基與特殊應用的技術補充。",
-            competition: "屬於互補技術研發，無產能與價格競爭，但需在利潤分成與智慧財產權歸屬上進行談判。",
-            reading: "結合技術研發夥伴，強化 Edge AI 特殊應用能力。"
-          },
-          {
-            company: "Samsung",
-            role: "產業競爭者",
-            category: "競爭者",
-            cooperation: "無直接合作。其高階 HBM 與 DDR5 產能排擠成熟製程時，會為南亞科釋放 mature DDR4 的缺貨與價格上漲空間。",
-            competition: "DRAM 市占第一。透過規模經濟與最先進的 1B/1C 奈米製程，在合約價格上擁有絕對支配力，隨時可發動產能戰壓縮小廠。",
-            reading: "寡占領導者，其高階產能調配間接決定了成熟記憶體的價格空間。"
-          },
-          {
-            company: "SK hynix",
-            role: "產業競爭者",
-            category: "競爭者",
-            cooperation: "無直接合作。其 HBM 龍頭地位將主流 DDR5/HBM 產能拉走，間接創造 Nanya 利基型記憶體供需失衡的機會。",
-            competition: "在先進高容量 RDIMM 伺服器市場與 HBM 技術上處於領先地位，對南亞科的產品升級良率與開發時程帶來巨大競爭壓力。",
-            reading: "先進伺服器產品標竿，對高容量 RDIMM 良率研發構成跟進壓力。"
-          },
-          {
-            company: "Micron",
-            role: "產業競爭者",
-            category: "競爭者",
-            cooperation: "無直接合作。但在台灣設有晶圓製造廠，在本地人才招聘與半導體供應鏈資源上形成微妙的共生環境。",
-            competition: "其台灣晶圓廠（1-gamma 奈米製程）直接與南亞科搶奪本地研發人才，並在一線客戶供應管道中直接競爭。",
-            reading: "台灣本地生產的最大外商競爭對手，人才爭奪壓力最為直接。"
+            id: "complementor",
+            role: "Complementor / 互補者",
+            rolePosition: "把 DRAM 接到 NAND、儲存、平台與客製化記憶體方案的生態系夥伴。",
+            representatives: "Kioxia、SanDisk、Solidigm、MediaTek、NVIDIA 邊緣平台、PieceMakers",
+            cooperation: "DRAM + NAND、KGD、MCP、平台認證與共同開發。",
+            competition: "整合方案中的價值分配與規格主導權談判。",
+            implication: "透過互補者，南亞科能從單一 DRAM 供應商延伸為儲存與邊緣 AI 生態系的一部分。",
+            x: 88,
+            y: 300,
+            type: "technology"
           }
         ]
       },
       en: {
-        headers: ["Company", "Role", "Cooperation", "Competition", "Strategic Reading"],
+        labels: {
+          centerTop: "Nanya",
+          centerBottom: "Technology",
+          rolePosition: "Role position",
+          representatives: "Representative players",
+          cooperation: "Cooperation",
+          competition: "Competition",
+          implication: "Strategic implication"
+        },
+        headers: ["Role", "Representative players", "Cooperation", "Competition", "Strategic implication"],
         rows: [
           {
-            company: "SanDisk",
-            role: "Customer + Complementor + Private Placement Investor",
-            category: "Customer / Complementor",
-            cooperation: "Secured approx. NT$31B private placement and signed a multi-year DRAM supply agreement to lock in capacity for complementary SSD markets.",
-            competition: "No direct DRAM rivalry, but long-term contract pricing is subject to market cycle fluctuations.",
-            reading: "Increases stickiness through capital and long-term contracts, stabilizing wafer demand."
+            id: "customer",
+            role: "Customer",
+            rolePosition: "Demand-side buyers and strategic investors that decide whether Nanya can move beyond commodity pricing through design-in, LTAs, and qualification.",
+            representatives: "Cisco, automotive and industrial customers, server and networking customers, module makers",
+            cooperation: "Design-in, long-term supply commitments, LTAs, equity ties, and FAE technical support.",
+            competition: "Buyer price pressure, alternative supplier benchmarking, TCO negotiation, and strict qualification rules.",
+            implication: "Moves Nanya from a commodity price taker toward a niche strategic partner with customer stickiness.",
+            x: 300,
+            y: 88,
+            type: "cooperation"
           },
           {
-            company: "Kioxia",
-            role: "Customer + Complementor + Private Placement Investor",
-            category: "Customer / Complementor",
-            cooperation: "Secured approx. NT$16B private placement, signed a long-term DRAM supply agreement, and partnered on VCT DRAM technology to compete against the top three giants.",
-            competition: "Kioxia does not manufacture DRAM, avoiding rivalry, but requires tight alignment on R&D yields.",
-            reading: "NAND partnership and licensing support complementary supply and tech reserves."
+            id: "supplier",
+            role: "Supplier",
+            rolePosition: "Upstream bottleneck for process and capacity upgrades, shaping new-fab timing, 1B/1C/1D migration, and material stability.",
+            representatives: "ASML, Applied Materials, wafer and chemical suppliers, Formosa Plastics Group",
+            cooperation: "Equipment, materials, process support, and counter-cyclical capital backing from the parent group.",
+            competition: "Advanced-equipment lead-time competition, capex crowding, and high upstream bargaining power.",
+            implication: "The supplier network determines whether Nanya can sustain 1B, 1C, and 1D process migration.",
+            x: 512,
+            y: 300,
+            type: "dependency"
           },
           {
-            company: "Solidigm",
-            role: "Complementor + Private Placement Investor",
-            category: "Complementor / Investor",
-            cooperation: "Secured approx. NT$16B private placement; acts as an enterprise SSD partner to strengthen B2B server supply chain.",
-            competition: "Owned by SK hynix (top 3 giant), requiring caution regarding intellectual property and parental competitive interference.",
-            reading: "Provides capital and strengthens server storage ecosystem diversity."
+            id: "competitor",
+            role: "Competitor",
+            rolePosition: "Global DRAM oligopolists that compete with Nanya while jointly shaping standards and the price cycle.",
+            representatives: "Samsung, SK Hynix, Micron, CXMT",
+            cooperation: "Common JEDEC standards maintain compatibility across the DRAM ecosystem.",
+            competition: "Process nodes, capacity scale, HBM, DDR5, and price-cycle competition.",
+            implication: "Nanya avoids a direct HBM battlefield and captures residual DDR4, LPDDR, industrial, and networking demand.",
+            x: 300,
+            y: 512,
+            type: "competition"
           },
           {
-            company: "Cisco",
-            role: "Customer + Private Placement Investor",
-            category: "Customer / Investor",
-            cooperation: "Secured approx. NT$16B private placement; links directly with the networking giant to align design-in validation with router and server demand.",
-            competition: "As an downstream buyer, holds strong pricing leverage and strict qualification rules, putting pressure on margins.",
-            reading: "Networking leader investment raises strategic design-in visibility."
-          },
-          {
-            company: "PieceMakers",
-            role: "Technology & Investment Partner",
-            category: "Complementor",
-            cooperation: "Jointly develops customized ultra-high-bandwidth memory and Edge AI solutions to support Nanya's high-niche specialties.",
-            competition: "Tech partnership with no capacity rivalry; negotiating profit sharing and IP ownership is required.",
-            reading: "Links customized memory capabilities with Edge AI applications."
-          },
-          {
-            company: "Samsung",
-            role: "Industry Competitor",
-            category: "Competitor",
-            cooperation: "No direct cooperation, but Samsung's capacity shifting to HBM/DDR5 helps tighten mature DDR4 supply, lifting prices for Nanya.",
-            competition: "The market leader with absolute economies of scale and advanced 1B/1C nodes, holding strong pricing dominance.",
-            reading: "Oligopoly leader whose high-end capacity shifts dictate mature DRAM pricing room."
-          },
-          {
-            company: "SK hynix",
-            role: "Industry Competitor",
-            category: "Competitor",
-            cooperation: "Indirectly tightens mainstream capacity by focusing heavily on HBM, leaving pricing tailwinds for Nanya's niche nodes.",
-            competition: "The leader in high-capacity server RDIMMs and HBM, putting intense pressure on Nanya's product migration schedule.",
-            reading: "Advanced server product benchmark, creating pressure on RDIMM yield R&D."
-          },
-          {
-            company: "Micron",
-            role: "Industry Competitor",
-            category: "Competitor",
-            cooperation: "No direct cooperation, but both operate major fabs in Taiwan, creating a shared pool of local semiconductor talent.",
-            competition: "Direct competitor in Taiwan for engineering talent and customer slots, utilizing advanced 1-gamma nodes.",
-            reading: "Direct MNC competitor in Taiwan, creating immediate recruitment pressure."
+            id: "complementor",
+            role: "Complementor",
+            rolePosition: "Ecosystem partners that connect DRAM with NAND, storage, platforms, and custom-memory solutions.",
+            representatives: "Kioxia, SanDisk, Solidigm, MediaTek, NVIDIA edge platforms, PieceMakers",
+            cooperation: "DRAM + NAND, KGD, MCP, platform certification, and joint development.",
+            competition: "Negotiation over value sharing and specification control inside integrated solutions.",
+            implication: "Complementors let Nanya extend from a single DRAM supplier into storage and edge-AI ecosystems.",
+            x: 88,
+            y: 300,
+            type: "technology"
           }
         ]
       }
@@ -5443,7 +5493,7 @@
       zh: {
         strategyRows: [
           { target: "asp-shock-lab", label: "ASP Shock Lab", body: "拖曳 DRAM 報價與稼動率，觀察財務敏感度。" },
-          { target: "coopetition-universe", label: "Co-opetition Universe", body: "用 Value Net 看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
+          { target: "coopetition", label: "Co-opetition Universe", body: "用 Value Net 看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
           { target: "capability-reactor", label: "Capability Reactor", body: "把 104 職缺技能配對到策略能力，理解 KBV。" },
           { target: "portfolio-scenario-switcher", label: "Portfolio Scenario", body: "切換產品策略情境，觀察 DDR4、DDR5、KGD 與 LPDDR5 的定位變化。" }
         ],
@@ -5496,7 +5546,7 @@
       en: {
         strategyRows: [
           { target: "asp-shock-lab", label: "ASP Shock Lab", body: "Adjust ASP and utilization to test financial sensitivity." },
-          { target: "coopetition-universe", label: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
+          { target: "coopetition", label: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
           { target: "capability-reactor", label: "Capability Reactor", body: "Match job skills to strategic capabilities through a KBV lens." },
           { target: "portfolio-scenario-switcher", label: "Portfolio Scenario", body: "Switch product scenarios to see how portfolio positioning changes." }
         ],
@@ -5570,13 +5620,13 @@
     const labSelectorData = {
       zh: [
         { target: "asp-shock-lab", label: "01", title: "ASP Shock Lab", body: "拖曳 DRAM 報價與稼動率，觀察財務敏感度。" },
-        { target: "coopetition-universe", label: "02", title: "Co-opetition Universe", body: "用 Value Net 看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
+        { target: "coopetition", label: "02", title: "Co-opetition Universe", body: "用 Value Net 看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
         { target: "capability-reactor", label: "03", title: "Capability Reactor", body: "把 104 職缺技能配對到策略能力，理解 KBV。" },
         { target: "portfolio-scenario-switcher", label: "04", title: "Portfolio Scenario", body: "切換產品策略情境，觀察 DDR4、DDR5、KGD 與 LPDDR5 的定位變化。" }
       ],
       en: [
         { target: "asp-shock-lab", label: "01", title: "ASP Shock Lab", body: "Adjust ASP and utilization to test financial sensitivity." },
-        { target: "coopetition-universe", label: "02", title: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
+        { target: "coopetition", label: "02", title: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
         { target: "capability-reactor", label: "03", title: "Capability Reactor", body: "Match job skills to strategic capabilities through a KBV lens." },
         { target: "portfolio-scenario-switcher", label: "04", title: "Portfolio Scenario", body: "Switch product scenarios to see how portfolio positioning changes." }
       ]
@@ -5628,29 +5678,6 @@
         { id: "ai", label: "AI Server Upside", title: "AI Server Upside", implication: "AI server and high-capacity module demand increase the growth profile and capital priority of DDR5/RDIMM.", risk: "Execution", return: "Higher", capex: "DDR5 58% / KGD 24% / DDR4 18%", allocation: [58, 24, 18], positions: { ddr4: [24, 24], ddr5: [78, 82], "ddr5-rdimm": [84, 88], lpddr5: [44, 70], kgd: [64, 58], mcp: [34, 38] } },
         { id: "downcycle", label: "Price Downcycle", title: "Price Downcycle", implication: "When DRAM pricing reverses, DDR4 cash-flow pressure increases and strategy shifts toward defense, cash flow, and long-term agreements.", risk: "High", return: "Lower", capex: "DDR5 34% / KGD 18% / DDR4 48%", allocation: [34, 18, 48], positions: { ddr4: [24, 20], ddr5: [62, 60], "ddr5-rdimm": [68, 68], lpddr5: [36, 55], kgd: [50, 42], mcp: [30, 32] } },
         { id: "partner", label: "Strategic Partner Boost", title: "Strategic Partner Boost", implication: "Strategic private placements and supply agreements raise the collaboration value of KGD/LPDDR5/MCP, helping Nanya increase customer switching costs through complementary solutions.", risk: "Partner dependency", return: "Selective upside", capex: "DDR5 42% / KGD 38% / DDR4 20%", allocation: [42, 38, 20], positions: { ddr4: [26, 30], ddr5: [72, 76], "ddr5-rdimm": [78, 80], lpddr5: [52, 72], kgd: [68, 64], mcp: [48, 50] } }
-      ]
-    };
-
-    const universeData = {
-      zh: [
-        { id: "sandisk", category: "Customers", company: "SanDisk", x: 300, y: 88, type: "cooperation", role: "客戶 / 策略投資者", cooperation: "DRAM 供應協議、策略私募與長期需求 visibility。", competition: "採購談判、價格壓力與供應商替代風險。", move: "以穩定供應與客製化記憶體設計提高 design-in 深度。" },
-        { id: "kioxia", category: "Customers", company: "Kioxia", x: 456, y: 148, type: "cooperation", role: "客戶 / 互補者", cooperation: "DRAM 供應協議、策略私募、NAND + DRAM 解決方案互補。", competition: "採購談判、替代供應商風險、技術路線依賴。", move: "透過 KGD、MCP 與 LPDDR5 合作提高轉換成本，深化 design-in 關係。" },
-        { id: "cisco", category: "Customers", company: "Cisco", x: 512, y: 300, type: "technology", role: "網通客戶 / 策略投資者", cooperation: "網路設備與資料中心伺服器需求讓產品驗證更貼近終端應用。", competition: "大型客戶議價能力高，會比較多家記憶體供應商。", move: "以 RDIMM、DDR5 與 FAE 技術支援鎖定網通設計驗證。" },
-        { id: "server", category: "Customers", company: "Server customers", x: 456, y: 452, type: "dependency", role: "高容量需求端", cooperation: "高容量伺服器記憶體需求支撐 DDR5 / RDIMM 升級。", competition: "標準品容易被大廠供應規模壓制。", move: "聚焦客製化、高容量與供應穩定性，而非價格戰。" },
-        { id: "solidigm", category: "Complementors", company: "Solidigm", x: 300, y: 512, type: "technology", role: "互補者 / 儲存生態系", cooperation: "SSD 與 DRAM 組合可形成資料中心記憶體與儲存方案。", competition: "互補方案仍需分配價值與控制路線依賴。", move: "用互補方案擴大 KGD / MCP 合作空間。" },
-        { id: "piecemakers", category: "Complementors", company: "PieceMakers", x: 144, y: 452, type: "technology", role: "客製化記憶體夥伴", cooperation: "共同發展超高頻寬與客製化 AI 記憶體方向。", competition: "技術專案仍有量產與客戶採用不確定性。", move: "把研發投資連到高階應用，而非只追逐標準規格。" },
-        { id: "samsung", category: "Competitors", company: "Samsung / SK hynix / Micron", x: 88, y: 300, type: "competition", role: "全球 DRAM 三大競爭者", cooperation: "共同擴大 DDR5 與 AI memory 市場標準。", competition: "規模、製程與客戶覆蓋率壓縮南亞科價格權力。", move: "避開正面價格戰，以 B2B 利基與策略客戶關係突圍。" },
-        { id: "suppliers", category: "Suppliers", company: "Equipment / wafer / materials", x: 144, y: 148, type: "dependency", role: "設備、矽晶圓與材料供應商", cooperation: "長約與供應穩定支撐 1B/1C 製程與新廠節點。", competition: "設備交期、價格與技術限制會影響升級速度。", move: "用資本紀律與台塑集團信用支撐長期設備與材料配置。" }
-      ],
-      en: [
-        { id: "sandisk", category: "Customers", company: "SanDisk", x: 300, y: 88, type: "cooperation", role: "Customer / strategic investor", cooperation: "DRAM supply agreement, private placement, and long-term demand visibility.", competition: "Procurement bargaining, price pressure, and supplier replacement risk.", move: "Deepen design-in through stable supply and custom-memory support." },
-        { id: "kioxia", category: "Customers", company: "Kioxia", x: 456, y: 148, type: "cooperation", role: "Customer / complementor", cooperation: "DRAM supply agreement, private placement, NAND + DRAM solution complementarity.", competition: "Procurement bargaining, supplier replacement risk, technical roadmap dependency.", move: "Use KGD / MCP / LPDDR5 cooperation to raise switching cost and deepen design-in relationship." },
-        { id: "cisco", category: "Customers", company: "Cisco", x: 512, y: 300, type: "technology", role: "Networking customer / strategic investor", cooperation: "Networking and data-center demand brings product qualification closer to end use.", competition: "Large customers compare multiple memory suppliers and hold bargaining power.", move: "Use RDIMM, DDR5, and FAE support to lock into networking design validation." },
-        { id: "server", category: "Customers", company: "Server customers", x: 456, y: 452, type: "dependency", role: "High-capacity demand side", cooperation: "Server memory demand supports DDR5 / RDIMM migration.", competition: "Standard products can be squeezed by larger suppliers.", move: "Focus on customization, capacity, and supply stability rather than price war." },
-        { id: "solidigm", category: "Complementors", company: "Solidigm", x: 300, y: 512, type: "technology", role: "Complementor / storage ecosystem", cooperation: "SSD and DRAM combinations can support data-center memory and storage solutions.", competition: "Complementary solutions still require value sharing and roadmap control.", move: "Use complementary solutions to expand KGD / MCP cooperation space." },
-        { id: "piecemakers", category: "Complementors", company: "PieceMakers", x: 144, y: 452, type: "technology", role: "Custom-memory partner", cooperation: "Collaborates on ultra-bandwidth and custom AI memory directions.", competition: "Technology projects carry ramp and customer adoption uncertainty.", move: "Link R&D investment to higher-value applications, not only standard specs." },
-        { id: "samsung", category: "Competitors", company: "Samsung / SK hynix / Micron", x: 88, y: 300, type: "competition", role: "Top-three global DRAM rivals", cooperation: "Collectively expand DDR5 and AI memory standards.", competition: "Scale, process nodes, and customer reach compress Nanya's pricing power.", move: "Avoid frontal price wars and compete through B2B niches and strategic customer ties." },
-        { id: "suppliers", category: "Suppliers", company: "Equipment / wafer / materials", x: 144, y: 148, type: "dependency", role: "Equipment, silicon wafer, and materials suppliers", cooperation: "Long-term supply stability supports 1B/1C migration and new-fab timing.", competition: "Lead time, cost, and technology limits affect migration speed.", move: "Use capital discipline and Formosa Group credit support for long-term input planning." }
       ]
     };
 
@@ -5707,9 +5734,10 @@
     let stpFocus = "server";
     let portfolioFocus = "ddr5";
     let portfolioScenario = "base";
-    let valueNetFocus = "SanDisk";
     let aspCapexLevel = "base";
-    let universeFocus = "kioxia";
+    let universeFocus = "customer";
+    let universeAnimationFrame = null;
+    let universeMapBuilt = false;
     let reactorSelectedSkill = null;
     let reactorLastBucket = null;
     let storyIndex = 0;
@@ -5740,6 +5768,7 @@
     function applyLanguage(lang) {
       if (speechActive || speechPaused) stopVoiceGuide();
       currentLang = lang;
+      universeMapBuilt = false;
       localStorage.setItem("nanya-lang", lang);
       document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
       qsa("[data-i18n]").forEach((node) => {
@@ -5980,69 +6009,348 @@
       `;
     }
 
+    function getUniverseRows() {
+      return valueNetNodes[currentLang].rows;
+    }
+
+    function getUniverseLabels() {
+      return valueNetNodes[currentLang].labels;
+    }
+
+    function getUniverseActive(rows = getUniverseRows()) {
+      return rows.find((item) => item.id === universeFocus) || rows[0];
+    }
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function easeOutBack(t) {
+      const c1 = 1.45;
+      const c3 = c1 + 1;
+      return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+    }
+
+    function clamp01(value) {
+      return Math.max(0, Math.min(1, value));
+    }
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
     function renderUniverseLab() {
       const map = qs("#universeMap");
       const detail = qs("#universeDetail");
       const mobile = qs("#universeMobileList");
       if (!map || !detail || !mobile) return;
-      const rows = universeData[currentLang];
-      const active = rows.find((item) => item.id === universeFocus) || rows[0];
+
+      const rows = getUniverseRows();
+      const labels = getUniverseLabels();
+      const active = getUniverseActive(rows);
       universeFocus = active.id;
+
+      buildUniverseMap(map, rows, labels, active);
+      updateUniverseVisualState(active.id);
+      updateUniverseDetail();
+      updateUniverseMobileList();
+    }
+
+    function buildUniverseMap(map, rows, labels, active) {
+      const needsRebuild = !universeMapBuilt || map.dataset.lang !== currentLang;
+      if (!needsRebuild) return;
+
+      universeMapBuilt = true;
+      map.dataset.lang = currentLang;
+
       const lines = rows.map((item) => `
-        <line class="universe-line ${item.id === active.id ? "is-active" : ""}" x1="300" y1="300" x2="${item.x}" y2="${item.y}" stroke="${universeLineColors[item.type]}" ${item.type === "competition" ? "stroke-dasharray=\"6 7\"" : ""}/>
+        <line
+          class="universe-line"
+          data-universe-line="${escapeHtml(item.id)}"
+          x1="300"
+          y1="300"
+          x2="${item.x}"
+          y2="${item.y}"
+          stroke="${universeLineColors[item.type]}"
+          ${item.type === "competition" ? "stroke-dasharray=\"6 7\"" : ""}
+        />
       `).join("");
-      const nodes = rows.map((item) => `
-        <g class="universe-node ${item.id === active.id ? "is-active" : ""}" role="button" tabindex="0" data-universe="${escapeHtml(item.id)}" aria-label="${escapeHtml(item.company)}">
-          <circle cx="${item.x}" cy="${item.y}" r="52"></circle>
-          <text x="${item.x}" y="${item.y - 5}">${escapeHtml(item.company.split(" / ")[0])}</text>
-          <text x="${item.x}" y="${item.y + 13}">${escapeHtml(item.category)}</text>
-        </g>
+
+      const nodes = rows.map((item) => {
+        const roleParts = item.role.split(" / ");
+        return `
+          <g class="universe-node" data-universe-node="${escapeHtml(item.id)}">
+            <circle cx="${item.x}" cy="${item.y}" r="52"></circle>
+            <text x="${item.x}" y="${item.y - 5}">${escapeHtml(roleParts[0])}</text>
+            <text x="${item.x}" y="${item.y + 13}">${escapeHtml(currentLang === "zh" ? roleParts[1] || item.id : item.id)}</text>
+          </g>
+        `;
+      }).join("");
+
+      const hotspots = rows.map((item) => `
+        <button
+          class="universe-hotspot"
+          type="button"
+          data-universe="${escapeHtml(item.id)}"
+          aria-label="${escapeHtml(item.role)}"
+          style="--node-x:${(item.x / 600) * 100}%; --node-y:${(item.y / 600) * 100}%;"
+        >
+          ${escapeHtml(item.role)}
+        </button>
       `).join("");
+
       map.innerHTML = `
-        <svg class="universe-map" viewBox="0 0 600 600" role="img" aria-label="Co-opetition Universe">
-          ${lines}
-          <circle cx="300" cy="300" r="72" fill="var(--near-black)"></circle>
-          <text x="300" y="294" fill="var(--canvas)" font-size="18" text-anchor="middle">Nanya</text>
-          <text x="300" y="316" fill="var(--canvas)" font-size="12" text-anchor="middle">Technology</text>
-          ${nodes}
-        </svg>
+        <div class="universe-map-shell">
+          <svg class="universe-map" viewBox="0 0 600 600" role="img" aria-label="Co-opetition Universe">
+            <defs>
+              <filter id="universeGooey">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+                <feColorMatrix
+                  in="blur"
+                  mode="matrix"
+                  values="
+                    1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 22 -9"
+                  result="goo"
+                />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+              </filter>
+            </defs>
+
+            ${lines}
+
+            <g class="universe-liquid-layer" filter="url(#universeGooey)" aria-hidden="true">
+              <path class="universe-liquid-trail" data-liquid-trail pathLength="1"></path>
+              <circle class="universe-liquid-ghost" data-liquid-ghost cx="${active.x}" cy="${active.y}" r="0" opacity="0"></circle>
+              <ellipse class="universe-liquid-main" data-liquid-main rx="52" ry="52" transform="translate(${active.x} ${active.y})"></ellipse>
+            </g>
+
+            <circle class="universe-center-core" cx="300" cy="300" r="72"></circle>
+            <text class="universe-center-label" x="300" y="294" font-size="18" text-anchor="middle">${escapeHtml(labels.centerTop)}</text>
+            <text class="universe-center-label" x="300" y="316" font-size="12" text-anchor="middle">${escapeHtml(labels.centerBottom)}</text>
+
+            ${nodes}
+          </svg>
+          ${hotspots}
+        </div>
       `;
-      map.querySelectorAll("[data-universe]").forEach((node) => {
-        const activate = () => {
-          universeFocus = node.getAttribute("data-universe");
-          renderUniverseLab();
-        };
-        node.addEventListener("click", activate);
-        node.addEventListener("keydown", (event) => {
+
+      map.querySelectorAll("[data-universe]").forEach((button) => {
+        const id = button.getAttribute("data-universe");
+        const linkedNode = () => [...map.querySelectorAll("[data-universe-node]")]
+          .find((node) => node.getAttribute("data-universe-node") === id);
+
+        button.addEventListener("pointerdown", (event) => {
+          event.preventDefault();
+          activateUniverseNode(button.getAttribute("data-universe"));
+        }, { passive: false });
+
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+        });
+
+        button.addEventListener("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            activate();
+            activateUniverseNode(button.getAttribute("data-universe"));
+          }
+        });
+
+        button.addEventListener("pointerenter", () => {
+          linkedNode()?.classList.add("is-hovered");
+        });
+
+        button.addEventListener("pointerleave", () => {
+          linkedNode()?.classList.remove("is-hovered");
+        });
+      });
+    }
+
+    function activateUniverseNode(nextId) {
+      if (!nextId || nextId === universeFocus) return;
+
+      const rows = getUniverseRows();
+      const previous = getUniverseActive(rows);
+      const active = rows.find((item) => item.id === nextId) || rows[0];
+
+      universeFocus = active.id;
+
+      updateUniverseVisualState(active.id);
+      updateUniverseDetail();
+      updateUniverseMobileList();
+      animateUniverseLiquid(previous, active);
+    }
+
+    function updateUniverseVisualState(activeId) {
+      const map = qs("#universeMap");
+      if (!map) return;
+      const activeLabelColor = getComputedStyle(document.documentElement)
+        .getPropertyValue("--canvas")
+        .trim() || "var(--canvas)";
+
+      map.querySelectorAll("[data-universe-node]").forEach((node) => {
+        const isActive = node.getAttribute("data-universe-node") === activeId;
+        node.classList.toggle("is-active", isActive);
+        node.querySelectorAll("text").forEach((text) => {
+          if (isActive) {
+            text.style.fill = activeLabelColor;
+            text.setAttribute("fill", activeLabelColor);
+          } else {
+            text.style.removeProperty("fill");
+            text.removeAttribute("fill");
           }
         });
       });
+
+      map.querySelectorAll("[data-universe-line]").forEach((line) => {
+        const isActive = line.getAttribute("data-universe-line") === activeId;
+        line.classList.toggle("is-active", isActive);
+      });
+
+      map.querySelectorAll("[data-universe]").forEach((button) => {
+        const isActive = button.getAttribute("data-universe") === activeId;
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    }
+
+    function animateUniverseLiquid(previous, active) {
+      const map = qs("#universeMap");
+      if (!map || !previous || !active) return;
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const main = map.querySelector("[data-liquid-main]");
+      const ghost = map.querySelector("[data-liquid-ghost]");
+      const trail = map.querySelector("[data-liquid-trail]");
+
+      if (!main || !ghost || !trail) return;
+
+      if (universeAnimationFrame) {
+        cancelAnimationFrame(universeAnimationFrame);
+        universeAnimationFrame = null;
+      }
+
+      if (reduceMotion || previous.id === active.id) {
+        main.setAttribute("rx", "52");
+        main.setAttribute("ry", "52");
+        main.setAttribute("transform", `translate(${active.x} ${active.y})`);
+        ghost.setAttribute("r", "0");
+        ghost.setAttribute("opacity", "0");
+        trail.setAttribute("opacity", "0");
+        return;
+      }
+
+      const dx = active.x - previous.x;
+      const dy = active.y - previous.y;
+      const distance = Math.hypot(dx, dy) || 1;
+      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+      const overshoot = Math.min(18, distance * 0.075);
+      const overshootX = active.x + (dx / distance) * overshoot;
+      const overshootY = active.y + (dy / distance) * overshoot;
+
+      const curve = `
+        M ${previous.x} ${previous.y}
+        C ${previous.x + dx * 0.34} ${previous.y + dy * 0.12},
+          ${previous.x + dx * 0.66} ${previous.y + dy * 0.88},
+          ${active.x} ${active.y}
+      `;
+
+      trail.setAttribute("d", curve);
+      trail.setAttribute("stroke-dasharray", "1");
+      trail.setAttribute("stroke-dashoffset", "1");
+
+      const duration = 500;
+      const start = performance.now();
+
+      function frame(now) {
+        const raw = clamp01((now - start) / duration);
+
+        const moveT = easeOutCubic(Math.min(raw / 0.76, 1));
+        const settleT = raw < 0.76 ? 0 : easeOutBack((raw - 0.76) / 0.24);
+
+        let x;
+        let y;
+
+        if (raw < 0.76) {
+          x = lerp(previous.x, overshootX, moveT);
+          y = lerp(previous.y, overshootY, moveT);
+        } else {
+          x = lerp(overshootX, active.x, clamp01(settleT));
+          y = lerp(overshootY, active.y, clamp01(settleT));
+        }
+
+        const stretchPhase = Math.sin(Math.PI * clamp01(raw / 0.70));
+        const reboundPhase = raw > 0.70 ? Math.sin(Math.PI * clamp01((raw - 0.70) / 0.30)) : 0;
+
+        const sx = 1 + 0.34 * stretchPhase - 0.07 * reboundPhase;
+        const sy = 1 - 0.20 * stretchPhase + 0.10 * reboundPhase;
+
+        main.setAttribute("rx", "52");
+        main.setAttribute("ry", "52");
+        main.setAttribute(
+          "transform",
+          `translate(${x} ${y}) rotate(${angle}) scale(${sx} ${sy}) rotate(${-angle})`
+        );
+
+        const ghostT = clamp01(raw / 0.58);
+        ghost.setAttribute("cx", previous.x);
+        ghost.setAttribute("cy", previous.y);
+        ghost.setAttribute("r", String(52 * (1 - easeOutCubic(ghostT))));
+        ghost.setAttribute("opacity", String(Math.max(0, 0.58 * (1 - ghostT))));
+
+        const trailT = clamp01(raw / 0.72);
+        const trailOpacity = raw < 0.16
+          ? raw / 0.16 * 0.55
+          : Math.max(0, 0.55 * (1 - (raw - 0.16) / 0.56));
+
+        trail.setAttribute("opacity", String(trailOpacity));
+        trail.setAttribute("stroke-width", String(94 * (1 - trailT) + 14));
+        trail.setAttribute("stroke-dashoffset", String(Math.max(0, 1 - trailT * 1.35)));
+
+        if (raw < 1) {
+          universeAnimationFrame = requestAnimationFrame(frame);
+          return;
+        }
+
+        main.setAttribute("rx", "52");
+        main.setAttribute("ry", "52");
+        main.setAttribute("transform", `translate(${active.x} ${active.y})`);
+        ghost.setAttribute("r", "0");
+        ghost.setAttribute("opacity", "0");
+        trail.setAttribute("opacity", "0");
+        universeAnimationFrame = null;
+      }
+
+      universeAnimationFrame = requestAnimationFrame(frame);
+    }
+
+    function updateUniverseDetail() {
+      const detail = qs("#universeDetail");
+      if (!detail) return;
+
+      const rows = getUniverseRows();
+      const labels = getUniverseLabels();
+      const active = getUniverseActive(rows);
+
       detail.innerHTML = `
-        <span class="lab-kicker">${escapeHtml(active.category)}</span>
-        <h4>${escapeHtml(active.company)}</h4>
+        <span class="lab-kicker">${escapeHtml(active.id)}</span>
+        <h4>${escapeHtml(active.role)}</h4>
         <dl>
-          <dt>Role</dt><dd>${escapeHtml(active.role)}</dd>
-          <dt>Cooperation</dt><dd>${escapeHtml(active.cooperation)}</dd>
-          <dt>Competition</dt><dd>${escapeHtml(active.competition)}</dd>
-          <dt>Strategic move</dt><dd>${escapeHtml(active.move)}</dd>
+          <dt>${escapeHtml(labels.rolePosition)}</dt><dd>${escapeHtml(active.rolePosition)}</dd>
+          <dt>${escapeHtml(labels.representatives)}</dt><dd>${escapeHtml(active.representatives)}</dd>
+          <dt>${escapeHtml(labels.cooperation)}</dt><dd>${escapeHtml(active.cooperation)}</dd>
+          <dt>${escapeHtml(labels.competition)}</dt><dd>${escapeHtml(active.competition)}</dd>
+          <dt>${escapeHtml(labels.implication)}</dt><dd>${escapeHtml(active.implication)}</dd>
         </dl>
       `;
-      mobile.innerHTML = rows.map((item) => `
-        <button class="${item.id === active.id ? "is-active" : ""}" type="button" data-universe-mobile="${escapeHtml(item.id)}" aria-expanded="${item.id === active.id}">
-          <span class="lab-kicker">${escapeHtml(item.category)}</span>
-          <strong>${escapeHtml(item.company)}</strong>
-          ${item.id === active.id ? `<p>${escapeHtml(item.move)}</p>` : ""}
-        </button>
-      `).join("");
-      mobile.querySelectorAll("[data-universe-mobile]").forEach((button) => {
-        button.addEventListener("click", () => {
-          universeFocus = button.dataset.universeMobile;
-          renderUniverseLab();
-        });
-      });
+    }
+
+    function updateUniverseMobileList() {
+      const mobile = qs("#universeMobileList");
+      if (!mobile) return;
+      mobile.innerHTML = "";
     }
 
     function reactorHint(skill) {
@@ -6400,55 +6708,16 @@
       `).join("");
     }
 
-    function renderValueNetMap() {
-      const data = valueNetData[currentLang];
-      const map = qs("#valueNetMap");
-      const detail = qs("#valueNetDetail");
-      if (!map || !detail) return;
-      const rows = data.rows;
-      const active = rows.find((row) => row.company === valueNetFocus) || rows[0];
-      valueNetFocus = active.company;
-      map.innerHTML = rows.map((row) => `
-        <button class="value-node ${row.company === active.company ? "is-active" : ""}" type="button" data-company="${escapeHtml(row.company)}">
-          <span>${escapeHtml(row.category)}</span>
-          <strong>${escapeHtml(row.company)}</strong>
-        </button>
-      `).join("");
-      
-      detail.innerHTML = `
-        <h3>${escapeHtml(active.company)}</h3>
-        <p><strong>${escapeHtml(active.role)}</strong></p>
-        <div class="micro-grid" style="margin-top: 12px; gap: 8px;">
-          <div class="micro-card">
-            <span style="color: var(--blue);">Cooperation (合作面)</span>
-            <p style="margin: 4px 0 0; font-size: 13.5px; color: var(--ink); line-height: 1.4;">${escapeHtml(active.cooperation)}</p>
-          </div>
-          <div class="micro-card">
-            <span style="color: var(--coral);">Competition (競爭面)</span>
-            <p style="margin: 4px 0 0; font-size: 13.5px; color: var(--ink); line-height: 1.4;">${escapeHtml(active.competition)}</p>
-          </div>
-        </div>
-        <p style="margin-top: 12px; font-size: 13px; color: var(--muted);">${escapeHtml(active.reading)}</p>
-      `;
-      map.querySelectorAll("[data-company]").forEach((button) => {
-        button.addEventListener("click", () => {
-          valueNetFocus = button.dataset.company;
-          renderValueNetMap();
-        });
-      });
-    }
-
     function renderGrowthNetwork() {
-      const data = valueNetData[currentLang];
+      const data = valueNetNodes[currentLang];
       const tableRows = data.rows.map((row) => [
-        row.company,
         row.role,
+        row.representatives,
         row.cooperation,
         row.competition,
-        row.reading
+        row.implication
       ]);
       renderTable(qs("#valueNetTable"), data.headers, tableRows);
-      renderValueNetMap();
       renderPlacementVisual();
     }
 
@@ -6501,6 +6770,7 @@
     function applyTheme(theme) {
       document.documentElement.dataset.theme = theme;
       localStorage.setItem("nanya-theme", theme);
+      updateUniverseVisualState(universeFocus);
     }
 
     function renderQuiz() {
