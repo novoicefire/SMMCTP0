@@ -3601,6 +3601,17 @@
       background: #fff1ed;
     }
 
+    .quiz-option.is-correct {
+      border-color: var(--green);
+      background: var(--pale-green);
+      color: var(--green);
+    }
+    
+    .quiz-option.is-wrong {
+      border-color: var(--risk);
+      color: var(--risk);
+    }
+
     .quiz-feedback {
       min-height: 54px;
       margin-top: 18px;
@@ -9643,16 +9654,18 @@
       answered = true;
       selectedAnswer = index;
       const data = quizData[currentLang][currentQuestion];
-      qsa(".quiz-option").forEach((option) => option.classList.remove("is-selected"));
-      button.classList.add("is-selected");
+      const options = qsa(".quiz-option");
       
       userAnswers[currentQuestion] = index;
 
       if (selectedAnswer === data.answer) {
         score += 1;
         qs("#feedback").textContent = (currentLang === "zh" ? "答對。" : "Correct. ") + data.exp;
+        button.classList.add("is-correct");
       } else {
         qs("#feedback").textContent = (currentLang === "zh" ? "答錯。" : "Not quite. ") + data.exp;
+        button.classList.add("is-wrong");
+        options[data.answer].classList.add("is-correct");
       }
       updateScore();
     }
