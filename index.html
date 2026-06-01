@@ -3744,6 +3744,158 @@
       }
     }
 
+    .strategy-checklist-rail {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(320px, 360px);
+      grid-template-columns: none;
+      gap: 1px;
+      margin-top: 28px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .strategy-checklist-rail::-webkit-scrollbar {
+      display: none;
+    }
+
+    .strategy-checklist-rail > .team-rule-card {
+      min-height: 430px;
+      padding: 24px;
+      scroll-snap-align: start;
+      background: var(--canvas);
+      border-top: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .strategy-checklist-rail .strategy-tag {
+      width: fit-content;
+      margin-bottom: 20px;
+      color: var(--ink);
+      border-color: var(--soft-coral);
+      background: color-mix(in srgb, var(--coral) 8%, transparent);
+    }
+
+    .strategy-checklist-rail h3 {
+      min-height: 58px;
+      margin: 0 0 20px;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.16;
+      letter-spacing: -0.24px;
+    }
+
+    .strategy-checklist-rail .detail-list {
+      margin-top: auto;
+      gap: 10px;
+    }
+
+    .strategy-checklist-rail .detail-list dt {
+      padding-top: 14px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .strategy-checklist-rail .detail-list dd {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 1025px) {
+      .strategy-checklist-rail {
+        grid-auto-columns: minmax(340px, 380px);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .strategy-checklist-rail {
+        grid-auto-columns: minmax(300px, 78vw);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .strategy-checklist-rail {
+        grid-auto-columns: minmax(282px, 86vw);
+      }
+
+      .strategy-checklist-rail > .team-rule-card {
+        min-height: auto;
+        padding: 22px;
+      }
+    }
+
+    .rail-hint {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .rail-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    
+    .rail-header .rail-hint {
+      margin-top: 0;
+    }
+
+    .rail-nav {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 521px) {
+      .rail-nav {
+        display: flex;
+      }
+    }
+
+    .rail-btn {
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--near-black);
+      border-radius: var(--radius-full);
+      background: var(--near-black);
+      color: var(--canvas);
+      cursor: pointer;
+      transition: background 180ms ease, border-color 180ms ease;
+    }
+
+    .rail-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .rail-btn:hover:not(:disabled) {
+      border-color: color-mix(in srgb, var(--near-black) 85%, var(--canvas));
+      background: color-mix(in srgb, var(--near-black) 85%, var(--canvas));
+    }
+
+    .rail-btn:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .rail-btn:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -4501,6 +4653,124 @@
             <p data-i18n="growth3Body">長期策略是建立更穩定的產能與需求來源，並透過客戶入股深化合作。</p>
           </article>
         </div>
+        <div class="chart-card analysis-table-card" aria-labelledby="strategy-checklist-title" style="margin-top:28px;">
+          <span class="scenario-meta" data-i18n="strategyChecklistKicker">國際策略管理</span>
+          <h3 id="strategy-checklist-title" data-i18n="strategyChecklistTitle">國際策略管理檢核：南亞科如何成長？</h3>
+          <p class="section-copy" data-i18n="strategyChecklistSummary">從 2021 年後資料來看，南亞科的成長不是單一策略，而是「有機成長＋相關多角化＋策略聯盟＋集團型垂直支援＋區域擴張」的組合。公司以 1Anm pilot run、DDR5 開發、新 Fab 與 2026 CapEx 建立有機成長基礎；以 DDR5、LPDDR5/5X、KGD、MCP 與模組產品形成 DRAM 核心周邊的相關多角化；以 Kioxia、PieceMakers、SanDisk、Cisco、Solidigm 等夥伴建立技術、股權與供應協議型策略聯盟；並透過台塑集團電子產業鏈取得資源背書與價值鏈支援。相較之下，2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。</p>
+          <div class="rail-header">
+            <p class="rail-hint" data-i18n="strategyChecklistHint">左右滑動查看 6 種成長路徑</p>
+            <div class="rail-nav">
+              <button class="rail-btn" id="strategy-rail-prev" aria-label="上一張策略卡片" data-i18n-aria-label="strategyChecklistPrevLabel" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button class="rail-btn" id="strategy-rail-next" aria-label="下一張策略卡片" data-i18n-aria-label="strategyChecklistNextLabel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+          <div class="team-rule-grid strategy-checklist-rail" aria-label="國際策略管理檢核矩陣" data-i18n-aria-label="strategyChecklistAriaLabel" tabindex="0">
+            <article class="team-rule-card">
+              <span class="strategy-tag" data-i18n="strategyChecklist1Badge">主軸</span>
+              <h3 data-i18n="strategyChecklist1Concept">有機成長 Organic Growth</h3>
+              <dl class="detail-list">
+                <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
+                <dd data-i18n="strategyChecklist1Judgement">南亞科的主要成長路徑是有機成長。</dd>
+                <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
+                <dd data-i18n="strategyChecklist1Evidence">2021 年第一代 10nm class 製程 1Anm pilot run，並啟動 DDR5 product development；2022 年新 Fab 動土；2026 年計畫 CapEx 約新台幣 500 億元。</dd>
+                <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
+                <dd data-i18n="strategyChecklist1Reading">這代表公司主要透過自主研發、製程升級、新廠與設備投資累積能力，而不是靠併購快速擴張。</dd>
+              </dl>
+            </article>
+            <article class="team-rule-card">
+              <span class="strategy-tag" data-i18n="strategyChecklist2Badge">有</span>
+              <h3 data-i18n="strategyChecklist2Concept">相關多角化 Related Diversification</h3>
+              <dl class="detail-list">
+                <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
+                <dd data-i18n="strategyChecklist2Judgement">南亞科的多角化屬於相關多角化，不是跨產業多角化。</dd>
+                <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
+                <dd data-i18n="strategyChecklist2Evidence">公司仍以 DRAM 為核心，但產品線從標準型 DRAM 延伸至 DDR5、LPDDR5/5X、KGD、MCP/eMCP/uMCP、RDIMM、模組與 Elixir 品牌。</dd>
+                <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
+                <dd data-i18n="strategyChecklist2Reading">這是 DRAM 核心周邊的相關多角化，用來降低對單一標準品與單一需求週期的依賴。</dd>
+              </dl>
+            </article>
+            <article class="team-rule-card">
+              <span class="strategy-tag" data-i18n="strategyChecklist3Badge">最關鍵</span>
+              <h3 data-i18n="strategyChecklist3Concept">策略聯盟 Strategic Alliance</h3>
+              <dl class="detail-list">
+                <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
+                <dd data-i18n="strategyChecklist3Judgement">策略聯盟是南亞科突破規模劣勢的核心工具。</dd>
+                <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
+                <dd data-i18n="strategyChecklist3Evidence">2024 年與 Kioxia 共同開發 Vertical Channel Transistor DRAM／OCTRAM 技術；同年投資 PieceMakers 合作開發客製化超高頻寬記憶體；2026 年透過約 US$2.5 billion 私募引入 SanDisk、Solidigm、Cisco、Kioxia，並與 SanDisk、Kioxia 建立多年期／長期 DRAM 供應協議。</dd>
+                <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
+                <dd data-i18n="strategyChecklist3Reading">這不是單純財務投資，而是技術合作、股權合作、供應協議與需求綁定的組合。</dd>
+              </dl>
+            </article>
+            <article class="team-rule-card">
+              <span class="strategy-tag" data-i18n="strategyChecklist4Badge">有但需保守解讀</span>
+              <h3 data-i18n="strategyChecklist4Concept">集團型垂直支援 Group-Based Vertical Support</h3>
+              <dl class="detail-list">
+                <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
+                <dd data-i18n="strategyChecklist4Judgement">南亞科不宜寫成完整垂直整合，應寫成「集團型垂直支援」。</dd>
+                <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
+                <dd data-i18n="strategyChecklist4Evidence">台塑集團官方資料顯示，其半導體垂直整合從 Formosa Sumco 的矽晶圓、南亞科技的 DRAM 研發設計製造銷售，到 Formosa Advanced Tech 的 IC 封裝測試；集團電子事業也包含 PCB 與 IC substrate。</dd>
+                <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
+                <dd data-i18n="strategyChecklist4Reading">這代表南亞科能取得集團資源、電子產業鏈與價值鏈支援，但不應誇大成所有供應鏈環節都由南亞科內部化。</dd>
+              </dl>
+            </article>
+            <article class="team-rule-card">
+              <span class="strategy-tag" data-i18n="strategyChecklist5Badge">有</span>
+              <h3 data-i18n="strategyChecklist5Concept">區域擴張 Regional Expansion / International Configuration</h3>
+              <dl class="detail-list">
+                <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
+                <dd data-i18n="strategyChecklist5Judgement">南亞科的國際化不是單純海外銷售，而是「台灣製造基地＋全球技術支援網絡」。</dd>
+                <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
+                <dd data-i18n="strategyChecklist5Evidence">既有資料提到台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務；補充資料顯示日本辦公室提供 SI measurement 與技術支援，歐洲杜塞道夫團隊支援 automotive、industrial、networking、consumer、IoT segments，美國也有 Vermont 與 Texas Design Center。</dd>
+                <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
+                <dd data-i18n="strategyChecklist5Reading">這應整理為區域擴張／國際化配置，而不是只看成海外銷售據點。</dd>
+              </dl>
+            </article>
+            <article class="team-rule-card">
+              <span class="strategy-tag" data-i18n="strategyChecklist6Badge">非主軸</span>
+              <h3 data-i18n="strategyChecklist6Concept">併購判斷 M&amp;A</h3>
+              <dl class="detail-list">
+                <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
+                <dd data-i18n="strategyChecklist6Judgement">2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。</dd>
+                <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
+                <dd data-i18n="strategyChecklist6Evidence">PieceMakers 是策略合作與股權投資；2026 年 SanDisk、Solidigm、Cisco、Kioxia 參與的是私募認股與供應協議，不是南亞科併購對方，也不是對方併購南亞科。</dd>
+                <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
+                <dd data-i18n="strategyChecklist6Reading">本案例應判斷為「非併購導向」，外部成長主要透過策略投資、私募、長約與技術合作完成。</dd>
+              </dl>
+            </article>
+          </div>
+          <details class="source-note">
+            <summary data-i18n="sourceSummary">來源</summary>
+            <p data-i18n="strategyChecklistSourceNote">來源僅採 2021 年以後資料；下列網址用於支撐本區塊的有機成長、相關多角化、策略聯盟、集團型垂直支援、區域擴張與非併購導向判斷。</p>
+            <ul>
+              <li><a href="https://www.nanya.com/en/About/27/Corporate" target="_blank" rel="noreferrer">https://www.nanya.com/en/About/27/Corporate</a></li>
+              <li><a href="https://www.nanya.com/en/IR/16/?IRId=793" target="_blank" rel="noreferrer">https://www.nanya.com/en/IR/16/?IRId=793</a></li>
+              <li><a href="https://www.nanya.com/en/IR/16/Press%20Release?IRId=11068" target="_blank" rel="noreferrer">https://www.nanya.com/en/IR/16/Press%20Release?IRId=11068</a></li>
+              <li><a href="https://www.nanya.com/en/Product/" target="_blank" rel="noreferrer">https://www.nanya.com/en/Product/</a></li>
+              <li><a href="https://www.nanya.com/en/Product/List/450/2478" target="_blank" rel="noreferrer">https://www.nanya.com/en/Product/List/450/2478</a></li>
+              <li><a href="https://www.nanya.com/en/Product/List/547/6587" target="_blank" rel="noreferrer">https://www.nanya.com/en/Product/List/547/6587</a></li>
+              <li><a href="https://www.nanya.com/en/Product/List/452/6587" target="_blank" rel="noreferrer">https://www.nanya.com/en/Product/List/452/6587</a></li>
+              <li><a href="https://www.nanya.com/en/Product/List/2418/7610" target="_blank" rel="noreferrer">https://www.nanya.com/en/Product/List/2418/7610</a></li>
+              <li><a href="https://www.nanya.com/en/Product/List/2418/7644" target="_blank" rel="noreferrer">https://www.nanya.com/en/Product/List/2418/7644</a></li>
+              <li><a href="https://www.nanya.com/en/IR/16/Press%20Release?IRId=6975" target="_blank" rel="noreferrer">https://www.nanya.com/en/IR/16/Press%20Release?IRId=6975</a></li>
+              <li><a href="https://apac.kioxia.com/en-apac/about/news/2024/20241210-1.html" target="_blank" rel="noreferrer">https://apac.kioxia.com/en-apac/about/news/2024/20241210-1.html</a></li>
+              <li><a href="https://www.nanya.com/en/IR/16/Press%20Release?IRId=6986" target="_blank" rel="noreferrer">https://www.nanya.com/en/IR/16/Press%20Release?IRId=6986</a></li>
+              <li><a href="https://www.nanya.com/en/IR/18/Announcements?IRId=6987" target="_blank" rel="noreferrer">https://www.nanya.com/en/IR/18/Announcements?IRId=6987</a></li>
+              <li><a href="https://www.reuters.com/world/asia-pacific/nanya-technology-shares-surge-10-after-25-billion-private-placement-2026-03-26/" target="_blank" rel="noreferrer">https://www.reuters.com/world/asia-pacific/nanya-technology-shares-surge-10-after-25-billion-private-placement-2026-03-26/</a></li>
+              <li><a href="https://focustaiwan.tw/business/202603260008" target="_blank" rel="noreferrer">https://focustaiwan.tw/business/202603260008</a></li>
+              <li><a href="https://www.fpg.taipei/en/group/8" target="_blank" rel="noreferrer">https://www.fpg.taipei/en/group/8</a></li>
+              <li><a href="https://www.fpg.taipei/en/about/other-company" target="_blank" rel="noreferrer">https://www.fpg.taipei/en/about/other-company</a></li>
+              <li><a href="https://www.nanyapcb.com.tw/nypcb/english/index" target="_blank" rel="noreferrer">https://www.nanyapcb.com.tw/nypcb/english/index</a></li>
+              <li><a href="https://www.nanya.com/en/IR/16/?IRId=831" target="_blank" rel="noreferrer">https://www.nanya.com/en/IR/16/?IRId=831</a></li>
+              <li><a href="https://www.nanya.com/en/About/31/Sales%20Support" target="_blank" rel="noreferrer">https://www.nanya.com/en/About/31/Sales%20Support</a></li>
+              <li><a href="https://www.nanya.com/en/Jobs/121" target="_blank" rel="noreferrer">https://www.nanya.com/en/Jobs/121</a></li>
+              <li><a href="https://www.taipeitimes.com/News/biz/archives/2026/03/27/2003854528" target="_blank" rel="noreferrer">https://www.taipeitimes.com/News/biz/archives/2026/03/27/2003854528</a></li>
+            </ul>
+          </details>
+        </div>
         <div class="chart-card analysis-table-card">
           <h3 data-i18n="placementTitle">2026 策略私募投資配置｜約 NT$790 億</h3>
           <div class="placement-visual" id="placementVisual" aria-label="Private placement allocation"></div>
@@ -5232,7 +5502,48 @@
         summaryIntegrity: "展開資料來源與 AI 處理詳細歷程",
         teamQuestion: "團隊如何確保專案的品質與連貫性？",
         teamTakeaway: "我們拒絕碎片化的分工。從策略定調、資料處理到網站體驗，全由團隊共同決策與反覆測試，確保論述的一致性與高品質。",
-        summaryTeam: "展開小組共同製作歷程與工作流"
+        summaryTeam: "展開小組共同製作歷程與工作流",
+        strategyChecklistKicker: "國際策略管理",
+        strategyChecklistHint: "左右滑動查看 6 種成長路徑",
+        strategyChecklistPrevLabel: "上一張策略卡片",
+        strategyChecklistNextLabel: "下一張策略卡片",
+        strategyChecklistAriaLabel: "國際策略管理檢核矩陣",
+        strategyChecklistTitle: "國際策略管理檢核：南亞科如何成長？",
+        strategyChecklistSummary: "從 2021 年後資料來看，南亞科的成長不是單一策略，而是「有機成長＋相關多角化＋策略聯盟＋集團型垂直支援＋區域擴張」的組合。公司以 1Anm pilot run、DDR5 開發、新 Fab 與 2026 CapEx 建立有機成長基礎；以 DDR5、LPDDR5/5X、KGD、MCP 與模組產品形成 DRAM 核心周邊的相關多角化；以 Kioxia、PieceMakers、SanDisk、Cisco、Solidigm 等夥伴建立技術、股權與供應協議型策略聯盟；並透過台塑集團電子產業鏈取得資源背書與價值鏈支援。相較之下，2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。",
+        strategyChecklistJudgementLabel: "南亞科判斷",
+        strategyChecklistEvidenceLabel: "2021 年後證據",
+        strategyChecklistReadingLabel: "國際策略管理解讀",
+        strategyChecklist1Badge: "主軸",
+        strategyChecklist1Concept: "有機成長 Organic Growth",
+        strategyChecklist1Judgement: "南亞科的主要成長路徑是有機成長。",
+        strategyChecklist1Evidence: "2021 年第一代 10nm class 製程 1Anm pilot run，並啟動 DDR5 product development；2022 年新 Fab 動土；2026 年計畫 CapEx 約新台幣 500 億元。",
+        strategyChecklist1Reading: "這代表公司主要透過自主研發、製程升級、新廠與設備投資累積能力，而不是靠併購快速擴張。",
+        strategyChecklist2Badge: "有",
+        strategyChecklist2Concept: "相關多角化 Related Diversification",
+        strategyChecklist2Judgement: "南亞科的多角化屬於相關多角化，不是跨產業多角化。",
+        strategyChecklist2Evidence: "公司仍以 DRAM 為核心，但產品線從標準型 DRAM 延伸至 DDR5、LPDDR5/5X、KGD、MCP/eMCP/uMCP、RDIMM、模組與 Elixir 品牌。",
+        strategyChecklist2Reading: "這是 DRAM 核心周邊的相關多角化，用來降低對單一標準品與單一需求週期的依賴。",
+        strategyChecklist3Badge: "最關鍵",
+        strategyChecklist3Concept: "策略聯盟 Strategic Alliance",
+        strategyChecklist3Judgement: "策略聯盟是南亞科突破規模劣勢的核心工具。",
+        strategyChecklist3Evidence: "2024 年與 Kioxia 共同開發 Vertical Channel Transistor DRAM／OCTRAM 技術；同年投資 PieceMakers 合作開發客製化超高頻寬記憶體；2026 年透過約 US$2.5 billion 私募引入 SanDisk、Solidigm、Cisco、Kioxia，並與 SanDisk、Kioxia 建立多年期／長期 DRAM 供應協議。",
+        strategyChecklist3Reading: "這不是單純財務投資，而是技術合作、股權合作、供應協議與需求綁定的組合。",
+        strategyChecklist4Badge: "有但需保守解讀",
+        strategyChecklist4Concept: "集團型垂直支援 Group-Based Vertical Support",
+        strategyChecklist4Judgement: "南亞科不宜寫成完整垂直整合，應寫成「集團型垂直支援」。",
+        strategyChecklist4Evidence: "台塑集團官方資料顯示，其半導體垂直整合從 Formosa Sumco 的矽晶圓、南亞科技的 DRAM 研發設計製造銷售，到 Formosa Advanced Tech 的 IC 封裝測試；集團電子事業也包含 PCB 與 IC substrate。",
+        strategyChecklist4Reading: "這代表南亞科能取得集團資源、電子產業鏈與價值鏈支援，但不應誇大成所有供應鏈環節都由南亞科內部化。",
+        strategyChecklist5Badge: "有",
+        strategyChecklist5Concept: "區域擴張 Regional Expansion / International Configuration",
+        strategyChecklist5Judgement: "南亞科的國際化不是單純海外銷售，而是「台灣製造基地＋全球技術支援網絡」。",
+        strategyChecklist5Evidence: "既有資料提到台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務；補充資料顯示日本辦公室提供 SI measurement 與技術支援，歐洲杜塞道夫團隊支援 automotive、industrial、networking、consumer、IoT segments，美國也有 Vermont 與 Texas Design Center。",
+        strategyChecklist5Reading: "這應整理為區域擴張／國際化配置，而不是只看成海外銷售據點。",
+        strategyChecklist6Badge: "非主軸",
+        strategyChecklist6Concept: "併購判斷 M&A",
+        strategyChecklist6Judgement: "2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。",
+        strategyChecklist6Evidence: "PieceMakers 是策略合作與股權投資；2026 年 SanDisk、Solidigm、Cisco、Kioxia 參與的是私募認股與供應協議，不是南亞科併購對方，也不是對方併購南亞科。",
+        strategyChecklist6Reading: "本案例應判斷為「非併購導向」，外部成長主要透過策略投資、私募、長約與技術合作完成。",
+        strategyChecklistSourceNote: "來源僅採 2021 年以後資料；下列網址用於支撐本區塊的有機成長、相關多角化、策略聯盟、集團型垂直支援、區域擴張與非併購導向判斷。"
       },
       en: {
         announcement: "International Strategic Management TP company research website",
@@ -5583,7 +5894,48 @@
         summaryIntegrity: "Expand Data Sources & AI Processing Logs",
         teamQuestion: "How did the team jointly manage quality and consistency?",
         teamTakeaway: "The team jointly decided the analysis, gathered data, selected frameworks, reviewed bilingual/interaction/sources, and tested the site, rather than using isolated copy-paste compilation.",
-        summaryTeam: "Expand Team shared production workflow & member details"
+        summaryTeam: "Expand Team shared production workflow & member details",
+        strategyChecklistKicker: "International strategy management",
+        strategyChecklistHint: "Swipe horizontally to review six growth paths",
+        strategyChecklistPrevLabel: "Previous strategy card",
+        strategyChecklistNextLabel: "Next strategy card",
+        strategyChecklistAriaLabel: "International strategy checklist matrix",
+        strategyChecklistTitle: "International Strategy Checklist: How Nanya Grows",
+        strategyChecklistSummary: "Post-2021 evidence shows that Nanya’s growth is not a single-strategy story. It combines organic growth, related diversification, strategic alliances, group-based vertical support, and regional expansion. The company builds internal growth through 1Anm pilot run, DDR5 development, new fab investment, and 2026 CapEx; extends related diversification around DRAM through DDR5, LPDDR5/5X, KGD, MCP, and modules; forms technology, equity, and supply-agreement alliances with Kioxia, PieceMakers, SanDisk, Cisco, and Solidigm; and receives value-chain support from Formosa Plastics Group’s electronics and semiconductor ecosystem. Public information after 2021 does not show major M&A as Nanya’s primary growth path.",
+        strategyChecklistJudgementLabel: "Nanya judgement",
+        strategyChecklistEvidenceLabel: "Post-2021 evidence",
+        strategyChecklistReadingLabel: "International strategy reading",
+        strategyChecklist1Badge: "Core path",
+        strategyChecklist1Concept: "Organic Growth",
+        strategyChecklist1Judgement: "Nanya’s core growth path is organic growth.",
+        strategyChecklist1Evidence: "Since 2021, the company has advanced its first-generation 10nm class 1Anm pilot run, DDR5 development, new fab investment, and a planned 2026 CapEx of about NT$50 billion.",
+        strategyChecklist1Reading: "This indicates capability accumulation through internal R&D, process migration, fab expansion, and equipment investment rather than acquisition-led expansion.",
+        strategyChecklist2Badge: "Present",
+        strategyChecklist2Concept: "Related Diversification",
+        strategyChecklist2Judgement: "Nanya’s diversification is related diversification, not unrelated cross-industry diversification.",
+        strategyChecklist2Evidence: "The company remains centered on DRAM while extending its product scope into DDR5, LPDDR5/5X, KGD, MCP/eMCP/uMCP, RDIMM, modules, and Elixir-branded products.",
+        strategyChecklist2Reading: "This is related diversification around the DRAM core, reducing dependence on a single standard product cycle.",
+        strategyChecklist3Badge: "Most critical",
+        strategyChecklist3Concept: "Strategic Alliance",
+        strategyChecklist3Judgement: "Strategic alliances are Nanya’s key tool for overcoming scale disadvantages.",
+        strategyChecklist3Evidence: "Since 2024, Nanya has co-developed vertical-channel DRAM/OCTRAM technology with Kioxia, invested in PieceMakers for customized ultra-high-bandwidth memory, and raised about US$2.5 billion through a 2026 private placement involving SanDisk, Solidigm, Cisco, and Kioxia, with multi-year or long-term DRAM supply agreements involving SanDisk and Kioxia.",
+        strategyChecklist3Reading: "This is not simply financial investment; it combines technology collaboration, equity cooperation, supply agreements, and demand lock-in.",
+        strategyChecklist4Badge: "Present, conservative reading",
+        strategyChecklist4Concept: "Group-Based Vertical Support",
+        strategyChecklist4Judgement: "Nanya should be framed as receiving group-based vertical support rather than being fully vertically integrated by itself.",
+        strategyChecklist4Evidence: "Formosa Plastics Group describes a semiconductor chain from Formosa Sumco’s silicon wafer manufacturing, to Nanya’s DRAM development, design, manufacturing, and sales, to Formosa Advanced Tech’s IC packaging and testing. The group also includes PCB and IC substrate capabilities.",
+        strategyChecklist4Reading: "This supports a value-chain support interpretation without overstating full internalization by Nanya alone.",
+        strategyChecklist5Badge: "Present",
+        strategyChecklist5Concept: "Regional Expansion / International Configuration",
+        strategyChecklist5Judgement: "Nanya’s internationalization is not merely overseas sales. It is a configuration of Taiwan-based manufacturing and a global technical support network.",
+        strategyChecklist5Evidence: "Existing site content already mentions Taiwan, Silicon Valley, Tokyo, Düsseldorf, and Shenzhen. Additional evidence shows Japan provides SI measurement and technical support, Europe supports automotive, industrial, networking, consumer, and IoT segments, and the U.S. has Vermont and Texas design centers.",
+        strategyChecklist5Reading: "Frame this as regional expansion and international configuration, not merely overseas sales offices.",
+        strategyChecklist6Badge: "Not the core path",
+        strategyChecklist6Concept: "M&A Judgement",
+        strategyChecklist6Judgement: "Public information after 2021 does not indicate that Nanya’s primary growth path is major M&A.",
+        strategyChecklist6Evidence: "PieceMakers is a strategic collaboration and equity investment, while the 2026 SanDisk, Solidigm, Cisco, and Kioxia event is a private placement and supply-agreement structure, not an acquisition by Nanya or of Nanya.",
+        strategyChecklist6Reading: "This case should be classified as non-M&A-driven, with external growth mainly achieved through strategic investment, private placement, supply agreements, and technology collaboration.",
+        strategyChecklistSourceNote: "Sources use post-2021 materials only; the links below support the organic growth, related diversification, strategic alliance, group-based vertical support, regional expansion, and non-M&A-driven judgement in this section."
       }
     };
 
@@ -7814,6 +8166,58 @@
     }, observerOptions);
 
     qsa("main > section[id]").forEach((section) => spyObserver.observe(section));
+
+    // Strategy checklist rail navigation
+    const strategyRail = document.querySelector('.strategy-checklist-rail');
+    const railPrevBtn = document.getElementById('strategy-rail-prev');
+    const railNextBtn = document.getElementById('strategy-rail-next');
+
+    if (strategyRail && railPrevBtn && railNextBtn) {
+      const updateRailButtons = () => {
+        const scrollLeft = strategyRail.scrollLeft;
+        const maxScroll = strategyRail.scrollWidth - strategyRail.clientWidth;
+        railPrevBtn.disabled = scrollLeft <= 0;
+        railNextBtn.disabled = scrollLeft >= Math.floor(maxScroll) - 1;
+      };
+
+      strategyRail.addEventListener('scroll', updateRailButtons, { passive: true });
+      window.addEventListener('resize', updateRailButtons, { passive: true });
+      requestAnimationFrame(updateRailButtons);
+
+      const getScrollAmount = () => {
+        const card = strategyRail.querySelector('.team-rule-card');
+        return card ? card.offsetWidth + 1 : 320;
+      };
+
+      const getScrollBehavior = () => {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      };
+
+      railPrevBtn.addEventListener('click', () => {
+        strategyRail.scrollBy({ left: -getScrollAmount(), behavior: getScrollBehavior() });
+      });
+
+      railNextBtn.addEventListener('click', () => {
+        strategyRail.scrollBy({ left: getScrollAmount(), behavior: getScrollBehavior() });
+      });
+
+      strategyRail.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          strategyRail.scrollBy({ left: getScrollAmount(), behavior: getScrollBehavior() });
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          strategyRail.scrollBy({ left: -getScrollAmount(), behavior: getScrollBehavior() });
+        }
+      });
+
+      strategyRail.addEventListener('wheel', (e) => {
+        if (e.shiftKey && e.deltaY !== 0) {
+          e.preventDefault();
+          strategyRail.scrollBy({ left: e.deltaY > 0 ? getScrollAmount() : -getScrollAmount(), behavior: getScrollBehavior() });
+        }
+      }, { passive: false });
+    }
 
   </script>
 </body>
