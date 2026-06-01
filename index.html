@@ -1240,6 +1240,7 @@
     }
 
     .member-video-frame {
+      --member-video-poster-image: none;
       position: relative;
       aspect-ratio: 16 / 9;
       min-height: 260px;
@@ -1247,17 +1248,27 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.16);
       background:
+        linear-gradient(
+          105deg,
+          rgba(0, 60, 51, 0.78) 0%,
+          rgba(7, 24, 41, 0.58) 48%,
+          rgba(23, 23, 28, 0.86) 100%
+        ),
         radial-gradient(
           circle at 78% 18%,
           rgba(255, 119, 89, 0.22),
           transparent 28%
         ),
+        var(--member-video-poster-image),
         linear-gradient(
           160deg,
           var(--green) 0%,
           var(--navy) 58%,
           var(--near-black) 100%
         );
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
     .member-video-frame::before {
@@ -1278,12 +1289,22 @@
       width: 100%;
       height: 100%;
       display: grid;
-      align-content: space-between;
+      grid-template-rows: auto 1fr auto;
       justify-items: start;
       padding: 24px;
       border: 0;
       color: #fff;
       background: transparent;
+      text-align: left;
+    }
+
+    .member-video-poster[data-poster-side="right"] {
+      justify-items: end;
+      text-align: right;
+    }
+
+    .member-video-poster[data-poster-side="right"] .member-video-poster-kicker {
+      justify-self: start;
       text-align: left;
     }
 
@@ -1296,7 +1317,9 @@
     }
 
     .member-video-poster strong {
+      align-self: end;
       max-width: 80%;
+      margin-bottom: 34px;
       font-family: var(--font-display);
       font-size: clamp(36px, 6vw, 72px);
       font-weight: 400;
@@ -1363,7 +1386,8 @@
       }
 
       .member-video-poster strong {
-        font-size: 42px;
+        font-size: clamp(28px, 8.4vw, 36px);
+        margin-bottom: 18px;
       }
     }
 
@@ -10300,17 +10324,35 @@
     let memberVideoFrame = null;
 
     const memberVideos = [
-      { name: "吳櫂笙", videoId: "GI-le81xZ1E", programKey: "memberProgram2" },
-      { name: "吳樹豫", videoId: "4oph8raCXyk", programKey: "memberProgram5" },
-      { name: "呂沛岑", videoId: "pIuHuxtkqso", programKey: "memberProgram7" },
-      { name: "吳羽棠", videoId: "R1Lu2G4ml90", programKey: "memberProgram3" },
-      { name: "王齡誼", videoId: "A2eOhkgJoF4", programKey: "memberProgram6" },
-      { name: "楊承逸", videoId: "GZiswVHWLwU", programKey: "memberProgram1" },
-      { name: "葉芳辰", videoId: "hq8CVenIvws", programKey: "memberProgram4" }
+      { name: "吳櫂笙", videoId: "GI-le81xZ1E", programKey: "memberProgram2", posterSide: "left" },
+      { name: "吳樹豫", videoId: "4oph8raCXyk", programKey: "memberProgram5", posterSide: "left" },
+      { name: "呂沛岑", videoId: "pIuHuxtkqso", programKey: "memberProgram7", posterSide: "right" },
+      { name: "吳羽棠", videoId: "R1Lu2G4ml90", programKey: "memberProgram3", posterSide: "left" },
+      { name: "王齡誼", videoId: "A2eOhkgJoF4", programKey: "memberProgram6", posterSide: "right" },
+      { name: "楊承逸", videoId: "GZiswVHWLwU", programKey: "memberProgram1", posterSide: "right" },
+      { name: "葉芳辰", videoId: "hq8CVenIvws", programKey: "memberProgram4", posterSide: "left" }
     ];
 
     function getMemberVideoByName(name) {
       return memberVideos.find((member) => member.name === name);
+    }
+
+    function setMemberVideoPosterImage(member) {
+      if (!memberVideoFrame || !member?.videoId) return;
+
+      const videoId = member.videoId;
+      const fallbackPoster = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      const maxPoster = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+      memberVideoFrame.style.setProperty("--member-video-poster-image", `url(${JSON.stringify(fallbackPoster)})`);
+
+      const image = new Image();
+      image.onload = () => {
+        if (activeMemberVideo?.videoId === videoId) {
+          memberVideoFrame.style.setProperty("--member-video-poster-image", `url(${JSON.stringify(maxPoster)})`);
+        }
+      };
+      image.src = maxPoster;
     }
 
     function renderMemberVideoPoster(member) {
@@ -10318,6 +10360,8 @@
 
       memberVideoFrame.querySelector("iframe")?.remove();
       memberVideoPoster.hidden = false;
+      setMemberVideoPosterImage(member);
+      memberVideoPoster.dataset.posterSide = member.posterSide === "right" ? "right" : "left";
 
       if (memberVideoName) memberVideoName.textContent = member.name;
       if (memberVideoProgram) {
