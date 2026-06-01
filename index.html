@@ -3335,10 +3335,33 @@
     }
 
     .quiz-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+      display: flex;
       gap: 30px;
       align-items: start;
+    }
+
+    .quiz-left {
+      flex-basis: 35%;
+      flex-shrink: 0;
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      opacity: 1;
+    }
+
+    .quiz-right {
+      flex-basis: 65%;
+      flex-grow: 1;
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .quiz-layout.is-result-mode .quiz-left {
+      flex-basis: 0%;
+      opacity: 0;
+      margin-right: -30px;
+      overflow: hidden;
+    }
+
+    .quiz-layout.is-result-mode .quiz-right {
+      flex-basis: 100%;
     }
 
     .quiz-panel {
@@ -3374,6 +3397,16 @@
     .quiz-option.is-selected {
       border-color: var(--coral);
       background: #fff1ed;
+    }
+
+    .quiz-option.is-correct {
+      border-color: #003c33;
+      background: #edfce9;
+    }
+
+    .quiz-option.is-wrong {
+      border-color: #b30000;
+      background: #fff0f0;
     }
 
     .quiz-feedback {
@@ -3680,7 +3713,7 @@
       .section-head,
       .integrity,
       .quiz-layout {
-        grid-template-columns: 1fr;
+        flex-direction: column;
       }
 
       .hero-media {
@@ -7812,20 +7845,20 @@
 
     const quizData = {
       zh: [
-        { q: "2025 年南亞科 EPS 是多少？", options: ["2.13 元", "3.58 元", "0.81 元", "7.40 元"], answer: 0, exp: "2025 全年 EPS 為 2.13 元；3.58 元是 2025 Q4 單季 EPS。" },
-        { q: "4Q25 DRAM 市占最高者是誰？", options: ["Samsung", "SK hynix", "Micron", "Nanya"], answer: 0, exp: "TrendForce 4Q25 資料顯示 Samsung 市占 36.0%，為第一。" },
-        { q: "2026 計畫 CapEx 約為多少？", options: ["約 500 億元", "約 134 億元", "約 62 億元", "約 31 億元"], answer: 0, exp: "官方表述 2026 計畫 CapEx 約 500 億元，且仍待董事會核准。" },
-        { q: "128GB DDR5 RDIMM 已完成哪項里程碑？", options: ["5600/6400 Mb/s 功能驗證", "已量產 HBM", "已取得所有手機客戶", "已進入大量量產"], answer: 0, exp: "官方新聞稿確認 128GB DDR5 RDIMM 5600/6400 Mb/s 已達成功能驗證。" },
-        { q: "哪些策略投資者已公布 DRAM 供應協議？", options: ["SanDisk 與 Kioxia", "Cisco 與 Solidigm", "Samsung 與 Micron", "所有投資者"], answer: 0, exp: "Reuters 報導中可確認 SanDisk 與 Kioxia 具有 DRAM supply agreement。" },
-        { q: "2026 私募事件的性質是什麼？", options: ["策略私募增資", "公司債發行", "公開收購", "產品保固"], answer: 0, exp: "此事件為策略私募增資，由四家國際策略投資者參與。" }
+        { q: "南亞科 2025 年預計轉虧為盈 (EPS 2.13 元)，但在高固定成本的 DRAM 產業中，其獲利能力最容易受到哪兩項因素的劇烈影響？", options: ["行銷費用與研發人數", "ASP 與稼動率", "先進封裝產能與晶圓代工價格", "匯率波動與碳稅"], answer: 1, exp: "摩根史丹利等外資報告常指出，記憶體是重資產產業。ASP (平均售價) 與稼動率的微小變動，會透過營運槓桿對南亞科的毛利率與 EPS 產生巨大影響。" },
+        { q: "南亞科近期宣布 128GB DDR5 RDIMM 完成功能驗證，這對其在股市評價上的核心戰略意義為何？", options: ["證明具備切入 AI 伺服器供應鏈的能力", "藉此降低 2026 年的資本支出", "能立刻壟斷高階消費型筆電市場", "單純為了消化過剩的 DDR4 庫存"], answer: 0, exp: "高頻寬、大容量的 DDR5 RDIMM 是伺服器與 AI 基礎設施的門票。這項里程碑有助於市場將其從「消費型記憶體廠」重新評價為「高階伺服器概念股」。" },
+        { q: "面對 4Q25 三大原廠佔據超過 80% 市占的寡占格局，南亞科 2026 年預計投入約 500 億元 CapEx 的主要考量是什麼？", options: ["為了跨足晶圓代工市場", "用於發放高額現金股利", "維持製程推進與次世代產品研發的防守與突圍", "購買虛擬資產避險"], answer: 2, exp: "在寡占市場中，技術落後等同於被邊緣化。維持高額資本支出是為了推進 1B/1C 奈米製程及 3D DRAM 開發，確保長期競爭力與存活率。" },
+        { q: "南亞科發動 2026 策略私募增資，尋求引進國際策略投資者，這反映了 DRAM 產業競爭中哪一項「非財務」的關鍵需求？", options: ["為了避免被台灣本地企業敵意併購", "單純為了應付銀行貸款的條件", "符合 ESG 的多樣性治理規範", "建立技術授權、產能互補與出海口的生態圈"], answer: 3, exp: "在記憶體大戰中，單打獨鬥難以抗衡三大廠。透過私募綁定具備技術或通路的國際大廠，能有效強化價值網的競合優勢。" },
+        { q: "南亞科積極提高 LPDDR4/5 以及 KGD (良粒晶粒) 的營收比重，這對於公司抵禦產業景氣循環最大的好處是什麼？", options: ["可以完全不依賴先進製程", "客製化程度較高，享有較好的定價權與毛利韌性", "政府針對這類產品有高額稅收抵免", "這類產品完全不需要研發成本"], answer: 1, exp: "標準型 DRAM 價格隨供需劇烈波動；而 LPDDR 與 KGD 多用於車用或工控，需經客戶長期驗證，轉換成本高，能賦予南亞科更穩定的現金流。" },
+        { q: "當近期摩根史丹利等外資出具報告「下修」記憶體產業週期預期時，研究分析股市時最應該關注南亞科的哪個財務防守指標？", options: ["自由現金流 (FCF) 與帳上現金水位", "單月營收的 YOY (年增率)", "員工分紅的比例", "董監事酬勞的增減"], answer: 0, exp: "當週期反轉、ASP 承壓時，企業必須有充足的現金儲備度過寒冬，並持續支應必要的研發 CapEx，自由現金流是評估破產風險與底層價值的核心。" }
       ],
       en: [
-        { q: "What was Nanya's 2025 EPS?", options: ["NT$2.13", "NT$3.58", "NT$0.81", "NT$7.40"], answer: 0, exp: "FY2025 EPS was NT$2.13; NT$3.58 was Q4 2025 EPS." },
-        { q: "Who had the highest 4Q25 DRAM share?", options: ["Samsung", "SK hynix", "Micron", "Nanya"], answer: 0, exp: "TrendForce reported Samsung at 36.0% share in 4Q25." },
-        { q: "What is Nanya's planned 2026 CapEx?", options: ["Approx. NT$50B", "Approx. NT$13.4B", "Approx. NT$6.2B", "Approx. NT$3.1B"], answer: 0, exp: "The company described 2026 planned CapEx as approximately NT$50B, pending Board approval." },
-        { q: "What milestone did the 128GB DDR5 RDIMM reach?", options: ["5600/6400 Mb/s functional validation", "HBM mass production", "All smartphone customers secured", "Mass production completed"], answer: 0, exp: "The official release confirms 5600/6400 Mb/s functional validation for 128GB DDR5 RDIMM." },
-        { q: "Which strategic investors have announced DRAM supply agreements?", options: ["SanDisk and Kioxia", "Cisco and Solidigm", "Samsung and Micron", "All investors"], answer: 0, exp: "Reuters supports supply agreements for SanDisk and Kioxia." },
-        { q: "What type of transaction was the 2026 funding event?", options: ["Strategic private placement", "Corporate bond issuance", "Tender offer", "Product warranty"], answer: 0, exp: "The event was a strategic private placement involving four international strategic investors." }
+        { q: "Nanya Technology expects a turnaround in 2025 (EPS NT$2.13), but in the high-fixed-cost DRAM industry, which two factors most severely impact its profitability?", options: ["Marketing and R&D headcount", "ASP and utilization rate", "Advanced packaging and foundry pricing", "FX fluctuations and carbon taxes"], answer: 1, exp: "Morgan Stanley reports often note that memory is an asset-heavy industry. Minor changes in ASP and utilization leverage into massive impacts on gross margin and EPS." },
+        { q: "Nanya recently announced functional validation for its 128GB DDR5 RDIMM. What is the core strategic meaning of this milestone for its equity valuation?", options: ["Proves its capability to enter the AI server supply chain", "Reduces its planned 2026 CapEx", "Instantly monopolizes the high-end consumer laptop market", "Simply helps digest excess DDR4 inventory"], answer: 0, exp: "High-bandwidth, large-capacity DDR5 RDIMMs are the entry ticket for servers and AI infrastructure. This helps the market re-rate the stock from a 'consumer memory maker' to an 'advanced server play'." },
+        { q: "Given an oligopoly where top 3 players hold over 80% market share in 4Q25, what is the primary rationale for Nanya's ~NT$50B CapEx in 2026?", options: ["To enter the foundry market", "To fund high cash dividend payouts", "To sustain node migration and next-gen R&D for defense and breakthrough", "To hedge via crypto asset purchases"], answer: 2, exp: "In an oligopoly, falling behind in technology means being marginalized. Maintaining high CapEx ensures the 1B/1C nm migration and 3D DRAM development needed for long-term survival and competitiveness." },
+        { q: "Nanya's 2026 strategic private placement seeks international strategic investors. This reflects which 'non-financial' critical need in the DRAM competitive landscape?", options: ["To avoid hostile takeovers by local Taiwanese firms", "Merely to satisfy bank loan covenants", "To comply with ESG diversity governance", "To build an ecosystem of tech licensing, capacity synergy, and sales outlets"], answer: 3, exp: "In the memory battle, fighting alone against the top three is difficult. Tying up with strategic giants via private placements secures tech, channels, and a stronger position in the co-opetition value net." },
+        { q: "Nanya is actively increasing revenue share from LPDDR4/5 and KGD (Known Good Die). What is the biggest benefit for defending against industry cycles?", options: ["Completely eliminates the need for advanced nodes", "Higher customization offers better pricing power and margin resilience", "The government provides massive tax credits for these products", "These products require zero R&D costs"], answer: 1, exp: "Standard DRAM prices fluctuate wildly. LPDDR and KGD, often used in auto or industrial applications, require long-term customer validation, creating switching costs and more stable cash flows for Nanya." },
+        { q: "When foreign brokers like Morgan Stanley downgrade memory cycle expectations, which financial defense metric of Nanya should stock analysts focus on most?", options: ["Free Cash Flow (FCF) and cash on hand", "Monthly Revenue YOY growth", "Employee bonus ratios", "Changes in board director remuneration"], answer: 0, exp: "When cycles turn and ASPs are pressured, firms need ample cash reserves to survive the winter and sustain necessary R&D CapEx. Free cash flow is the core metric to assess bankruptcy risk and fundamental value." }
       ]
     };
 
