@@ -1157,6 +1157,210 @@
       font-size: 12px;
       line-height: 1.35;
     }
+    .member-grid {
+      align-items: stretch;
+    }
+
+    .member-video-tab {
+      width: 100%;
+      appearance: none;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 0;
+      border-right: 1px solid var(--hairline);
+      border-radius: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .member-video-tab:last-child {
+      border-right: 0;
+    }
+
+    .member-video-tab:hover,
+    .member-video-tab.is-active {
+      background: color-mix(in srgb, var(--stone) 58%, var(--canvas));
+    }
+
+    .member-video-tab.is-active .member-name {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    .member-video-tab:focus-visible {
+      position: relative;
+      z-index: 2;
+      outline: 2px solid var(--focus);
+      outline-offset: -2px;
+    }
+
+    .member-video-stage {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .member-video-copy {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .member-video-copy h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3.4vw, 42px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.42px;
+    }
+
+    .member-video-copy p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .member-video-note {
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .member-video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      min-height: 260px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background:
+        radial-gradient(
+          circle at 78% 18%,
+          rgba(255, 119, 89, 0.22),
+          transparent 28%
+        ),
+        linear-gradient(
+          160deg,
+          var(--green) 0%,
+          var(--navy) 58%,
+          var(--near-black) 100%
+        );
+    }
+
+    .member-video-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: radial-gradient(circle at 50% 22%, #000 0, transparent 72%);
+    }
+
+    .member-video-poster {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      align-content: space-between;
+      justify-items: start;
+      padding: 24px;
+      border: 0;
+      color: #fff;
+      background: transparent;
+      text-align: left;
+    }
+
+    .member-video-poster-kicker {
+      color: rgba(255, 255, 255, 0.66);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.28px;
+      text-transform: uppercase;
+    }
+
+    .member-video-poster strong {
+      max-width: 80%;
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -1.2px;
+    }
+
+    .member-video-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: var(--radius-full);
+      color: #17171c;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .member-video-play svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .member-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    [data-theme="dark"] .member-video-tab {
+      background: var(--surface);
+    }
+
+    [data-theme="dark"] .member-video-tab:hover,
+    [data-theme="dark"] .member-video-tab.is-active {
+      background: color-mix(in srgb, var(--navy) 62%, var(--surface));
+    }
+
+    @media (max-width: 900px) {
+      .member-video-stage {
+        grid-template-columns: 1fr;
+      }
+
+      .member-video-frame {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .member-video-stage {
+        gap: 18px;
+        margin-top: 22px;
+        padding-top: 22px;
+      }
+
+      .member-video-poster {
+        padding: 18px;
+      }
+
+      .member-video-poster strong {
+        font-size: 42px;
+      }
+    }
 
     .process-flow {
       display: grid;
@@ -3337,31 +3541,29 @@
     .quiz-layout {
       display: flex;
       gap: 30px;
-      align-items: start;
+      align-items: flex-start;
     }
 
     .quiz-left {
-      flex-basis: 35%;
-      flex-shrink: 0;
-      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      opacity: 1;
-    }
-
-    .quiz-right {
-      flex-basis: 65%;
-      flex-grow: 1;
-      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .quiz-layout.is-result-mode .quiz-left {
-      flex-basis: 0%;
-      opacity: 0;
-      margin-right: -30px;
+      width: 41.8%;
+      flex: 0 0 41.8%;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
     }
 
-    .quiz-layout.is-result-mode .quiz-right {
-      flex-basis: 100%;
+    .quiz-right {
+      flex: 1;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .quiz-layout.is-result-mode {
+      gap: 0;
+    }
+
+    .quiz-layout.is-result-mode .quiz-left {
+      flex: 0 0 0%;
+      width: 0%;
+      opacity: 0;
     }
 
     .quiz-panel {
@@ -3399,16 +3601,6 @@
       background: #fff1ed;
     }
 
-    .quiz-option.is-correct {
-      border-color: #003c33;
-      background: #edfce9;
-    }
-
-    .quiz-option.is-wrong {
-      border-color: #b30000;
-      background: #fff0f0;
-    }
-
     .quiz-feedback {
       min-height: 54px;
       margin-top: 18px;
@@ -3426,6 +3618,69 @@
       color: #fff;
       border-color: #17171c;
       background: #17171c;
+    }
+    
+    .quiz-dashboard {
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      color: var(--ink);
+    }
+    
+    .dashboard-title {
+      font-size: 24px;
+      margin: 0 0 8px;
+      font-weight: 400;
+    }
+    
+    .dashboard-list {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .dashboard-item {
+      padding: 20px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-sm);
+      background: #fff;
+    }
+    
+    .dashboard-item-question {
+      font-weight: 500;
+      font-size: 18px;
+      margin: 0 0 12px;
+      line-height: 1.4;
+    }
+    
+    .dashboard-item-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    
+    .dashboard-user-answer {
+      color: var(--slate);
+    }
+    
+    .dashboard-user-answer.is-wrong {
+      color: var(--risk);
+      font-weight: 500;
+    }
+    
+    .dashboard-correct-answer {
+      color: var(--ink);
+      font-weight: 500;
+    }
+    
+    .dashboard-exp {
+      font-size: 14px;
+      color: var(--slate);
+      line-height: 1.5;
+      margin: 0;
     }
 
     .quiz-panel .btn-outline {
@@ -3714,6 +3969,15 @@
       .integrity,
       .quiz-layout {
         flex-direction: column;
+      }
+      .quiz-left {
+        width: 100%;
+        flex: auto;
+      }
+      .quiz-layout.is-result-mode .quiz-left {
+        height: 0;
+        margin: 0;
+        padding: 0;
       }
 
       .hero-media {
@@ -6139,18 +6403,30 @@
           </div>
         </div>
         <div class="quiz-layout">
-          <div class="score-ring">
-            <span data-i18n="scoreLabel">目前分數</span>
-            <strong id="scoreText">0</strong>
-            <p class="section-copy" id="scoreHint" data-i18n="scoreHint">完成每題後會更新分數。</p>
+          <div class="quiz-left" id="quizLeft">
+            <div class="score-ring">
+              <span data-i18n="scoreLabel">目前分數</span>
+              <strong id="scoreText">0</strong>
+              <p class="section-copy" id="scoreHint" data-i18n="scoreHint">完成每題後會更新分數。</p>
+            </div>
           </div>
-          <div class="quiz-panel">
-            <p class="quiz-question" id="questionText"></p>
-            <div class="quiz-options" id="options"></div>
-            <div class="quiz-feedback" id="feedback" aria-live="polite"></div>
-            <div class="quiz-controls">
-              <button class="btn btn-primary" id="nextBtn" type="button" data-i18n="nextQuestion">下一題</button>
-              <button class="btn btn-outline" id="restartBtn" type="button" data-i18n="restartQuiz">重新開始</button>
+          <div class="quiz-right" id="quizRight">
+            <div class="quiz-panel" id="quizPanel">
+              <p class="quiz-question" id="questionText"></p>
+              <div class="quiz-options" id="options"></div>
+              <div class="quiz-feedback" id="feedback" aria-live="polite"></div>
+              <div class="quiz-controls">
+                <button class="btn btn-primary" id="nextBtn" type="button" data-i18n="nextQuestion">下一題</button>
+                <button class="btn btn-outline" id="restartBtn" type="button" data-i18n="restartQuiz">重新開始</button>
+              </div>
+            </div>
+            <div class="quiz-dashboard" id="quizDashboard" hidden>
+              <h3 class="dashboard-title" data-i18n="dashboardTitle">測驗結果分析</h3>
+              <p class="section-copy" id="dashboardScoreText"></p>
+              <div class="dashboard-list" id="dashboardList"></div>
+              <div class="quiz-controls" style="margin-top: 24px;">
+                <button class="btn btn-primary" id="dashboardRestartBtn" type="button" data-i18n="restartQuiz">重新開始</button>
+              </div>
             </div>
           </div>
         </div>
@@ -6245,108 +6521,120 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="teamKicker">小組協作</span>
-            <h2 class="section-title" id="team-title" data-i18n="teamTitle">團隊協作：拒絕拼貼，堅持高品質共創</h2>
+            <h2 class="section-title" id="team-title" data-i18n="teamTitle">團隊協作：從數據分析到我們的學習與成長</h2>
           </div>
-          <p class="section-copy" data-i18n="teamLead">本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。</p>
+          <p class="section-copy" data-i18n="teamLead">這不只是一份報告，更是我們七個人共同腦力激盪、一起探索半導體產業與網頁設計的學習歷程。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="teamQuestion">團隊如何確保專案的品質與連貫性？</p>
+            <p data-i18n="teamQuestion">這次期末專案帶給我們最大的學習收穫是什麼？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="teamTakeaway">我們拒絕碎片化的分工。從策略定調、資料處理到網站體驗，全由團隊共同決策與反覆測試，確保論述的一致性與高品質。</p>
+            <p data-takeaway data-i18n="teamTakeaway">除了理解南亞科的策略布局，這次研究讓我們看懂了半導體景氣循環的起伏，對於未來分析股市與評估科技股價值有很大的實務幫助；而小組在討論中尋找共識、共同完成網站的過程，更是我們最珍貴的收穫。</p>
           </div>
         </div>
         <div class="team-rule-grid">
           <article class="team-rule-card">
-            <h3 data-i18n="teamCard1Title">資料查核</h3>
-            <p data-i18n="teamCard1Body">共同比對官方資料、投資人關係、新聞與 104 職缺，降低錯誤引用。</p>
+            <h3 data-i18n="teamCard1Title">實務與理論的結合</h3>
+            <p data-i18n="teamCard1Body">課本上的五力分析和 DuPont 分解，在分析南亞科時終於活了起來。這次研究讓我們對整個 DRAM 產業的供需循環有更深的認識，也幫助我們在未來分析股市、觀察科技板塊時更有底氣。</p>
           </article>
           <article class="team-rule-card">
-            <h3 data-i18n="teamCard2Title">雙語整合</h3>
-            <p data-i18n="teamCard2Body">中文與英文文案維持同一研究敘事，不使用自動翻譯結果直接上線。</p>
+            <h3 data-i18n="teamCard2Title">互動設計的挑戰</h3>
+            <p data-i18n="teamCard2Body">為了讓報告更生動，我們共同設計了策略模擬器。雖然調整參數、測試手機版畫面的過程有些繁瑣，但看到冰冷的數據動起來時，真的很有成就感。</p>
           </article>
           <article class="team-rule-card">
-            <h3 data-i18n="teamCard3Title">互動測試</h3>
-            <p data-i18n="teamCard3Body">共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。</p>
+            <h3 data-i18n="teamCard3Title">團隊溝通與共識</h3>
+            <p data-i18n="teamCard3Body">七個人有著不同的背景與想法，在討論過程中，我們學會聆聽彼此對產業前景的觀點，將零散的意見梳理成邏輯完整的個案，這是最棒的學習。</p>
           </article>
         </div>
-        <details class="narrative-details">
-          <summary data-i18n="summaryTeam">展開小組共同製作歷程與工作流</summary>
-          <div style="margin-top:16px;">
+        <div class="team-details-content" style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 24px;">
             <div class="process-flow" aria-label="Team production workflow">
               <article class="process-step">
                 <span data-i18n="teamProcess1Label">Step 01</span>
-                <h3 data-i18n="teamProcess1Title">資料查核</h3>
-                <p data-i18n="teamProcess1Body">先把官方網站、投資人關係、新聞、產業研究與 104 職缺分開標記來源狀態。</p>
+                <h3 data-i18n="teamProcess1Title">資料海中起步</h3>
+                <p data-i18n="teamProcess1Body">大家分頭下載官方財報、法說會簡報與公開資訊，在密密麻麻的數據中核對出最真實的分析起點。</p>
               </article>
               <article class="process-step">
                 <span data-i18n="teamProcess2Label">Step 02</span>
-                <h3 data-i18n="teamProcess2Title">敘事整合</h3>
-                <p data-i18n="teamProcess2Body">把財務、市場、資源與成長策略收斂到同一條 DRAM 週期與 AI memory 主軸。</p>
+                <h3 data-i18n="teamProcess2Title">觀點碰撞與整理</h3>
+                <p data-i18n="teamProcess2Body">開會討論南亞科在 DRAM 週期與 AI 浪潮下的處境，將組員們不同的分析觀點收斂至同一個敘事主軸。</p>
               </article>
               <article class="process-step">
                 <span data-i18n="teamProcess3Label">Step 03</span>
-                <h3 data-i18n="teamProcess3Title">雙語校對</h3>
-                <p data-i18n="teamProcess3Body">中英文維持同一結論，不讓英文版變成中文逐字翻譯。</p>
+                <h3 data-i18n="teamProcess3Title">讓數據動起來</h3>
+                <p data-i18n="teamProcess3Body">共同設定策略實驗室的價格與稼動率參數，把靜態的財務表單變成大家都可以動手操作的互動模型。</p>
               </article>
               <article class="process-step">
                 <span data-i18n="teamProcess4Label">Step 04</span>
-                <h3 data-i18n="teamProcess4Title">互動驗收</h3>
-                <p data-i18n="teamProcess4Body">共同檢查跳轉、明暗模式、語音導覽、翻轉字卡、小測驗與手機版版面。</p>
+                <h3 data-i18n="teamProcess4Title">實務對照與驗收</h3>
+                <p data-i18n="teamProcess4Body">在專案即將收尾時，其中某組員還剛好發現了摩根士丹利（Morgan Stanley）對南亞科的最新外資報告，讓我們得以對照我們的推論與市場最新法人判斷，最後合力完成多載具的測試與驗收。</p>
               </article>
             </div>
             <div class="member-strip" aria-label="G6 team members" style="margin-top:28px;">
-              <span class="member-strip-label" data-i18n="membersLabel">G6 Members</span>
+              <span class="member-strip-label"><span data-i18n="membersLabel">G6 Members</span><span data-i18n="memberSwitchHint" style="text-transform: none; font-weight: normal; margin-left: 8px; font-family: var(--font-body); opacity: 0.82;">（點選成員姓名可切換下方影片）</span></span>
               <div class="member-grid">
-                <div class="member-cell">
+                <button class="member-cell member-video-tab is-active" type="button" data-member-name="楊承逸" aria-pressed="true">
                   <span class="member-name">楊承逸</span>
                   <span class="member-program" data-i18n="memberProgram1">國企系學士班 3 年級</span>
-                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
-                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
-                </div>
-                <div class="member-cell">
-                  <span class="member-name">吳耀笙</span>
+                  <span class="member-meta">112212007 Alex</span>
+                </button>
+                <button class="member-cell member-video-tab" type="button" data-member-name="吳櫂笙" aria-pressed="false">
+                  <span class="member-name">吳櫂笙</span>
                   <span class="member-program" data-i18n="memberProgram2">東南亞系學士班 4 年級</span>
-                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
-                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
-                </div>
-                <div class="member-cell">
+                  <span class="member-meta">111108023 WU ZHAO-SHENG</span>
+                </button>
+                <button class="member-cell member-video-tab" type="button" data-member-name="吳羽棠" aria-pressed="false">
                   <span class="member-name">吳羽棠</span>
                   <span class="member-program" data-i18n="memberProgram3">管院學士班 4 年級</span>
-                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
-                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
-                </div>
-                <div class="member-cell">
+                  <span class="member-meta">111242007 Tammy Wu</span>
+                </button>
+                <button class="member-cell member-video-tab" type="button" data-member-name="葉芳辰" aria-pressed="false">
                   <span class="member-name">葉芳辰</span>
                   <span class="member-program" data-i18n="memberProgram4">管院學士班 4 年級</span>
-                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
-                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
-                </div>
-                <div class="member-cell">
+                  <span class="member-meta">111251015 YE FANG-CHEN</span>
+                </button>
+                <button class="member-cell member-video-tab" type="button" data-member-name="吳樹豫" aria-pressed="false">
                   <span class="member-name">吳樹豫</span>
                   <span class="member-program" data-i18n="memberProgram5">管院學士班 3 年級</span>
-                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
-                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
-                </div>
-                <div class="member-cell">
+                  <span class="member-meta">112105016 Wu Shu-Yu</span>
+                </button>
+                <button class="member-cell member-video-tab" type="button" data-member-name="王齡誼" aria-pressed="false">
                   <span class="member-name">王齡誼</span>
                   <span class="member-program" data-i18n="memberProgram6">國企系學士班 3 年級</span>
-                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
-                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
-                </div>
-                <div class="member-cell">
+                  <span class="member-meta">112212024 Wang Ling-I</span>
+                </button>
+                <button class="member-cell member-video-tab" type="button" data-member-name="呂沛岑" aria-pressed="false">
                   <span class="member-name">呂沛岑</span>
                   <span class="member-program" data-i18n="memberProgram7">國企系學士班 3 年級</span>
-                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
-                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
+                  <span class="member-meta">112212028 LU PEI-TSEN</span>
+                </button>
+              </div>
+
+              <div class="member-video-stage" id="memberVideoStage" aria-live="polite">
+                <div class="member-video-copy">
+                  <span class="mono-label" data-i18n="memberVideoLabel">Member video</span>
+                  <h3 id="memberVideoName">楊承逸</h3>
+                  <p id="memberVideoProgram" data-i18n="memberProgram1">國企系學士班 3 年級</p>
+                  <p class="member-video-note" data-i18n="memberVideoNote">點擊右側播放區即可嵌入播放小組成員影片。</p>
+                </div>
+
+                <div class="member-video-frame" id="memberVideoFrame">
+                  <button class="member-video-poster" id="memberVideoPoster" type="button" aria-label="播放楊承逸的影片">
+                    <span class="member-video-poster-kicker">YOUTUBE / REFLECTION</span>
+                    <strong id="memberVideoPosterName">楊承逸</strong>
+                    <span class="member-video-play">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5v14l11-7-11-7Z" fill="currentColor"></path>
+                      </svg>
+                      Play video
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </details>
       </div>
     </section>
   </main>
@@ -6387,6 +6675,8 @@
   <script>
         const translations = {
       zh: {
+        dashboardTitle: "測驗結果分析",
+        dashboardScore: "您的得分：",
         announcement: "1142 國際策略管理 TP 公司研究網站",
         announcementLink: "查看資料來源與 AI 揭露",
         announcementCloseLabel: "關閉公告",
@@ -6513,27 +6803,28 @@
         stat3Value: "約 500 億元",
         stat4Label: "新廠節點",
         stat4Value: "2027 年初裝機",
-        teamTitle: "團隊協作：拒絕拼貼，堅持高品質共創",
-        teamLead: "本網站以共同整合方式完成，讓公司介紹、財務資訊、市場分析、資源評價與成長策略維持一致主軸。",
-        teamCard1Title: "資料查核",
-        teamCard1Body: "共同比對官方資料、投資人關係、新聞與 104 職缺，降低錯誤引用。",
-        teamCard2Title: "雙語整合",
-        teamCard2Body: "中文與英文文案維持同一研究敘事，不使用自動翻譯結果直接上線。",
-        teamCard3Title: "互動測試",
-        teamCard3Body: "共同確認跳轉、明暗模式、語音導覽、翻轉字卡與小測驗能在桌機與手機操作。",
+        teamTitle: "團隊協作：從數據分析到我們的學習與成長",
+        teamLead: "這不只是一份報告，更是我們七個人共同腦力激盪、一起探索半導體產業與網頁設計的學習歷程。",
+        teamCard1Title: "實務與理論的結合",
+        teamCard1Body: "課本上的五力分析和 DuPont 分解，在分析南亞科時終於活了起來。這次研究讓我們對整個 DRAM 產業的供需循環有更深的認識，也幫助我們在未來分析股市、觀察科技板塊時更有底氣。",
+        teamCard2Title: "互動設計的挑戰",
+        teamCard2Body: "為了讓報告更生動，我們共同設計了策略模擬器。雖然調整參數、測試手機版畫面的過程有些繁瑣，但看到冰冷的數據動起來時，真的很有成就感。",
+        teamCard3Title: "團隊溝通與共識",
+        teamCard3Body: "七個人有著不同的背景與想法，在討論過程中，我們學會聆聽彼此對產業前景的觀點，將零散的意見梳理成邏輯完整的個案，這是最棒的學習。",
         teamProcess1Label: "Step 01",
-        teamProcess1Title: "資料查核",
-        teamProcess1Body: "先把官方網站、投資人關係、新聞、產業研究與 104 職缺分開標記來源狀態。",
+        teamProcess1Title: "資料海中起步",
+        teamProcess1Body: "大家分頭下載官方財報、法說會簡報與公開資訊，在密密麻麻的數據中核對出最真實的分析起點。",
         teamProcess2Label: "Step 02",
-        teamProcess2Title: "敘事整合",
-        teamProcess2Body: "把財務、市場、資源與成長策略收斂到同一條 DRAM 週期與 AI memory 主軸。",
+        teamProcess2Title: "觀點碰撞與整理",
+        teamProcess2Body: "開會討論南亞科在 DRAM 週期與 AI 浪潮下的處境，將組員們不同的分析觀點收斂至同一個敘事主軸。",
         teamProcess3Label: "Step 03",
-        teamProcess3Title: "雙語校對",
-        teamProcess3Body: "中英文維持同一結論，不讓英文版變成中文逐字翻譯。",
+        teamProcess3Title: "讓數據動起來",
+        teamProcess3Body: "共同設定策略實驗室的價格與稼動率參數，把靜態的財務表單變成大家都可以動手操作的互動模型。",
         teamProcess4Label: "Step 04",
-        teamProcess4Title: "互動驗收",
-        teamProcess4Body: "共同檢查跳轉、明暗模式、語音導覽、翻轉字卡、小測驗與手機版版面。",
+        teamProcess4Title: "實務對照與驗收",
+        teamProcess4Body: "在專案即將收尾時，其中某組員還剛好發現了摩根士丹利（Morgan Stanley）對南亞科的最新外資報告，讓我們得以對照我們的推論與市場最新法人判斷，最後合力完成多載具的測試與驗收。",
         membersLabel: "G6 Members",
+        memberSwitchHint: "（點選成員姓名可切換下方影片）",
         memberProgramLabel: "系級",
         memberGroupLabel: "組別",
         memberProgram1: "國企系學士班 3 年級",
@@ -6545,6 +6836,8 @@
         memberProgram7: "國企系學士班 3 年級",
         memberEnglishName: "English Name: TBD",
         memberStudentId: "Student ID: TBD",
+        memberVideoLabel: "成員影片",
+        memberVideoNote: "點擊右側播放區即可嵌入播放小組成員影片。",
         companyTitle: "立足台灣：看見 DRAM 領導品牌",
         companyLead: "南亞科技成立於 1995 年，股票代號 2408，核心業務為 DRAM 研發、設計、製造與銷售。",
         companyRow1Title: "基本資料",
@@ -6841,8 +7134,8 @@
         integrityQuestion: "我們的數據來源與分析標準是什麼？",
         integrityTakeaway: "嚴格把關資料來源（如官方 IR 與研調機構），並詳細揭露 AI 工具的輔助範圍與人工查核機制，確保研究客觀透明。",
         summaryIntegrity: "展開資料來源與 AI 處理詳細歷程",
-        teamQuestion: "團隊如何確保專案的品質與連貫性？",
-        teamTakeaway: "我們拒絕碎片化的分工。從策略定調、資料處理到網站體驗，全由團隊共同決策與反覆測試，確保論述的一致性與高品質。",
+        teamQuestion: "這次期末專案帶給我們最大的學習收穫是什麼？",
+        teamTakeaway: "除了理解南亞科的策略布局，這次研究讓我們看懂了半導體景氣循環的起伏，對於未來分析股市與評估科技股價值有很大的實務幫助；而小組在討論中尋找共識、共同完成網站的過程，更是我們最珍貴的收穫。",
         summaryTeam: "展開小組共同製作歷程與工作流",
         strategyChecklistKicker: "國際策略管理",
         strategyChecklistHint: "左右滑動查看 6 種成長路徑",
@@ -6887,6 +7180,8 @@
         strategyChecklistSourceNote: "來源僅採 2021 年以後資料；下列網址用於支撐本區塊的有機成長、相關多角化、策略聯盟、集團型垂直支援、區域擴張與非併購導向判斷。"
       },
       en: {
+        dashboardTitle: "Quiz Results Analysis",
+        dashboardScore: "Your Score: ",
         announcement: "International Strategic Management TP company research website",
         announcementLink: "View sources and AI disclosure",
         announcementCloseLabel: "Close announcement",
@@ -7013,27 +7308,28 @@
         stat3Value: "Approx. NT$50B",
         stat4Label: "New fab node",
         stat4Value: "Equipment move-in: early 2027",
-        teamTitle: "Team members and shared production process.",
-        teamLead: "This section explains how the team jointly checked, integrated, and tested the website, instead of listing individual task ownership.",
-        teamCard1Title: "Fact checking",
-        teamCard1Body: "The team cross-checked official pages, investor relations, public news, and 104 job postings to reduce citation risk.",
-        teamCard2Title: "Bilingual refinement",
-        teamCard2Body: "Chinese and English copy share the same strategic narrative instead of relying on direct machine translation.",
-        teamCard3Title: "Interaction testing",
-        teamCard3Body: "The team verified jumps, dark mode, voice guide, flip cards, and quiz behavior across desktop and mobile.",
+        teamTitle: "Team Collaboration: From Data Analysis to Our Learning & Growth",
+        teamLead: "This is not just a report, but a journey of brainstorming, exploring the semiconductor industry, and web design together as a team of seven.",
+        teamCard1Title: "Bridging Theory & Practice",
+        teamCard1Body: "Porter's Five Forces and DuPont analysis from textbooks came alive when we analyzed Nanya's financial status. This research gave us a deeper understanding of the DRAM cycle, helping us analyze the stock market and technology sector with more confidence.",
+        teamCard2Title: "Interactive Design Challenge",
+        teamCard2Body: "To make the report more engaging, we designed a strategy simulator. Although tuning parameters and testing mobile responsiveness was tedious, seeing the cold numbers move was extremely rewarding.",
+        teamCard3Title: "Team Communication & Consensus",
+        teamCard3Body: "Seven people brought different backgrounds and ideas. Through discussion, we learned to listen to different perspectives and consolidate scattered opinions into a logical case study.",
         teamProcess1Label: "Step 01",
-        teamProcess1Title: "Source checking",
-        teamProcess1Body: "Official pages, investor relations, news, industry research, and 104 postings were separated by source status.",
+        teamProcess1Title: "Starting in the Data Sea",
+        teamProcess1Body: "We downloaded official financial statements, investor presentations, and public info, cross-checking numbers to establish a solid foundation.",
         teamProcess2Label: "Step 02",
-        teamProcess2Title: "Narrative integration",
-        teamProcess2Body: "Finance, market, resources, and growth strategy were tied to one DRAM cycle and AI memory thesis.",
+        teamProcess2Title: "Brainstorming & Consolidating",
+        teamProcess2Body: "Discussing Nanya's position under DRAM cycles and AI trends, we consolidated our diverse analytical views into a single narrative.",
         teamProcess3Label: "Step 03",
-        teamProcess3Title: "Bilingual editing",
-        teamProcess3Body: "Chinese and English versions keep the same conclusion instead of using literal translation.",
+        teamProcess3Title: "Making Data Move",
+        teamProcess3Body: "Together we defined ASP and utilization parameters for the Strategy Lab, transforming static financial sheets into a dynamic profit-and-loss model.",
         teamProcess4Label: "Step 04",
-        teamProcess4Title: "Interaction review",
-        teamProcess4Body: "The team checked anchor jumps, theme mode, voice guide, flip cards, quiz behavior, and mobile layout.",
+        teamProcess4Title: "Real-world Benchmarking & Review",
+        teamProcess4Body: "As the project neared completion, one of our team members happened to find Morgan Stanley's latest research report on Nanya Tech. This allowed us to benchmark our insights against Wall Street analysts before completing multi-device testing.",
         membersLabel: "G6 Members",
+        memberSwitchHint: " (Click a name to switch the video)",
         memberProgramLabel: "Program / year",
         memberGroupLabel: "Group",
         memberProgram1: "International Business, Year 3",
@@ -7045,6 +7341,8 @@
         memberProgram7: "International Business, Year 3",
         memberEnglishName: "English Name: TBD",
         memberStudentId: "Student ID: TBD",
+        memberVideoLabel: "Member Video",
+        memberVideoNote: "Select a member and click the media panel to play the embedded YouTube video.",
         companyTitle: "A representative Taiwanese DRAM company.",
         companyLead: "Founded in 1995 and listed as 2408, Nanya Technology focuses on DRAM R&D, design, manufacturing, and sales.",
         companyRow1Title: "Basic profile",
@@ -7341,8 +7639,8 @@
         integrityQuestion: "How to ensure academic integrity and data transparency?",
         integrityTakeaway: "Disclose main data sources (Official IR and TrendForce/Reuters), AI use (data organization, bilingual drafting, and quiz design), and human review to maintain academic integrity.",
         summaryIntegrity: "Expand Data Sources & AI Processing Logs",
-        teamQuestion: "How did the team jointly manage quality and consistency?",
-        teamTakeaway: "The team jointly decided the analysis, gathered data, selected frameworks, reviewed bilingual/interaction/sources, and tested the site, rather than using isolated copy-paste compilation.",
+        teamQuestion: "What is our biggest takeaway from this project?",
+        teamTakeaway: "In addition to understanding Nanya's strategy, we learned to find consensus among different opinions. The process of listening to each other and building this website together is our most precious harvest.",
         summaryTeam: "Expand Team shared production workflow & member details",
         strategyChecklistKicker: "International strategy management",
         strategyChecklistHint: "Swipe horizontally to review six growth paths",
@@ -7973,6 +8271,7 @@
     let selectedAnswer = null;
     let score = 0;
     let answered = false;
+    let userAnswers = [];
     let financeFocus = "revenue";
     let forceFocus = "rivalry";
     let marketFocus = "industry";
@@ -8132,6 +8431,9 @@
       setVoiceState(false, false);
       qs("#voiceStatus").textContent = "";
       updateVoiceProgress();
+      if (typeof renderMemberVideoPoster === "function" && activeMemberVideo) {
+        renderMemberVideoPoster(activeMemberVideo);
+      }
     }
 
     function getFlipCardItems() {
@@ -9343,6 +9645,9 @@
       const data = quizData[currentLang][currentQuestion];
       qsa(".quiz-option").forEach((option) => option.classList.remove("is-selected"));
       button.classList.add("is-selected");
+      
+      userAnswers[currentQuestion] = index;
+
       if (selectedAnswer === data.answer) {
         score += 1;
         qs("#feedback").textContent = (currentLang === "zh" ? "答對。" : "Correct. ") + data.exp;
@@ -9361,16 +9666,92 @@
         currentQuestion += 1;
         renderQuiz();
       } else {
-        qs("#feedback").textContent = currentLang === "zh"
-          ? `測驗完成，總分 ${score}/${quizData[currentLang].length}。`
-          : `Quiz complete. Final score: ${score}/${quizData[currentLang].length}.`;
+        renderDashboard();
       }
+    }
+
+    function renderDashboard() {
+      const panel = qs("#quizPanel");
+      const dashboard = qs("#quizDashboard");
+      
+      panel.style.transition = "opacity 0.3s ease";
+      panel.style.opacity = "0";
+      dashboard.style.transition = "opacity 0.4s ease";
+      dashboard.style.opacity = "0";
+      
+      qs("#dashboardScoreText").textContent = (currentLang === "zh" ? "您的得分：" : "Your Score: ") + `${score}/${quizData[currentLang].length}`;
+      
+      const list = qs("#dashboardList");
+      list.innerHTML = "";
+      
+      quizData[currentLang].forEach((data, index) => {
+        const userAnswerIndex = userAnswers[index];
+        const isCorrect = userAnswerIndex === data.answer;
+        
+        const item = document.createElement("div");
+        item.className = "dashboard-item";
+        
+        const qText = document.createElement("p");
+        qText.className = "dashboard-item-question";
+        qText.textContent = `${index + 1}. ${data.q}`;
+        item.appendChild(qText);
+        
+        const row = document.createElement("div");
+        row.className = "dashboard-item-row";
+        
+        const uAns = document.createElement("span");
+        uAns.className = "dashboard-user-answer" + (isCorrect ? "" : " is-wrong");
+        uAns.textContent = (currentLang === "zh" ? "您的選擇: " : "Your answer: ") + (userAnswerIndex !== undefined ? data.options[userAnswerIndex] : "-");
+        row.appendChild(uAns);
+        
+        if (!isCorrect) {
+          const cAns = document.createElement("span");
+          cAns.className = "dashboard-correct-answer";
+          cAns.textContent = (currentLang === "zh" ? "正確解答: " : "Correct answer: ") + data.options[data.answer];
+          row.appendChild(cAns);
+        }
+        item.appendChild(row);
+        
+        const exp = document.createElement("p");
+        exp.className = "dashboard-exp";
+        exp.textContent = data.exp;
+        item.appendChild(exp);
+        
+        list.appendChild(item);
+      });
+      
+      setTimeout(() => {
+        const panel = qs("#quizPanel");
+        const dashboard = qs("#quizDashboard");
+        panel.hidden = true;
+        dashboard.hidden = false;
+        qs(".quiz-layout").classList.add("is-result-mode");
+        
+        setTimeout(() => {
+          dashboard.style.opacity = "1";
+        }, 400);
+      }, 300);
     }
 
     function resetQuiz() {
       currentQuestion = 0;
       score = 0;
-      renderQuiz();
+      userAnswers = [];
+      
+      const dashboard = qs("#quizDashboard");
+      dashboard.style.opacity = "0";
+      
+      setTimeout(() => {
+        dashboard.hidden = true;
+        qs(".quiz-layout").classList.remove("is-result-mode");
+        
+        setTimeout(() => {
+          const panel = qs("#quizPanel");
+          panel.hidden = false;
+          panel.style.opacity = "1";
+          renderQuiz();
+        }, 400);
+      }, 300);
     }
 
     function loadVoices() {
@@ -9769,6 +10150,7 @@
       qs("#voiceRange").addEventListener("change", (event) => endVoiceDrag(event.target.value));
       qs("#nextBtn").addEventListener("click", nextQuestion);
       qs("#restartBtn").addEventListener("click", resetQuiz);
+      qs("#dashboardRestartBtn").addEventListener("click", resetQuiz);
       qs("#menuBtn").addEventListener("click", () => {
         const panel = qs("#mobilePanel");
         const open = panel.classList.toggle("is-open");
@@ -9875,12 +10257,105 @@
       }
     }
 
+    let activeMemberVideo = null;
+    let memberVideoTabs = [];
+    let memberVideoName = null;
+    let memberVideoProgram = null;
+    let memberVideoPosterName = null;
+    let memberVideoPoster = null;
+    let memberVideoFrame = null;
+
+    const memberVideos = [
+      { name: "吳櫂笙", videoId: "GI-le81xZ1E", programKey: "memberProgram2" },
+      { name: "吳樹豫", videoId: "4oph8raCXyk", programKey: "memberProgram5" },
+      { name: "呂沛岑", videoId: "pIuHuxtkqso", programKey: "memberProgram7" },
+      { name: "吳羽棠", videoId: "R1Lu2G4ml90", programKey: "memberProgram3" },
+      { name: "王齡誼", videoId: "A2eOhkgJoF4", programKey: "memberProgram6" },
+      { name: "楊承逸", videoId: "GZiswVHWLwU", programKey: "memberProgram1" },
+      { name: "葉芳辰", videoId: "hq8CVenIvws", programKey: "memberProgram4" }
+    ];
+
+    function getMemberVideoByName(name) {
+      return memberVideos.find((member) => member.name === name);
+    }
+
+    function renderMemberVideoPoster(member) {
+      if (!member || !memberVideoFrame || !memberVideoPoster) return;
+
+      memberVideoFrame.querySelector("iframe")?.remove();
+      memberVideoPoster.hidden = false;
+
+      if (memberVideoName) memberVideoName.textContent = member.name;
+      if (memberVideoProgram) {
+        memberVideoProgram.setAttribute("data-i18n", member.programKey);
+        memberVideoProgram.textContent = translations[currentLang][member.programKey] || "";
+      }
+      if (memberVideoPosterName) memberVideoPosterName.textContent = member.name;
+
+      const ariaLabel = currentLang === "zh" ? `播放 ${member.name} 的影片` : `Play ${member.name}'s video`;
+      memberVideoPoster.setAttribute("aria-label", ariaLabel);
+    }
+
+    function loadMemberVideo(member) {
+      if (!member || !memberVideoFrame || !memberVideoPoster) return;
+
+      memberVideoFrame.querySelector("iframe")?.remove();
+
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube-nocookie.com/embed/${member.videoId}?rel=0&playsinline=1&autoplay=1`;
+      iframe.title = `${member.name} YouTube video`;
+      iframe.loading = "lazy";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+
+      memberVideoPoster.hidden = true;
+      memberVideoFrame.appendChild(iframe);
+    }
+
+    function setActiveMemberVideo(member) {
+      if (!member) return;
+      activeMemberVideo = member;
+
+      memberVideoTabs.forEach((tab) => {
+        const isActive = tab.dataset.memberName === member.name;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-pressed", String(isActive));
+      });
+
+      renderMemberVideoPoster(member);
+    }
+
+    function initMemberVideos() {
+      memberVideoTabs = qsa(".member-video-tab");
+      memberVideoName = qs("#memberVideoName");
+      memberVideoProgram = qs("#memberVideoProgram");
+      memberVideoPosterName = qs("#memberVideoPosterName");
+      memberVideoPoster = qs("#memberVideoPoster");
+      memberVideoFrame = qs("#memberVideoFrame");
+
+      activeMemberVideo = memberVideos.find((member) => member.name === "楊承逸") || memberVideos[0];
+
+      memberVideoTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const member = getMemberVideoByName(tab.dataset.memberName);
+          setActiveMemberVideo(member);
+        });
+      });
+
+      memberVideoPoster?.addEventListener("click", () => {
+        loadMemberVideo(activeMemberVideo);
+      });
+
+      setActiveMemberVideo(activeMemberVideo);
+    }
+
     applyTheme(localStorage.getItem("nanya-theme") || "light");
     bindEvents();
     applyLanguage(currentLang);
     initCompetitorMatrix();
     initLifecycleRail();
     updateRailCurrentButton();
+    initMemberVideos();
 
     // --- Scrollspy Implementation ---
     const observerOptions = {
