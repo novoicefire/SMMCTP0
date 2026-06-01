@@ -2249,53 +2249,291 @@
       line-height: 1.36;
     }
 
-    .career-list {
-      margin-top: 34px;
-      border-top: 1px solid var(--hairline);
-    }
-
-    .career-row {
+    .talent-command {
       display: grid;
-      grid-template-columns: minmax(220px, 0.34fr) 1fr;
-      gap: 34px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--hairline);
+      grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr);
+      gap: 0;
+      margin-top: 42px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
     }
 
-    .career-row h3 {
-      margin: 0;
-      font-size: 26px;
+    .talent-terminal {
+      padding: 34px;
+      color: #ffffff;
+      background: var(--navy);
+      display: grid;
+      gap: 28px;
+      align-content: start;
+    }
+
+    .talent-command-head {
+      max-width: 420px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .talent-command-head strong {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 44px);
       font-weight: 400;
+      line-height: 1.04;
+    }
+
+    .talent-command-head p {
+      margin: 6px 0 0;
+      max-width: 330px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 15px;
+      line-height: 1.48;
+    }
+
+    .talent-command-head span {
+      color: rgba(255, 255, 255, 0.62);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .talent-node-group {
+      display: grid;
+      gap: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .talent-node {
+      position: relative;
+      width: 100%;
+      display: grid;
+      gap: 6px;
+      padding: 18px 0 18px 18px;
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 0;
+      color: #ffffff;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .talent-node:hover,
+    .talent-node:focus-visible,
+    .talent-node.is-active {
+      background: rgba(255, 119, 89, 0.08);
+    }
+
+    .talent-node.is-active {
+      box-shadow: inset 2px 0 0 var(--coral);
+    }
+
+    .talent-node:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .talent-node.is-active::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--coral);
+    }
+
+    .talent-node strong {
+      padding-right: 26px;
+      font-size: 16px;
+      font-weight: 500;
       line-height: 1.2;
     }
 
-    .career-row dl {
+    .talent-node span {
+      color: rgba(255, 255, 255, 0.62);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .talent-node small {
+      color: rgba(255, 255, 255, 0.72);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.36;
+    }
+
+    .talent-command-detail {
+      min-height: auto;
+      padding: clamp(28px, 4vw, 48px);
+      border-left: 1px solid var(--hairline);
+      background: var(--surface);
+    }
+
+    .talent-detail-panel[hidden] {
+      display: none;
+    }
+
+    .talent-detail-panel {
       display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 10px 18px;
+      gap: 24px;
+    }
+
+    .talent-detail-panel h3 {
+      margin: 0;
+      font-size: clamp(30px, 3vw, 44px);
+      font-weight: 400;
+      line-height: 1.04;
+    }
+
+    .talent-detail-panel dl {
+      display: grid;
+      gap: 18px;
       margin: 0;
     }
 
-    .career-row dt {
+    .talent-detail-panel dt {
       color: var(--muted);
       font-family: var(--font-mono);
       font-size: 12px;
       text-transform: uppercase;
     }
 
-    .career-row dd {
-      margin: 0;
+    .talent-detail-panel dd {
+      margin: 6px 0 0;
       color: var(--ink);
+      font-size: 16px;
+      line-height: 1.5;
     }
 
-    @media (max-width: 760px) {
-      .career-row {
+    .talent-evidence-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .talent-evidence-strip div {
+      border-top: 1px solid var(--hairline);
+      padding-top: 12px;
+    }
+
+    .talent-evidence-strip span {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .talent-evidence-strip strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .career-takeaway-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      margin-top: 34px;
+      padding: 22px 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .career-takeaway-strip p {
+      margin: 8px 0 0;
+      max-width: 820px;
+      color: var(--ink);
+      font-size: clamp(18px, 1.7vw, 24px);
+      line-height: 1.36;
+    }
+
+    .career-takeaway-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .career-takeaway-tags span {
+      padding: 7px 10px;
+      border: 1px solid var(--soft-coral);
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1023px) {
+      .talent-command {
         grid-template-columns: 1fr;
-        gap: 18px;
       }
 
-      .career-row dl {
+      .talent-command-detail {
+        min-height: 0;
+        border-top: 1px solid var(--hairline);
+        border-left: 0;
+      }
+
+    }
+
+    @media (max-width: 640px) {
+      .talent-command {
+        margin-top: 30px;
+        margin-bottom: 24px;
+        border-radius: var(--radius-md);
+      }
+
+      .talent-terminal {
+        padding: 24px;
+        gap: 24px;
+      }
+
+      .talent-node-group {
+        display: grid;
         grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .talent-node,
+      .talent-node[data-talent-node] {
+        position: relative;
+        width: 100%;
+      }
+
+      .talent-command-detail {
+        padding: 24px;
+      }
+
+      .talent-detail-panel h3 {
+        font-size: clamp(28px, 8vw, 36px);
+      }
+
+      .talent-evidence-strip {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .career-takeaway-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .career-takeaway-tags {
+        justify-content: flex-start;
       }
     }
 
@@ -2373,32 +2611,6 @@
       color: var(--ink);
       font-size: 20px;
       line-height: 1.2;
-    }
-
-    .capability-link-list {
-      margin-top: 18px;
-      border-top: 1px solid var(--hairline);
-    }
-
-    .capability-link-row {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 18px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--hairline);
-    }
-
-    .capability-link-row span {
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    .capability-link-row strong {
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 1.25;
     }
 
     .navy-band .mini-stat span,
@@ -6318,100 +6530,107 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="mono-label" data-i18n="careerKicker">職涯洞察</span>
-            <h2 class="section-title" id="career-title" data-i18n="careerTitle">人才戰略：邁向「智動化」組織的關鍵拼圖</h2>
+            <span class="mono-label" data-i18n="careerKicker">CAREER INTELLIGENCE / 職涯洞察</span>
+            <h2 class="section-title" id="career-title" data-i18n="careerTitle">人才戰略如何支撐南亞科的技術轉型？</h2>
           </div>
-          <p class="section-copy" data-i18n="careerLead">職涯洞察把公司策略連回學生能理解的技能與職位需求。</p>
+          <p class="section-copy" data-i18n="careerLead">從 104 職缺可看出，南亞科的轉型需求集中在智慧製造系統、先進製程整合、B2B 客戶導入三種能力。</p>
         </div>
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="careerQuestion">企業轉型的背後，需要什麼樣的人才戰力？</p>
+            <p data-i18n="careerQuestion">104 職缺透露南亞科需要累積哪些組織能力？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="careerTakeaway">從招募動向可看出南亞科正邁向「智動化」與「分析型」組織：大舉延攬製程整合、軟體開發與 FAE 人才，以支撐新廠與客製化需求。</p>
+            <p data-takeaway data-i18n="careerTakeaway">招募訊號顯示，人才不是孤立職缺，而是新廠、製程升級與客戶導入所需的知識基礎。</p>
           </div>
         </div>
-        <div class="organization-summary" id="organizationSummary" aria-label="Organization capability summary"></div>
-        <div id="capability-reactor" class="reactor-lab" data-voice-summary="Strategy Lab Capability Reactor maps job skills to strategic capabilities">
-          <span class="lab-kicker" data-i18n="reactorKicker">KBV／技能到能力</span>
-          <h3 data-i18n="reactorTitle">Capability Reactor｜技能到策略能力反應爐</h3>
-          <p data-i18n="reactorLead">將 104 職缺中的技能配對到南亞科的策略能力，理解 KBV：個人技能如何累積成組織知識。</p>
-          <div class="reactor-grid">
-            <div class="reactor-panel">
-              <h4 data-i18n="reactorSkillLabel">選擇一個技能</h4>
-              <div class="reactor-chips" id="reactorSkills"></div>
+        <div class="talent-command" id="talent-command" data-voice-summary="Talent Operating System maps 104 job postings to Nanya's strategic capabilities">
+          <div class="talent-terminal">
+            <div class="talent-command-head">
+              <span data-i18n="talentSystemLabel">TALENT SIGNAL / 104 JOBS</span>
+              <strong data-i18n="talentSystemTitle">人才作業系統</strong>
+              <p data-i18n="talentSystemCopy">從職缺資料讀取南亞科的能力缺口。</p>
             </div>
-            <div class="reactor-panel">
-              <h4 data-i18n="reactorBucketLabel">配對到策略能力</h4>
-              <div class="reactor-buckets" id="reactorBuckets"></div>
-              <div class="reactor-readout" id="reactorReadout" aria-live="polite"></div>
+            <div class="talent-node-group" aria-label="Talent capability nodes" data-i18n-aria-label="talentNodeGroupLabel">
+              <button class="talent-node is-active" type="button" data-talent-node="smart-fab" aria-expanded="true" aria-controls="talent-panel-smart-fab">
+                <span data-i18n="talentNode1Meta">01 / MES</span>
+                <strong data-i18n="talentNode1">Smart Fab / 智慧製造</strong>
+                <small data-i18n="talentNode1Signal">MES 系統、異常分析、排程資料化</small>
+              </button>
+              <button class="talent-node" type="button" data-talent-node="process-migration" aria-expanded="false" aria-controls="talent-panel-process-migration">
+                <span data-i18n="talentNode2Meta">02 / Node</span>
+                <strong data-i18n="talentNode2">Process Migration / 製程升級</strong>
+                <small data-i18n="talentNode2Signal">製程整合、新技術、新製程開發</small>
+              </button>
+              <button class="talent-node" type="button" data-talent-node="customer-design-in" aria-expanded="false" aria-controls="talent-panel-customer-design-in">
+                <span data-i18n="talentNode3Meta">03 / B2B</span>
+                <strong data-i18n="talentNode3">Customer Design-in / 客戶導入</strong>
+                <small data-i18n="talentNode3Signal">DRAM 系統驗證、相容性分析、RMA 故障分析</small>
+              </button>
             </div>
+          </div>
+          <div class="talent-command-detail" aria-live="polite">
+            <article class="talent-detail-panel" id="talent-panel-smart-fab" data-talent-panel="smart-fab">
+              <span class="mono-label" data-i18n="talentDetailLabel">STRATEGY CAPABILITY</span>
+              <h3 data-i18n="talentSmartCapability">智慧製造資料系統</h3>
+              <dl>
+                <div><dt data-i18n="talentRoleNeededLabel">Role Needed</dt><dd data-i18n="talentSmartRole">軟體開發工程師</dd></div>
+                <div><dt data-i18n="talentWhyLabel">Why It Matters</dt><dd data-i18n="talentSmartWhy">把 MES、異常分析、上線測試與排程系統嵌入晶圓廠日常，使新廠營運能被資料化與標準化。</dd></div>
+                <div><dt data-i18n="talentSkillsLabel">Key Skills</dt><dd data-i18n="talentSmartSkills">C, C++, Java, VB.NET, DB2, MS SQL, Oracle</dd></div>
+              </dl>
+              <div class="talent-evidence-strip">
+                <div><span data-i18n="talentEvidenceSourceLabel">Source signal</span><strong data-i18n="talentEvidenceSource">104 job posting</strong></div>
+                <div><span data-i18n="talentEvidencePayLabel">Pay range</span><strong data-i18n="career1Pay">月薪 45,500–57,500 元</strong></div>
+                <div><span data-i18n="talentEvidenceLogicLabel">Organizational logic</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
+              </div>
+            </article>
+            <article class="talent-detail-panel" id="talent-panel-process-migration" data-talent-panel="process-migration" hidden>
+              <span class="mono-label" data-i18n="talentDetailLabel">STRATEGY CAPABILITY</span>
+              <h3 data-i18n="talentProcessCapability">先進製程整合與新技術開發</h3>
+              <dl>
+                <div><dt data-i18n="talentRoleNeededLabel">Role Needed</dt><dd data-i18n="talentProcessRole">製程技術開發工程師</dd></div>
+                <div><dt data-i18n="talentWhyLabel">Why It Matters</dt><dd data-i18n="talentProcessWhy">製程升級不是單一設備採購，而是把製程整合、良率判讀與新技術開發沉澱成可複製的量產能力。</dd></div>
+                <div><dt data-i18n="talentSkillsLabel">Key Skills</dt><dd data-i18n="talentProcessSkills">半導體製程整合、新技術開發、工程背景、英文中等</dd></div>
+              </dl>
+              <div class="talent-evidence-strip">
+                <div><span data-i18n="talentEvidenceSourceLabel">Source signal</span><strong data-i18n="talentEvidenceSource">104 job posting</strong></div>
+                <div><span data-i18n="talentEvidencePayLabel">Pay range</span><strong data-i18n="career3Pay">月薪 41,000–57,000 元</strong></div>
+                <div><span data-i18n="talentEvidenceLogicLabel">Organizational logic</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
+              </div>
+            </article>
+            <article class="talent-detail-panel" id="talent-panel-customer-design-in" data-talent-panel="customer-design-in" hidden>
+              <span class="mono-label" data-i18n="talentDetailLabel">STRATEGY CAPABILITY</span>
+              <h3 data-i18n="talentCustomerCapability">產品驗證與客戶導入能力</h3>
+              <dl>
+                <div><dt data-i18n="talentRoleNeededLabel">Role Needed</dt><dd data-i18n="talentCustomerRole">系統分析工程師</dd></div>
+                <div><dt data-i18n="talentWhyLabel">Why It Matters</dt><dd data-i18n="talentCustomerWhy">DRAM 記憶體系統驗證、產品量產導入相容性分析、系統應用故障分析與 RMA 分析，能把客戶端問題回饋成可複製的產品導入知識。</dd></div>
+                <div><dt data-i18n="talentSkillsLabel">Key Skills</dt><dd data-i18n="talentCustomerSkills">DRAM 系統驗證、相容性分析、故障分析、產品量產導入</dd></div>
+              </dl>
+              <div class="talent-evidence-strip">
+                <div><span data-i18n="talentEvidenceSourceLabel">Source signal</span><strong data-i18n="talentEvidenceSource">104 job posting</strong></div>
+                <div><span data-i18n="talentEvidencePayLabel">Pay range</span><strong data-i18n="career2Pay">月薪 41,000–57,000 元</strong></div>
+                <div><span data-i18n="talentEvidenceLogicLabel">Organizational logic</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
+              </div>
+            </article>
           </div>
         </div>
-        <div class="capability-link-list" aria-label="Career capability linkage">
-          <div class="capability-link-row">
-            <span>MES</span>
-            <strong data-i18n="careerLink1">軟體開發工程師：智慧製造資料系統</strong>
+
+        <div class="career-takeaway-strip">
+          <div>
+            <span class="mono-label" data-i18n="careerTakeawayStripLabel">Career takeaway</span>
+            <p data-i18n="careerTakeawayStrip">職缺訊號顯示，南亞科的人才需求不是單純補人，而是把 MES、製程整合與系統驗證與客戶導入經驗沉澱成可重複使用的組織知識。</p>
           </div>
-          <div class="capability-link-row">
-            <span>1C / 1D</span>
-            <strong data-i18n="careerLink2">製程技術開發工程師：新廠與製程升級</strong>
-          </div>
-          <div class="capability-link-row">
-            <span>FAE</span>
-            <strong data-i18n="careerLink3">FAE 技術工程師：客戶驗證與技術服務</strong>
-          </div>
-          <div class="capability-link-row">
-            <span>KBV</span>
-            <strong data-i18n="careerLink4">人才與經驗形成可累積能力</strong>
+          <div class="career-takeaway-tags" aria-label="Capability tags" data-i18n-aria-label="careerTagsLabel">
+            <span>SMART FAB</span>
+            <span>PROCESS NODE</span>
+            <span>CUSTOMER DESIGN-IN</span>
           </div>
         </div>
-        <div class="career-list" aria-label="Career roles linked to strategy">
-          <article class="career-row">
-            <div>
-              <span class="mono-label" data-i18n="career1Kicker">MES／智慧製造</span>
-              <h3 data-i18n="career1Title">軟體開發工程師</h3>
-            </div>
-            <dl>
-              <dt data-i18n="careerWork">工作</dt>
-              <dd data-i18n="career1Work">MES 系統開發、異常分析、上線測試與排程系統開發。</dd>
-              <dt data-i18n="careerSkill">技能</dt>
-              <dd>C, C++, Java, VB.NET, DB2, MS SQL, Oracle</dd>
-              <dt data-i18n="careerPay">薪資</dt>
-              <dd data-i18n="career1Pay">月薪 45,500–57,500 元</dd>
-            </dl>
-          </article>
-          <article class="career-row">
-            <div>
-              <span class="mono-label" data-i18n="career2Kicker">FAE／技術支援</span>
-              <h3 data-i18n="career2Title">FAE 技術工程師</h3>
-            </div>
-            <dl>
-              <dt data-i18n="careerWork">工作</dt>
-              <dd data-i18n="career2Work">客戶認證、MCP/eMCP 客訴支援、技術交流與統計分析。</dd>
-              <dt data-i18n="careerSkill">技能</dt>
-              <dd data-i18n="career2Skill">碩士以上、英文精通、電子或半導體物理基礎。</dd>
-              <dt data-i18n="careerPay">薪資</dt>
-              <dd data-i18n="career2Pay">月薪 45,500–57,500 元</dd>
-            </dl>
-          </article>
-          <article class="career-row">
-            <div>
-              <span class="mono-label" data-i18n="career3Kicker">研發／製程整合</span>
-              <h3 data-i18n="career3Title">製程技術開發工程師</h3>
-            </div>
-            <dl>
-              <dt data-i18n="careerWork">工作</dt>
-              <dd data-i18n="career3Work">半導體製程整合、新技術開發與新製程開發。</dd>
-              <dt data-i18n="careerSkill">技能</dt>
-              <dd data-i18n="career3Skill">碩士以上、工程相關科系、英文中等。</dd>
-              <dt data-i18n="careerPay">薪資</dt>
-              <dd data-i18n="career3Pay">月薪 41,000–57,000 元</dd>
-            </dl>
-          </article>
-        </div>
+        <details class="source-note">
+          <summary data-i18n="sourceSummary">來源</summary>
+          <p><a href="https://www.104.com.tw/company/152cvzls?jobsource=index_s_cs" target="_blank" rel="noreferrer" data-i18n="careerSourceLink">104 南亞科技公司頁｜工作機會與職缺資訊</a>。<span data-i18n="careerSourceNote">104 南亞科技公司頁與職缺頁：軟體開發工程師、製程技術開發工程師、系統分析工程師。</span></p>
+        </details>
       </div>
     </section>
 
@@ -6530,7 +6749,7 @@
               <a href="https://www.nanya.com/en/Product/List/2418/7610" target="_blank" rel="noreferrer">RDIMM Product List <span data-i18n="sourceBadgeProduct">官方產品</span></a>
               <a href="https://www.trendforce.com.tw/presscenter/news/20260226-12938.html" target="_blank" rel="noreferrer">TrendForce DRAM 產業研究 / DRAM research <span data-i18n="sourceBadgeResearch">研究</span></a>
               <a href="https://www.reuters.com/world/asia-pacific/nanya-technology-shares-surge-10-after-25-billion-private-placement-2026-03-26/" target="_blank" rel="noreferrer">Reuters 私募新聞 / Private-placement news <span data-i18n="sourceBadgeNews">新聞</span></a>
-              <a href="https://www.104.com.tw/company/a5f7d1c" target="_blank" rel="noreferrer">104 人力銀行職缺 / Career data <span data-i18n="sourceBadgeCareer">職涯</span></a>
+              <a href="https://www.104.com.tw/company/152cvzls?jobsource=index_s_cs" target="_blank" rel="noreferrer" data-i18n="careerSourceLink">104 南亞科技公司頁｜工作機會與職缺資訊</a>
             </div>
           </div>
         </details>
@@ -6765,10 +6984,10 @@
         strategySimulationLabel: "策略模擬",
         resourcesKicker: "VRIN 資源",
         growthKicker: "成長策略",
-        careerKicker: "職涯洞察",
+        careerKicker: "CAREER INTELLIGENCE / 職涯洞察",
         reactorKicker: "KBV／技能到能力",
         career1Kicker: "MES／智慧製造",
-        career2Kicker: "FAE／技術支援",
+        career2Kicker: "系統分析／產品驗證",
         career3Kicker: "研發／製程整合",
         cardsKicker: "互動字卡",
         glossaryHeroSummary: "展開開場關鍵字卡",
@@ -7088,26 +7307,66 @@
         challenges_row_4_risk: "私募股東帶來資金與訂單，但也可能提高特定客戶或應用集中度。",
         challenges_row_4_action: "把 SanDisk、Kioxia、Solidigm、Cisco 關係擴展成多客戶共同開發平台，而非單一客戶依賴。",
         challenges_recommendation: "南亞科不應追求全產品線 DRAM 領導。較合理的路徑是集中差異化：用 DDR4 現金流支撐 DDR5/RDIMM 轉型，用策略投資人鎖定需求，再用 KGD 與客製化記憶體提高客戶轉換成本。",
-        careerTitle: "人才戰略：\u200b邁向「智動化」組織的\u200b關鍵拼圖",
-        careerLead: "職涯洞察把公司策略連回學生能理解的技能與職位需求。",
+        careerTitle: "人才戰略如何支撐南亞科的技術轉型？",
+        careerLead: "從 104 職缺可看出，南亞科的轉型需求集中在智慧製造系統、先進製程整合、B2B 客戶導入三種能力。",
         careerWork: "工作",
         careerSkill: "技能",
         careerPay: "薪資",
         career1Title: "軟體開發工程師",
         career1Work: "MES 系統開發、異常分析、上線測試與排程系統開發。",
+        career1Skill: "C, C++, Java, VB.NET, DB2, MS SQL, Oracle",
         career1Pay: "月薪 45,500–57,500 元",
-        career2Title: "FAE 技術工程師",
-        career2Work: "客戶認證、MCP/eMCP 客訴支援、技術交流與統計分析。",
-        career2Skill: "碩士以上、英文精通，具電子或半導體基礎。",
-        career2Pay: "月薪 45,500–57,500 元",
+        career2Title: "系統分析工程師",
+        career2Work: "DRAM 記憶體系統驗證與除錯、產品量產導入相容性分析、系統應用故障分析、RMA 故障分析。",
+        career2Skill: "DRAM 系統驗證、相容性分析、故障分析、產品量產導入。",
+        career2Pay: "月薪 41,000–57,000 元",
         career3Title: "製程技術開發工程師",
         career3Work: "半導體製程整合、新技術開發與新製程開發。",
         career3Skill: "碩士以上、工程相關科系、英文中等。",
         career3Pay: "月薪 41,000–57,000 元",
         careerLink1: "軟體開發工程師：智慧製造資料系統",
         careerLink2: "製程技術開發工程師：新廠與製程升級",
-        careerLink3: "FAE 技術工程師：客戶驗證與技術服務",
+        careerLink3: "系統分析工程師：產品驗證與客戶導入能力",
         careerLink4: "人才與經驗形成可累積能力",
+        talentSystemLabel: "TALENT SIGNAL / 104 JOBS",
+        talentSystemTitle: "人才作業系統",
+        talentSystemCopy: "從職缺資料讀取南亞科的能力缺口。",
+        talentNodeGroupLabel: "人才能力節點",
+        talentNode1Meta: "01 / MES",
+        talentNode1: "Smart Fab / 智慧製造",
+        talentNode1Signal: "MES 系統、異常分析、排程資料化",
+        talentNode2Meta: "02 / Node",
+        talentNode2: "Process Migration / 製程升級",
+        talentNode2Signal: "製程整合、新技術、新製程開發",
+        talentNode3Meta: "03 / B2B",
+        talentNode3: "Customer Design-in / 客戶導入",
+        talentNode3Signal: "DRAM 系統驗證、相容性分析、RMA 故障分析",
+        talentDetailLabel: "STRATEGY CAPABILITY",
+        talentRoleNeededLabel: "Role Needed",
+        talentWhyLabel: "Why It Matters",
+        talentSkillsLabel: "Key Skills",
+        talentSmartCapability: "智慧製造資料系統",
+        talentSmartRole: "軟體開發工程師",
+        talentSmartWhy: "把 MES、異常分析、上線測試與排程系統嵌入晶圓廠日常，使新廠營運能被資料化與標準化。",
+        talentSmartSkills: "C, C++, Java, VB.NET, DB2, MS SQL, Oracle",
+        talentProcessCapability: "先進製程整合與新技術開發",
+        talentProcessRole: "製程技術開發工程師",
+        talentProcessWhy: "製程升級不是單一設備採購，而是把製程整合、良率判讀與新技術開發沉澱成可複製的量產能力。",
+        talentProcessSkills: "半導體製程整合、新技術開發、工程背景、英文中等",
+        talentCustomerCapability: "產品驗證與客戶導入能力",
+        talentCustomerRole: "系統分析工程師",
+        talentCustomerWhy: "DRAM 記憶體系統驗證、產品量產導入相容性分析、系統應用故障分析與 RMA 分析，能把客戶端問題回饋成可複製的產品導入知識。",
+        talentCustomerSkills: "DRAM 系統驗證、相容性分析、故障分析、產品量產導入",
+        talentEvidenceSourceLabel: "Source signal",
+        talentEvidenceSource: "104 job posting",
+        talentEvidencePayLabel: "Pay range",
+        talentEvidenceLogicLabel: "Organizational logic",
+        talentEvidenceLogic: "KBV",
+        careerTakeawayStripLabel: "Career takeaway",
+        careerTakeawayStrip: "職缺訊號顯示，南亞科的人才需求不是單純補人，而是把 MES、製程整合與系統驗證與客戶導入經驗沉澱成可重複使用的組織知識。",
+        careerTagsLabel: "能力標籤",
+        careerSourceLink: "104 南亞科技公司頁｜工作機會與職缺資訊",
+        careerSourceNote: "104 南亞科技公司頁與職缺頁：軟體開發工程師、製程技術開發工程師、系統分析工程師。",
         valueNetTitle: "Value Net 四類角色彙整",
         frameworkDisclosureTitle: "本研究採用之分析工具",
         quizTitle: "互動小測驗。",
@@ -7171,8 +7430,8 @@
         growthQuestion: "短、中、長期的成長動能與合作策略是什麼？",
         growthTakeaway: "短期乘著價格回溫積累實力；中期衝刺 1B/1C 先進製程與客製化；長期則透過策略私募與生態系競合，綁定關鍵夥伴深化佈局。",
         summaryValueNet: "展開四類節點完整彙整表",
-        careerQuestion: "企業轉型的背後，需要什麼樣的人才戰力？",
-        careerTakeaway: "從招募動向可看出南亞科正邁向「智動化」與「分析型」組織：大舉延攬製程整合、軟體開發與 FAE 人才，以支撐新廠與客製化需求。",
+        careerQuestion: "104 職缺透露南亞科需要累積哪些組織能力？",
+        careerTakeaway: "招募訊號顯示，人才不是孤立職缺，而是新廠、製程升級與客戶導入所需的知識基礎。",
         summaryCareers: "展開 104 職缺詳細工作與薪資規範",
         quizQuestion: "準備好驗收您的策略洞察了嗎？",
         quizTakeaway: "通過包含市場、財務、產品、資源、策略與揭露的互動小測驗，鞏固對南亞科競合定位之學習成效。",
@@ -7270,10 +7529,10 @@
         strategySimulationLabel: "Strategy simulation",
         resourcesKicker: "VRIN resources",
         growthKicker: "Growth strategy",
-        careerKicker: "Career insights",
+        careerKicker: "CAREER INTELLIGENCE / Career insights",
         reactorKicker: "KBV / skills to capability",
         career1Kicker: "MES / Smart manufacturing",
-        career2Kicker: "FAE / Technical support",
+        career2Kicker: "System analysis / product validation",
         career3Kicker: "R&D / Process Integration",
         cardsKicker: "Interactive cards",
         glossaryHeroSummary: "Expand opening keyword cards",
@@ -7593,26 +7852,66 @@
         challenges_row_4_risk: "Private-placement investors bring capital and demand, but may increase customer or application concentration.",
         challenges_row_4_action: "Turn SanDisk, Kioxia, Solidigm, and Cisco relationships into a multi-customer co-development platform rather than single-customer dependence.",
         challenges_recommendation: "Nanya should not chase full-line DRAM leadership. A stronger path is focused differentiation: use DDR4 cash flow to fund the DDR5/RDIMM transition, use strategic investors to secure demand, and use KGD/custom memory to build customer switching costs.",
-        careerTitle: "Strategy upgrades need process, software, and customer-technical talent together.",
-        careerLead: "104 job postings are evidence of Nanya's shift from a defender role toward an analyzer organization, not isolated career information.",
+        careerTitle: "How does talent strategy support Nanya's technology transition?",
+        careerLead: "104 job postings show that Nanya's transition needs concentrate in smart manufacturing systems, advanced process integration, and B2B customer design-in.",
         careerWork: "Work",
         careerSkill: "Skills",
         careerPay: "Pay",
         career1Title: "Software Development Engineer",
         career1Work: "MES system development, exception analysis, launch testing, and scheduling systems.",
+        career1Skill: "C, C++, Java, VB.NET, DB2, MS SQL, Oracle",
         career1Pay: "NT$45,500-57,500 per month",
-        career2Title: "FAE Technical Engineer",
-        career2Work: "Customer qualification, MCP/eMCP issue support, technical communication, and analysis.",
-        career2Skill: "Master's degree or above, strong English, electronics or semiconductor physics background.",
-        career2Pay: "NT$45,500-57,500 per month",
+        career2Title: "System Analysis Engineer",
+        career2Work: "DRAM memory system validation and debugging, compatibility analysis for production introduction, system application failure analysis, and RMA failure analysis.",
+        career2Skill: "DRAM system validation, compatibility analysis, failure analysis, and production introduction.",
+        career2Pay: "NT$41,000-57,000 per month",
         career3Title: "Process Technology Development Engineer",
         career3Work: "Semiconductor process integration, new technology development, and process development.",
         career3Skill: "Master's degree or above, engineering background, intermediate English.",
         career3Pay: "NT$41,000-57,000 per month",
         careerLink1: "Software engineer: smart manufacturing data systems",
         careerLink2: "Process engineer: new fab and process migration",
-        careerLink3: "FAE engineer: customer qualification and technical service",
+        careerLink3: "System Analysis Engineer: product validation and customer design-in capability",
         careerLink4: "Talent and experience build accumulative capability",
+        talentSystemLabel: "TALENT SIGNAL / 104 JOBS",
+        talentSystemTitle: "Talent Operating System",
+        talentSystemCopy: "Read Nanya's capability gaps from job-posting data.",
+        talentNodeGroupLabel: "Talent capability nodes",
+        talentNode1Meta: "01 / MES",
+        talentNode1: "Smart Fab",
+        talentNode1Signal: "MES systems, exception analysis, data-driven scheduling",
+        talentNode2Meta: "02 / Node",
+        talentNode2: "Process Migration",
+        talentNode2Signal: "Process integration, new technology, new process development",
+        talentNode3Meta: "03 / B2B",
+        talentNode3: "Customer Design-in",
+        talentNode3Signal: "DRAM system validation, compatibility analysis, RMA failure analysis",
+        talentDetailLabel: "STRATEGY CAPABILITY",
+        talentRoleNeededLabel: "Role Needed",
+        talentWhyLabel: "Why It Matters",
+        talentSkillsLabel: "Key Skills",
+        talentSmartCapability: "Smart manufacturing data systems",
+        talentSmartRole: "Software Development Engineer",
+        talentSmartWhy: "Embedding MES, exception analysis, launch testing, and scheduling into fab routines turns new-fab operations into standardized data workflows.",
+        talentSmartSkills: "C, C++, Java, VB.NET, DB2, MS SQL, Oracle",
+        talentProcessCapability: "Advanced process integration and new technology development",
+        talentProcessRole: "Process Technology Development Engineer",
+        talentProcessWhy: "Process migration is not just equipment purchasing; it converts integration, yield judgment, and new technology development into repeatable production capability.",
+        talentProcessSkills: "Semiconductor process integration, new technology development, engineering background, intermediate English",
+        talentCustomerCapability: "Product validation and customer design-in capability",
+        talentCustomerRole: "System Analysis Engineer",
+        talentCustomerWhy: "DRAM memory system validation, compatibility analysis for production introduction, system application failure analysis, and RMA analysis turn customer-side issues into repeatable product design-in knowledge.",
+        talentCustomerSkills: "DRAM system validation, compatibility analysis, failure analysis, production introduction",
+        talentEvidenceSourceLabel: "Source signal",
+        talentEvidenceSource: "104 job posting",
+        talentEvidencePayLabel: "Pay range",
+        talentEvidenceLogicLabel: "Organizational logic",
+        talentEvidenceLogic: "KBV",
+        careerTakeawayStripLabel: "Career takeaway",
+        careerTakeawayStrip: "Job-posting signals show that Nanya is not simply filling headcount. It is turning MES, process integration, and system validation plus customer design-in experience into reusable organizational knowledge.",
+        careerTagsLabel: "Capability tags",
+        careerSourceLink: "104 Nanya Technology company page｜Job openings and role information",
+        careerSourceNote: "104 Nanya Technology company page and job postings: Software Development Engineer, Process Technology Development Engineer, and System Analysis Engineer.",
         valueNetTitle: "Value Net four-role summary",
         frameworkDisclosureTitle: "Analytical frameworks used in this study",
         quizTitle: "Interactive quiz.",
@@ -7676,8 +7975,8 @@
         growthQuestion: "How should Nanya grow next and build its co-opetition ecosystem?",
         growthTakeaway: "Short-term capturing cycles, mid-term advancing processes, long-term deepening alliances via private placements and Value Net. Strategy execution depends on organization. Next: Scan human resources and 104 job postings.",
         summaryValueNet: "Expand the full Value Net summary table",
-        careerQuestion: "Who is needed to execute these strategies?",
-        careerTakeaway: "104 postings prove Nanya's shift to an analyzer and automated organization; MES, process integration, and FAE roles align with strategy.",
+        careerQuestion: "What organizational capabilities are visible in Nanya's 104 job postings?",
+        careerTakeaway: "The recruiting signal shows that talent is not isolated headcount; it is the knowledge base for new fabs, process migration, and customer design-in.",
         summaryCareers: "Expand 104 Job Postings & Salary Regulations",
         quizQuestion: "How to test readers' understanding of the core research findings?",
         quizTakeaway: "Consolidate learning outcomes on Nanya's co-opetition positioning via an interactive quiz covering market, finance, products, resources, strategy, and disclosure.",
@@ -7854,14 +8153,14 @@
         portfolio: [
           { id: "ddr4", label: "DDR4", x: 28, y: 28, title: "DDR4／現金牛", role: "成熟產品與現金流來源", growth: "成熟市場成長趨緩，但市占率仍高。", priority: "維持營運，將產生的現金流用於支援先進製程。", customer: "PC、工業、車用與既有消費性電子客戶。", body: "成熟產品與現金流支撐。", product: "官方成熟產品線", price: "低利潤、具市場報價彈性", place: "傳統 B2B 通路", promotion: "長期供應保證", strategy: "收割／維持，以獲得穩定現金流" },
           { id: "ddr5", label: "DDR5", x: 70, y: 72, title: "DDR5／明星產品", role: "成長主力與轉型核心", growth: "伺服器與高容量運算市場需求強勁。", priority: "優先投資 1A/1B 良率、新產能與國際客戶驗證。", customer: "伺服器、雲端資料中心與網通設備廠商。", body: "16Gb 5600 Mbps 已供應；高速度規格研發中。", product: "16Gb DDR5", price: "高規格溢價定價", place: "B2B 一線伺服器供應鏈", promotion: "聯合策略投資人推廣", strategy: "積極投資良率與產能，作為轉型主力" },
-          { id: "ddr5-rdimm", label: "RDIMM", x: 76, y: 82, title: "DDR5 RDIMM／伺服器升級", role: "高容量伺服器升級", growth: "AI 伺服器與高階運算帶動高容量模組需求。", priority: "重點突破 128GB RDIMM 驗證，建立利基市場壁壘。", customer: "雲端服務供應商（CSP）、企業資料中心。", body: "128GB 5600/6400 Mb/s 已達成功能驗證，可支援高階應用。", product: "高容量 RDIMM 模組", price: "高毛利、定制化報價", place: "直接出貨一線雲端大廠", promotion: "FAE 技術深入對接", strategy: "優先投資並進行客戶驗證，切入高容量伺服器" },
+          { id: "ddr5-rdimm", label: "RDIMM", x: 76, y: 82, title: "DDR5 RDIMM／伺服器升級", role: "高容量伺服器升級", growth: "AI 伺服器與高階運算帶動高容量模組需求。", priority: "重點突破 128GB RDIMM 驗證，建立利基市場壁壘。", customer: "雲端服務供應商（CSP）、企業資料中心。", body: "128GB 5600/6400 Mb/s 已達成功能驗證，可支援高階應用。", product: "高容量 RDIMM 模組", price: "高毛利、定制化報價", place: "直接出貨一線雲端大廠", promotion: "系統驗證與客戶技術對接", strategy: "優先投資並進行客戶驗證，切入高容量伺服器" },
           { id: "lpddr5", label: "LPDDR5/5X", x: 42, y: 68, title: "LPDDR5/5X／成長選擇權", role: "低功耗產品布局", growth: "行動裝置與車用電子之低功耗需求具成長空間。", priority: "以官方開發中規格保留彈性，避免盲目擴產。", customer: "智慧型手機、車用電子、高階工業控制。", body: "8–64Gb；6400/7500 Mbps 開發中。", product: "低功耗行動記憶體", price: "競爭定價與長約保護", place: "手機與車載設備廠商", promotion: "低功耗優勢推廣", strategy: "選擇性開發，控管研發風險與量產時程" },
           { id: "kgd", label: "KGD LPDDR5/5X", x: 58, y: 48, title: "KGD LPDDR5/5X／策略互補", role: "客製化互補合作", growth: "配合 NAND Flash 夥伴提供系統級封裝方案。", priority: "與策略股東緊密合作，切入利基市場封裝鏈。", customer: "SSD 模組廠、MCP 行動晶片模組商。", body: "8/16Gb 7500 Mbps 開發中，可作為互補技術。", product: "晶圓級 KGD", price: "合作談判約定價格", place: "策略夥伴供應體系", promotion: "客製化解決方案", strategy: "配合策略夥伴進行客製化與互補銷售" },
           { id: "mcp", label: "MCP/eMCP/uMCP", x: 36, y: 42, title: "MCP/eMCP/uMCP／產品覆蓋", role: "產品覆蓋與防守", growth: "中低階手機與嵌入式設備需求，競爭激烈。", priority: "控制資本投入，維持產品組合的完整性以防守客群。", customer: "中低階行動設備、智慧物聯網（IoT）。", body: "官方列有 MCP LPDDR4X、eMCP、uMCP LPDDR4X。", product: "多晶片封裝記憶體", price: "紅海競爭價格", place: "消費性電子通路", promotion: "配套搭售", strategy: "控管資本與產能，避免陷入價格戰紅海" }
         ],
-        positioning: ["南亞科規模較小，不適合與三大廠進行全面低成本規模競爭，應定位為『高彈性之 B2B 策略供應夥伴』。", "目標客戶應聚焦於 AI general server、策略 NAND 夥伴、以及需要多源供應（Second Source）降低風險的國際科技大廠。", "定位優勢應強調台灣獨立製造、台塑集團信用擔保、高品質 FAE 本地技術支援，與緊密的策略股東同盟關係。"],
+        positioning: ["南亞科規模較小，不適合與三大廠進行全面低成本規模競爭，應定位為『高彈性之 B2B 策略供應夥伴』。", "目標客戶應聚焦於 AI general server、策略 NAND 夥伴、以及需要多源供應（Second Source）降低風險的國際科技大廠。", "定位優勢應強調台灣獨立製造、台塑集團信用擔保、高品質本地系統驗證支援，與緊密的策略股東同盟關係。"],
         capabilities: [{ title: "研發製程", body: "1C / 1D 製程開發與客製化記憶體技術，KBV：製程經驗累積構成內部技術隱性護城河。" }, { title: "晶圓製造", body: "計畫 CapEx 約 500 億；新廠設備預計 2027 年初進駐，提供製程遷移實體載體。" }, { title: "產品組合", body: "DDR5、高容量 RDIMM、LPDDR5/5X、KGD 形成從成熟向高階升級的矩陣路徑。" }, { title: "客戶驗證／合作", body: "SanDisk、Kioxia 已公布 DRAM 供應協議，確保高階產能消化通道。" }, { title: "財務回饋", body: "營收 665.87 億、EPS 2.13 提供轉盈再投資籌碼，DuPont 指標顯示 ASP 定價為波動關鍵。" }],
-        organization: ["防守型角色 (Defender)：南亞科以往高度專注成熟製程研發、降低製程成本與維持良率，扮演市場的成熟供應者。", "分析型角色 (Analyzer)：面對 AI 記憶體重估與私募夥伴加入，公司轉向「分析型」組織，在穩定 mature DRAM 現金流的同時，探索 DDR5 RDIMM 與客製化 KGD 等高利基市場機會。", "跨職能能力積累：這需要 MES 軟體開發（智慧製造）、製程開發（新廠推進）、FAE 客戶工程（客製化 Design-in）與 ESG 永續管理共同支撐。"]
+        organization: ["防守型角色 (Defender)：南亞科以往高度專注成熟製程研發、降低製程成本與維持良率，扮演市場的成熟供應者。", "分析型角色 (Analyzer)：面對 AI 記憶體重估與私募夥伴加入，公司轉向「分析型」組織，在穩定 mature DRAM 現金流的同時，探索 DDR5 RDIMM 與客製化 KGD 等高利基市場機會。", "跨職能能力積累：這需要 MES 軟體開發（智慧製造）、製程開發（新廠推進）、系統驗證與客戶導入（客製化 Design-in）與 ESG 永續管理共同支撐。"]
       },
       en: {
         finance: [
@@ -7892,14 +8191,14 @@
         portfolio: [
           { id: "ddr4", label: "DDR4", x: 28, y: 28, title: "DDR4 / Cash Cow", role: "Mature product and cash-flow source", growth: "Growth is slower, but market share remains stable.", priority: "Maintain operations and use cash flow to fund advanced node migration.", customer: "PC, industrial, automotive, and legacy client electronics.", body: "Mature products support cash flow.", product: "Official mature lines", price: "Low margin, market pricing flexibility", place: "Traditional B2B channels", promotion: "Long-term supply assurance", strategy: "Harvest / Maintain for stable cash flow" },
           { id: "ddr5", label: "DDR5", x: 70, y: 72, title: "DDR5 / Star", role: "Growth engine & transformation core", growth: "Strong demand from servers and high-performance computing.", priority: "Prioritize 1A/1B yields, new capacity, and global client qualifications.", customer: "Servers, cloud data centers, and enterprise networking.", body: "16Gb 5600 Mbps Available; higher speeds under development.", product: "16Gb DDR5", price: "High-spec premium pricing", place: "B2B server supply chains", promotion: "Promote with strategic investors", strategy: "Invest heavily in yield and capacity as transformation core" },
-          { id: "ddr5-rdimm", label: "RDIMM", x: 76, y: 82, title: "DDR5 RDIMM / Server Upgrade", role: "Server memory upgrade", growth: "AI servers and advanced compute drive high-capacity module demand.", priority: "Focus on 128GB RDIMM qualification to build niche market barriers.", customer: "Cloud Service Providers (CSPs), enterprise data centers.", body: "128GB 5600/6400 Mb/s has achieved functional validation.", product: "High-capacity RDIMM modules", price: "High margin, customized pricing", place: "Direct to Tier-1 cloud providers", promotion: "Deep FAE technical alignment", strategy: "Prioritize investment and customer qualification for servers" },
+          { id: "ddr5-rdimm", label: "RDIMM", x: 76, y: 82, title: "DDR5 RDIMM / Server Upgrade", role: "Server memory upgrade", growth: "AI servers and advanced compute drive high-capacity module demand.", priority: "Focus on 128GB RDIMM qualification to build niche market barriers.", customer: "Cloud Service Providers (CSPs), enterprise data centers.", body: "128GB 5600/6400 Mb/s has achieved functional validation.", product: "High-capacity RDIMM modules", price: "High margin, customized pricing", place: "Direct to Tier-1 cloud providers", promotion: "Deep system-validation and customer technical alignment", strategy: "Prioritize investment and customer qualification for servers" },
           { id: "lpddr5", label: "LPDDR5/5X", x: 42, y: 68, title: "LPDDR5/5X / Growth Option", role: "Low-power mobile layout", growth: "Mobile and automotive low-power markets have growth potential.", priority: "Maintain flexibility with in-development specs, avoiding blind capacity expansion.", customer: "Smartphones, automotive, and advanced industrial control.", body: "8-64Gb; 6400/7500 Mbps under development.", product: "Low-power mobile memory", price: "Competitive pricing with LTA protection", place: "Mobile and automotive OEMs", promotion: "Low-power advantage marketing", strategy: "Selectively build to manage R&D risk and launch timing" },
           { id: "kgd", label: "KGD LPDDR5/5X / Strategic Complement", x: 58, y: 48, title: "KGD LPDDR5/5X / Strategic Complement", role: "Custom-memory complement", growth: "Cooperate with NAND partners for system-in-package (SiP) solutions.", priority: "Align with strategic shareholders to enter niche packaging chains.", customer: "SSD module makers, MCP mobile chipset providers.", body: "8/16Gb 7500 Mbps under development as complementary technology.", product: "Known Good Die wafers", price: "Negotiated contract pricing", place: "Strategic partner supply chains", promotion: "Customized solutions", strategy: "Selectively build and manage risk via strategic partnerships" },
           { id: "mcp", label: "MCP/eMCP/uMCP", x: 36, y: 42, title: "MCP/eMCP/uMCP / Portfolio Coverage", role: "Portfolio coverage and defense", growth: "Legacy mobile and embedded markets with intense price competition.", priority: "Control capital spending, maintaining completeness to defend existing clients.", customer: "Mid-to-low-tier mobile, smart Internet of Things (IoT).", body: "Official listings include MCP LPDDR4X, eMCP, and uMCP LPDDR4X.", product: "Multi-chip package memory", price: "Red-ocean commodity pricing", place: "Consumer electronics distribution", promotion: "Bundling sales", strategy: "Control risk and harvest, avoiding commodity price wars" }
         ],
-        positioning: ["Nanya is smaller than the top three, so broad low-cost scale competition is not viable; it must position as a 'highly flexible B2B strategic supply partner'.", "Target customers should focus on AI general servers, strategic NAND partners, and global tech giants needing a second source to mitigate supply risk.", "Positional advantages should emphasize independent Taiwan manufacturing, Formosa Group credit guarantees, high-quality local FAE support, and close alliances with strategic shareholders."],
+        positioning: ["Nanya is smaller than the top three, so broad low-cost scale competition is not viable; it must position as a 'highly flexible B2B strategic supply partner'.", "Target customers should focus on AI general servers, strategic NAND partners, and global tech giants needing a second source to mitigate supply risk.", "Positional advantages should emphasize independent Taiwan manufacturing, Formosa Group credit guarantees, high-quality local system-validation support, and close alliances with strategic shareholders."],
         capabilities: [{ title: "R&D process", body: "1C / 1D node R&D and custom memory technology; KBV: process experience forms an internal technical moat." }, { title: "Wafer manufacturing", body: "Planned CapEx of ~NT$50B; equipment move-in planned for early 2027, providing the physical carrier for process migration." }, { title: "Product portfolio", body: "DDR5, high-capacity RDIMM, LPDDR5/5X, and KGD form a matrix migration path from mature to premium." }, { title: "Customer qualification / cooperation", body: "SanDisk and Kioxia DRAM supply agreements secure high-spec capacity消化 channels." }, { title: "Financial feedback", body: "Revenue NT$66.587B and EPS 2.13 provide capital for reinvestment; DuPont indicates ASP pricing is key to volatility." }],
-        organization: ["Defender Role: Nanya has historically focused on mature R&D, process cost reduction, and yield maintenance, serving as a mature supplier.", "Analyzer Role: Faced with AI memory shifts and private placements, the company moves to an 'analyzer' role, exploring DDR5 RDIMM and custom KGD niche markets while securing legacy DDR4 cash flows.", "Cross-functional Capability Accumulation: This requires MES development (smart manufacturing), process integration (new fab), FAE customer engineering (design-in), and ESG management jointly."]
+        organization: ["Defender Role: Nanya has historically focused on mature R&D, process cost reduction, and yield maintenance, serving as a mature supplier.", "Analyzer Role: Faced with AI memory shifts and private placements, the company moves to an 'analyzer' role, exploring DDR5 RDIMM and custom KGD niche markets while securing legacy DDR4 cash flows.", "Cross-functional Capability Accumulation: This requires MES development (smart manufacturing), process integration (new fab), system validation and customer design-in, and ESG management jointly."]
       }
     };
 
@@ -7921,7 +8220,7 @@
             role: "顧客",
             rolePosition: "需求端與策略入股者，透過 design-in、LTA 與驗證流程決定南亞科能否跳脫標準品價格競爭。",
             representatives: "Cisco、車用與工控客戶、伺服器與網通客戶、模組廠",
-            cooperation: "Design-in、長期供貨承諾、LTA、股權綁定與 FAE 技術支援。",
+            cooperation: "Design-in、長期供貨承諾、LTA、股權綁定與系統驗證支援。",
             competition: "買方壓價、替代供應商比價、TCO 談判與嚴格驗證規範。",
             implication: "把南亞科從標準品價格接受者，推向具備客戶黏著度的利基型策略夥伴。",
             x: 300,
@@ -7984,7 +8283,7 @@
             mapLabel: "Customer",
             rolePosition: "Demand-side buyers and strategic investors that decide whether Nanya can move beyond commodity pricing through design-in, LTAs, and qualification.",
             representatives: "Cisco, automotive and industrial customers, server and networking customers, module makers",
-            cooperation: "Design-in, long-term supply commitments, LTAs, equity ties, and FAE technical support.",
+            cooperation: "Design-in, long-term supply commitments, LTAs, equity ties, and system-validation support.",
             competition: "Buyer price pressure, alternative supplier benchmarking, TCO negotiation, and strict qualification rules.",
             implication: "Moves Nanya from a commodity price taker toward a niche strategic partner with customer stickiness.",
             x: 300,
@@ -8082,7 +8381,7 @@
         strategyRows: [
           { target: "asp-shock-lab", label: "ASP 衝擊實驗", body: "拖曳 DRAM 報價與稼動率，觀察財務敏感度。" },
           { target: "coopetition", label: "競合宇宙", body: "用價值網看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
-          { target: "capability-reactor", label: "能力反應爐", body: "把 104 職缺技能配對到策略能力，理解 KBV。" },
+          { target: "talent-command", label: "人才作業系統", body: "把 104 職缺訊號轉譯成策略人才戰情板。" },
           { target: "portfolio-scenario-switcher", label: "產品策略情境", body: "切換產品策略情境，觀察 DDR4、DDR5、KGD 與 LPDDR5 的定位變化。" }
         ],
         asp: {
@@ -8110,7 +8409,7 @@
         universe: [
           { id: "sandisk", label: "SanDisk", group: "顧客", line: "cooperation", x: 300, y: 86, role: "客戶／互補者", cooperation: "DRAM 供應協議與策略私募，連結 NAND + DRAM 解決方案互補。", competition: "採購談判與替代供應商風險仍存在。", move: "透過長約與共同產品規劃提高轉換成本。" },
           { id: "kioxia", label: "Kioxia", group: "顧客", line: "cooperation", x: 470, y: 160, role: "客戶／互補者", cooperation: "DRAM 供應協議、策略私募、NAND + DRAM 解決方案互補。", competition: "採購談判、替代供應商風險、技術路線依賴。", move: "透過 KGD、MCP 與 LPDDR5 合作提高轉換成本，深化客戶導入關係。" },
-          { id: "cisco", label: "Cisco", group: "顧客", line: "dependency", x: 514, y: 306, role: "網通客戶／投資者", cooperation: "伺服器與網通設備需求回饋可加速客戶驗證。", competition: "買方規格與價格談判會壓縮供應商彈性。", move: "用 FAE 與客戶驗證能力深化 B2B 客戶導入。" },
+          { id: "cisco", label: "Cisco", group: "顧客", line: "dependency", x: 514, y: 306, role: "網通客戶／投資者", cooperation: "伺服器與網通設備需求回饋可加速客戶驗證。", competition: "買方規格與價格談判會壓縮供應商彈性。", move: "用系統驗證與相容性分析能力深化 B2B 客戶導入。" },
           { id: "solidigm", label: "Solidigm", group: "互補者", line: "technology", x: 422, y: 462, role: "互補者／企業 SSD 生態", cooperation: "企業級儲存生態與伺服器需求互補。", competition: "母公司競爭背景使合作邊界需清楚控管。", move: "維持技術與商務分工，避免把合作推論成技術承諾。" },
           { id: "piecemakers", label: "PieceMakers", group: "互補者", line: "technology", x: 240, y: 510, role: "技術互補者", cooperation: "客製化超高頻寬記憶體與 Edge AI 應用方案。", competition: "需談判 IP、利潤分配與量產責任。", move: "作為 KGD 與客製化記憶體選擇權。" },
           { id: "samsung", label: "Samsung", group: "競爭者", line: "competition", x: 92, y: 344, role: "競爭者", cooperation: "高階產能排擠可能間接創造成熟 DRAM 價格空間。", competition: "規模、製程與價格領導壓力。", move: "避免價格戰，轉向利基產品與策略客戶。" },
@@ -8121,12 +8420,12 @@
           prompt: "先選左側技能，再點右側能力桶。",
           hint: "這項技能比較接近客戶端驗證，而不是製程良率。試著把它配對到客戶導入。",
           partial: "此能力可作為部分配對，但需要永續、供應鏈與國際客戶溝通能力；本頁不新增未查證 ESG 職缺。",
-          skills: ["C++", "MES 系統", "SQL / Oracle", "良率分析", "製程整合", "半導體物理", "英文溝通", "FAE 支援", "客戶驗證"],
+          skills: ["C++", "MES 系統", "SQL / Oracle", "良率分析", "製程整合", "半導體物理", "系統驗證", "相容性分析", "RMA 分析"],
           buckets: [
             { id: "yield", label: "1B / 1C 製程良率", skills: ["良率分析", "製程整合", "半導體物理"], role: "製程技術開發工程師", kbv: "製程整合與良率分析是難以快速外包的隱性知識，會累積成製程升級能力。" },
             { id: "fab", label: "智慧新廠自動化", skills: ["MES 系統", "SQL / Oracle", "C++"], role: "軟體開發工程師", kbv: "當 MES、資料庫與程式能力被嵌入排程、異常分析與新廠營運流程，個人技能會轉化為智慧製造知識。" },
-            { id: "design", label: "客戶導入", skills: ["FAE 支援", "客戶驗證", "英文溝通"], role: "FAE 技術工程師", kbv: "FAE 與客戶驗證能力能把產品規格轉化成客戶轉換成本，是 B2B 記憶體供應商的重要隱性資產。" },
-            { id: "support", label: "全球 B2B 支援", skills: ["英文溝通", "FAE 支援", "客戶驗證"], role: "FAE／銷售支援", kbv: "跨國客戶溝通與驗證經驗能累積成全球 B2B 支援能力。" },
+            { id: "design", label: "客戶導入", skills: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證、相容性分析與 RMA 分析能把客戶端問題回饋成可複製的產品導入知識，是 B2B 記憶體供應商的重要隱性資產。" },
+            { id: "support", label: "全球 B2B 支援", skills: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證與相容性分析經驗能累積成全球 B2B 支援能力。" },
             { id: "esg", label: "ESG 供應鏈合規", skills: ["英文溝通"], role: "部分配對能力", partial: true, kbv: "需要永續、供應鏈與國際客戶溝通能力；本頁只作策略能力提示，不新增未查證職缺。" }
           ]
         }
@@ -8135,7 +8434,7 @@
         strategyRows: [
           { target: "asp-shock-lab", label: "ASP Shock Lab", body: "Adjust ASP and utilization to test financial sensitivity." },
           { target: "coopetition", label: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
-          { target: "capability-reactor", label: "Capability Reactor", body: "Match job skills to strategic capabilities through a KBV lens." },
+          { target: "talent-command", label: "Talent OS", body: "Translate 104 job signals into a strategic talent command board." },
           { target: "portfolio-scenario-switcher", label: "Portfolio Scenario", body: "Switch product scenarios to see how portfolio positioning changes." }
         ],
         asp: {
@@ -8163,7 +8462,7 @@
         universe: [
           { id: "sandisk", label: "SanDisk", group: "Customers", line: "cooperation", x: 300, y: 86, role: "Customer / Complementor", cooperation: "DRAM supply agreement and private placement link NAND + DRAM solution complementarity.", competition: "Procurement bargaining and supplier replacement risk remain.", move: "Use long-term agreements and co-planning to raise switching cost." },
           { id: "kioxia", label: "Kioxia", group: "Customers", line: "cooperation", x: 470, y: 160, role: "Customer / Complementor", cooperation: "DRAM supply agreement, private placement, NAND + DRAM solution complementarity.", competition: "Procurement bargaining, supplier replacement risk, technical roadmap dependency.", move: "Use KGD / MCP / LPDDR5 cooperation to raise switching cost and deepen design-in relationship." },
-          { id: "cisco", label: "Cisco", group: "Customers", line: "dependency", x: 514, y: 306, role: "Networking customer / Investor", cooperation: "Server and networking demand feedback can accelerate qualification.", competition: "Buyer specifications and price negotiations constrain supplier flexibility.", move: "Deepen B2B design-in with FAE and customer validation." },
+          { id: "cisco", label: "Cisco", group: "Customers", line: "dependency", x: 514, y: 306, role: "Networking customer / Investor", cooperation: "Server and networking demand feedback can accelerate qualification.", competition: "Buyer specifications and price negotiations constrain supplier flexibility.", move: "Deepen B2B design-in with system validation and compatibility analysis." },
           { id: "solidigm", label: "Solidigm", group: "Complementors", line: "technology", x: 422, y: 462, role: "Complementor / Enterprise SSD ecosystem", cooperation: "Enterprise storage ecosystem complements server memory demand.", competition: "Parent-company competition means cooperation boundaries need control.", move: "Separate technical and commercial scope without overstating commitments." },
           { id: "piecemakers", label: "PieceMakers", group: "Complementors", line: "technology", x: 240, y: 510, role: "Technology complementor", cooperation: "Customized ultra-high-bandwidth memory and Edge AI application work.", competition: "IP, profit sharing, and production responsibility need negotiation.", move: "Treat as an option for KGD and custom-memory capability." },
           { id: "samsung", label: "Samsung", group: "Competitors", line: "competition", x: 92, y: 344, role: "Competitor", cooperation: "High-end capacity shifts can indirectly create mature DRAM pricing room.", competition: "Scale, process, and pricing leadership pressure.", move: "Avoid price wars and move toward niche products and strategic customers." },
@@ -8174,12 +8473,12 @@
           prompt: "Select a skill on the left, then choose a capability bucket.",
           hint: "This skill is closer to customer-side validation than process yield. Try matching it with Customer design-in.",
           partial: "This is a partial match, but it requires sustainability, supply-chain, and international customer communication capability; this page does not invent ESG job postings.",
-          skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "English communication", "FAE support", "Customer validation"],
+          skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "System validation", "Compatibility analysis", "RMA analysis"],
           buckets: [
             { id: "yield", label: "1B / 1C process yield", skills: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "Process integration and yield analysis are tacit capabilities that cannot be quickly outsourced, accumulating into process-migration capability." },
             { id: "fab", label: "Smart fab automation", skills: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "When MES, database, and programming skills are embedded in scheduling, exception analysis, and fab operations, individual skills become smart-manufacturing knowledge." },
-            { id: "design", label: "Customer design-in", skills: ["FAE support", "Customer validation", "English communication"], role: "FAE Technical Engineer", kbv: "FAE and customer-validation capabilities turn product specifications into customer switching costs, becoming a key tacit asset for a B2B memory supplier." },
-            { id: "support", label: "Global B2B support", skills: ["English communication", "FAE support", "Customer validation"], role: "FAE / Sales support", kbv: "International communication and validation experience accumulate into global B2B support capability." },
+            { id: "design", label: "Customer design-in", skills: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation, compatibility analysis, and RMA analysis turn customer-side issues into repeatable product design-in knowledge, becoming a key tacit asset for a B2B memory supplier." },
+            { id: "support", label: "Global B2B support", skills: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation and compatibility analysis experience accumulate into global B2B support capability." },
             { id: "esg", label: "ESG supply-chain compliance", skills: ["English communication"], role: "Partially matched capability", partial: true, kbv: "This needs sustainability, supply-chain, and international customer communication capability; it is a strategic capability note, not an invented job posting." }
           ]
         }
@@ -8209,13 +8508,13 @@
       zh: [
         { target: "asp-shock-lab", label: "01", title: "ASP 衝擊實驗", body: "拖曳 DRAM 報價與稼動率，觀察財務敏感度。" },
         { target: "coopetition", label: "02", title: "競合宇宙", body: "用價值網看南亞科與客戶、供應商、競爭者、互補者的競合位置。" },
-        { target: "capability-reactor", label: "03", title: "能力反應爐", body: "把 104 職缺技能配對到策略能力，理解 KBV。" },
+        { target: "talent-command", label: "03", title: "人才作業系統", body: "把 104 職缺訊號轉譯成策略人才戰情板。" },
         { target: "portfolio-scenario-switcher", label: "04", title: "產品策略情境", body: "切換產品策略情境，觀察 DDR4、DDR5、KGD 與 LPDDR5 的定位變化。" }
       ],
       en: [
         { target: "asp-shock-lab", label: "01", title: "ASP Shock Lab", body: "Adjust ASP and utilization to test financial sensitivity." },
         { target: "coopetition", label: "02", title: "Co-opetition Universe", body: "Map Nanya's relationships across customers, suppliers, competitors, and complementors." },
-        { target: "capability-reactor", label: "03", title: "Capability Reactor", body: "Match job skills to strategic capabilities through a KBV lens." },
+        { target: "talent-command", label: "03", title: "Talent OS", body: "Translate 104 job signals into a strategic talent command board." },
         { target: "portfolio-scenario-switcher", label: "04", title: "Portfolio Scenario", body: "Switch product scenarios to see how portfolio positioning changes." }
       ]
     };
@@ -8278,12 +8577,12 @@
 
     const reactorData = {
       zh: {
-        skills: ["C++", "MES 系統", "SQL / Oracle", "良率分析", "製程整合", "半導體物理", "英文溝通", "FAE 支援", "客戶驗證"],
+        skills: ["C++", "MES 系統", "SQL / Oracle", "良率分析", "製程整合", "半導體物理", "系統驗證", "相容性分析", "RMA 分析"],
         buckets: [
           { id: "yield", label: "1B / 1C 製程良率", matches: ["良率分析", "製程整合", "半導體物理"], role: "製程技術開發工程師", kbv: "製程整合與良率分析是難以快速外包的隱性知識，會累積成製程升級能力。" },
           { id: "fab", label: "智慧新廠自動化", matches: ["MES 系統", "SQL / Oracle", "C++"], role: "軟體開發工程師", kbv: "當 MES、資料庫與程式能力被嵌入排程、異常分析與新廠營運流程，個人技能會轉化為智慧製造知識。" },
-          { id: "design", label: "客戶導入", matches: ["FAE 支援", "客戶驗證", "英文溝通"], role: "FAE 技術工程師", kbv: "FAE 與客戶驗證能力能把產品規格轉化成客戶轉換成本，是 B2B 記憶體供應商的重要隱性資產。" },
-          { id: "global", label: "全球 B2B 支援", matches: ["英文溝通", "FAE 支援", "客戶驗證"], role: "FAE 技術工程師", kbv: "國際客戶溝通、驗證與支援能力能把技術交付轉化為可重複的 B2B 服務流程。" },
+          { id: "design", label: "客戶導入", matches: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證、相容性分析與 RMA 分析能把客戶端問題回饋成可複製的產品導入知識。" },
+          { id: "global", label: "全球 B2B 支援", matches: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證與相容性分析能把技術交付轉化為可重複的 B2B 服務流程。" },
           { id: "esg", label: "ESG 供應鏈合規", matches: ["英文溝通"], role: "部分配對能力", kbv: "此分類需要永續、供應鏈與國際客戶溝通能力；目前不新增未查證 ESG 職缺。" }
         ],
         prompt: "先選擇一項技能，再點選右側策略能力。",
@@ -8294,12 +8593,12 @@
         genericHint: "這個配對不是最直接的策略能力連結，換一個分類試試。"
       },
       en: {
-        skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "English communication", "FAE support", "Customer validation"],
+        skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "System validation", "Compatibility analysis", "RMA analysis"],
         buckets: [
           { id: "yield", label: "1B / 1C process yield", matches: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "Process integration and yield analysis are tacit capabilities that cannot be quickly outsourced, accumulating into process-migration capability." },
           { id: "fab", label: "Smart fab automation", matches: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "When MES, database, and programming skills are embedded in scheduling, exception analysis, and fab operations, individual skills become smart-manufacturing knowledge." },
-          { id: "design", label: "Customer design-in", matches: ["FAE support", "Customer validation", "English communication"], role: "FAE Technical Engineer", kbv: "FAE and customer-validation capabilities turn product specifications into customer switching costs, becoming a key tacit asset for a B2B memory supplier." },
-          { id: "global", label: "Global B2B support", matches: ["English communication", "FAE support", "Customer validation"], role: "FAE Technical Engineer", kbv: "International communication, validation, and support capabilities turn technical delivery into a repeatable B2B service process." },
+          { id: "design", label: "Customer design-in", matches: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation, compatibility analysis, and RMA analysis turn customer-side issues into repeatable product design-in knowledge." },
+          { id: "global", label: "Global B2B support", matches: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation and compatibility analysis turn technical delivery into a repeatable B2B service process." },
           { id: "esg", label: "ESG supply-chain compliance", matches: ["English communication"], role: "Partially matched capability", kbv: "This bucket needs sustainability, supply-chain, and international customer communication capability; no unverified ESG job posting is added." }
         ],
         prompt: "Select a skill, then match it to a strategic capability.",
@@ -8479,8 +8778,6 @@
       renderCapabilityFlow();
       renderGrowthNetwork();
       renderUniverseLab();
-      renderOrganizationSummary();
-      renderCapabilityReactor();
       renderTheoryMap();
       if (qs("#storyMode")?.classList.contains("is-open")) renderStorySlide();
       resetQuiz();
@@ -9081,7 +9378,7 @@
 
     function reactorHint(skill) {
       const data = reactorData[currentLang];
-      if (["FAE support", "Customer validation", "English communication", "FAE 支援", "客戶驗證", "英文溝通"].includes(skill)) return data.hintDesign;
+      if (["System validation", "Compatibility analysis", "RMA analysis", "系統驗證", "相容性分析", "RMA 分析"].includes(skill)) return data.hintDesign;
       if (["C++", "MES system", "SQL / Oracle", "MES 系統"].includes(skill)) return data.hintFab;
       if (["Yield analysis", "Process integration", "Semiconductor physics", "良率分析", "製程整合", "半導體物理"].includes(skill)) return data.hintYield;
       return data.genericHint;
@@ -9658,14 +9955,6 @@
       `;
     }
 
-    function renderOrganizationSummary() {
-      const summary = qs("#organizationSummary");
-      if (!summary) return;
-      summary.innerHTML = interactiveData[currentLang].organization.map((item) => `
-        <article class="organization-item"><p>${escapeHtml(item)}</p></article>
-      `).join("");
-    }
-
     function renderTheoryMap() {
       renderTable(qs("#theoryMapTable"), theoryMapData[currentLang].headers, theoryMapData[currentLang].rows);
     }
@@ -10137,7 +10426,28 @@
       }
     }
 
+    function setActiveTalentCapability(id) {
+      qsa("[data-talent-node]").forEach((button) => {
+        const active = button.dataset.talentNode === id;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-expanded", String(active));
+      });
+      qsa("[data-talent-panel]").forEach((panel) => {
+        panel.hidden = panel.dataset.talentPanel !== id;
+      });
+    }
+
+    function initTalentCommand() {
+      const nodes = qsa("[data-talent-node]");
+      if (!nodes.length) return;
+      nodes.forEach((button) => {
+        button.addEventListener("click", () => setActiveTalentCapability(button.dataset.talentNode));
+      });
+      setActiveTalentCapability("smart-fab");
+    }
+
     function bindEvents() {
+      initTalentCommand();
       let lastScrollY = window.scrollY;
       window.addEventListener("scroll", () => {
         const currentScrollY = window.scrollY;
