@@ -188,6 +188,28 @@
       color: var(--ink);
       background: var(--canvas);
       line-height: 1.5;
+      /* Firefox */
+      scrollbar-width: thin;
+      scrollbar-color: var(--hairline) transparent;
+    }
+
+    /* Chromium / Safari — global scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--hairline);
+      border-radius: var(--radius-full);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
     }
 
     button,
@@ -3614,7 +3636,7 @@
 
     .story-frame {
       width: min(980px, 100%);
-      min-height: min(640px, calc(100vh - 56px));
+      height: clamp(560px, calc(100vh - 56px), 740px);
       display: grid;
       grid-template-rows: auto 1fr auto;
       border: 1px solid rgba(255,255,255,0.16);
@@ -3631,6 +3653,30 @@
       align-content: center;
       gap: 26px;
       padding: clamp(28px, 6vw, 72px);
+      overflow-y: auto;
+      /* Firefox */
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.28) transparent;
+    }
+
+    /* Chromium / Safari */
+    .story-slide::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .story-slide::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.06);
+      border-radius: 9999px;
+    }
+
+    .story-slide::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.28);
+      border-radius: 9999px;
+      transition: background 0.2s;
+    }
+
+    .story-slide::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.55);
     }
 
     .story-slide h2 {
@@ -5407,6 +5453,12 @@
         </svg>
         <span data-i18n="railCompany">公司</span>
       </a>
+      <a href="#values" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+        </svg>
+        <span data-i18n="railValues">願景</span>
+      </a>
       <a href="#market" class="liquid-section-link">
         <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/><path d="M2 12h20 M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -5493,11 +5545,11 @@
           <div class="narrative-meta">
             <div class="narrative-tag is-question">
               <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-              <p data-i18n="heroQuestion">面對三大 DRAM 巨頭寡占與 AI 時代的爆發需求，南亞科如何突圍？</p>
+              <p data-i18n="heroQuestion">面對三大 DRAM 原廠的市佔優勢與 AI 需求爆發，南亞科如何進行策略定位？</p>
             </div>
             <div class="narrative-tag is-takeaway">
               <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-              <p data-takeaway data-i18n="heroTakeaway">把握景氣回溫契機，藉由策略私募與自主研發，全面朝高頻寬及高階伺服器記憶體轉型。</p>
+              <p data-takeaway data-i18n="heroTakeaway">在維持既有成熟製程產能的同時，透過私募引入策略夥伴以穩固出海口，並加速自主研發 DDR5 RDIMM 以尋求伺服器市場的利基切入點。</p>
             </div>
           </div>
           <div class="hero-actions">
@@ -5607,11 +5659,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="companyQuestion">南亞科在產業中扮演什麼樣的角色？</p>
+            <p data-i18n="companyQuestion">南亞科的核心業務與產業地位為何？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="companyTakeaway">作為台灣 DRAM 領導指標，南亞科已具備 10nm 級自主製程實力，並正積極展開新廠佈局，為下一波成長備足子彈。</p>
+            <p data-takeaway data-i18n="companyTakeaway">南亞科為台灣首要的 DRAM 製造廠，正透過自行研發的 10 奈米級製程技術，配合泰山新廠的產能擴建，推進次世代產品的世代交替。</p>
           </div>
         </div>
         <div class="rule-list">
@@ -5725,7 +5777,7 @@
       </div>
     </section>
 
-    <section class="section green-band" aria-labelledby="values-title">
+    <section class="section green-band" id="values" aria-labelledby="values-title">
       <div class="container">
         <div class="section-head">
           <div>
@@ -5737,11 +5789,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="valuesQuestion">什麼是驅動南亞科長期發展的核心信念？</p>
+            <p data-i18n="valuesQuestion">經營團隊如何以核心理念應對高波動的記憶體週期？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="valuesTakeaway">將焦點從短期的產品規格戰，拉高至企業永續經營層次，藉由扎實的價值觀來抵禦產業劇烈的景氣波動。</p>
+            <p data-takeaway data-i18n="valuesTakeaway">以「智慧世代最佳記憶體夥伴」為核心，注重資產負債表的穩健性，並落實 ESG 與風險控管機制，以度過景氣週期的價格低谷。</p>
           </div>
         </div>
         <div class="team-rule-grid">
@@ -5773,11 +5825,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="marketQuestion">寡占市場與外部環境為南亞科帶來哪些挑戰？</p>
+            <p data-i18n="marketQuestion">南亞科在寡占且成熟的 DRAM 市場中面臨哪些競爭威脅？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="marketTakeaway">雖然面臨三大廠高達 90.5% 的市佔擠壓，但南亞科持續在夾縫中尋求利基市場，力拚在嚴峻的外部壓力下成功突圍。</p>
+            <p data-takeaway data-i18n="marketTakeaway">面對三大原廠（三星、SK海力士、美光）超過 90% 的市佔與技術封鎖，以及中國長鑫存儲在成熟型產品的低價競爭，南亞科須聚焦於利基型與高度認證之車用、工控等高毛利領域。</p>
           </div>
         </div>
         <details class="narrative-details">
@@ -5921,11 +5973,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="financeQuestion">近期的財務好轉，是乘著景氣順風車，還是體質真有改善？</p>
+            <p data-i18n="financeQuestion">南亞科 2025 年的轉虧為盈是否代表其財務結構已具備長期獲利能力？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="financeTakeaway">2025 年的轉盈是個好的開始，但未來的鉅額資本支出（CapEx）將帶來折舊考驗。要維持獲利，必須靠產品組合升級，而非單純依賴市場報價。</p>
+            <p data-takeaway data-i18n="financeTakeaway">2025 年轉盈主要是受惠於短期供給吃緊所帶來的報價上漲。然而，2026 年預計高達 500 億元的資本支出（CapEx）將帶來沉重的折舊考驗，未來獲利關鍵在於 1B 製程良率的改善速度。</p>
           </div>
         </div>
         <div class="finance-layout">
@@ -6065,11 +6117,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="portfolioQuestion">南亞科的產品線該如何佈局才能兼顧獲利與未來？</p>
+            <p data-i18n="portfolioQuestion">南亞科如何調整產品組合以分散單一標準型產品的價格風險？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="portfolioTakeaway">以 DDR4 穩固現金流，將資源集中投注於 DDR5 與 RDIMM 轉型；同時佈局 LPDDR5 等高潛力產品，藉此跳脫紅海價格戰。</p>
+            <p data-takeaway data-i18n="portfolioTakeaway">透過 128GB DDR5 RDIMM 伺服器模組、LPDDR5 與客製化 KGD 的研發量產，逐步調降低毛利 DDR4 的比重，藉此建立 B2B 客戶端的高轉換成本與價格保護機制。</p>
           </div>
         </div>
         <div id="portfolio-scenario-switcher" class="scenario-lab" data-voice-summary="Strategy Lab Portfolio Scenario Switcher">
@@ -6115,11 +6167,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="resourcesQuestion">南亞科具備哪些難以被競爭對手複製的核心優勢？</p>
+            <p data-i18n="resourcesQuestion">依據 VRIN 模型評估，南亞科度過景氣週期的關鍵防禦資源為何？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="resourcesTakeaway">堅持自主研發的技術底氣、台塑集團豐沛的資金後盾，加上與客戶間長期的信任關係，共同築起了強大的競爭護城河。</p>
+            <p data-takeaway data-i18n="resourcesTakeaway">關鍵防禦資源包括：不需依賴原廠授權的 10 奈米級自主技術專利、台塑集團的長期融資後盾，以及透過策略私募所綁定的股東（如 Kioxia、SanDisk）供應契約。</p>
           </div>
         </div>
         <details class="narrative-details">
@@ -6220,11 +6272,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="growthQuestion">短、中、長期的成長動能與合作策略是什麼？</p>
+            <p data-i18n="growthQuestion">南亞科如何落實其短、中、長期的成長路徑？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="growthTakeaway">短期乘著價格回溫積累實力；中期衝刺 1B/1C 先進製程與客製化；長期則透過策略私募與生態系競合，綁定關鍵夥伴深化佈局。</p>
+            <p data-takeaway data-i18n="growthTakeaway">短期藉由報價復甦累積現金；中期推動 1B 奈米量產與 KGD 客製化方案；長期藉由私募引入的策略夥伴（如 Kioxia、Solidigm、Cisco）建立技術與銷路的生態系同盟。</p>
           </div>
         </div>
         <div class="strategy-steps">
@@ -6460,11 +6512,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="careerQuestion">104 職缺透露南亞科需要累積哪些組織能力？</p>
+            <p data-i18n="careerQuestion">招募職缺數據顯示南亞科正面臨何種組織能力的轉型？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="careerTakeaway">招募訊號顯示，人才不是孤立職缺，而是新廠、製程升級與客戶導入所需的知識基礎。</p>
+            <p data-takeaway data-i18n="careerTakeaway">招募重心自產線機台操作，轉向智慧工廠 MES 軟體開發、1B 製程整合，以及 B2B 客戶端系統分析，這反映公司正轉向以資料分析與客戶整合為核心的知識型組織。</p>
           </div>
         </div>
         <div class="talent-command" id="talent-command" data-voice-summary="Talent Operating System maps 104 job postings to Nanya's strategic capabilities">
@@ -6541,7 +6593,7 @@
         <div class="career-takeaway-strip">
           <div>
             <span class="mono-label" data-i18n="careerTakeawayStripLabel">職涯結論</span>
-            <p data-i18n="careerTakeawayStrip">職缺訊號顯示，南亞科的人才需求不是單純補人，而是把 MES、製程整合與系統驗證與客戶導入經驗沉澱成可重複使用的組織知識。</p>
+            <p data-i18n="careerTakeawayStrip">招募數據顯示，南亞科的招募重點正轉向智慧工廠 MES 系統開發、先進製程整合，與 B2B 客戶端系統驗證，以累積次世代廠房的核心軟硬體實力。</p>
           </div>
           <div class="career-takeaway-tags" aria-label="Capability tags" data-i18n-aria-label="careerTagsLabel">
             <span>SMART FAB</span>
@@ -6581,11 +6633,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="quizQuestion">準備好驗收您的策略洞察了嗎？</p>
+            <p data-i18n="quizQuestion">如何驗收讀者對南亞科核心策略定位的理解程度？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="quizTakeaway">透過互動式的實境問答，一起重新梳理南亞科在財務、產品、市場與資源分配上的關鍵決策。</p>
+            <p data-takeaway data-i18n="quizTakeaway">利用涵蓋市場、財務、產品、資源、策略與揭露的互動小測驗，讓使用者能快速檢視對南亞科競合定位之學習成效。</p>
           </div>
         </div>
         <div class="quiz-layout">
@@ -6631,11 +6683,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="integrityQuestion">我們的數據來源與分析標準是什麼？</p>
+            <p data-i18n="integrityQuestion">本專案的財務數據與研究推論是如何進行事實查核的？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="integrityTakeaway">嚴格把關資料來源（如官方 IR 與研調機構），並詳細揭露 AI 工具的輔助範圍與人工查核機制，確保研究客觀透明。</p>
+            <p data-takeaway data-i18n="integrityTakeaway">研究數據均引自南亞科法說會、合併財報與第三方研究機構，AI 主要用於資料清洗、雙語草稿、網站結構、測驗題目與程式碼輔助，關鍵數字由小組成員親自查核，以確保學術誠信。</p>
           </div>
         </div>
         <details class="narrative-details">
@@ -6714,11 +6766,11 @@
         <div class="narrative-meta">
           <div class="narrative-tag is-question">
             <span class="mono-label" data-i18n="researchQuestionLabel">研究問題</span>
-            <p data-i18n="teamQuestion">這次期末專案帶給我們最大的學習收穫是什麼？</p>
+            <p data-i18n="teamQuestion">本次跨領域團隊協作與策略分析帶給小組哪些具體收穫？</p>
           </div>
           <div class="narrative-tag is-takeaway">
             <span class="mono-label" data-i18n="keyTakeawayLabel">核心結論</span>
-            <p data-takeaway data-i18n="teamTakeaway">除了理解南亞科的策略布局，這次研究讓我們看懂了半導體景氣循環的起伏，對於未來分析股市與評估科技股價值有很大的實務幫助；而小組在討論中尋找共識、共同完成網站的過程，更是我們最珍貴的收穫。</p>
+            <p data-takeaway data-i18n="teamTakeaway">小組成員藉此專案將策略理論與半導體實務數據結合，學會使用動態模擬分析市場波動，並藉由網頁互動開發體驗了跨科系的敏捷協作流程。</p>
           </div>
         </div>
         <div class="team-rule-grid">
@@ -6871,6 +6923,7 @@
         railPrev: "上一章",
         railNext: "下一章",
         railCompany: "公司",
+        railValues: "願景",
         railMarket: "市場",
         railFinance: "財務",
         railPortfolio: "產品",
@@ -7281,7 +7334,7 @@
         talentEvidenceLogicLabel: "組織邏輯",
         talentEvidenceLogic: "KBV",
         careerTakeawayStripLabel: "職涯結論",
-        careerTakeawayStrip: "職缺訊號顯示，南亞科的人才需求不是單純補人，而是把 MES、製程整合與系統驗證與客戶導入經驗沉澱成可重複使用的組織知識。",
+        careerTakeawayStrip: "招募數據顯示，南亞科的招募重點正轉向智慧工廠 MES 系統開發、先進製程整合，與 B2B 客戶端系統驗證，以累積次世代廠房的核心軟硬體實力。",
         careerTagsLabel: "能力標籤",
         careerSourceLink: "104 南亞科技公司頁｜工作機會與職缺資訊",
         careerSourceNote: "104 南亞科技公司頁與職缺頁：軟體開發工程師、製程技術開發工程師、系統分析工程師。",
@@ -7320,38 +7373,38 @@
         universeTitle: "競合宇宙｜南亞科的價值網：從 DRAM 供應商到策略生態系節點",
         universeLead: "價值網不只列出利害關係人，而是檢視南亞科如何在 DRAM 寡占市場中，同時合作、競爭、綁定需求並降低供應鏈風險。",
         // Add missing keys
-        heroQuestion: "面對三大 DRAM 巨頭寡占與 AI 時代的爆發需求，南亞科如何突圍？",
-        heroTakeaway: "把握景氣回溫契機，藉由策略私募與自主研發，全面朝高頻寬及高階伺服器記憶體轉型。",
-        companyQuestion: "南亞科在產業中扮演什麼樣的角色？",
-        companyTakeaway: "作為台灣 DRAM 領導指標，南亞科已具備 10nm 級自主製程實力，並正積極展開新廠佈局，為下一波成長備足子彈。",
+        heroQuestion: "面對三大 DRAM 原廠的市佔優勢與 AI 需求爆發，南亞科如何進行策略定位？",
+        heroTakeaway: "在維持既有成熟製程產能的同時，透過私募引入策略夥伴以穩固出海口，並加速自主研發 DDR5 RDIMM 以尋求伺服器市場的利基切入點。",
+        companyQuestion: "南亞科的核心業務與產業地位為何？",
+        companyTakeaway: "南亞科為台灣首要的 DRAM 製造廠，正透過自行研發的 10 奈米級製程技術，配合泰山新廠的產能擴建，推進次世代產品的世代交替。",
         summaryTimeline: "展開完整發展歷程時間軸",
-        valuesQuestion: "什麼是驅動南亞科長期發展的核心信念？",
-        valuesTakeaway: "將焦點從短期的產品規格戰，拉高至企業永續經營層次，藉由扎實的價值觀來抵禦產業劇烈的景氣波動。",
-        marketQuestion: "寡占市場與外部環境為南亞科帶來哪些挑戰？",
-        marketTakeaway: "雖然面臨三大廠高達 90.5% 的市佔擠壓，但南亞科持續在夾縫中尋求利基市場，力拚在嚴峻的外部壓力下成功突圍。",
+        valuesQuestion: "經營團隊如何以核心理念應對高波動的記憶體週期？",
+        valuesTakeaway: "以「智慧世代最佳記憶體夥伴」為核心，注重資產負債表的穩健性，並落實 ESG 與風險控管機制，以度過景氣週期的價格低谷。",
+        marketQuestion: "南亞科在寡占且成熟的 DRAM 市場中面臨哪些競爭威脅？",
+        marketTakeaway: "面對三大原廠（三星、SK海力士、美光）超過 90% 的市佔與技術封鎖，以及中國長鑫存儲在成熟型產品的低價競爭，南亞科須聚焦於利基型與高度認證之車用、工控等高毛利領域。",
         summarySwot: "展開 SWOT 交叉分析",
-        financeQuestion: "近期的財務好轉，是乘著景氣順風車，還是體質真有改善？",
-        financeTakeaway: "2025 年的轉盈是個好的開始，但未來的鉅額資本支出（CapEx）將帶來折舊考驗。要維持獲利，必須靠產品組合升級，而非單純依賴市場報價。",
+        financeQuestion: "南亞科 2025 年的轉虧為盈是否代表其財務結構已具備長期獲利能力？",
+        financeTakeaway: "2025 年轉盈主要是受惠於短期供給吃緊所帶來的報價上漲。然而，2026 年預計高達 500 億元的資本支出（CapEx）將帶來沉重的折舊考驗，未來獲利關鍵在於 1B 製程良率的改善速度。",
         summaryFinanceInterpret: "展開財務比率與獲利品質分析",
-        portfolioQuestion: "南亞科的產品線該如何佈局才能兼顧獲利與未來？",
-        portfolioTakeaway: "以 DDR4 穩固現金流，將資源集中投注於 DDR5 與 RDIMM 轉型；同時佈局 LPDDR5 等高潛力產品，藉此跳脫紅海價格戰。",
+        portfolioQuestion: "南亞科如何調整產品組合以分散單一標準型產品的價格風險？",
+        portfolioTakeaway: "透過 128GB DDR5 RDIMM 伺服器模組、LPDDR5 與客製化 KGD 的研發量產，逐步調降低毛利 DDR4 的比重，藉此建立 B2B 客戶的高轉換成本與價格保護機制。",
         summaryPositioning: "展開 B2B 利基定位分析",
-        resourcesQuestion: "南亞科具備哪些難以被競爭對手複製的核心優勢？",
-        resourcesTakeaway: "堅持自主研發的技術底氣、台塑集團豐沛的資金後盾，加上與客戶間長期的信任關係，共同築起了強大的競爭護城河。",
+        resourcesQuestion: "依據 VRIN 模型評估，南亞科度過景氣週期的關鍵防禦資源為何？",
+        resourcesTakeaway: "關鍵防禦資源包括：不需依賴原廠授權的 10 奈米級自主技術專利、台塑集團的長期融資後盾，以及透過策略私募所綁定的股東（如 Kioxia、SanDisk）供應契約。",
         summaryVRIN: "展開完整 VRIN 資源評價表",
-        growthQuestion: "短、中、長期的成長動能與合作策略是什麼？",
-        growthTakeaway: "短期乘著價格回溫積累實力；中期衝刺 1B/1C 先進製程與客製化；長期則透過策略私募與生態系競合，綁定關鍵夥伴深化佈局。",
+        growthQuestion: "南亞科如何落實其短、中、長期的成長路徑？",
+        growthTakeaway: "短期藉由報價復甦累積現金；中期推動 1B 奈米量產與 KGD 客製化方案；長期藉由私募引入的策略夥伴（如 Kioxia、Solidigm、Cisco）建立技術與銷路的生態系同盟。",
         summaryValueNet: "展開四類節點完整彙整表",
-        careerQuestion: "104 職缺透露南亞科需要累積哪些組織能力？",
-        careerTakeaway: "招募訊號顯示，人才不是孤立職缺，而是新廠、製程升級與客戶導入所需的知識基礎。",
+        careerQuestion: "招募職缺數據顯示南亞科正面臨何種組織能力的轉型？",
+        careerTakeaway: "招募重心自產線機台操作，轉向智慧工廠 MES 軟體開發、1B 製程整合，以及 B2B 客戶端系統分析，這反映公司正轉向以資料分析與客戶整合為核心的知識型組織。",
         summaryCareers: "展開 104 職缺詳細工作與薪資規範",
-        quizQuestion: "準備好驗收您的策略洞察了嗎？",
-        quizTakeaway: "通過包含市場、財務、產品、資源、策略與揭露的互動小測驗，鞏固對南亞科競合定位之學習成效。",
-        integrityQuestion: "我們的數據來源與分析標準是什麼？",
-        integrityTakeaway: "嚴格把關資料來源（如官方 IR 與研調機構），並詳細揭露 AI 工具的輔助範圍與人工查核機制，確保研究客觀透明。",
+        quizQuestion: "如何驗收讀者對南亞科核心策略定位的理解程度？",
+        quizTakeaway: "利用涵蓋市場、財務、產品、資源、策略與揭露的互動小測驗，讓使用者能快速檢視對南亞科競合定位之學習成效。",
+        integrityQuestion: "本專案的財務數據與研究推論是如何進行事實查核的？",
+        integrityTakeaway: "研究數據均引自南亞科法說會、合併財報與第三方研究機構，AI 主要用於資料整理、雙語草稿、網站結構、測驗題目與程式碼輔助，關鍵數字由小組成員親自查核，以確保學術誠信。",
         summaryIntegrity: "展開資料來源與 AI 處理詳細歷程",
-        teamQuestion: "這次期末專案帶給我們最大的學習收穫是什麼？",
-        teamTakeaway: "除了理解南亞科的策略布局，這次研究讓我們看懂了半導體景氣循環的起伏，對於未來分析股市與評估科技股價值有很大的實務幫助；而小組在討論中尋找共識、共同完成網站的過程，更是我們最珍貴的收穫。",
+        teamQuestion: "本次跨領域團隊協作與策略分析帶給小組哪些具體收穫？",
+        teamTakeaway: "小組成員藉此專案將策略理論與半導體實務數據結合，學會使用動態模擬分析市場波動，並藉由網頁互動開發體驗了跨科系的敏捷協作流程。",
         summaryTeam: "展開小組共同製作歷程與工作流",
         strategyChecklistKicker: "國際策略管理",
         strategyChecklistHint: "左右滑動查看 6 種成長路徑",
@@ -7409,6 +7462,7 @@
         railPrev: "Previous chapter",
         railNext: "Next chapter",
         railCompany: "Company",
+        railValues: "Values",
         railMarket: "Market",
         railFinance: "Finance",
         railPortfolio: "Portfolio",
@@ -7523,8 +7577,8 @@
         stat3Value: "Approx. NT$50B",
         stat4Label: "New fab node",
         stat4Value: "Equipment move-in: early 2027",
-        teamTitle: "Team Collaboration: From Data Analysis to Our Learning & Growth",
-        teamLead: "This is not just a report, but a journey of brainstorming, exploring the semiconductor industry, and web design together as a team of seven.",
+        teamTitle: "Team Collaboration: Academic Takeaways and Agile Workflows",
+        teamLead: "This project documents our collective learning journey of strategic analysis, semiconductor industry mechanics, and responsive web design.",
         teamCard1Title: "Bridging Theory & Practice",
         teamCard1Body: "Porter's Five Forces and DuPont analysis from textbooks came alive when we analyzed Nanya's financial status. This research gave us a deeper understanding of the DRAM cycle, helping us analyze the stock market and technology sector with more confidence.",
         teamCard2Title: "Interactive Design Challenge",
@@ -7558,8 +7612,8 @@
         memberStudentId: "Student ID: TBD",
         memberVideoLabel: "Member Video",
         memberVideoNote: "Select a member and click the media panel to play the embedded YouTube video.",
-        companyTitle: "A representative Taiwanese DRAM company.",
-        companyLead: "Founded in 1995 and listed as 2408, Nanya Technology focuses on DRAM R&D, design, manufacturing, and sales.",
+        companyTitle: "Corporate Overview and Core Business Foundation",
+        companyLead: "Established in 1995 (TWSE: 2408), Nanya Technology centers its operations on the R&D, design, fabrication, and sales of DRAM products.",
         companyRow1Title: "Basic profile",
         companyRow1Body: "Nanya Technology Corporation is listed on the Taiwan Stock Exchange. Capital was NT$34.5B as of April 2026, and the company has more than 3,700 employees.",
         companyRow2Title: "Product matrix",
@@ -7616,12 +7670,12 @@
         management_card_4_people: "Ta-Jen Chuang, Shih-Chang Chen, Yen-Chang Huang",
         management_card_4_copy: "The custom business, global sales, quality assurance, and information security teams support B2B design-in, long-term supply agreements, quality certification, and strategic customer relationships.",
         valuesTitle: "The best memory partner in the smart generation.",
-        valuesLead: "Vision, mission, and values connect product strategy back to long-term operating capability.",
+        valuesLead: "Vision, mission, and corporate values align Nanya's product directions with long-term operating capability and risk control.",
         visionBody: "To become the best memory partner in the smart generation.",
         missionBody: "Sustained profitability, risk prevention, employee care, environmental friendliness, and local community support.",
         valuesBody: "Innovation, integrity, accountability, and efficiency.",
-        financeTitle: "The cycle rebound restored profit, but cash flow and capex still decide recovery quality.",
-        financeLead: "Financial performance should combine revenue, EPS, free cash flow, ROE decomposition, and systematic risk instead of reading EPS alone.",
+        financeTitle: "Financial Performance: Navigating the DRAM Cyclical Turnaround",
+        financeLead: "This section analyzes Nanya's financial status using revenue, EPS, free cash flow, DuPont decomposition, and CAPM systematic risk.",
         chartTitle: "2021-2025 revenue and EPS",
         financeSideTitle: "Key reading",
         metric1Label: "2025 revenue",
@@ -7636,8 +7690,8 @@
         financeInterpret3Body: "Even during the 2022-2024 trough, 1A/1B nm, DDR5, and fab investment still required spending, testing balance-sheet and cash-flow resilience.",
         financeExplorerTitle: "Switch financial indicators to test whether recovery is only cyclical.",
         financeExplorerLead: "Compare revenue, EPS, free cash flow, DuPont interpretation, and CAPM risk through one interactive view.",
-        marketTitle: "Oligopoly, policy limits, and AI demand jointly define Nanya's market space.",
-        marketLead: "The market section starts with top-three concentration and Five Forces pressure, then uses PESTEL signals to read policy, cycle, technology, and environmental/legal risk.",
+        marketTitle: "Market Dynamics: Competing Under the Oligopoly of Top-Three Giants",
+        marketLead: "Analyzing Nanya's external environment through market concentration, Porter's Five Forces, and macro-environmental PESTEL factors.",
         marketShareTitle: "Top-three oligopoly compresses Nanya's strategic room.",
         marketShareLead: "The bar chart establishes industry pressure, then the Five Forces controls explain where that pressure comes from.",
         forceTitle: "Select a force to see the key pressure.",
@@ -7691,8 +7745,8 @@
         swotW: "Smaller than Samsung, SK hynix, and Micron, with heavy technology and capital requirements.",
         swotO: "AI/HBM capacity crowding tightens mainstream DDR4 and DDR5 supply; Edge AI, AI PCs, and AI smartphones raise memory content per device; China Plus One increases the strategic value of Taiwan-based supply.",
         swotT: "DRAM downcycles, falling prices, large-player capacity expansion, advanced-node gaps, capital spending pressure, and China-market demand volatility can still affect recovery quality.",
-        resourcesTitle: "Process, R&D, and customer service jointly form accumulative competitive capability.",
-        resourcesLead: "VRIN identifies important resources, while the value chain explains how they become customer value and strategic advantage.",
+        resourcesTitle: "Core Capabilities: VRIN Resource Evaluation and Moat Analysis",
+        resourcesLead: "Evaluating Nanya's resource base through the VRIN framework and analyzing capability flow along the value chain.",
         vrinResource: "Resource",
         vrinJudgement: "Judgement",
         vrin1: "DRAM process and R&D capability",
@@ -7728,16 +7782,16 @@
         dynamic_seizing_copy: "Brings in strategic investors such as Kioxia, SanDisk, Solidigm, and Cisco through private placement; converts capital, long-term supply agreements, and strategic customer relationships into capacity investment and demand locking.",
         dynamic_transforming_title: "Transforming",
         dynamic_transforming_copy: "Shifts from mature DDR4 / LPDDR4 products toward DDR5, RDIMM, KGD, customized AI memory, and new fab ramp-up; repositions the company from commodity-cycle exposure toward B2B niche memory and long-term customer relationships.",
-        cardsTitle: "Keyword card review.",
-        cardsLead: "Inline flip cards now appear near the relevant chapters; this area collects every strategy and memory-industry term for final review.",
+        cardsTitle: "Interactive Glossary: Strategic Management & Memory Industry Review",
+        cardsLead: "This section aggregates key terminology in strategic management and the semiconductor memory sector for final review.",
         portfolioTitle: "Product upgrades and customer positioning decide how Nanya avoids scale competition.",
         portfolioLead: "The portfolio map reads growth, capital priority, target customers, product availability, and B2B positioning.",
         portfolioAxisTop: "Higher growth",
         portfolioAxisBottom: "Lower growth",
         portfolioAxisLeft: "Lower share",
         portfolioAxisRight: "Higher share",
-        growthTitle: "Product upgrades need customer cooperation and supply-chain networks.",
-        growthLead: "The three-stage growth strategy depends on a Value Net of strategic investors, customers, suppliers, and competitors.",
+        growthTitle: "Growth Engines: Multi-Level Strategic Alliances and Market Entry",
+        growthLead: "Analyzing Nanya's growth roadmap across product upgrades, process migration, and Value Net co-opetition.",
         growth1Title: "Capture DRAM price and shortage cycles",
         growth1Body: "The short-term strategy is to capture tight supply and pricing recovery to improve utilization, gross margin, and operating cash flow.",
         growth2Title: "Increase DDR5, LPDDR5, and AI product share",
@@ -7745,8 +7799,8 @@
         growth3Title: "New fab, 10nm-class processes, and strategic customers",
         growth3Body: "The long-term strategy tracks 1B nm yield, new fab capacity, capital-spending efficiency, and strategic customer binding to build a more stable base for demand and technology migration.",
         challenges_label: "Future Challenges",
-        challenges_title: "Future Challenges and Strategic Suggestions",
-        challenges_copy: "Nanya should not pursue full-line DRAM leadership. A stronger path is focused differentiation that turns cash flow, strategic investors, and customized memory into a sustainable competitive position.",
+        challenges_title: "Strategic Challenges: Differentiated Positioning in an Oligopolistic Market",
+        challenges_copy: "Evaluating Nanya's strategic risks regarding capital depreciation, price cycles, and CXMT expansion, with focused differentiation recommendations.",
         challenges_col_1: "Challenge",
         challenges_col_2: "Risk",
         challenges_col_3: "Suggested action",
@@ -7763,8 +7817,8 @@
         challenges_row_4_risk: "Private-placement investors bring capital and demand, but may increase customer or application concentration.",
         challenges_row_4_action: "Turn SanDisk, Kioxia, Solidigm, and Cisco relationships into a multi-customer co-development platform rather than single-customer dependence.",
         challenges_recommendation: "Nanya should not chase full-line DRAM leadership. A stronger path is focused differentiation: use DDR4 cash flow to fund the DDR5/RDIMM transition, use strategic investors to secure demand, and use KGD/custom memory to build customer switching costs.",
-        careerTitle: "How does talent strategy support Nanya's technology transition?",
-        careerLead: "104 job postings show that Nanya's transition needs concentrate in smart manufacturing systems, advanced process integration, and B2B customer design-in.",
+        careerTitle: "Talent Strategy: Aligning Job Signals with Organizational Capabilities",
+        careerLead: "104 recruitment data reveals that Nanya's capability gaps concentrate in MES smart manufacturing, advanced process integration, and B2B customer systems verification.",
         careerWork: "Work",
         careerSkill: "Skills",
         careerPay: "Pay",
@@ -7819,20 +7873,20 @@
         talentEvidenceLogicLabel: "Organizational logic",
         talentEvidenceLogic: "KBV",
         careerTakeawayStripLabel: "Career takeaway",
-        careerTakeawayStrip: "Job-posting signals show that Nanya is not simply filling headcount. It is turning MES, process integration, and system validation plus customer design-in experience into reusable organizational knowledge.",
+        careerTakeawayStrip: "Recruitment focus has shifted from equipment maintenance to smart-fab MES development, process integration, and customer systems analysis to build core soft/hardware integration capabilities.",
         careerTagsLabel: "Capability tags",
         careerSourceLink: "104 Nanya Technology company page｜Job openings and role information",
         careerSourceNote: "104 Nanya Technology company page and job postings: Software Development Engineer, Process Technology Development Engineer, and System Analysis Engineer.",
         valueNetTitle: "Value Net four-role summary",
         frameworkDisclosureTitle: "Analytical frameworks used in this study",
-        quizTitle: "Interactive quiz.",
-        quizLead: "Answers show explanations and update the score for a quick peer-review interaction.",
+        quizTitle: "Strategy Interactive Quiz: Consolidating Insights",
+        quizLead: "Test your understanding of Nanya's market positioning, financial metrics, and strategic choices through our interactive quiz.",
         scoreLabel: "Current score",
         scoreHint: "The score updates after each answer.",
         nextQuestion: "Next question",
         restartQuiz: "Restart",
-        integrityTitle: "Sources and AI use disclosure.",
-        integrityBody: "This website uses Nanya Technology's official website, annual financial reports, investor-relations materials, public news, industry research, and 104 Job Bank postings. External data are presented after cross-checking official investor-relations materials, official product information, TrendForce, and Reuters; classroom strategy models are distinguished from published company facts. AI tools supported data organization, bilingual drafting, structure planning, quiz design, and coding.",
+        integrityTitle: "Research Integrity: Data Disclosure and AI Methodology Statement",
+        integrityBody: "All financial data are verified against Nanya Technology's official reports, financial statements, and third-party research (TrendForce, Reuters). AI tools were strictly utilized for translation, layout, and quiz generation, under thorough review by the team to ensure academic integrity.",
         integrityStep1Title: "Sources",
         integrityStep1Body: "Official pages, annual financial reports, investor relations, news, industry research, and 104 postings.",
         integrityStep2Title: "AI use",
@@ -7858,38 +7912,38 @@
         universeTitle: "Co-opetition Universe | Nanya’s Value Net: From DRAM Supplier to Strategic Ecosystem Node",
         universeLead: "The Value Net shows how Nanya manages customers, suppliers, competitors, and complementors through cooperation, competition, demand lock-in, and supply-chain risk reduction.",
         // Add missing keys
-        heroQuestion: "How does Nanya Technology reposition its products, resources, and growth paths amidst the oligopoly of three DRAM giants, the re-evaluation of AI demand, and the addition of strategic private placement partners?",
-        heroTakeaway: "Capture the cyclical turn, introduce strategic private placements, and upgrade toward high-capacity and server memory.",
-        companyQuestion: "Who is Nanya Technology? What are its business, history, organization, and product foundations?",
-        companyTakeaway: "As a representative Taiwanese DRAM manufacturer, Nanya has established 10nm-class process technology and new fab planning foundations. Next: Examine how the DRAM industry structure and external environment limit Nanya's strategic choices.",
+        heroQuestion: "How does Nanya Technology position itself strategically under the market share dominance of the top three DRAM makers and the surge in AI demand?",
+        heroTakeaway: "While maintaining mature process capacity, Nanya secures sales channels through strategic private placements and accelerates R&D in DDR5 RDIMM to target server market niches.",
+        companyQuestion: "What are Nanya Technology's core business and industry standing?",
+        companyTakeaway: "As Taiwan's premier DRAM manufacturer, Nanya is advancing next-generation product migrations using its proprietary 10nm-class process technologies combined with capacity expansion at the new Taishan fab.",
         summaryTimeline: "Expand Full Company History Timeline",
-        valuesQuestion: "How do Nanya's core vision and mission guide its long-term resource allocation?",
-        valuesTakeaway: "Vision, mission, and values shift the strategy from short-term product specs to long-term sustainable operations and cyclical risk prevention.",
-        marketQuestion: "What external pressures and industry environment constraints does Nanya face?",
-        marketTakeaway: "A top-3 oligopoly of 90.5% share forces Nanya to seek niche breakthroughs via Five Forces, PESTEL, and SWOT. External pressures reflect in revenue, margin, and EPS. Next: Test if Nanya has emerged from the cycle trough.",
+        valuesQuestion: "How does management leverage core principles to navigate the high-volatility memory cycle?",
+        valuesTakeaway: "Focusing on being 'the best memory partner in the smart generation,' Nanya prioritizes balance sheet stability, ESG compliance, and risk control mechanisms to withstand cyclical downturns.",
+        marketQuestion: "What competitive threats does Nanya face in the highly oligopolistic DRAM market?",
+        marketTakeaway: "Faced with the top three suppliers' >90% market share and process lead, alongside price competition in mature nodes from Chinese competitor CXMT, Nanya focus on higher-margin niche applications like automotive and industrial markets.",
         summarySwot: "Expand SWOT Cross-Analysis",
-        financeQuestion: "Is Nanya's return to profitability a cyclical rebound or a strategic quality improvement?",
-        financeTakeaway: "Returned to profit in 2025 (EPS 2.13), but 2026 planned CapEx of ~NT$50B represents future depreciation and opportunity. To sustain financial rebound, Nanya must upgrade its product mix to improve long-term earnings quality.",
+        financeQuestion: "Does Nanya's return to profitability in 2025 demonstrate long-term structural earnings growth?",
+        financeTakeaway: "The 2025 turnaround was primarily driven by short-term supply tightness and price recovery. However, the planned ~NT$50B CapEx in 2026 will create high depreciation pressure; future profitability depends on accelerating 1B nm process yield improvements.",
         summaryFinanceInterpret: "Expand Financial Ratio & Earnings Quality Analysis",
-        portfolioQuestion: "Which products should Nanya double down on, maintain, or control?",
-        portfolioTakeaway: "DDR4 as cash cow, DDR5 and RDIMM as star growth engines, LPDDR5/KGD as high-potential niche options to control risk. Product upgrades require R&D, process, customer relationships, and organizational knowledge. Next: Evaluate Nanya's resource base.",
+        portfolioQuestion: "How does Nanya adjust its product portfolio to mitigate standard DRAM price volatility?",
+        portfolioTakeaway: "By developing and ramping up 128GB DDR5 RDIMM server modules, LPDDR5, and customized KGD, Nanya is reducing its exposure to low-margin DDR4, establishing higher customer switching costs and pricing defense.",
         summaryPositioning: "Expand B2B Niche Positioning Analysis",
-        resourcesQuestion: "Does Nanya truly have the capability to support product upgrades and strategic cooperation?",
-        resourcesTakeaway: "Internal R&D, Formosa Group's cyclical capital resilience, and strategic customer alliances form a unique competitive moat. Next: Translate capabilities into short-, mid-, and long-term investment, cooperation, and market entry paths.",
+        resourcesQuestion: "According to the VRIN framework, what are Nanya's key defensive resources to survive cycles?",
+        resourcesTakeaway: "Key defensive resources include proprietary 10nm-class process patent portfolios (avoiding licensing constraints), long-term financial backing from the Formosa Plastics Group, and secured supply contracts linked to strategic private placement investors (e.g., Kioxia, SanDisk).",
         summaryVRIN: "Expand Full VRIN Resource Evaluation Matrix",
-        growthQuestion: "How should Nanya grow next and build its co-opetition ecosystem?",
-        growthTakeaway: "Short-term capturing cycles, mid-term advancing processes, long-term deepening alliances via private placements and Value Net. Strategy execution depends on organization. Next: Scan human resources and 104 job postings.",
+        growthQuestion: "How does Nanya execute its short-, mid-, and long-term growth roadmaps?",
+        growthTakeaway: "Short-term: accumulate cash flow from cyclical price recoveries. Mid-term: drive 1B nm node volume production and customized KGD solutions. Long-term: build technology and sales alliances through strategic partners (e.g., Kioxia, Solidigm, Cisco).",
         summaryValueNet: "Expand the full Value Net summary table",
-        careerQuestion: "What organizational capabilities are visible in Nanya's 104 job postings?",
-        careerTakeaway: "The recruiting signal shows that talent is not isolated headcount; it is the knowledge base for new fabs, process migration, and customer design-in.",
+        careerQuestion: "What organizational capability shift is reflected in Nanya's job posting data?",
+        careerTakeaway: "Job postings indicate a recruitment pivot from machine operation to smart fab MES software development, 1B nm process integration, and B2B systems analysis, reflecting a transition to a data-driven and customer-integrated organization.",
         summaryCareers: "Expand 104 Job Postings & Salary Regulations",
-        quizQuestion: "How to test readers' understanding of the core research findings?",
-        quizTakeaway: "Consolidate learning outcomes on Nanya's co-opetition positioning via an interactive quiz covering market, finance, products, resources, strategy, and disclosure.",
-        integrityQuestion: "How to ensure academic integrity and data transparency?",
-        integrityTakeaway: "Disclose main data sources (Official IR and TrendForce/Reuters), AI use (data organization, bilingual drafting, and quiz design), and human review to maintain academic integrity.",
+        quizQuestion: "How does the interactive quiz test the reader's understanding of Nanya's strategic positioning?",
+        quizTakeaway: "By using an interactive quiz covering market, finance, products, resources, strategy, and academic disclosures, readers can self-assess their learning outcomes.",
+        integrityQuestion: "How are the financial data and research inferences in this project verified?",
+        integrityTakeaway: "All financial metrics are sourced from official investor relations, financial reports, and third-party research. AI was used for data cleaning, drafting, and styling, while core inferences and data were verified by team members to ensure academic integrity.",
         summaryIntegrity: "Expand Data Sources & AI Processing Logs",
-        teamQuestion: "What is our biggest takeaway from this project?",
-        teamTakeaway: "In addition to understanding Nanya's strategy, we learned to find consensus among different opinions. The process of listening to each other and building this website together is our most precious harvest.",
+        teamQuestion: "What concrete takeaways did the team gain from this cross-disciplinary strategic project?",
+        teamTakeaway: "The team bridged strategic frameworks with semiconductor industry data, learned to simulate market dynamics under price volatility, and experienced agile collaboration through interactive web development.",
         summaryTeam: "Expand Team shared production workflow & member details",
         strategyChecklistKicker: "International strategy management",
         strategyChecklistHint: "Swipe horizontally to review six growth paths",
@@ -9220,7 +9274,7 @@
     }
 
     function buildStorySlides() {
-      const sectionIds = ["top", "company", "market", "finance", "portfolio", "resources", "growth", "career", "integrity", "team"];
+      const sectionIds = ["top", "company", "values", "market", "finance", "portfolio", "resources", "growth", "career", "integrity", "team"];
       return sectionIds.map((id) => {
         const section = id === "top" ? qs(".hero") : qs(`#${id}`);
         if (!section) return null;
@@ -9268,6 +9322,9 @@
       storyIndex = 0;
       overlay.classList.add("is-open");
       overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      const rail = qs("#sectionRail");
+      if (rail) rail.style.display = "none";
       renderStorySlide();
       qs("#storyCloseBtn")?.focus();
     }
@@ -9277,7 +9334,10 @@
       if (!overlay) return;
       overlay.classList.remove("is-open");
       overlay.setAttribute("aria-hidden", "true");
+      document.body.style.removeProperty("overflow");
       stopStoryAuto();
+      const rail = qs("#sectionRail");
+      if (rail) rail.style.removeProperty("display");
       if (restoreFocus && lastDialogTrigger && typeof lastDialogTrigger.focus === "function") lastDialogTrigger.focus();
     }
 
