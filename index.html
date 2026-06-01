@@ -958,6 +958,13 @@
       line-height: 1.35;
     }
 
+    .member-meta {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
     .process-flow {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1351,6 +1358,294 @@
       color: rgba(255,255,255,0.72);
     }
 
+    .project-meta-strip {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 28px;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .project-meta-item {
+      min-height: 92px;
+      padding: 18px 16px;
+      background: var(--canvas);
+    }
+
+    .project-meta-item span {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      letter-spacing: 0.28px;
+    }
+
+    .project-meta-item strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .management-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 26px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .management-grid .team-rule-card {
+      min-height: 278px;
+      padding: 24px;
+      border-top: 0;
+      background: var(--surface);
+    }
+
+    .management-grid .member-meta {
+      margin-bottom: 12px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.28px;
+    }
+
+    .lifecycle-module,
+    .competitor-matrix,
+    .dynamic-capability-module,
+    .challenge-module {
+      margin-top: 34px;
+    }
+
+    .lifecycle-rail {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(286px, 34%);
+      gap: 1px;
+      margin-top: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.16);
+    }
+
+    .lifecycle-card {
+      min-height: 360px;
+      padding: 24px;
+      scroll-snap-align: start;
+      background: rgba(0,0,0,0.18);
+    }
+
+    .lifecycle-card h3 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.18;
+    }
+
+    .lifecycle-card dl,
+    .competitor-detail dl {
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .lifecycle-card dt,
+    .competitor-detail dt {
+      color: rgba(255,255,255,0.58);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28px;
+    }
+
+    .lifecycle-card dd,
+    .competitor-detail dd {
+      margin: 4px 0 0;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.5;
+    }
+
+    .competitor-matrix {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.72fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .competitor-map {
+      position: relative;
+      min-height: 430px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(255,255,255,0.22) calc(50% - 0.5px), rgba(255,255,255,0.22) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+        linear-gradient(0deg, transparent calc(50% - 0.5px), rgba(255,255,255,0.22) calc(50% - 0.5px), rgba(255,255,255,0.22) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+        rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .competitor-quadrant {
+      position: absolute;
+      max-width: 42%;
+      color: rgba(255,255,255,0.48);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .competitor-quadrant.q1 { top: 18px; right: 20px; text-align: right; }
+    .competitor-quadrant.q2 { top: 18px; left: 20px; }
+    .competitor-quadrant.q3 { bottom: 42px; left: 20px; }
+    .competitor-quadrant.q4 { right: 20px; bottom: 42px; text-align: right; }
+
+    .competitor-axis {
+      position: absolute;
+      color: rgba(255,255,255,0.64);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.28px;
+      text-transform: uppercase;
+    }
+
+    .competitor-axis.x {
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+    }
+
+    .competitor-axis.y {
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: left center;
+    }
+
+    .competitor-dot {
+      position: absolute;
+      left: var(--x);
+      bottom: var(--y);
+      transform: translate(-50%, 50%);
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,0.38);
+      border-radius: var(--radius-pill);
+      color: #fff;
+      background: rgba(0,0,0,0.28);
+      font-size: 13px;
+      transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .competitor-dot:hover,
+    .competitor-dot.is-active {
+      color: #17171c;
+      border-color: #fff;
+      background: #fff;
+    }
+
+    .competitor-dot.is-reference {
+      border-color: var(--coral);
+      color: #17171c;
+      background: var(--coral);
+    }
+
+    .competitor-detail {
+      min-height: 430px;
+      padding: 26px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-md);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .competitor-detail h3 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .competitor-detail .member-meta {
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 18px;
+    }
+
+    .dynamic-capability-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 22px;
+      border: 1px solid var(--hairline);
+      background: var(--hairline);
+    }
+
+    .dynamic-capability-flow .process-step {
+      min-height: 250px;
+    }
+
+    .challenge-table-card {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    .challenge-recommendation {
+      margin-top: 18px;
+      padding: 20px 0 0;
+      border-top: 1px solid var(--hairline);
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .apa-reference-list ol {
+      margin: 14px 0 0;
+      padding-left: 22px;
+    }
+
+    .apa-reference-list li {
+      margin-bottom: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1020px) {
+      .project-meta-strip,
+      .management-grid,
+      .dynamic-capability-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .competitor-matrix {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .project-meta-strip,
+      .management-grid,
+      .dynamic-capability-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .lifecycle-rail {
+        grid-auto-columns: minmax(278px, 86vw);
+      }
+
+      .competitor-map {
+        min-height: 360px;
+      }
+
+      .competitor-dot {
+        font-size: 12px;
+        padding-inline: 10px;
+      }
+    }
+
     .vrin-table {
       width: 100%;
       border-collapse: collapse;
@@ -1418,12 +1713,13 @@
 
     .flip-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      align-items: stretch;
     }
 
     .flip-card {
-      min-height: 166px;
+      min-height: 132px;
       width: 100%;
       display: block;
       border: 0;
@@ -1432,14 +1728,20 @@
       background: transparent;
       perspective: 1000px;
       text-align: left;
+      cursor: pointer;
+    }
+
+    .flip-card:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
     }
 
     .flip-card-inner {
       display: block;
       position: relative;
       width: 100%;
-      min-height: 166px;
-      transition: transform 500ms ease;
+      min-height: 132px;
+      transition: transform 420ms ease;
       transform-style: preserve-3d;
     }
 
@@ -1451,35 +1753,74 @@
       position: absolute;
       inset: 0;
       display: block;
-      padding: 22px;
-      border: 1px solid var(--border);
+      padding: 16px;
+      border: 1px solid var(--hairline);
       border-radius: var(--radius-sm);
       backface-visibility: hidden;
       background: var(--surface);
+      overflow: hidden;
     }
 
     .flip-front {
       display: grid;
       align-content: space-between;
+      gap: 16px;
     }
 
     .flip-back {
       transform: rotateY(180deg);
       color: var(--muted);
+      font-size: 14px;
+      line-height: 1.42;
+      overflow-y: auto;
     }
 
     .flip-front strong {
+      overflow-wrap: anywhere;
       font-family: var(--font-display);
-      font-size: 30px;
+      font-size: clamp(22px, 1.8vw, 31px);
       font-weight: 400;
-      line-height: 1;
+      line-height: 1.05;
     }
 
     .flip-front span {
       color: var(--muted);
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11px;
+      line-height: 1.2;
       text-transform: uppercase;
+    }
+
+    .glossary-note {
+      margin-top: 22px;
+    }
+
+    .glossary-flip-grid {
+      grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .glossary-flip-grid .flip-card,
+    .glossary-flip-grid .flip-card-inner {
+      min-height: 108px;
+    }
+
+    .glossary-flip-grid .flip-face {
+      padding: 13px;
+    }
+
+    .glossary-flip-grid .flip-front {
+      gap: 10px;
+    }
+
+    .glossary-flip-grid .flip-front strong {
+      font-size: clamp(18px, 1.35vw, 23px);
+    }
+
+    .glossary-flip-grid .flip-back {
+      font-size: 12.5px;
+      line-height: 1.36;
     }
 
     .career-list {
@@ -2531,6 +2872,7 @@
     .universe-node text {
       fill: var(--ink);
       font-size: 13px;
+      font-weight: 500;
       text-anchor: middle;
       pointer-events: none;
       transition: fill 120ms ease;
@@ -2572,6 +2914,14 @@
 
     .universe-center-label {
       fill: var(--universe-active-label);
+    }
+
+    .universe-center-label.is-main {
+      font-weight: 600;
+    }
+
+    .universe-center-label.is-sub {
+      font-weight: 500;
     }
 
     [data-theme="dark"] div.universe-map {
@@ -3165,6 +3515,39 @@
         padding-inline: 10px;
       }
 
+      .universe-node circle {
+        r: 66px;
+      }
+
+      .universe-node text {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .universe-liquid-main,
+      .universe-liquid-ghost {
+        rx: 66px;
+        ry: 66px;
+        r: 66px;
+      }
+
+      .universe-center-core {
+        r: 88px;
+      }
+
+      .universe-center-label.is-main {
+        font-size: 22px;
+      }
+
+      .universe-center-label.is-sub {
+        font-size: 14px;
+      }
+
+      .universe-hotspot {
+        width: 152px;
+        height: 152px;
+      }
+
       .universe-list-mobile {
         display: none;
       }
@@ -3276,6 +3659,38 @@
       .swot,
       .flip-grid {
         grid-template-columns: 1fr;
+      }
+
+      .flip-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .flip-card,
+      .flip-card-inner {
+        min-height: 118px;
+      }
+
+      .flip-face {
+        padding: 13px;
+      }
+
+      .flip-front strong {
+        font-size: 21px;
+      }
+
+      .flip-back {
+        font-size: 13px;
+        line-height: 1.38;
+      }
+
+      .glossary-flip-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .glossary-flip-grid .flip-card,
+      .glossary-flip-grid .flip-card-inner {
+        min-height: 104px;
       }
 
       .market-lab {
@@ -4141,6 +4556,32 @@
             <strong data-i18n="stat4Value">2027 年初裝機</strong>
           </div>
         </div>
+        <div class="project-meta-strip" aria-label="Project information">
+          <div class="project-meta-item">
+            <span data-i18n="project_meta_course_label">課程</span>
+            <strong data-i18n="project_meta_course_value">國際策略管理</strong>
+          </div>
+          <div class="project-meta-item">
+            <span data-i18n="project_meta_company_label">公司</span>
+            <strong data-i18n="project_meta_company_value">南亞科技股份有限公司</strong>
+          </div>
+          <div class="project-meta-item">
+            <span data-i18n="project_meta_group_label">組別</span>
+            <strong data-i18n="project_meta_group_value">第六組</strong>
+          </div>
+          <div class="project-meta-item">
+            <span data-i18n="project_meta_advisor_label">授課教師／指導老師</span>
+            <strong data-i18n="project_meta_advisor_value">梅筱珍 教授／Prof. Shihmin Lo, Ph.D.</strong>
+          </div>
+          <div class="project-meta-item">
+            <span data-i18n="project_meta_department_label">Department</span>
+            <strong data-i18n="project_meta_department_value">Department of International Business Studies, National Chi Nan University</strong>
+          </div>
+          <div class="project-meta-item">
+            <span data-i18n="project_meta_date_label">繳交日期</span>
+            <strong>2026/06/01</strong>
+          </div>
+        </div>
       </div>
       <div class="container">
         <div class="trust-strip" aria-label="Strategic partners">
@@ -4152,6 +4593,10 @@
             <strong>Solidigm</strong>
           </div>
         </div>
+        <details class="source-note glossary-note">
+          <summary data-i18n="glossaryHeroSummary">展開開場關鍵字卡</summary>
+          <div class="flip-grid glossary-flip-grid" data-glossary-group="hero"></div>
+        </details>
       </div>
     </section>
 
@@ -4246,6 +4691,41 @@
             <h3 data-i18n="orgFunctionMapTitle">功能支援</h3>
             <p data-i18n="orgFunctionMapBody">研發製程、晶圓製造、銷售支援、財務永續與人力資源支撐策略執行。</p>
           </article>
+        </div>
+        <div class="management-module">
+          <div class="section-head" style="margin-top:34px;">
+            <div>
+              <span class="mono-label" data-i18n="management_label">Management Team</span>
+              <h3 class="section-title" data-i18n="management_title">治理與執行能力：把組織結構轉成策略行動</h3>
+            </div>
+            <p class="section-copy" data-i18n="management_copy">管理團隊不是履歷表，而是董事會、技術、營運與市場執行之間的能力配置。</p>
+          </div>
+          <div class="management-grid" aria-label="Management team capability cards">
+            <article class="team-rule-card">
+              <span class="member-meta" data-i18n="management_card_1_people">鄒明仁</span>
+              <h3 data-i18n="management_card_1_title">董事會與集團連結</h3>
+              <p data-i18n="management_card_1_copy">董事長鄒明仁連結台塑集團、南亞塑膠與南亞電路板資源，使南亞科在資本支出、供應鏈韌性與集團綜效上具備長期支撐。</p>
+            </article>
+            <article class="team-rule-card">
+              <span class="member-meta" data-i18n="management_card_2_people">李培瑛</span>
+              <h3 data-i18n="management_card_2_title">總經理與技術方向</h3>
+              <p data-i18n="management_card_2_copy">總經理李培瑛具備華亞科技與 IBM 研發背景，支撐南亞科在 DRAM 製程自主、DDR5 產品化與新廠技術路線上的決策。</p>
+            </article>
+            <article class="team-rule-card">
+              <span class="member-meta" data-i18n="management_card_3_people">蘇林慶、吳志祥</span>
+              <h3 data-i18n="management_card_3_title">營運與策略規劃</h3>
+              <p data-i18n="management_card_3_copy">營運與策略團隊負責製程、產能、行政與策略配置，使公司能在景氣循環中維持研發、CapEx 與產品轉型節奏。</p>
+            </article>
+            <article class="team-rule-card">
+              <span class="member-meta" data-i18n="management_card_4_people">莊達人、陳世昌、黃晏昌</span>
+              <h3 data-i18n="management_card_4_title">市場執行與品質支援</h3>
+              <p data-i18n="management_card_4_copy">客製事業、全球業務、品保與資安團隊支撐 B2B 客戶導入、長期供應協議、品質認證與策略客戶關係。</p>
+            </article>
+          </div>
+          <details class="source-note">
+            <summary data-i18n="sourceSummary">來源</summary>
+            <p data-i18n="source_basis_note">資料基礎：南亞科官網、法說資料、TrendForce、Reuters。</p>
+          </details>
         </div>
       </div>
     </section>
@@ -4347,6 +4827,90 @@
           </article>
         </div>
         <div class="market-tab-panel" id="marketTabPanel"></div>
+        <details class="source-note glossary-note">
+          <summary data-i18n="glossaryMarketSummary">展開市場分析關鍵字卡</summary>
+          <div class="flip-grid glossary-flip-grid" data-glossary-group="market"></div>
+        </details>
+        <div class="lifecycle-module">
+          <div class="section-head">
+            <div>
+              <span class="mono-label" data-i18n="lifecycle_label">Industry Lifecycle</span>
+              <h3 class="section-title" data-i18n="lifecycle_title">產品線生命週期判斷</h3>
+            </div>
+            <p class="section-copy" data-i18n="lifecycle_copy">DRAM 整體已是成熟且高度循環的產業，但南亞科不同產品線處在不同階段，必須分層配置資源。</p>
+          </div>
+          <div class="rail-header">
+            <p class="rail-hint" data-i18n="lifecycle_hint">左右滑動查看產品線階段</p>
+            <div class="rail-nav">
+              <button class="rail-btn" type="button" data-lifecycle-prev aria-label="上一張生命週期卡片" data-i18n-aria-label="lifecycle_prev_label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button class="rail-btn" type="button" data-lifecycle-next aria-label="下一張生命週期卡片" data-i18n-aria-label="lifecycle_next_label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+          <div class="lifecycle-rail" data-lifecycle-rail tabindex="0" aria-label="Industry lifecycle by product line">
+            <article class="lifecycle-card">
+              <h3 data-i18n="lifecycle_card_1_stage">成熟期／現金流收割</h3>
+              <dl>
+                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_1_product">DDR4 / LPDDR4</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_1_evidence">成熟 DRAM 仍受價格循環影響，但三大廠轉向 HBM 與高階 DDR5 後，部分成熟製程出現供應缺口。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_1_response">維持 cash cow 角色，用穩定現金流支撐 DDR5、RDIMM 與新廠投資。</dd></div>
+              </dl>
+            </article>
+            <article class="lifecycle-card">
+              <h3 data-i18n="lifecycle_card_2_stage">成長期</h3>
+              <dl>
+                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_2_product">DDR5 / RDIMM</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_2_evidence">AI server 與 general server 需求推升 RDIMM 與 DDR5 採購，南亞科 128GB DDR5 RDIMM 已通過功能測試。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_2_response">將 DDR5 / RDIMM 作為中期主力產品，加速客戶驗證與產能配置。</dd></div>
+              </dl>
+            </article>
+            <article class="lifecycle-card">
+              <h3 data-i18n="lifecycle_card_3_stage">導入至成長期</h3>
+              <dl>
+                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_3_product">KGD / Custom Memory</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_3_evidence">KGD 與客製化記憶體適合高速、寬溫、特殊封裝與共同開發需求。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_3_response">以 KGD 與客製化方案建立 B2B switching costs，避開 HBM 正面軍備競賽。</dd></div>
+              </dl>
+            </article>
+            <article class="lifecycle-card">
+              <h3 data-i18n="lifecycle_card_4_stage">轉型風險／成熟紅海</h3>
+              <dl>
+                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_4_product">MCP / standard consumer DRAM</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_4_evidence">MCP 與標準消費型 DRAM 面臨成熟市場價格壓力與中國供給擴張。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_4_response">限制低毛利擴產，把產能導向車用、工控、網通等高黏著度客戶。</dd></div>
+              </dl>
+            </article>
+          </div>
+        </div>
+        <div class="competitor-matrix" data-competitor-matrix>
+          <div>
+            <span class="mono-label" data-i18n="competitor_matrix_label">Competitor Analysis</span>
+            <h3 class="section-title" data-i18n="competitor_matrix_title">Market Commonality × Resource Similarity</h3>
+            <p class="section-copy" data-i18n="competitor_matrix_copy">以市場重疊與資源相似度判斷主要競爭者帶來的壓力，點選公司查看南亞科應對方向。</p>
+            <div class="competitor-map" aria-label="Competitor matrix map">
+              <span class="competitor-quadrant q1" data-i18n="competitor_quadrant_1">High market commonality / High resource similarity</span>
+              <span class="competitor-quadrant q2" data-i18n="competitor_quadrant_2">Low market commonality / High resource similarity</span>
+              <span class="competitor-quadrant q3" data-i18n="competitor_quadrant_3">Low market commonality / Low resource similarity</span>
+              <span class="competitor-quadrant q4" data-i18n="competitor_quadrant_4">High market commonality / Low resource similarity</span>
+              <span class="competitor-axis x" data-i18n="competitor_axis_market">Market Commonality</span>
+              <span class="competitor-axis y" data-i18n="competitor_axis_resource">Resource Similarity</span>
+              <button class="competitor-dot is-active" type="button" data-competitor="samsung" style="--x:82%;--y:82%;">Samsung</button>
+              <button class="competitor-dot" type="button" data-competitor="skhynix" style="--x:74%;--y:86%;">SK hynix</button>
+              <button class="competitor-dot" type="button" data-competitor="micron" style="--x:78%;--y:72%;">Micron</button>
+              <button class="competitor-dot" type="button" data-competitor="cxmt" style="--x:62%;--y:54%;">CXMT</button>
+              <button class="competitor-dot" type="button" data-competitor="winbond" style="--x:46%;--y:38%;">Winbond</button>
+              <button class="competitor-dot is-reference" type="button" data-competitor="nanya" style="--x:56%;--y:46%;">Nanya</button>
+            </div>
+          </div>
+          <aside class="competitor-detail" data-competitor-detail aria-live="polite"></aside>
+        </div>
+        <details class="source-note">
+          <summary data-i18n="sourceSummary">來源</summary>
+          <p data-i18n="source_basis_note">資料基礎：南亞科官網、法說資料、TrendForce、Reuters。</p>
+        </details>
       </div>
     </section>
 
@@ -4443,6 +5007,10 @@
             <article class="team-rule-card"><h3 data-i18n="financeInterpret3Title">資本支出壓力</h3><p data-i18n="financeInterpret3Body">即使 2022-2024 景氣低谷，1A/1B 奈米、DDR5 與新廠投資仍需資本支出，考驗資產負債表與現金流韌性。</p></article>
           </div>
         </details>
+        <details class="source-note glossary-note">
+          <summary data-i18n="glossaryFinanceSummary">展開財務績效關鍵字卡</summary>
+          <div class="flip-grid glossary-flip-grid" data-glossary-group="finance"></div>
+        </details>
         <div class="interactive-panel" aria-labelledby="finance-explorer-title">
           <div class="interactive-head">
             <div>
@@ -4529,6 +5097,10 @@
           <summary data-i18n="sourceSummary">來源</summary>
           <p data-i18n="portfolioSourceNote">來源：南亞科技官方 DDR5、LPDDR5/5X、KGD、RDIMM 與 MCP/eMCP/uMCP 產品資料頁；Available / In Development 依官方產品頁呈現。</p>
         </details>
+        <details class="source-note glossary-note">
+          <summary data-i18n="glossaryPortfolioSummary">展開產品配置關鍵字卡</summary>
+          <div class="flip-grid glossary-flip-grid" data-glossary-group="portfolio"></div>
+        </details>
         <details class="narrative-details">
           <summary data-i18n="summaryPositioning">展開 B2B 利基定位分析</summary>
           <div class="positioning-panel" id="positioningPanel" style="margin-top:16px;" aria-label="B2B positioning summary"></div>
@@ -4606,7 +5178,34 @@
             </table>
           </div>
         </details>
+        <details class="source-note glossary-note">
+          <summary data-i18n="glossaryResourcesSummary">展開資源評價關鍵字卡</summary>
+          <div class="flip-grid glossary-flip-grid" data-glossary-group="resources"></div>
+        </details>
         <div class="capability-flow" id="capabilityFlow" aria-label="Value chain capability flow"></div>
+        <div class="dynamic-capability-module">
+          <div class="section-head">
+            <div>
+              <span class="mono-label" data-i18n="dynamic_label">Dynamic Capabilities</span>
+              <h3 class="section-title" data-i18n="dynamic_title">動態能力：把週期訊號轉成資源重組</h3>
+            </div>
+            <p class="section-copy" data-i18n="dynamic_copy">南亞科的競爭優勢不只來自既有資源，而是來自辨識外部訊號、捕捉策略機會，並重新配置產品、資本與客戶關係的能力。</p>
+          </div>
+          <div class="dynamic-capability-flow" aria-label="Sensing Seizing Transforming flow">
+            <article class="process-step">
+              <span data-i18n="dynamic_sensing_title">Sensing</span>
+              <p data-i18n="dynamic_sensing_copy">偵測 AI server 從 HBM 延伸到 general server、RDIMM 與 conventional DRAM 的需求變化；看見 DDR5、LPDDR5/5X、成熟 DRAM 缺口與地緣供應鏈重組機會。</p>
+            </article>
+            <article class="process-step">
+              <span data-i18n="dynamic_seizing_title">Seizing</span>
+              <p data-i18n="dynamic_seizing_copy">透過私募引進 Kioxia、SanDisk、Solidigm、Cisco 等策略投資人；將資金、長期供應協議與策略客戶關係轉成產能投資與需求鎖定。</p>
+            </article>
+            <article class="process-step">
+              <span data-i18n="dynamic_transforming_title">Transforming</span>
+              <p data-i18n="dynamic_transforming_copy">從 DDR4／LPDDR4 成熟產品，轉向 DDR5、RDIMM、KGD、客製化 AI 記憶體與新廠量產準備；將價格循環曝險轉為 B2B 利基記憶體與長期客戶關係。</p>
+            </article>
+          </div>
+        </div>
         <details class="source-note">
           <summary data-i18n="sourceSummary">來源</summary>
           <p data-i18n="resourcesSourceNote">來源：南亞科技官方財務結果與 Corporate Milestone；Value Chain 與 KBV 為本研究依公開資料進行之策略分析。</p>
@@ -4653,6 +5252,10 @@
             <p data-i18n="growth3Body">長期策略是建立更穩定的產能與需求來源，並透過客戶入股深化合作。</p>
           </article>
         </div>
+        <details class="source-note glossary-note">
+          <summary data-i18n="glossaryGrowthSummary">展開成長策略關鍵字卡</summary>
+          <div class="flip-grid glossary-flip-grid" data-glossary-group="growth"></div>
+        </details>
         <div class="chart-card analysis-table-card" aria-labelledby="strategy-checklist-title" style="margin-top:28px;">
           <span class="scenario-meta" data-i18n="strategyChecklistKicker">國際策略管理</span>
           <h3 id="strategy-checklist-title" data-i18n="strategyChecklistTitle">國際策略管理檢核：南亞科如何成長？</h3>
@@ -4804,6 +5407,49 @@
             </div>
           </details>
         </div>
+        <div class="challenge-module">
+          <div class="section-head">
+            <div>
+              <span class="mono-label" data-i18n="challenges_label">Future Challenges</span>
+              <h3 class="section-title" data-i18n="challenges_title">未來挑戰與策略建議</h3>
+            </div>
+            <p class="section-copy" data-i18n="challenges_copy">南亞科未來不應追求全產品線 DRAM 領導，而應以集中差異化策略，把現金流、策略股東與客製化記憶體轉成可持續競爭位置。</p>
+          </div>
+          <div class="chart-card analysis-table-card challenge-table-card">
+            <table class="analysis-table">
+              <thead>
+                <tr>
+                  <th data-i18n="challenges_col_1">Challenge</th>
+                  <th data-i18n="challenges_col_2">Risk</th>
+                  <th data-i18n="challenges_col_3">Suggested action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-i18n="challenges_row_1_challenge">DRAM 價格循環</td>
+                  <td data-i18n="challenges_row_1_risk">獲利反彈可能只是景氣週期，若回到現貨價格競爭，毛利仍會快速壓縮。</td>
+                  <td data-i18n="challenges_row_1_action">提高長約、車用／工控、KGD、RDIMM 與客製化產品占比，降低現貨市場曝險。</td>
+                </tr>
+                <tr>
+                  <td data-i18n="challenges_row_2_challenge">CapEx 與折舊壓力</td>
+                  <td data-i18n="challenges_row_2_risk">新廠裝機後若稼動率不足，折舊與固定成本會拖累獲利品質。</td>
+                  <td data-i18n="challenges_row_2_action">新產能優先配置到 DDR5、RDIMM、LPDDR5/5X 與高毛利客製化記憶體。</td>
+                </tr>
+                <tr>
+                  <td data-i18n="challenges_row_3_challenge">三大廠與 CXMT 夾擊</td>
+                  <td data-i18n="challenges_row_3_risk">高階市場被 Samsung、SK hynix、Micron 主導，成熟產品又受到 CXMT 擴產壓力。</td>
+                  <td data-i18n="challenges_row_3_action">避開 HBM 正面戰，採集中差異化，鎖定 DDR5/RDIMM、KGD、車用、工控與網通利基客戶。</td>
+                </tr>
+                <tr>
+                  <td data-i18n="challenges_row_4_challenge">策略股東依賴</td>
+                  <td data-i18n="challenges_row_4_risk">私募股東帶來資金與訂單，但也可能提高特定客戶或應用集中度。</td>
+                  <td data-i18n="challenges_row_4_action">把 SanDisk、Kioxia、Solidigm、Cisco 關係擴展成多客戶共同開發平台，而非單一客戶依賴。</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="challenge-recommendation" data-i18n="challenges_recommendation">南亞科不應追求全產品線 DRAM 領導。較合理的路徑是集中差異化：用 DDR4 現金流支撐 DDR5/RDIMM 轉型，用策略投資人鎖定需求，再用 KGD 與客製化記憶體提高客戶轉換成本。</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -4913,9 +5559,9 @@
         <div class="section-head">
           <div>
             <span class="mono-label" data-i18n="cardsKicker">互動字卡</span>
-            <h2 class="section-title" id="cards-title" data-i18n="cardsTitle">翻轉關鍵字卡。</h2>
+            <h2 class="section-title" id="cards-title" data-i18n="cardsTitle">關鍵字卡總複習。</h2>
           </div>
-          <p class="section-copy" data-i18n="cardsLead">點擊字卡查看策略管理與記憶體產業關鍵詞說明。</p>
+          <p class="section-copy" data-i18n="cardsLead">章節中已放入即時翻卡；此區集中整理全部策略管理與記憶體產業關鍵詞，方便報告最後複習。</p>
         </div>
         <div class="flip-grid" id="flipGrid"></div>
       </div>
@@ -5021,6 +5667,24 @@
             <table class="analysis-table" id="theoryMapTable"></table>
           </div>
         </details>
+        <p class="section-copy" data-i18n="apa_reference_intro" style="margin-top:24px;">以下以 APA 格式整理本頁使用的官方資料、財報、產業研究與新聞來源。</p>
+        <details class="source-note apa-reference-list">
+          <summary data-i18n="apa_reference_summary">APA Reference List</summary>
+          <ol>
+            <li>Nanya Technology Corporation. (2026). Board of directors. Nanya Technology Investor Relations. https://www.nanya.com/tw/IR/44</li>
+            <li>Nanya Technology Corporation. (2026). Leadership. Nanya Technology. https://www.nanya.com/tw/About/11/%E7%B6%93%E7%87%9F%E5%9C%98%E9%9A%8A</li>
+            <li>Nanya Technology Corporation. (2026). Products. Nanya Technology. https://www.nanya.com/tw/Product/</li>
+            <li>Nanya Technology Corporation. (2026, January 19). 2025 fourth quarter consolidated financial report. Nanya Technology Investor Relations. https://www.nanya.com/tw/Activity?Action=IR_investorcalendar_FileName&amp;Id=4276&amp;column=PressRelease</li>
+            <li>Nanya Technology Corporation. (2026, March 25). Nanya Technology announces private placement subscription by Kioxia Corporation. Nanya Technology Investor Relations. https://www.nanya.com/en/IR/16/?IRId=12094</li>
+            <li>Nanya Technology Corporation. (2026, April 13). 2026 first quarter consolidated financial report. Nanya Technology Investor Relations. https://www.nanya.com/tw/IR/16?IRId=12105</li>
+            <li>Nanya Technology Corporation. (2025, August 15). Nanya Technology releases 2024 sustainability report. Nanya Technology Corporate Sustainability. https://www.nanya.com/ESG/tw/news_list/2155?v=1763408446</li>
+            <li>Nanya Technology Corporation. (2026). Corporate sustainability. Nanya Technology. https://www.nanya.com/ESG/en</li>
+            <li>TrendForce. (2025, June 3). TrendForce: 1Q25 DRAM revenue declined 5.5%; Samsung ceded top position to SK hynix. TrendForce. https://www.trendforce.com.tw/presscenter/news/20250603-12601.html</li>
+            <li>TrendForce. (2026, February 26). Price rally drove 4Q25 DRAM industry revenue up 29.4%; Samsung returned to No. 1 market share. TrendForce. https://www.trendforce.com.tw/presscenter/news/20260226-12938.html</li>
+            <li>TrendForce. (2025, August 26). 2025 second quarter mobile DRAM branded manufacturers revenue ranking. TrendForce. https://www.trendforce.com.tw/research/download/RP250825RA</li>
+            <li>Hung, F., &amp; Lee, W.-Y. (2026, March 26). Nanya Technology shares surge 10% after $2.5 billion fundraising. Reuters. https://www.reuters.com/world/asia-pacific/nanya-technology-shares-surge-10-after-25-billion-private-placement-2026-03-26/</li>
+          </ol>
+        </details>
       </div>
     </section>
 
@@ -5088,30 +5752,44 @@
                 <div class="member-cell">
                   <span class="member-name">楊承逸</span>
                   <span class="member-program" data-i18n="memberProgram1">國企系學士班 3 年級</span>
+                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
+                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
                 </div>
                 <div class="member-cell">
                   <span class="member-name">吳耀笙</span>
                   <span class="member-program" data-i18n="memberProgram2">東南亞系學士班 4 年級</span>
+                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
+                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
                 </div>
                 <div class="member-cell">
                   <span class="member-name">吳羽棠</span>
                   <span class="member-program" data-i18n="memberProgram3">管院學士班 4 年級</span>
+                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
+                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
                 </div>
                 <div class="member-cell">
                   <span class="member-name">葉芳辰</span>
                   <span class="member-program" data-i18n="memberProgram4">管院學士班 4 年級</span>
+                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
+                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
                 </div>
                 <div class="member-cell">
                   <span class="member-name">吳樹豫</span>
                   <span class="member-program" data-i18n="memberProgram5">管院學士班 3 年級</span>
+                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
+                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
                 </div>
                 <div class="member-cell">
                   <span class="member-name">王齡誼</span>
                   <span class="member-program" data-i18n="memberProgram6">國企系學士班 3 年級</span>
+                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
+                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
                 </div>
                 <div class="member-cell">
                   <span class="member-name">呂沛岑</span>
                   <span class="member-program" data-i18n="memberProgram7">國企系學士班 3 年級</span>
+                  <span class="member-meta" data-i18n="memberEnglishName">English Name: TBD</span>
+                  <span class="member-meta" data-i18n="memberStudentId">Student ID: TBD</span>
                 </div>
               </div>
             </div>
@@ -5141,11 +5819,14 @@
     <div class="footer-grid">
       <div>
         <h2 data-i18n="footerTitle">南亞科技如何從 DRAM 景氣循環中重新轉盈，並建立下一階段成長動能。</h2>
-        <p data-i18n="footerBody">資料更新日期：2026/05/25。</p>
+        <p data-i18n="footerBody">資料更新日期：2026/06/01。</p>
       </div>
       <div class="footer-meta">
         <span data-i18n="footerCourse">1142 國際策略管理</span>
+        <span data-i18n="footerCourseEn">Strategic Management of Multinational Corporations</span>
         <span data-i18n="footerTeacher">授課教師：梅筱珍</span>
+        <span data-i18n="footerAdvisorEn">指導老師：Prof. Shihmin Lo, Ph.D.</span>
+        <span data-i18n="footerDepartmentEn">Department of International Business Studies, National Chi Nan University</span>
         <span data-i18n="footerDeploy">GitHub Pages Ready</span>
       </div>
     </div>
@@ -5200,6 +5881,12 @@
         career2Kicker: "FAE／技術支援",
         career3Kicker: "研發／製程整合",
         cardsKicker: "互動字卡",
+        glossaryHeroSummary: "展開開場關鍵字卡",
+        glossaryMarketSummary: "展開市場分析關鍵字卡",
+        glossaryFinanceSummary: "展開財務績效關鍵字卡",
+        glossaryPortfolioSummary: "展開產品配置關鍵字卡",
+        glossaryResourcesSummary: "展開資源評價關鍵字卡",
+        glossaryGrowthSummary: "展開成長策略關鍵字卡",
         quizKicker: "互動測驗",
         integrityKicker: "學術誠信",
         teamKicker: "小組協作",
@@ -5241,6 +5928,20 @@
         navIntegrity: "資料揭露",
         heroTitle: "乘風破浪：從景氣循環邁向 AI 記憶體供應鏈",
         trustStripLabel: "策略投資者／供應鏈夥伴",
+        project_meta_course_label: "課程",
+        project_meta_course_value: "國際策略管理",
+        project_meta_company_label: "公司",
+        project_meta_company_value: "南亞科技股份有限公司",
+        project_meta_group_label: "組別",
+        project_meta_group_value: "第六組",
+        project_meta_advisor_label: "授課教師／指導老師",
+        project_meta_advisor_value: "梅筱珍 教授／Prof. Shihmin Lo, Ph.D.",
+        project_meta_department_label: "系所",
+        project_meta_department_value: "Department of International Business Studies, National Chi Nan University",
+        project_meta_date_label: "繳交日期",
+        footerCourseEn: "Strategic Management of Multinational Corporations",
+        footerAdvisorEn: "指導老師：Prof. Shihmin Lo, Ph.D.",
+        footerDepartmentEn: "Department of International Business Studies, National Chi Nan University",
         heroLead: "南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。",
         heroPrimary: "開始瀏覽",
         heroSecondary: "進入互動測驗",
@@ -5287,6 +5988,8 @@
         memberProgram5: "管院學士班 3 年級",
         memberProgram6: "國企系學士班 3 年級",
         memberProgram7: "國企系學士班 3 年級",
+        memberEnglishName: "English Name: TBD",
+        memberStudentId: "Student ID: TBD",
         companyTitle: "立足台灣：看見 DRAM 領導品牌",
         companyLead: "南亞科技成立於 1995 年，股票代號 2408，核心業務為 DRAM 研發、設計、製造與銷售。",
         companyRow1Title: "基本資料",
@@ -5329,6 +6032,21 @@
         orgFunctionLabel: "功能",
         orgFunctionMapTitle: "功能支援",
         orgFunctionMapBody: "研發製程、晶圓製造、銷售支援、財務永續與人力資源支撐策略執行。",
+        management_label: "Management Team",
+        management_title: "治理與執行能力：把組織結構轉成策略行動",
+        management_copy: "管理團隊不是履歷表，而是董事會、技術、營運與市場執行之間的能力配置。",
+        management_card_1_title: "董事會與集團連結",
+        management_card_1_people: "鄒明仁",
+        management_card_1_copy: "董事長鄒明仁連結台塑集團、南亞塑膠與南亞電路板資源，使南亞科在資本支出、供應鏈韌性與集團綜效上具備長期支撐。",
+        management_card_2_title: "總經理與技術方向",
+        management_card_2_people: "李培瑛",
+        management_card_2_copy: "總經理李培瑛具備華亞科技與 IBM 研發背景，支撐南亞科在 DRAM 製程自主、DDR5 產品化與新廠技術路線上的決策。",
+        management_card_3_title: "營運與策略規劃",
+        management_card_3_people: "蘇林慶、吳志祥",
+        management_card_3_copy: "營運與策略團隊負責製程、產能、行政與策略配置，使公司能在景氣循環中維持研發、CapEx 與產品轉型節奏。",
+        management_card_4_title: "市場執行與品質支援",
+        management_card_4_people: "莊達人、陳世昌、黃晏昌",
+        management_card_4_copy: "客製事業、全球業務、品保與資安團隊支撐 B2B 客戶導入、長期供應協議、品質認證與策略客戶關係。",
         valuesTitle: "智慧世代最佳記憶體夥伴。",
         valuesLead: "願景、使命與核心價值能把公司策略從產品規格拉回長期經營能力。",
         visionBody: "成為智慧世代最佳記憶體夥伴。",
@@ -5357,6 +6075,44 @@
         forceTitle: "點選五力，看哪一種壓力最關鍵。",
         sourceSummary: "來源",
         marketSourceNote: "TrendForce 2026/02/26 DRAM 產業統計；Nanya 市占依營收與產業總營收計算。",
+        source_basis_note: "資料基礎：南亞科官網、法說資料、TrendForce、Reuters。",
+        lifecycle_label: "Industry Lifecycle",
+        lifecycle_title: "產品線生命週期判斷",
+        lifecycle_copy: "DRAM 整體已是成熟且高度循環的產業，但南亞科不同產品線處在不同階段，必須分層配置資源。",
+        lifecycle_hint: "左右滑動查看產品線階段",
+        lifecycle_prev_label: "上一張生命週期卡片",
+        lifecycle_next_label: "下一張生命週期卡片",
+        lifecycle_product_label: "Product",
+        lifecycle_evidence_label: "Evidence",
+        lifecycle_response_label: "Strategic response",
+        lifecycle_card_1_stage: "成熟期／現金流收割",
+        lifecycle_card_1_product: "DDR4 / LPDDR4",
+        lifecycle_card_1_evidence: "成熟 DRAM 仍受價格循環影響，但三大廠轉向 HBM 與高階 DDR5 後，部分成熟製程出現供應缺口。",
+        lifecycle_card_1_response: "維持 cash cow 角色，用穩定現金流支撐 DDR5、RDIMM 與新廠投資。",
+        lifecycle_card_2_stage: "成長期",
+        lifecycle_card_2_product: "DDR5 / RDIMM",
+        lifecycle_card_2_evidence: "AI server 與 general server 需求推升 RDIMM 與 DDR5 採購，南亞科 128GB DDR5 RDIMM 已通過功能測試。",
+        lifecycle_card_2_response: "將 DDR5 / RDIMM 作為中期主力產品，加速客戶驗證與產能配置。",
+        lifecycle_card_3_stage: "導入至成長期",
+        lifecycle_card_3_product: "KGD / Custom Memory",
+        lifecycle_card_3_evidence: "KGD 與客製化記憶體適合高速、寬溫、特殊封裝與共同開發需求。",
+        lifecycle_card_3_response: "以 KGD 與客製化方案建立 B2B switching costs，避開 HBM 正面軍備競賽。",
+        lifecycle_card_4_stage: "轉型風險／成熟紅海",
+        lifecycle_card_4_product: "MCP / standard consumer DRAM",
+        lifecycle_card_4_evidence: "MCP 與標準消費型 DRAM 面臨成熟市場價格壓力與中國供給擴張。",
+        lifecycle_card_4_response: "限制低毛利擴產，把產能導向車用、工控、網通等高黏著度客戶。",
+        competitor_matrix_label: "Competitor Analysis",
+        competitor_matrix_title: "Market Commonality × Resource Similarity",
+        competitor_matrix_copy: "以市場重疊與資源相似度判斷主要競爭者帶來的壓力，點選公司查看南亞科應對方向。",
+        competitor_axis_market: "Market Commonality",
+        competitor_axis_resource: "Resource Similarity",
+        competitor_quadrant_1: "高市場重疊 / 高資源相似",
+        competitor_quadrant_2: "低市場重疊 / 高資源相似",
+        competitor_quadrant_3: "低市場重疊 / 低資源相似",
+        competitor_quadrant_4: "高市場重疊 / 低資源相似",
+        competitor_detail_why_label: "Why it matters",
+        competitor_detail_pressure_label: "Direct pressure",
+        competitor_detail_response_label: "Nanya's response",
         financeCapexSourceNote: "來源：南亞科技 2025 Q4 Results Press Release；2025 實際 CapEx 為 134 億元，2026 計畫 CapEx 約 500 億元且待董事會核准，新廠設備預計 2027 年初進駐。",
         portfolioSourceNote: "來源：南亞科技官方 DDR5、LPDDR5/5X、KGD、RDIMM 與 MCP/eMCP/uMCP 產品資料頁；Available / In Development 依官方產品頁呈現。",
         resourcesSourceNote: "來源：南亞科技官方財務結果與 Corporate Milestone；Value Chain 與 KBV 為本研究依公開資料進行之策略分析。",
@@ -5395,8 +6151,17 @@
         vrin4i: "需要信任、供需條件與技術配合",
         vrin4n: "難由普通買賣關係取代",
         vrin4j: "高策略性資源",
-        cardsTitle: "翻轉關鍵字卡。",
-        cardsLead: "點擊字卡查看策略管理與記憶體產業關鍵詞說明。",
+        dynamic_label: "Dynamic Capabilities",
+        dynamic_title: "動態能力：把週期訊號轉成資源重組",
+        dynamic_copy: "南亞科的競爭優勢不只來自既有資源，而是來自辨識外部訊號、捕捉策略機會，並重新配置產品、資本與客戶關係的能力。",
+        dynamic_sensing_title: "Sensing",
+        dynamic_sensing_copy: "偵測 AI server 從 HBM 延伸到 general server、RDIMM 與 conventional DRAM 的需求變化；看見 DDR5、LPDDR5/5X、成熟 DRAM 缺口與地緣供應鏈重組機會。",
+        dynamic_seizing_title: "Seizing",
+        dynamic_seizing_copy: "透過私募引進 Kioxia、SanDisk、Solidigm、Cisco 等策略投資人；將資金、長期供應協議與策略客戶關係轉成產能投資與需求鎖定。",
+        dynamic_transforming_title: "Transforming",
+        dynamic_transforming_copy: "從 DDR4／LPDDR4 成熟產品，轉向 DDR5、RDIMM、KGD、客製化 AI 記憶體與新廠量產準備；將價格循環曝險轉為 B2B 利基記憶體與長期客戶關係。",
+        cardsTitle: "關鍵字卡總複習。",
+        cardsLead: "章節中已放入即時翻卡；此區集中整理全部策略管理與記憶體產業關鍵詞，方便報告最後複習。",
         portfolioTitle: "主力佈局：告別紅海，高潛力與轉型產品組合",
         portfolioLead: "點擊產品點位，查看 DDR4、DDR5、LPDDR5 與 KGD 在成長性、資本優先順序與資料信心上的差異。",
         portfolioAxisTop: "高成長",
@@ -5411,6 +6176,25 @@
         growth2Body: "中期策略是降低對低階成熟產品依賴，讓產品組合朝伺服器與 AI 應用移動。",
         growth3Title: "新廠、10 奈米級製程與客戶策略投資",
         growth3Body: "長期策略是建立更穩定的產能與需求來源，並透過客戶入股深化合作。",
+        challenges_label: "Future Challenges",
+        challenges_title: "未來挑戰與策略建議",
+        challenges_copy: "南亞科未來不應追求全產品線 DRAM 領導，而應以集中差異化策略，把現金流、策略股東與客製化記憶體轉成可持續競爭位置。",
+        challenges_col_1: "Challenge",
+        challenges_col_2: "Risk",
+        challenges_col_3: "Suggested action",
+        challenges_row_1_challenge: "DRAM 價格循環",
+        challenges_row_1_risk: "獲利反彈可能只是景氣週期，若回到現貨價格競爭，毛利仍會快速壓縮。",
+        challenges_row_1_action: "提高長約、車用／工控、KGD、RDIMM 與客製化產品占比，降低現貨市場曝險。",
+        challenges_row_2_challenge: "CapEx 與折舊壓力",
+        challenges_row_2_risk: "新廠裝機後若稼動率不足，折舊與固定成本會拖累獲利品質。",
+        challenges_row_2_action: "新產能優先配置到 DDR5、RDIMM、LPDDR5/5X 與高毛利客製化記憶體。",
+        challenges_row_3_challenge: "三大廠與 CXMT 夾擊",
+        challenges_row_3_risk: "高階市場被 Samsung、SK hynix、Micron 主導，成熟產品又受到 CXMT 擴產壓力。",
+        challenges_row_3_action: "避開 HBM 正面戰，採集中差異化，鎖定 DDR5/RDIMM、KGD、車用、工控與網通利基客戶。",
+        challenges_row_4_challenge: "策略股東依賴",
+        challenges_row_4_risk: "私募股東帶來資金與訂單，但也可能提高特定客戶或應用集中度。",
+        challenges_row_4_action: "把 SanDisk、Kioxia、Solidigm、Cisco 關係擴展成多客戶共同開發平台，而非單一客戶依賴。",
+        challenges_recommendation: "南亞科不應追求全產品線 DRAM 領導。較合理的路徑是集中差異化：用 DDR4 現金流支撐 DDR5/RDIMM 轉型，用策略投資人鎖定需求，再用 KGD 與客製化記憶體提高客戶轉換成本。",
         careerTitle: "人才戰略：邁向「智動化」組織的關鍵拼圖",
         careerLead: "職涯洞察把公司策略連回學生能理解的技能與職位需求。",
         careerWork: "工作",
@@ -5447,8 +6231,10 @@
         integrityStep2Body: "資料整理、雙語草稿、網站結構、測驗題目與程式碼輔助。",
         integrityStep3Title: "人工查核",
         integrityStep3Body: "關鍵數字、事件與結論由組員查核、改寫與整合後才放入網站。",
+        apa_reference_intro: "以下以 APA 格式整理本頁使用的官方資料、財報、產業研究與新聞來源。",
+        apa_reference_summary: "APA Reference List",
         footerTitle: "南亞科從 DRAM 循環轉盈，建立下一階段成長動能。",
-        footerBody: "資料更新日期：2026/05/25。",
+        footerBody: "資料更新日期：2026/06/01。",
         footerCourse: "1142 國際策略管理",
         footerTeacher: "授課教師：梅筱珍",
         footerDeploy: "GitHub Pages Ready",
@@ -5592,6 +6378,12 @@
         career2Kicker: "FAE / Technical support",
         career3Kicker: "R&D / Process Integration",
         cardsKicker: "Interactive cards",
+        glossaryHeroSummary: "Expand opening keyword cards",
+        glossaryMarketSummary: "Expand market-analysis keyword cards",
+        glossaryFinanceSummary: "Expand finance keyword cards",
+        glossaryPortfolioSummary: "Expand product-portfolio keyword cards",
+        glossaryResourcesSummary: "Expand resource-analysis keyword cards",
+        glossaryGrowthSummary: "Expand growth-strategy keyword cards",
         quizKicker: "Interactive quiz",
         integrityKicker: "Academic integrity",
         teamKicker: "Team collaboration",
@@ -5633,6 +6425,20 @@
         navIntegrity: "Sources",
         heroTitle: "From DRAM cycles to AI memory supply chain partnerships.",
         trustStripLabel: "Strategic investors / supply-chain partners",
+        project_meta_course_label: "Course",
+        project_meta_course_value: "Strategic Management of Multinational Corporations",
+        project_meta_company_label: "Company",
+        project_meta_company_value: "Nanya Technology Corporation",
+        project_meta_group_label: "Group",
+        project_meta_group_value: "Group 6",
+        project_meta_advisor_label: "Instructor / Advisor",
+        project_meta_advisor_value: "Prof. Hsiao-Chen Mei / Prof. Shihmin Lo, Ph.D.",
+        project_meta_department_label: "Department",
+        project_meta_department_value: "Department of International Business Studies, National Chi Nan University",
+        project_meta_date_label: "Submission date",
+        footerCourseEn: "Strategic Management of Multinational Corporations",
+        footerAdvisorEn: "Advisor: Prof. Shihmin Lo, Ph.D.",
+        footerDepartmentEn: "Department of International Business Studies, National Chi Nan University",
         heroLead: "Nanya Technology shows how a Taiwanese memory company adapts through technology migration, capacity planning, and global customer relationships.",
         heroPrimary: "Start exploring",
         heroSecondary: "Take the quiz",
@@ -5679,6 +6485,8 @@
         memberProgram5: "College of Management Bachelor Program, Year 3",
         memberProgram6: "International Business, Year 3",
         memberProgram7: "International Business, Year 3",
+        memberEnglishName: "English Name: TBD",
+        memberStudentId: "Student ID: TBD",
         companyTitle: "A representative Taiwanese DRAM company.",
         companyLead: "Founded in 1995 and listed as 2408, Nanya Technology focuses on DRAM R&D, design, manufacturing, and sales.",
         companyRow1Title: "Basic profile",
@@ -5721,6 +6529,21 @@
         orgFunctionLabel: "Function",
         orgFunctionMapTitle: "Functional support",
         orgFunctionMapBody: "R&D/process, wafer fabrication, sales support, finance/sustainability, and HR support execution.",
+        management_label: "Management Team",
+        management_title: "Management capability turns structure into strategic action.",
+        management_copy: "The management team is not presented as resumes, but as a capability allocation across board linkage, technology direction, operations, and market execution.",
+        management_card_1_title: "Board & Group Linkage",
+        management_card_1_people: "Ming-Ren Tsou",
+        management_card_1_copy: "Chairman Ming-Ren Tsou links Nanya Technology with Formosa Plastics Group, Nan Ya Plastics, and Nan Ya PCB resources, strengthening capital support, supply-chain resilience, and group-level synergy.",
+        management_card_2_title: "CEO & Technology Direction",
+        management_card_2_people: "Pei-Ing Lee",
+        management_card_2_copy: "President Pei-Ing Lee brings semiconductor and R&D experience from Inotera and IBM, supporting Nanya's decisions in process independence, DDR5 commercialization, and new fab technology roadmap.",
+        management_card_3_title: "Operations & Strategy",
+        management_card_3_people: "Lin-Ching Su, Chih-Hsiang Wu",
+        management_card_3_copy: "The operations and strategy team connects manufacturing, capacity planning, administration, and strategic allocation, allowing Nanya to sustain R&D, CapEx, and product transition through industry cycles.",
+        management_card_4_title: "Market Execution",
+        management_card_4_people: "Ta-Jen Chuang, Shih-Chang Chen, Yen-Chang Huang",
+        management_card_4_copy: "The custom business, global sales, quality assurance, and information security teams support B2B design-in, long-term supply agreements, quality certification, and strategic customer relationships.",
         valuesTitle: "The best memory partner in the smart generation.",
         valuesLead: "Vision, mission, and values connect product strategy back to long-term operating capability.",
         visionBody: "To become the best memory partner in the smart generation.",
@@ -5749,6 +6572,44 @@
         forceTitle: "Select a force to see the key pressure.",
         sourceSummary: "Sources",
         marketSourceNote: "TrendForce 2026/02/26 DRAM industry statistics; Nanya share is derived from revenue and total industry revenue.",
+        source_basis_note: "Source basis: Nanya official website, investor relations releases, TrendForce, and Reuters.",
+        lifecycle_label: "Industry Lifecycle",
+        lifecycle_title: "Industry Lifecycle by Product Line",
+        lifecycle_copy: "DRAM is a mature and highly cyclical industry, but Nanya's product lines sit at different lifecycle stages and require differentiated resource allocation.",
+        lifecycle_hint: "Swipe horizontally to review product-line stages",
+        lifecycle_prev_label: "Previous lifecycle card",
+        lifecycle_next_label: "Next lifecycle card",
+        lifecycle_product_label: "Product",
+        lifecycle_evidence_label: "Evidence",
+        lifecycle_response_label: "Strategic response",
+        lifecycle_card_1_stage: "Mature cash-flow stage",
+        lifecycle_card_1_product: "DDR4 / LPDDR4",
+        lifecycle_card_1_evidence: "Mature DRAM remains cyclical, but supply gaps emerge as top-tier players shift capacity toward HBM and high-end DDR5.",
+        lifecycle_card_1_response: "Use DDR4 / LPDDR4 as cash-flow support for DDR5, RDIMM, and new fab investment.",
+        lifecycle_card_2_stage: "Growth stage",
+        lifecycle_card_2_product: "DDR5 / RDIMM",
+        lifecycle_card_2_evidence: "AI server and general server demand drive RDIMM and DDR5 orders; Nanya's 128GB DDR5 RDIMM has passed functional testing.",
+        lifecycle_card_2_response: "Treat DDR5 / RDIMM as the mid-term growth engine and prioritize customer qualification and capacity allocation.",
+        lifecycle_card_3_stage: "Introduction-to-growth stage",
+        lifecycle_card_3_product: "KGD / Custom Memory",
+        lifecycle_card_3_evidence: "KGD and customized memory fit high-speed, wide-temperature, special packaging, and co-development applications.",
+        lifecycle_card_3_response: "Build B2B switching costs through KGD and customized solutions instead of competing head-on in HBM.",
+        lifecycle_card_4_stage: "Transition risk / mature red ocean",
+        lifecycle_card_4_product: "MCP / standard consumer DRAM",
+        lifecycle_card_4_evidence: "MCP and standard consumer DRAM face mature-market price pressure and China-related supply expansion.",
+        lifecycle_card_4_response: "Limit low-margin expansion and shift capacity toward automotive, industrial, and networking customers with higher stickiness.",
+        competitor_matrix_label: "Competitor Analysis",
+        competitor_matrix_title: "Market Commonality × Resource Similarity",
+        competitor_matrix_copy: "Use market overlap and resource similarity to judge competitor pressure. Select a company to see Nanya's response.",
+        competitor_axis_market: "Market Commonality",
+        competitor_axis_resource: "Resource Similarity",
+        competitor_quadrant_1: "High market commonality / High resource similarity",
+        competitor_quadrant_2: "Low market commonality / High resource similarity",
+        competitor_quadrant_3: "Low market commonality / Low resource similarity",
+        competitor_quadrant_4: "High market commonality / Low resource similarity",
+        competitor_detail_why_label: "Why it matters",
+        competitor_detail_pressure_label: "Direct pressure",
+        competitor_detail_response_label: "Nanya's response",
         financeCapexSourceNote: "Source: Nanya Technology 2025 Q4 Results Press Release. Actual 2025 CapEx was NT$13.4B; 2026 planned CapEx is about NT$50B pending Board approval; new-fab equipment move-in is planned for early 2027.",
         portfolioSourceNote: "Source: Nanya Technology official DDR5, LPDDR5/5X, KGD, RDIMM, and MCP/eMCP/uMCP product pages. Available / In Development follows official product-page wording.",
         resourcesSourceNote: "Source: Nanya Technology official financial results and Corporate Milestone. Value Chain and KBV are strategic analysis based on public information.",
@@ -5787,8 +6648,17 @@
         vrin4i: "Requires trust, supply-demand fit, and technical alignment",
         vrin4n: "Hard to replace with ordinary buyer-seller relationships",
         vrin4j: "Highly strategic resource",
-        cardsTitle: "Flip the keyword cards.",
-        cardsLead: "Click each card to review strategy and memory-industry terms.",
+        dynamic_label: "Dynamic Capabilities",
+        dynamic_title: "Dynamic Capabilities: Turning Market Signals into Resource Reconfiguration",
+        dynamic_copy: "Nanya's advantage does not only come from existing resources; it comes from sensing external signals, seizing strategic opportunities, and reconfiguring products, capital, and customer relationships.",
+        dynamic_sensing_title: "Sensing",
+        dynamic_sensing_copy: "Detects the demand shift from HBM-centered AI servers toward general servers, RDIMM, and conventional DRAM; identifies opportunities in DDR5, LPDDR5/5X, mature DRAM gaps, and geopolitical supply-chain reconfiguration.",
+        dynamic_seizing_title: "Seizing",
+        dynamic_seizing_copy: "Brings in strategic investors such as Kioxia, SanDisk, Solidigm, and Cisco through private placement; converts capital, long-term supply agreements, and strategic customer relationships into capacity investment and demand locking.",
+        dynamic_transforming_title: "Transforming",
+        dynamic_transforming_copy: "Shifts from mature DDR4 / LPDDR4 products toward DDR5, RDIMM, KGD, customized AI memory, and new fab ramp-up; repositions the company from commodity-cycle exposure toward B2B niche memory and long-term customer relationships.",
+        cardsTitle: "Keyword card review.",
+        cardsLead: "Inline flip cards now appear near the relevant chapters; this area collects every strategy and memory-industry term for final review.",
         portfolioTitle: "Product upgrades and customer positioning decide how Nanya avoids scale competition.",
         portfolioLead: "The portfolio map reads growth, capital priority, target customers, product availability, and B2B positioning.",
         portfolioAxisTop: "Higher growth",
@@ -5803,6 +6673,25 @@
         growth2Body: "The mid-term strategy raises DDR5, LPDDR5, and AI/Edge AI application share, reducing dependence on lower-end mature products and a single cycle.",
         growth3Title: "New fab, 10nm-class processes, and strategic customers",
         growth3Body: "The long-term strategy tracks 1B nm yield, new fab capacity, capital-spending efficiency, and strategic customer binding to build a more stable base for demand and technology migration.",
+        challenges_label: "Future Challenges",
+        challenges_title: "Future Challenges and Strategic Suggestions",
+        challenges_copy: "Nanya should not pursue full-line DRAM leadership. A stronger path is focused differentiation that turns cash flow, strategic investors, and customized memory into a sustainable competitive position.",
+        challenges_col_1: "Challenge",
+        challenges_col_2: "Risk",
+        challenges_col_3: "Suggested action",
+        challenges_row_1_challenge: "DRAM price cycle",
+        challenges_row_1_risk: "Profit recovery may be cyclical; gross margin can compress quickly if the market returns to spot-price competition.",
+        challenges_row_1_action: "Increase long-term agreements, automotive / industrial products, KGD, RDIMM, and customized memory to reduce spot-market exposure.",
+        challenges_row_2_challenge: "CapEx and depreciation pressure",
+        challenges_row_2_risk: "If utilization is insufficient after new fab equipment installation, depreciation and fixed costs will weaken earnings quality.",
+        challenges_row_2_action: "Prioritize new capacity for DDR5, RDIMM, LPDDR5/5X, and higher-margin customized memory.",
+        challenges_row_3_challenge: "Pressure from the top three players and CXMT",
+        challenges_row_3_risk: "High-end segments are led by Samsung, SK hynix, and Micron, while mature products face CXMT capacity pressure.",
+        challenges_row_3_action: "Avoid head-on HBM competition and pursue focused differentiation in DDR5/RDIMM, KGD, automotive, industrial, and networking niches.",
+        challenges_row_4_challenge: "Dependence on strategic investors",
+        challenges_row_4_risk: "Private-placement investors bring capital and demand, but may increase customer or application concentration.",
+        challenges_row_4_action: "Turn SanDisk, Kioxia, Solidigm, and Cisco relationships into a multi-customer co-development platform rather than single-customer dependence.",
+        challenges_recommendation: "Nanya should not chase full-line DRAM leadership. A stronger path is focused differentiation: use DDR4 cash flow to fund the DDR5/RDIMM transition, use strategic investors to secure demand, and use KGD/custom memory to build customer switching costs.",
         careerTitle: "Strategy upgrades need process, software, and customer-technical talent together.",
         careerLead: "104 job postings are evidence of Nanya's shift from a defender role toward an analyzer organization, not isolated career information.",
         careerWork: "Work",
@@ -5839,8 +6728,10 @@
         integrityStep2Body: "Data organization, bilingual drafting, website structure, quiz design, and coding support.",
         integrityStep3Title: "Human review",
         integrityStep3Body: "Key figures, events, and conclusions were checked, rewritten, and integrated by team members before publication.",
+        apa_reference_intro: "The following APA-style list summarizes the official sources, financial reports, industry research, and news references used in this page.",
+        apa_reference_summary: "APA Reference List",
         footerTitle: "How Nanya Technology returned to profit from the DRAM cycle and built momentum for the next growth stage.",
-        footerBody: "Data updated: 2026/05/25.",
+        footerBody: "Data updated: 2026/06/01.",
         footerCourse: "1142 International Strategic Management",
         footerTeacher: "Instructor: Hsiao-Chen Mei",
         footerDeploy: "GitHub Pages Ready",
@@ -5997,6 +6888,39 @@
         ["New Fab", "A key long-term investment in capacity, process migration, and capital spending."],
         ["Strategic Customers", "SanDisk and Kioxia have announced DRAM supply agreements; Cisco and Solidigm are strategic investors."]
       ]
+    };
+
+    const flipCardIds = [
+      "dram",
+      "ddr5",
+      "ddr5-rdimm",
+      "lpddr5",
+      "asp",
+      "operating-leverage",
+      "private-placement",
+      "vrin",
+      "kbv",
+      "real-option",
+      "five-forces",
+      "pestel",
+      "value-chain",
+      "bcg-matrix",
+      "stp-4p",
+      "value-net",
+      "dupont",
+      "capm",
+      "ai-memory",
+      "new-fab",
+      "strategic-customers"
+    ];
+
+    const glossaryGroups = {
+      hero: ["dram", "ddr5", "ai-memory", "private-placement"],
+      market: ["five-forces", "pestel", "stp-4p"],
+      finance: ["asp", "operating-leverage", "dupont", "capm", "new-fab"],
+      portfolio: ["ddr5-rdimm", "lpddr5", "bcg-matrix"],
+      resources: ["vrin", "kbv", "value-chain", "real-option"],
+      growth: ["value-net", "strategic-customers"]
     };
 
         const interactiveData = {
@@ -6156,6 +7080,7 @@
           {
             id: "customer",
             role: "Customer",
+            mapLabel: "Customer",
             rolePosition: "Demand-side buyers and strategic investors that decide whether Nanya can move beyond commodity pricing through design-in, LTAs, and qualification.",
             representatives: "Cisco, automotive and industrial customers, server and networking customers, module makers",
             cooperation: "Design-in, long-term supply commitments, LTAs, equity ties, and FAE technical support.",
@@ -6168,6 +7093,7 @@
           {
             id: "supplier",
             role: "Supplier",
+            mapLabel: "Supplier",
             rolePosition: "Upstream bottleneck for process and capacity upgrades, shaping new-fab timing, 1B/1C/1D migration, and material stability.",
             representatives: "ASML, Applied Materials, wafer and chemical suppliers, Formosa Plastics Group",
             cooperation: "Equipment, materials, process support, and counter-cyclical capital backing from the parent group.",
@@ -6180,6 +7106,7 @@
           {
             id: "competitor",
             role: "Competitor",
+            mapLabel: "Rival",
             rolePosition: "Global DRAM oligopolists that compete with Nanya while jointly shaping standards and the price cycle.",
             representatives: "Samsung, SK Hynix, Micron, CXMT",
             cooperation: "Common JEDEC standards maintain compatibility across the DRAM ecosystem.",
@@ -6192,6 +7119,7 @@
           {
             id: "complementor",
             role: "Complementor",
+            mapLabel: "Partner",
             rolePosition: "Ecosystem partners that connect DRAM with NAND, storage, platforms, and custom-memory solutions.",
             representatives: "Kioxia, SanDisk, Solidigm, MediaTek, NVIDIA edge platforms, PieceMakers",
             cooperation: "DRAM + NAND, KGD, MCP, platform certification, and joint development.",
@@ -6490,6 +7418,7 @@
     let financeFocus = "revenue";
     let forceFocus = "rivalry";
     let marketFocus = "industry";
+    let competitorFocus = "samsung";
     let stpFocus = "server";
     let portfolioFocus = "ddr5";
     let portfolioScenario = "base";
@@ -6570,8 +7499,10 @@
       renderAspLab();
       renderPortfolioScenario();
       renderFlipCards();
+      renderGlossaryGroups();
       renderFinanceExplorer();
       renderMarketLab();
+      updateCompetitorDetail(competitorFocus);
       renderPortfolioTool();
       renderCapabilityFlow();
       renderGrowthNetwork();
@@ -6586,10 +7517,18 @@
       updateVoiceProgress();
     }
 
-    function renderFlipCards() {
-      const grid = qs("#flipGrid");
+    function getFlipCardItems() {
+      return flipCards[currentLang].map(([term, definition], index) => ({
+        id: flipCardIds[index],
+        term,
+        definition
+      }));
+    }
+
+    function renderFlipCardSet(grid, cards) {
+      if (!grid) return;
       grid.innerHTML = "";
-      flipCards[currentLang].forEach(([term, definition]) => {
+      cards.forEach(({ term, definition }) => {
         const button = document.createElement("button");
         button.type = "button";
         button.className = "flip-card";
@@ -6598,10 +7537,10 @@
         button.innerHTML = `
           <span class="flip-card-inner">
             <span class="flip-face flip-front">
-              <strong>${term}</strong>
+              <strong>${escapeHtml(term)}</strong>
               <span>${currentLang === "zh" ? "點擊翻轉" : "Click to flip"}</span>
             </span>
-            <span class="flip-face flip-back">${definition}</span>
+            <span class="flip-face flip-back">${escapeHtml(definition)}</span>
           </span>
         `;
         button.addEventListener("click", () => {
@@ -6609,6 +7548,22 @@
           button.setAttribute("aria-pressed", String(isFlipped));
         });
         grid.appendChild(button);
+      });
+    }
+
+    function renderFlipCards() {
+      const grid = qs("#flipGrid");
+      if (!grid) return;
+      grid.className = "flip-grid";
+      renderFlipCardSet(grid, getFlipCardItems());
+    }
+
+    function renderGlossaryGroups() {
+      const items = getFlipCardItems();
+      const byId = new Map(items.map((item) => [item.id, item]));
+      qsa("[data-glossary-group]").forEach((grid) => {
+        const ids = glossaryGroups[grid.dataset.glossaryGroup] || [];
+        renderFlipCardSet(grid, ids.map((id) => byId.get(id)).filter(Boolean));
       });
     }
 
@@ -6869,11 +7824,15 @@
       const nodes = rows.map((item) => {
         const roleParts = item.role.split(" / ");
         const primaryRole = currentLang === "zh" ? item.role : roleParts[0];
-        const secondaryRole = currentLang === "zh" ? "" : item.id;
+        const mapRole = item.mapLabel || primaryRole;
+        const candidateSecondaryRole = currentLang === "zh" ? "" : (roleParts[1] || "");
+        const secondaryRole = candidateSecondaryRole.toLowerCase() === mapRole.toLowerCase()
+          ? ""
+          : candidateSecondaryRole;
         return `
           <g class="universe-node" data-universe-node="${escapeHtml(item.id)}">
             <circle cx="${item.x}" cy="${item.y}" r="52"></circle>
-            <text x="${item.x}" y="${secondaryRole ? item.y - 5 : item.y + 4}">${escapeHtml(primaryRole)}</text>
+            <text x="${item.x}" y="${secondaryRole ? item.y - 5 : item.y + 4}">${escapeHtml(mapRole)}</text>
             ${secondaryRole ? `<text x="${item.x}" y="${item.y + 13}">${escapeHtml(secondaryRole)}</text>` : ""}
           </g>
         `;
@@ -6920,8 +7879,8 @@
             </g>
 
             <circle class="universe-center-core" cx="300" cy="300" r="72"></circle>
-            <text class="universe-center-label" x="300" y="294" font-size="18" text-anchor="middle">${escapeHtml(labels.centerTop)}</text>
-            <text class="universe-center-label" x="300" y="316" font-size="12" text-anchor="middle">${escapeHtml(labels.centerBottom)}</text>
+            <text class="universe-center-label is-main" x="300" y="294" font-size="18" text-anchor="middle">${escapeHtml(labels.centerTop)}</text>
+            <text class="universe-center-label is-sub" x="300" y="316" font-size="12" text-anchor="middle">${escapeHtml(labels.centerBottom)}</text>
 
             ${nodes}
           </svg>
@@ -7350,6 +8309,153 @@
           renderFinanceExplorer();
         });
       });
+    }
+
+    const competitorMatrixData = {
+      zh: {
+        samsung: {
+          label: "Samsung",
+          quadrant: "高市場重疊 × 高資源相似",
+          why: "Samsung 橫跨 DDR、LPDDR、server DRAM、HBM 與全球客戶，與南亞科市場重疊高。",
+          pressure: "Samsung 的規模、製程與 HBM 投資能力讓南亞科無法正面打高階全產品線。",
+          response: "避開 HBM 正面戰，集中在 DDR5/RDIMM、成熟 DRAM 缺口、KGD 與長期客戶認證。"
+        },
+        skhynix: {
+          label: "SK hynix",
+          quadrant: "高市場重疊 × 高資源相似",
+          why: "SK hynix 在 AI memory 與 HBM 領域具強勢地位，且與南亞科在一般 DRAM 與部分 server memory 有市場重疊。",
+          pressure: "高階 AI memory 被 SK hynix 等大廠主導，南亞科資本支出不宜追逐同一戰場。",
+          response: "利用大廠轉向 HBM 後留下的 conventional DRAM、DDR5 與 RDIMM 需求缺口。"
+        },
+        micron: {
+          label: "Micron",
+          quadrant: "高市場重疊 × 高資源相似",
+          why: "Micron 與南亞科同樣服務 DDR、LPDDR、server memory 與全球 B2B 客戶。",
+          pressure: "Micron 具備更大的技術、品牌與客戶廣度。",
+          response: "以台灣製造、供應鏈韌性、客製化支援與策略客戶關係建立差異化。"
+        },
+        cxmt: {
+          label: "CXMT",
+          quadrant: "中高市場重疊 × 中資源相似",
+          why: "CXMT 在成熟 DRAM 與 LPDDR4X 擴產，對價格敏感市場造成壓力。",
+          pressure: "中低階與成熟產品可能面臨價格壓力。",
+          response: "加速 1B/1C、DDR5、車用、工控與長生命週期產品，降低成熟紅海曝險。"
+        },
+        winbond: {
+          label: "Winbond",
+          quadrant: "中市場重疊 × 中低資源相似",
+          why: "Winbond 與南亞科在部分成熟製程與利基記憶體市場有重疊。",
+          pressure: "雙方在部分台系成熟製程供應缺口中共存，但產品定位不完全相同。",
+          response: "南亞科應將焦點放在 DRAM 主軸、DDR5/RDIMM 與策略 B2B 客戶，而非分散成一般利基記憶體競爭。"
+        },
+        nanya: {
+          label: "Nanya",
+          quadrant: "參考點／利基跟隨者",
+          why: "南亞科作為參考點，市場重疊低於三大廠，但在成熟 DRAM、DDR5/RDIMM 與客製化產品中具策略空間。",
+          pressure: "規模與資本限制使其不適合追求全產品線領導。",
+          response: "集中資源在差異化產品、策略股東、長約與客製化 B2B 關係。"
+        }
+      },
+      en: {
+        samsung: {
+          label: "Samsung",
+          quadrant: "High market commonality × High resource similarity",
+          why: "Samsung spans DDR, LPDDR, server DRAM, HBM, and global customers, creating high market overlap with Nanya.",
+          pressure: "Samsung's scale, process capability, and HBM investment make full-line competition unrealistic for Nanya.",
+          response: "Avoid head-on HBM competition and focus on DDR5/RDIMM, mature DRAM gaps, KGD, and long-term customer qualification."
+        },
+        skhynix: {
+          label: "SK hynix",
+          quadrant: "High market commonality × High resource similarity",
+          why: "SK hynix holds a strong position in AI memory and HBM while overlapping with Nanya in conventional DRAM and parts of server memory.",
+          pressure: "High-end AI memory is dominated by leaders such as SK hynix, making direct CapEx competition risky.",
+          response: "Capture conventional DRAM, DDR5, and RDIMM demand gaps as leaders shift capacity toward HBM."
+        },
+        micron: {
+          label: "Micron",
+          quadrant: "High market commonality × High resource similarity",
+          why: "Micron overlaps with Nanya in DDR, LPDDR, server memory, and global B2B customers.",
+          pressure: "Micron has broader technology, branding, and customer reach.",
+          response: "Differentiate through Taiwan-based manufacturing, supply-chain resilience, customization support, and strategic customer relationships."
+        },
+        cxmt: {
+          label: "CXMT",
+          quadrant: "Medium-high market commonality × Medium resource similarity",
+          why: "CXMT expands mature DRAM and LPDDR4X capacity, pressuring price-sensitive segments.",
+          pressure: "Low-end and mature products face price compression.",
+          response: "Accelerate 1B/1C, DDR5, automotive, industrial, and long-lifecycle products to reduce mature red-ocean exposure."
+        },
+        winbond: {
+          label: "Winbond",
+          quadrant: "Medium market commonality × Medium-low resource similarity",
+          why: "Winbond overlaps with Nanya in parts of mature-process and niche memory markets.",
+          pressure: "The two coexist in some Taiwan-based mature-process supply gaps, but their product positions are not identical.",
+          response: "Nanya should keep focus on DRAM, DDR5/RDIMM, and strategic B2B customers rather than diffuse into broad niche memory competition."
+        },
+        nanya: {
+          label: "Nanya",
+          quadrant: "Reference point / niche follower",
+          why: "Nanya is the reference point: less overlapping than the top three, but strategically positioned in mature DRAM, DDR5/RDIMM, and customized memory.",
+          pressure: "Scale and capital limits make full-line leadership unrealistic.",
+          response: "Concentrate resources on differentiated products, strategic shareholders, long-term agreements, and customized B2B relationships."
+        }
+      }
+    };
+
+    function updateCompetitorDetail(id = competitorFocus) {
+      const matrix = qs("[data-competitor-matrix]");
+      if (!matrix) return;
+      const detail = matrix.querySelector("[data-competitor-detail]");
+      const data = competitorMatrixData[currentLang][id] || competitorMatrixData[currentLang].samsung;
+      competitorFocus = id;
+      matrix.querySelectorAll("[data-competitor]").forEach((button) => {
+        const active = button.dataset.competitor === id;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      if (!detail) return;
+      detail.innerHTML = `
+        <h3>${escapeHtml(data.label)}</h3>
+        <span class="member-meta">${escapeHtml(data.quadrant)}</span>
+        <dl>
+          <div><dt>${escapeHtml(translations[currentLang].competitor_detail_why_label)}</dt><dd>${escapeHtml(data.why)}</dd></div>
+          <div><dt>${escapeHtml(translations[currentLang].competitor_detail_pressure_label)}</dt><dd>${escapeHtml(data.pressure)}</dd></div>
+          <div><dt>${escapeHtml(translations[currentLang].competitor_detail_response_label)}</dt><dd>${escapeHtml(data.response)}</dd></div>
+        </dl>
+      `;
+    }
+
+    function initCompetitorMatrix() {
+      const matrix = qs("[data-competitor-matrix]");
+      if (!matrix || matrix.dataset.initialized === "true") return;
+      matrix.dataset.initialized = "true";
+      matrix.querySelectorAll("[data-competitor]").forEach((button) => {
+        button.addEventListener("click", () => updateCompetitorDetail(button.dataset.competitor));
+      });
+      updateCompetitorDetail(competitorFocus);
+    }
+
+    function initLifecycleRail() {
+      const rail = qs("[data-lifecycle-rail]");
+      if (!rail || rail.dataset.initialized === "true") return;
+      rail.dataset.initialized = "true";
+      const prev = qs("[data-lifecycle-prev]");
+      const next = qs("[data-lifecycle-next]");
+      const getScrollAmount = () => {
+        const card = rail.querySelector(".lifecycle-card");
+        return card ? card.offsetWidth + 1 : 320;
+      };
+      const getScrollBehavior = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      const updateButtons = () => {
+        const maxScroll = rail.scrollWidth - rail.clientWidth;
+        if (prev) prev.disabled = rail.scrollLeft <= 0;
+        if (next) next.disabled = rail.scrollLeft >= Math.floor(maxScroll) - 1;
+      };
+      prev?.addEventListener("click", () => rail.scrollBy({ left: -getScrollAmount(), behavior: getScrollBehavior() }));
+      next?.addEventListener("click", () => rail.scrollBy({ left: getScrollAmount(), behavior: getScrollBehavior() }));
+      rail.addEventListener("scroll", updateButtons, { passive: true });
+      window.addEventListener("resize", updateButtons, { passive: true });
+      requestAnimationFrame(updateButtons);
     }
 
     function renderMarketLab() {
@@ -8127,6 +9233,8 @@
     applyTheme(localStorage.getItem("nanya-theme") || "light");
     bindEvents();
     applyLanguage(currentLang);
+    initCompetitorMatrix();
+    initLifecycleRail();
 
     // --- Scrollspy Implementation ---
     const observerOptions = {
