@@ -4889,6 +4889,21 @@
 
       <div class="rail-container" id="railContainer">
         <span class="liquid-blob" id="liquidBlob" aria-hidden="true"></span>
+      <a href="#hero" class="liquid-section-link">
+        <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+          <rect x="9" y="9" width="6" height="6"/>
+          <line x1="9" y1="1" x2="9" y2="4"/>
+          <line x1="15" y1="1" x2="15" y2="4"/>
+          <line x1="9" y1="20" x2="9" y2="23"/>
+          <line x1="15" y1="20" x2="15" y2="23"/>
+          <line x1="20" y1="9" x2="23" y2="9"/>
+          <line x1="20" y1="15" x2="23" y2="15"/>
+          <line x1="1" y1="9" x2="4" y2="9"/>
+          <line x1="1" y1="15" x2="4" y2="15"/>
+        </svg>
+        <span data-i18n="railHero">Nanya TP</span>
+      </a>
       <a href="#company" class="liquid-section-link">
         <svg class="rail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M3 21h18 M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16 M9 7h6 M9 11h6 M9 15h6"/>
@@ -4973,7 +4988,7 @@
   </div>
 
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div>
           <h1 id="hero-title" data-i18n="heroTitle">乘風破浪：從景氣循環邁向 AI 記憶體供應鏈</h1>
@@ -6325,6 +6340,7 @@
         brandHomeLabel: "Nanya TP 網站首頁",
         sectionNavLabel: "章節導覽",
         railAriaLabel: "章節快速導覽",
+        railHero: "Nanya TP",
         railPrev: "上一章",
         railNext: "下一章",
         railCompany: "公司",
@@ -6824,6 +6840,7 @@
         brandHomeLabel: "Nanya TP Website home",
         sectionNavLabel: "Section navigation",
         railAriaLabel: "Section quick navigation",
+        railHero: "Nanya TP",
         railPrev: "Previous chapter",
         railNext: "Next chapter",
         railCompany: "Company",
@@ -9579,7 +9596,7 @@
 
     function navigateToNextChapter() {
       const chapters = [
-        "#company", "#market", "#finance", "#portfolio",
+        "#hero", "#company", "#market", "#finance", "#portfolio",
         "#resources", "#growth", "#career", "#quiz",
         "#integrity", "#team"
       ];
@@ -9604,7 +9621,7 @@
 
     function navigateToPrevChapter() {
       const chapters = [
-        "#company", "#market", "#finance", "#portfolio",
+        "#hero", "#company", "#market", "#finance", "#portfolio",
         "#resources", "#growth", "#career", "#quiz",
         "#integrity", "#team"
       ];
