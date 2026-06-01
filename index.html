@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>南亞科技策略分析 | Nanya Technology Strategic Analysis</title>
+  <title>南亞科技策略分析</title>
   <style>
     :root {
       color-scheme: light;
@@ -2818,7 +2818,6 @@
 
     .signal-card p,
     .capability-step p,
-    .organization-item p,
     .positioning-item p {
       margin: 0;
       color: var(--muted);
@@ -2835,19 +2834,6 @@
     .capability-step {
       border-top: 1px solid var(--hairline);
       padding: 18px 0 0;
-      background: transparent;
-    }
-
-    .organization-summary {
-      display: block;
-      margin-top: 18px;
-      margin-bottom: 24px;
-      border-top: 1px solid var(--hairline);
-    }
-
-    .organization-item {
-      border-bottom: 1px solid var(--hairline);
-      padding: 16px 0;
       background: transparent;
     }
 
@@ -2908,12 +2894,6 @@
       .mini-stat-grid,
       .allocation-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 760px) {
-      .organization-summary {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -3194,7 +3174,6 @@
 
     .asp-lab,
     .universe-lab,
-    .reactor-lab,
     .scenario-lab {
       margin-top: 30px;
       border: 1px solid var(--hairline);
@@ -3210,7 +3189,6 @@
     }
 
     .asp-grid,
-    .reactor-grid,
     .universe-grid {
       display: grid;
       grid-template-columns: minmax(0, 0.86fr) minmax(320px, 1fr);
@@ -3219,7 +3197,6 @@
     }
 
     .asp-panel,
-    .reactor-panel,
     .universe-panel,
     .scenario-panel {
       padding: 24px;
@@ -3232,7 +3209,6 @@
 
     .asp-lab h3,
     .universe-lab h3,
-    .reactor-lab h3,
     .scenario-lab h3 {
       margin: 0;
       font-size: clamp(25px, 3vw, 34px);
@@ -3242,7 +3218,6 @@
 
     .asp-lab p,
     .universe-lab p,
-    .reactor-lab p,
     .scenario-lab p {
       margin: 12px 0 0;
       color: var(--muted);
@@ -3260,8 +3235,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.14);
     }
 
-    .asp-control label,
-    .reactor-panel h4 {
+    .asp-control label {
       font-size: 14px;
       font-weight: 500;
     }
@@ -3281,18 +3255,14 @@
     }
 
     .asp-segmented,
-    .scenario-buttons,
-    .reactor-chips,
-    .reactor-buckets {
+    .scenario-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
     .asp-segmented button,
-    .scenario-buttons button,
-    .reactor-chip,
-    .reactor-bucket {
+    .scenario-buttons button {
       min-height: 42px;
       border: 1px solid var(--hairline);
       border-radius: var(--radius-full);
@@ -3431,20 +3401,17 @@
     .scenario-allocation span:nth-child(2) { background: var(--green); }
     .scenario-allocation span:nth-child(3) { background: var(--coral); }
 
-    .universe-lab,
-    .reactor-lab {
+    .universe-lab {
       padding: 24px;
     }
 
-    .universe-grid,
-    .reactor-grid {
+    .universe-grid {
       margin-top: 22px;
       border: 1px solid var(--hairline);
       background: var(--hairline);
     }
 
-    .universe-panel,
-    .reactor-panel {
+    .universe-panel {
       background: var(--surface);
     }
 
@@ -3622,53 +3589,22 @@
       text-align: left;
     }
 
-    .universe-detail dl,
-    .reactor-readout dl {
+    .universe-detail dl {
       display: grid;
       gap: 12px;
       margin: 18px 0 0;
     }
 
-    .universe-detail dt,
-    .reactor-readout dt {
+    .universe-detail dt {
       color: var(--muted);
       font-family: var(--font-mono);
       font-size: 12px;
       text-transform: uppercase;
     }
 
-    .universe-detail dd,
-    .reactor-readout dd {
+    .universe-detail dd {
       margin: -8px 0 0;
       overflow-wrap: anywhere;
-    }
-
-    .reactor-chips,
-    .reactor-buckets {
-      margin-top: 14px;
-    }
-
-    .reactor-chip,
-    .reactor-bucket {
-      padding: 0 16px;
-      color: var(--ink);
-      background: var(--surface);
-    }
-
-    .reactor-chip[aria-pressed="true"] {
-      border-color: var(--blue);
-      box-shadow: inset 0 0 0 1px var(--blue);
-    }
-
-    .reactor-bucket.is-success {
-      border-color: var(--blue);
-      background: color-mix(in srgb, var(--blue) 8%, var(--surface));
-    }
-
-    .reactor-readout {
-      margin-top: 20px;
-      padding-top: 18px;
-      border-top: 1px solid var(--hairline);
     }
 
     .story-overlay {
@@ -4213,7 +4149,6 @@
       .interactive-head,
       .market-lab,
       .asp-grid,
-      .reactor-grid,
       .universe-grid,
       .org-map,
       .portfolio-tool,
@@ -4708,11 +4643,9 @@
 
       .lab-list,
       .asp-panel,
-      .reactor-panel,
       .universe-panel,
       .scenario-lab,
-      .universe-lab,
-      .reactor-lab {
+      .universe-lab {
         padding: 18px;
       }
 
@@ -5644,11 +5577,11 @@
           </div>
           <div class="project-meta-item">
             <span data-i18n="project_meta_advisor_label">授課教師／指導老師</span>
-            <strong data-i18n="project_meta_advisor_value">梅筱珍 教授／Prof. Shihmin Lo, Ph.D.</strong>
+            <strong data-i18n="project_meta_advisor_value">梅筱珍 教授／羅世民 博士</strong>
           </div>
           <div class="project-meta-item">
-            <span data-i18n="project_meta_department_label">Department</span>
-            <strong data-i18n="project_meta_department_value">Department of International Business Studies, National Chi Nan University</strong>
+            <span data-i18n="project_meta_department_label">系所</span>
+            <strong data-i18n="project_meta_department_value">國立暨南國際大學國際企業學系</strong>
           </div>
           <div class="project-meta-item">
             <span data-i18n="project_meta_date_label">繳交日期</span>
@@ -5723,11 +5656,11 @@
             </div>
             <div class="timeline-item">
               <div class="timeline-year">2021</div>
-              <div><h3 data-i18n="history2021Title">製程與 DDR5</h3><p data-i18n="history2021">第一代 10nm class process technology pilot run；DDR5 product development。</p></div>
+              <div><h3 data-i18n="history2021Title">製程與 DDR5</h3><p data-i18n="history2021">第一代 10nm 級製程試產；DDR5 產品開發。</p></div>
             </div>
             <div class="timeline-item">
               <div class="timeline-year">2022</div>
-              <div><h3 data-i18n="history2022Title">新廠動土</h3><p data-i18n="history2022">New Fab Groundbreaking Ceremony，連結後續資本支出與製程升級。</p></div>
+              <div><h3 data-i18n="history2022Title">新廠動土</h3><p data-i18n="history2022">新廠動土典禮，連結後續資本支出與製程升級。</p></div>
             </div>
             <div class="timeline-item">
               <div class="timeline-year">2024</div>
@@ -5768,7 +5701,7 @@
         <div class="management-module">
           <div class="section-head" style="margin-top:34px;">
             <div>
-              <span class="mono-label" data-i18n="management_label">Management Team</span>
+              <span class="mono-label" data-i18n="management_label">管理團隊</span>
               <h3 class="section-title" data-i18n="management_title">治理與執行能力：把組織結構轉成策略行動</h3>
             </div>
             <p class="section-copy" data-i18n="management_copy">管理團隊不是履歷表，而是董事會、技術、營運與市場執行之間的能力配置。</p>
@@ -5871,7 +5804,7 @@
             </article>
             <article class="swot-cell">
               <h3 data-i18n="swotOpportunities">機會</h3>
-              <p data-i18n="swotO">AI server、DDR5、成熟製程供應缺口與客戶策略入股。</p>
+              <p data-i18n="swotO">AI 伺服器、DDR5、成熟製程供應缺口與客戶策略入股。</p>
             </article>
             <article class="swot-cell">
               <h3 data-i18n="swotThreats">威脅</h3>
@@ -5907,7 +5840,7 @@
         <div class="lifecycle-module">
           <div class="section-head">
             <div>
-              <span class="mono-label" data-i18n="lifecycle_label">Industry Lifecycle</span>
+              <span class="mono-label" data-i18n="lifecycle_label">產業生命週期</span>
               <h3 class="section-title" data-i18n="lifecycle_title">產品線生命週期判斷</h3>
             </div>
             <p class="section-copy" data-i18n="lifecycle_copy">DRAM 整體已是成熟且高度循環的產業，但南亞科不同產品線處在不同階段，必須分層配置資源。</p>
@@ -5927,40 +5860,40 @@
             <article class="lifecycle-card">
               <h3 data-i18n="lifecycle_card_1_stage">成熟期／現金流收割</h3>
               <dl>
-                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_1_product">DDR4 / LPDDR4</dd></div>
-                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_1_evidence">成熟 DRAM 仍受價格循環影響，但三大廠轉向 HBM 與高階 DDR5 後，部分成熟製程出現供應缺口。</dd></div>
-                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_1_response">維持 cash cow 角色，用穩定現金流支撐 DDR5、RDIMM 與新廠投資。</dd></div>
+                <div><dt data-i18n="lifecycle_product_label">產品</dt><dd data-i18n="lifecycle_card_1_product">DDR4／LPDDR4</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">依據</dt><dd data-i18n="lifecycle_card_1_evidence">成熟 DRAM 仍受價格循環影響，但三大廠轉向 HBM 與高階 DDR5 後，部分成熟製程出現供應缺口。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">策略回應</dt><dd data-i18n="lifecycle_card_1_response">維持現金牛角色，用穩定現金流支撐 DDR5、RDIMM 與新廠投資。</dd></div>
               </dl>
             </article>
             <article class="lifecycle-card">
               <h3 data-i18n="lifecycle_card_2_stage">成長期</h3>
               <dl>
-                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_2_product">DDR5 / RDIMM</dd></div>
-                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_2_evidence">AI server 與 general server 需求推升 RDIMM 與 DDR5 採購，南亞科 128GB DDR5 RDIMM 已通過功能測試。</dd></div>
-                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_2_response">將 DDR5 / RDIMM 作為中期主力產品，加速客戶驗證與產能配置。</dd></div>
+                <div><dt data-i18n="lifecycle_product_label">產品</dt><dd data-i18n="lifecycle_card_2_product">DDR5／RDIMM</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">依據</dt><dd data-i18n="lifecycle_card_2_evidence">AI 伺服器與一般伺服器需求推升 RDIMM 與 DDR5 採購，南亞科 128GB DDR5 RDIMM 已通過功能測試。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">策略回應</dt><dd data-i18n="lifecycle_card_2_response">將 DDR5／RDIMM 作為中期主力產品，加速客戶驗證與產能配置。</dd></div>
               </dl>
             </article>
             <article class="lifecycle-card">
               <h3 data-i18n="lifecycle_card_3_stage">導入至成長期</h3>
               <dl>
-                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_3_product">KGD / Custom Memory</dd></div>
-                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_3_evidence">KGD 與客製化記憶體適合高速、寬溫、特殊封裝與共同開發需求。</dd></div>
-                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_3_response">以 KGD 與客製化方案建立 B2B switching costs，避開 HBM 正面軍備競賽。</dd></div>
+                <div><dt data-i18n="lifecycle_product_label">產品</dt><dd data-i18n="lifecycle_card_3_product">KGD／客製化記憶體</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">依據</dt><dd data-i18n="lifecycle_card_3_evidence">KGD 與客製化記憶體適合高速、寬溫、特殊封裝與共同開發需求。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">策略回應</dt><dd data-i18n="lifecycle_card_3_response">以 KGD 與客製化方案建立 B2B 轉換成本，避開 HBM 正面軍備競賽。</dd></div>
               </dl>
             </article>
             <article class="lifecycle-card">
               <h3 data-i18n="lifecycle_card_4_stage">轉型風險／成熟紅海</h3>
               <dl>
-                <div><dt data-i18n="lifecycle_product_label">Product</dt><dd data-i18n="lifecycle_card_4_product">MCP / standard consumer DRAM</dd></div>
-                <div><dt data-i18n="lifecycle_evidence_label">Evidence</dt><dd data-i18n="lifecycle_card_4_evidence">MCP 與標準消費型 DRAM 面臨成熟市場價格壓力與中國供給擴張。</dd></div>
-                <div><dt data-i18n="lifecycle_response_label">Strategic response</dt><dd data-i18n="lifecycle_card_4_response">限制低毛利擴產，把產能導向車用、工控、網通等高黏著度客戶。</dd></div>
+                <div><dt data-i18n="lifecycle_product_label">產品</dt><dd data-i18n="lifecycle_card_4_product">MCP／標準消費型 DRAM</dd></div>
+                <div><dt data-i18n="lifecycle_evidence_label">依據</dt><dd data-i18n="lifecycle_card_4_evidence">MCP 與標準消費型 DRAM 面臨成熟市場價格壓力與中國供給擴張。</dd></div>
+                <div><dt data-i18n="lifecycle_response_label">策略回應</dt><dd data-i18n="lifecycle_card_4_response">限制低毛利擴產，把產能導向車用、工控、網通等高黏著度客戶。</dd></div>
               </dl>
             </article>
           </div>
         </div>
         <div class="competitor-matrix" data-competitor-matrix>
           <div>
-            <span class="mono-label" data-i18n="competitor_matrix_label">Competitor Analysis</span>
+            <span class="mono-label" data-i18n="competitor_matrix_label">競爭者分析</span>
             <h3 class="section-title" data-i18n="competitor_matrix_title">Market Commonality × Resource Similarity</h3>
             <p class="section-copy" data-i18n="competitor_matrix_copy">以市場重疊與資源相似度判斷主要競爭者帶來的壓力，點選公司查看南亞科應對方向。</p>
             <div class="competitor-map" aria-label="Competitor matrix map">
@@ -6104,7 +6037,7 @@
           <div class="asp-grid">
             <div class="asp-panel">
               <span class="lab-kicker" data-i18n="aspScenarioKicker">教學情境／敏感度指標</span>
-              <h3 data-i18n="aspLabTitle">ASP Shock Lab｜DRAM 景氣敏感度模擬器</h3>
+              <h3 data-i18n="aspLabTitle">DRAM 景氣敏感度模擬器</h3>
               <p data-i18n="aspLabLead">拖曳 DRAM 報價、稼動率與 CapEx 壓力，觀察營收指數、毛利壓力、EPS 方向與新廠投資韌性如何變化。此模擬為教學用策略敏感度情境，不代表南亞科財務預測。</p>
               <div class="asp-control">
                 <label for="aspChange"><span data-i18n="aspChangeLabel">ASP 變動</span> <strong id="aspChangeValue">0%</strong></label>
@@ -6152,7 +6085,7 @@
         </div>
         <div id="portfolio-scenario-switcher" class="scenario-lab" data-voice-summary="Strategy Lab Portfolio Scenario Switcher">
           <span class="scenario-meta" data-i18n="strategySimulationLabel">策略模擬</span>
-          <h3 data-i18n="scenarioTitle">Portfolio Scenario Switcher｜產品策略情境切換器</h3>
+          <h3 data-i18n="scenarioTitle">產品策略情境切換器</h3>
           <p data-i18n="scenarioLead">切換策略情境，觀察產品點位、資本配置、風險回報與策略意涵如何改變。</p>
           <div class="scenario-buttons" id="scenarioButtons" aria-label="Portfolio scenarios"></div>
           <div class="scenario-panel" id="scenarioPanel" aria-live="polite"></div>
@@ -6168,7 +6101,7 @@
         </div>
         <details class="source-note">
           <summary data-i18n="sourceSummary">來源</summary>
-          <p data-i18n="portfolioSourceNote">來源：南亞科技官方 DDR5、LPDDR5/5X、KGD、RDIMM 與 MCP/eMCP/uMCP 產品資料頁；Available / In Development 依官方產品頁呈現。</p>
+          <p data-i18n="portfolioSourceNote">來源：南亞科技官方 DDR5、LPDDR5/5X、KGD、RDIMM 與 MCP/eMCP/uMCP 產品資料頁；供應中／開發中狀態依官方產品頁呈現。</p>
         </details>
         <details class="source-note glossary-note">
           <summary data-i18n="glossaryPortfolioSummary">展開產品配置關鍵字卡</summary>
@@ -6259,29 +6192,29 @@
         <div class="dynamic-capability-module">
           <div class="section-head">
             <div>
-              <span class="mono-label" data-i18n="dynamic_label">Dynamic Capabilities</span>
+              <span class="mono-label" data-i18n="dynamic_label">動態能力</span>
               <h3 class="section-title" data-i18n="dynamic_title">動態能力：把週期訊號轉成資源重組</h3>
             </div>
             <p class="section-copy" data-i18n="dynamic_copy">南亞科的競爭優勢不只來自既有資源，而是來自辨識外部訊號、捕捉策略機會，並重新配置產品、資本與客戶關係的能力。</p>
           </div>
-          <div class="dynamic-capability-flow" aria-label="Sensing Seizing Transforming flow">
+          <div class="dynamic-capability-flow" aria-label="感知、掌握、重組流程">
             <article class="process-step">
-              <span data-i18n="dynamic_sensing_title">Sensing</span>
-              <p data-i18n="dynamic_sensing_copy">偵測 AI server 從 HBM 延伸到 general server、RDIMM 與 conventional DRAM 的需求變化；看見 DDR5、LPDDR5/5X、成熟 DRAM 缺口與地緣供應鏈重組機會。</p>
+              <span data-i18n="dynamic_sensing_title">感知機會</span>
+              <p data-i18n="dynamic_sensing_copy">偵測 AI 伺服器從 HBM 延伸到一般伺服器、RDIMM 與傳統 DRAM 的需求變化；看見 DDR5、LPDDR5/5X、成熟 DRAM 缺口與地緣供應鏈重組機會。</p>
             </article>
             <article class="process-step">
-              <span data-i18n="dynamic_seizing_title">Seizing</span>
+              <span data-i18n="dynamic_seizing_title">掌握機會</span>
               <p data-i18n="dynamic_seizing_copy">透過私募引進 Kioxia、SanDisk、Solidigm、Cisco 等策略投資人；將資金、長期供應協議與策略客戶關係轉成產能投資與需求鎖定。</p>
             </article>
             <article class="process-step">
-              <span data-i18n="dynamic_transforming_title">Transforming</span>
+              <span data-i18n="dynamic_transforming_title">重組資源</span>
               <p data-i18n="dynamic_transforming_copy">從 DDR4／LPDDR4 成熟產品，轉向 DDR5、RDIMM、KGD、客製化 AI 記憶體與新廠量產準備；將價格循環曝險轉為 B2B 利基記憶體與長期客戶關係。</p>
             </article>
           </div>
         </div>
         <details class="source-note">
           <summary data-i18n="sourceSummary">來源</summary>
-          <p data-i18n="resourcesSourceNote">來源：南亞科技官方財務結果與 Corporate Milestone；Value Chain 與 KBV 為本研究依公開資料進行之策略分析。</p>
+          <p data-i18n="resourcesSourceNote">來源：南亞科技官方財務結果與公司里程碑；價值鏈與 KBV 為本研究依公開資料進行之策略分析。</p>
         </details>
       </div>
     </section>
@@ -6332,7 +6265,7 @@
         <div class="chart-card analysis-table-card" aria-labelledby="strategy-checklist-title" style="margin-top:28px;">
           <span class="scenario-meta" data-i18n="strategyChecklistKicker">國際策略管理</span>
           <h3 id="strategy-checklist-title" data-i18n="strategyChecklistTitle">國際策略管理檢核：南亞科如何成長？</h3>
-          <p class="section-copy" data-i18n="strategyChecklistSummary">從 2021 年後資料來看，南亞科的成長不是單一策略，而是「有機成長＋相關多角化＋策略聯盟＋集團型垂直支援＋區域擴張」的組合。公司以 1Anm pilot run、DDR5 開發、新 Fab 與 2026 CapEx 建立有機成長基礎；以 DDR5、LPDDR5/5X、KGD、MCP 與模組產品形成 DRAM 核心周邊的相關多角化；以 Kioxia、PieceMakers、SanDisk、Cisco、Solidigm 等夥伴建立技術、股權與供應協議型策略聯盟；並透過台塑集團電子產業鏈取得資源背書與價值鏈支援。相較之下，2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。</p>
+          <p class="section-copy" data-i18n="strategyChecklistSummary">從 2021 年後資料來看，南亞科的成長不是單一策略，而是「有機成長＋相關多角化＋策略聯盟＋集團型垂直支援＋區域擴張」的組合。公司以 1Anm 製程試產、DDR5 開發、新廠與 2026 CapEx 建立有機成長基礎；以 DDR5、LPDDR5/5X、KGD、MCP 與模組產品形成 DRAM 核心周邊的相關多角化；以 Kioxia、PieceMakers、SanDisk、Cisco、Solidigm 等夥伴建立技術、股權與供應協議型策略聯盟；並透過台塑集團電子產業鏈取得資源背書與價值鏈支援。相較之下，2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。</p>
           <div class="rail-header">
             <p class="rail-hint" data-i18n="strategyChecklistHint">左右滑動查看 6 種成長路徑</p>
             <div class="rail-nav">
@@ -6347,19 +6280,19 @@
           <div class="team-rule-grid strategy-checklist-rail" aria-label="國際策略管理檢核矩陣" data-i18n-aria-label="strategyChecklistAriaLabel" tabindex="0">
             <article class="team-rule-card">
               <span class="strategy-tag" data-i18n="strategyChecklist1Badge">主軸</span>
-              <h3 data-i18n="strategyChecklist1Concept">有機成長 Organic Growth</h3>
+              <h3 data-i18n="strategyChecklist1Concept">有機成長</h3>
               <dl class="detail-list">
                 <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
                 <dd data-i18n="strategyChecklist1Judgement">南亞科的主要成長路徑是有機成長。</dd>
                 <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
-                <dd data-i18n="strategyChecklist1Evidence">2021 年第一代 10nm class 製程 1Anm pilot run，並啟動 DDR5 product development；2022 年新 Fab 動土；2026 年計畫 CapEx 約新台幣 500 億元。</dd>
+                <dd data-i18n="strategyChecklist1Evidence">2021 年第一代 10nm 級 1Anm 製程試產，並啟動 DDR5 產品開發；2022 年新廠動土；2026 年計畫 CapEx 約新台幣 500 億元。</dd>
                 <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
                 <dd data-i18n="strategyChecklist1Reading">這代表公司主要透過自主研發、製程升級、新廠與設備投資累積能力，而不是靠併購快速擴張。</dd>
               </dl>
             </article>
             <article class="team-rule-card">
               <span class="strategy-tag" data-i18n="strategyChecklist2Badge">有</span>
-              <h3 data-i18n="strategyChecklist2Concept">相關多角化 Related Diversification</h3>
+              <h3 data-i18n="strategyChecklist2Concept">相關多角化</h3>
               <dl class="detail-list">
                 <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
                 <dd data-i18n="strategyChecklist2Judgement">南亞科的多角化屬於相關多角化，不是跨產業多角化。</dd>
@@ -6371,43 +6304,43 @@
             </article>
             <article class="team-rule-card">
               <span class="strategy-tag" data-i18n="strategyChecklist3Badge">最關鍵</span>
-              <h3 data-i18n="strategyChecklist3Concept">策略聯盟 Strategic Alliance</h3>
+              <h3 data-i18n="strategyChecklist3Concept">策略聯盟</h3>
               <dl class="detail-list">
                 <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
                 <dd data-i18n="strategyChecklist3Judgement">策略聯盟是南亞科突破規模劣勢的核心工具。</dd>
                 <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
-                <dd data-i18n="strategyChecklist3Evidence">2024 年與 Kioxia 共同開發 Vertical Channel Transistor DRAM／OCTRAM 技術；同年投資 PieceMakers 合作開發客製化超高頻寬記憶體；2026 年透過約 US$2.5 billion 私募引入 SanDisk、Solidigm、Cisco、Kioxia，並與 SanDisk、Kioxia 建立多年期／長期 DRAM 供應協議。</dd>
+                <dd data-i18n="strategyChecklist3Evidence">2024 年與 Kioxia 共同開發 Vertical Channel Transistor DRAM／OCTRAM 技術；同年投資 PieceMakers 合作開發客製化超高頻寬記憶體；2026 年透過約 25 億美元私募引入 SanDisk、Solidigm、Cisco、Kioxia，並與 SanDisk、Kioxia 建立多年期／長期 DRAM 供應協議。</dd>
                 <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
                 <dd data-i18n="strategyChecklist3Reading">這不是單純財務投資，而是技術合作、股權合作、供應協議與需求綁定的組合。</dd>
               </dl>
             </article>
             <article class="team-rule-card">
               <span class="strategy-tag" data-i18n="strategyChecklist4Badge">有但需保守解讀</span>
-              <h3 data-i18n="strategyChecklist4Concept">集團型垂直支援 Group-Based Vertical Support</h3>
+              <h3 data-i18n="strategyChecklist4Concept">集團型垂直支援</h3>
               <dl class="detail-list">
                 <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
                 <dd data-i18n="strategyChecklist4Judgement">南亞科不宜寫成完整垂直整合，應寫成「集團型垂直支援」。</dd>
                 <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
-                <dd data-i18n="strategyChecklist4Evidence">台塑集團官方資料顯示，其半導體垂直整合從 Formosa Sumco 的矽晶圓、南亞科技的 DRAM 研發設計製造銷售，到 Formosa Advanced Tech 的 IC 封裝測試；集團電子事業也包含 PCB 與 IC substrate。</dd>
+                <dd data-i18n="strategyChecklist4Evidence">台塑集團官方資料顯示，其半導體垂直整合從 Formosa Sumco 的矽晶圓、南亞科技的 DRAM 研發設計製造銷售，到 Formosa Advanced Tech 的 IC 封裝測試；集團電子事業也包含 PCB 與 IC 載板。</dd>
                 <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
                 <dd data-i18n="strategyChecklist4Reading">這代表南亞科能取得集團資源、電子產業鏈與價值鏈支援，但不應誇大成所有供應鏈環節都由南亞科內部化。</dd>
               </dl>
             </article>
             <article class="team-rule-card">
               <span class="strategy-tag" data-i18n="strategyChecklist5Badge">有</span>
-              <h3 data-i18n="strategyChecklist5Concept">區域擴張 Regional Expansion / International Configuration</h3>
+              <h3 data-i18n="strategyChecklist5Concept">區域擴張與國際化配置</h3>
               <dl class="detail-list">
                 <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
                 <dd data-i18n="strategyChecklist5Judgement">南亞科的國際化不是單純海外銷售，而是「台灣製造基地＋全球技術支援網絡」。</dd>
                 <dt data-i18n="strategyChecklistEvidenceLabel">2021 年後證據</dt>
-                <dd data-i18n="strategyChecklist5Evidence">既有資料提到台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務；補充資料顯示日本辦公室提供 SI measurement 與技術支援，歐洲杜塞道夫團隊支援 automotive、industrial、networking、consumer、IoT segments，美國也有 Vermont 與 Texas Design Center。</dd>
+                <dd data-i18n="strategyChecklist5Evidence">既有資料提到台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務；補充資料顯示日本辦公室提供 SI 量測與技術支援，歐洲杜塞道夫團隊支援車用、工業、網通、消費性電子與 IoT 應用，美國也有 Vermont 與 Texas 設計中心。</dd>
                 <dt data-i18n="strategyChecklistReadingLabel">國際策略管理解讀</dt>
                 <dd data-i18n="strategyChecklist5Reading">這應整理為區域擴張／國際化配置，而不是只看成海外銷售據點。</dd>
               </dl>
             </article>
             <article class="team-rule-card">
               <span class="strategy-tag" data-i18n="strategyChecklist6Badge">非主軸</span>
-              <h3 data-i18n="strategyChecklist6Concept">併購判斷 M&amp;A</h3>
+              <h3 data-i18n="strategyChecklist6Concept">併購判斷</h3>
               <dl class="detail-list">
                 <dt data-i18n="strategyChecklistJudgementLabel">南亞科判斷</dt>
                 <dd data-i18n="strategyChecklist6Judgement">2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。</dd>
@@ -6448,7 +6381,7 @@
           </details>
         </div>
         <div class="chart-card analysis-table-card">
-          <h3 data-i18n="placementTitle">2026 策略私募投資配置｜約 NT$790 億</h3>
+          <h3 data-i18n="placementTitle">2026 策略私募投資配置｜約新台幣 790 億元</h3>
           <div class="placement-visual" id="placementVisual" aria-label="Private placement allocation"></div>
           <details class="source-note">
             <summary data-i18n="sourceSummary">來源</summary>
@@ -6456,9 +6389,9 @@
           </details>
         </div>
         <div id="coopetition" class="universe-lab" data-voice-summary="Strategy Lab Co-opetition Universe Value Net relationship map">
-          <span class="lab-kicker" data-i18n="universeKicker">價值網（Value Net）／競合</span>
-          <h3 data-i18n="universeTitle">Co-opetition Universe｜南亞科的 Value Net：從 DRAM 供應商到策略生態系節點</h3>
-          <p data-i18n="universeLead">Value Net 不只列出利害關係人，而是檢視南亞科如何在 DRAM 寡占市場中，同時合作、競爭、綁定需求並降低供應鏈風險。</p>
+          <span class="lab-kicker" data-i18n="universeKicker">價值網／競合</span>
+          <h3 data-i18n="universeTitle">競合宇宙｜南亞科的價值網：從 DRAM 供應商到策略生態系節點</h3>
+          <p data-i18n="universeLead">價值網不只列出利害關係人，而是檢視南亞科如何在 DRAM 寡占市場中，同時合作、競爭、綁定需求並降低供應鏈風險。</p>
           <div class="universe-grid">
             <div class="universe-panel universe-map-desktop">
               <div id="universeMap" class="universe-map" aria-label="Value Net relationship map"></div>
@@ -6471,11 +6404,11 @@
           <details class="narrative-details">
             <summary data-i18n="summaryValueNet">展開四類節點完整彙整表</summary>
             <div class="chart-card analysis-table-card" style="margin-top:16px;">
-              <h3 data-i18n="valueNetTitle">Value Net 四類角色彙整</h3>
+              <h3 data-i18n="valueNetTitle">價值網四類角色彙整</h3>
               <table class="analysis-table" id="valueNetTable"></table>
               <details class="source-note">
                 <summary data-i18n="sourceSummary">來源</summary>
-                <p data-i18n="valueNetSourceNote">來源：Reuters 2026/03/26 與南亞科技 Corporate Milestone；SanDisk、Kioxia 供應協議與各投資者私募角色依公開資料呈現。</p>
+                <p data-i18n="valueNetSourceNote">來源：Reuters 2026/03/26 與南亞科技公司里程碑；SanDisk、Kioxia 供應協議與各投資者私募角色依公開資料呈現。</p>
               </details>
             </div>
           </details>
@@ -6483,7 +6416,7 @@
         <div class="challenge-module">
           <div class="section-head">
             <div>
-              <span class="mono-label" data-i18n="challenges_label">Future Challenges</span>
+              <span class="mono-label" data-i18n="challenges_label">未來挑戰</span>
               <h3 class="section-title" data-i18n="challenges_title">未來挑戰與策略建議</h3>
             </div>
             <p class="section-copy" data-i18n="challenges_copy">南亞科未來不應追求全產品線 DRAM 領導，而應以集中差異化策略，把現金流、策略股東與客製化記憶體轉成可持續競爭位置。</p>
@@ -6530,7 +6463,7 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="mono-label" data-i18n="careerKicker">CAREER INTELLIGENCE / 職涯洞察</span>
+            <span class="mono-label" data-i18n="careerKicker">職涯洞察</span>
             <h2 class="section-title" id="career-title" data-i18n="careerTitle">人才戰略如何支撐南亞科的技術轉型？</h2>
           </div>
           <p class="section-copy" data-i18n="careerLead">從 104 職缺可看出，南亞科的轉型需求集中在智慧製造系統、先進製程整合、B2B 客戶導入三種能力。</p>
@@ -6548,69 +6481,69 @@
         <div class="talent-command" id="talent-command" data-voice-summary="Talent Operating System maps 104 job postings to Nanya's strategic capabilities">
           <div class="talent-terminal">
             <div class="talent-command-head">
-              <span data-i18n="talentSystemLabel">TALENT SIGNAL / 104 JOBS</span>
+              <span data-i18n="talentSystemLabel">人才訊號／104 職缺</span>
               <strong data-i18n="talentSystemTitle">人才作業系統</strong>
               <p data-i18n="talentSystemCopy">從職缺資料讀取南亞科的能力缺口。</p>
             </div>
             <div class="talent-node-group" aria-label="Talent capability nodes" data-i18n-aria-label="talentNodeGroupLabel">
               <button class="talent-node is-active" type="button" data-talent-node="smart-fab" aria-expanded="true" aria-controls="talent-panel-smart-fab">
                 <span data-i18n="talentNode1Meta">01 / MES</span>
-                <strong data-i18n="talentNode1">Smart Fab / 智慧製造</strong>
+                <strong data-i18n="talentNode1">智慧製造</strong>
                 <small data-i18n="talentNode1Signal">MES 系統、異常分析、排程資料化</small>
               </button>
               <button class="talent-node" type="button" data-talent-node="process-migration" aria-expanded="false" aria-controls="talent-panel-process-migration">
                 <span data-i18n="talentNode2Meta">02 / Node</span>
-                <strong data-i18n="talentNode2">Process Migration / 製程升級</strong>
+                <strong data-i18n="talentNode2">製程升級</strong>
                 <small data-i18n="talentNode2Signal">製程整合、新技術、新製程開發</small>
               </button>
               <button class="talent-node" type="button" data-talent-node="customer-design-in" aria-expanded="false" aria-controls="talent-panel-customer-design-in">
                 <span data-i18n="talentNode3Meta">03 / B2B</span>
-                <strong data-i18n="talentNode3">Customer Design-in / 客戶導入</strong>
+                <strong data-i18n="talentNode3">客戶導入</strong>
                 <small data-i18n="talentNode3Signal">DRAM 系統驗證、相容性分析、RMA 故障分析</small>
               </button>
             </div>
           </div>
           <div class="talent-command-detail" aria-live="polite">
             <article class="talent-detail-panel" id="talent-panel-smart-fab" data-talent-panel="smart-fab">
-              <span class="mono-label" data-i18n="talentDetailLabel">STRATEGY CAPABILITY</span>
+              <span class="mono-label" data-i18n="talentDetailLabel">策略能力</span>
               <h3 data-i18n="talentSmartCapability">智慧製造資料系統</h3>
               <dl>
-                <div><dt data-i18n="talentRoleNeededLabel">Role Needed</dt><dd data-i18n="talentSmartRole">軟體開發工程師</dd></div>
-                <div><dt data-i18n="talentWhyLabel">Why It Matters</dt><dd data-i18n="talentSmartWhy">把 MES、異常分析、上線測試與排程系統嵌入晶圓廠日常，使新廠營運能被資料化與標準化。</dd></div>
-                <div><dt data-i18n="talentSkillsLabel">Key Skills</dt><dd data-i18n="talentSmartSkills">C, C++, Java, VB.NET, DB2, MS SQL, Oracle</dd></div>
+                <div><dt data-i18n="talentRoleNeededLabel">所需職務</dt><dd data-i18n="talentSmartRole">軟體開發工程師</dd></div>
+                <div><dt data-i18n="talentWhyLabel">策略意義</dt><dd data-i18n="talentSmartWhy">把 MES、異常分析、上線測試與排程系統嵌入晶圓廠日常，使新廠營運能被資料化與標準化。</dd></div>
+                <div><dt data-i18n="talentSkillsLabel">關鍵技能</dt><dd data-i18n="talentSmartSkills">C, C++, Java, VB.NET, DB2, MS SQL, Oracle</dd></div>
               </dl>
               <div class="talent-evidence-strip">
-                <div><span data-i18n="talentEvidenceSourceLabel">Source signal</span><strong data-i18n="talentEvidenceSource">104 job posting</strong></div>
-                <div><span data-i18n="talentEvidencePayLabel">Pay range</span><strong data-i18n="career1Pay">月薪 45,500–57,500 元</strong></div>
-                <div><span data-i18n="talentEvidenceLogicLabel">Organizational logic</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
+                <div><span data-i18n="talentEvidenceSourceLabel">來源訊號</span><strong data-i18n="talentEvidenceSource">104 職缺</strong></div>
+                <div><span data-i18n="talentEvidencePayLabel">薪資範圍</span><strong data-i18n="career1Pay">月薪 45,500–57,500 元</strong></div>
+                <div><span data-i18n="talentEvidenceLogicLabel">組織邏輯</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
               </div>
             </article>
             <article class="talent-detail-panel" id="talent-panel-process-migration" data-talent-panel="process-migration" hidden>
-              <span class="mono-label" data-i18n="talentDetailLabel">STRATEGY CAPABILITY</span>
+              <span class="mono-label" data-i18n="talentDetailLabel">策略能力</span>
               <h3 data-i18n="talentProcessCapability">先進製程整合與新技術開發</h3>
               <dl>
-                <div><dt data-i18n="talentRoleNeededLabel">Role Needed</dt><dd data-i18n="talentProcessRole">製程技術開發工程師</dd></div>
-                <div><dt data-i18n="talentWhyLabel">Why It Matters</dt><dd data-i18n="talentProcessWhy">製程升級不是單一設備採購，而是把製程整合、良率判讀與新技術開發沉澱成可複製的量產能力。</dd></div>
-                <div><dt data-i18n="talentSkillsLabel">Key Skills</dt><dd data-i18n="talentProcessSkills">半導體製程整合、新技術開發、工程背景、英文中等</dd></div>
+                <div><dt data-i18n="talentRoleNeededLabel">所需職務</dt><dd data-i18n="talentProcessRole">製程技術開發工程師</dd></div>
+                <div><dt data-i18n="talentWhyLabel">策略意義</dt><dd data-i18n="talentProcessWhy">製程升級不是單一設備採購，而是把製程整合、良率判讀與新技術開發沉澱成可複製的量產能力。</dd></div>
+                <div><dt data-i18n="talentSkillsLabel">關鍵技能</dt><dd data-i18n="talentProcessSkills">半導體製程整合、新技術開發、工程背景、英文中等</dd></div>
               </dl>
               <div class="talent-evidence-strip">
-                <div><span data-i18n="talentEvidenceSourceLabel">Source signal</span><strong data-i18n="talentEvidenceSource">104 job posting</strong></div>
-                <div><span data-i18n="talentEvidencePayLabel">Pay range</span><strong data-i18n="career3Pay">月薪 41,000–57,000 元</strong></div>
-                <div><span data-i18n="talentEvidenceLogicLabel">Organizational logic</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
+                <div><span data-i18n="talentEvidenceSourceLabel">來源訊號</span><strong data-i18n="talentEvidenceSource">104 職缺</strong></div>
+                <div><span data-i18n="talentEvidencePayLabel">薪資範圍</span><strong data-i18n="career3Pay">月薪 41,000–57,000 元</strong></div>
+                <div><span data-i18n="talentEvidenceLogicLabel">組織邏輯</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
               </div>
             </article>
             <article class="talent-detail-panel" id="talent-panel-customer-design-in" data-talent-panel="customer-design-in" hidden>
-              <span class="mono-label" data-i18n="talentDetailLabel">STRATEGY CAPABILITY</span>
+              <span class="mono-label" data-i18n="talentDetailLabel">策略能力</span>
               <h3 data-i18n="talentCustomerCapability">產品驗證與客戶導入能力</h3>
               <dl>
-                <div><dt data-i18n="talentRoleNeededLabel">Role Needed</dt><dd data-i18n="talentCustomerRole">系統分析工程師</dd></div>
-                <div><dt data-i18n="talentWhyLabel">Why It Matters</dt><dd data-i18n="talentCustomerWhy">DRAM 記憶體系統驗證、產品量產導入相容性分析、系統應用故障分析與 RMA 分析，能把客戶端問題回饋成可複製的產品導入知識。</dd></div>
-                <div><dt data-i18n="talentSkillsLabel">Key Skills</dt><dd data-i18n="talentCustomerSkills">DRAM 系統驗證、相容性分析、故障分析、產品量產導入</dd></div>
+                <div><dt data-i18n="talentRoleNeededLabel">所需職務</dt><dd data-i18n="talentCustomerRole">系統分析工程師</dd></div>
+                <div><dt data-i18n="talentWhyLabel">策略意義</dt><dd data-i18n="talentCustomerWhy">DRAM 記憶體系統驗證、產品量產導入相容性分析、系統應用故障分析與 RMA 分析，能把客戶端問題回饋成可複製的產品導入知識。</dd></div>
+                <div><dt data-i18n="talentSkillsLabel">關鍵技能</dt><dd data-i18n="talentCustomerSkills">DRAM 系統驗證、相容性分析、故障分析、產品量產導入</dd></div>
               </dl>
               <div class="talent-evidence-strip">
-                <div><span data-i18n="talentEvidenceSourceLabel">Source signal</span><strong data-i18n="talentEvidenceSource">104 job posting</strong></div>
-                <div><span data-i18n="talentEvidencePayLabel">Pay range</span><strong data-i18n="career2Pay">月薪 41,000–57,000 元</strong></div>
-                <div><span data-i18n="talentEvidenceLogicLabel">Organizational logic</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
+                <div><span data-i18n="talentEvidenceSourceLabel">來源訊號</span><strong data-i18n="talentEvidenceSource">104 職缺</strong></div>
+                <div><span data-i18n="talentEvidencePayLabel">薪資範圍</span><strong data-i18n="career2Pay">月薪 41,000–57,000 元</strong></div>
+                <div><span data-i18n="talentEvidenceLogicLabel">組織邏輯</span><strong data-i18n="talentEvidenceLogic">KBV</strong></div>
               </div>
             </article>
           </div>
@@ -6618,7 +6551,7 @@
 
         <div class="career-takeaway-strip">
           <div>
-            <span class="mono-label" data-i18n="careerTakeawayStripLabel">Career takeaway</span>
+            <span class="mono-label" data-i18n="careerTakeawayStripLabel">職涯結論</span>
             <p data-i18n="careerTakeawayStrip">職缺訊號顯示，南亞科的人才需求不是單純補人，而是把 MES、製程整合與系統驗證與客戶導入經驗沉澱成可重複使用的組織知識。</p>
           </div>
           <div class="career-takeaway-tags" aria-label="Capability tags" data-i18n-aria-label="careerTagsLabel">
@@ -6739,16 +6672,16 @@
               </div>
             </div>
             <div class="source-list" aria-label="Reference links">
-              <a href="https://www.nanya.com/en/IR/35/Company%20Profile" target="_blank" rel="noreferrer">Nanya Technology — Investor Relations — Company Profile <span data-i18n="sourceBadgeOfficial">官方</span></a>
-              <a href="https://www.nanya.com/en/IR/16/Press%20Release?IRId=11068" target="_blank" rel="noreferrer">2025 全年財務結果 / 2025 results <span data-i18n="sourceBadgeIR">投資人關係</span></a>
-              <a href="https://www.nanya.com/en/IR/39/Financial%20Reports?Year=2025" target="_blank" rel="noreferrer">2025 合併財務報告 / 2025 Financial Reports <span data-i18n="sourceBadgeIR">投資人關係</span></a>
-              <a href="https://www.nanya.com/en/About/27/Corporate%20Milestone" target="_blank" rel="noreferrer">Corporate Milestone <span data-i18n="sourceBadgeOfficial">官方</span></a>
-              <a href="https://www.nanya.com/en/Product/List/450/2478" target="_blank" rel="noreferrer">DDR5 Product List <span data-i18n="sourceBadgeProduct">官方產品</span></a>
-              <a href="https://www.nanya.com/en/Product/List/547/6587" target="_blank" rel="noreferrer">LPDDR5/5X Product List <span data-i18n="sourceBadgeProduct">官方產品</span></a>
-              <a href="https://www.nanya.com/en/Product/List/452/6587" target="_blank" rel="noreferrer">KGD LPDDR5/5X Product List <span data-i18n="sourceBadgeProduct">官方產品</span></a>
-              <a href="https://www.nanya.com/en/Product/List/2418/7610" target="_blank" rel="noreferrer">RDIMM Product List <span data-i18n="sourceBadgeProduct">官方產品</span></a>
-              <a href="https://www.trendforce.com.tw/presscenter/news/20260226-12938.html" target="_blank" rel="noreferrer">TrendForce DRAM 產業研究 / DRAM research <span data-i18n="sourceBadgeResearch">研究</span></a>
-              <a href="https://www.reuters.com/world/asia-pacific/nanya-technology-shares-surge-10-after-25-billion-private-placement-2026-03-26/" target="_blank" rel="noreferrer">Reuters 私募新聞 / Private-placement news <span data-i18n="sourceBadgeNews">新聞</span></a>
+              <a href="https://www.nanya.com/en/IR/35/Company%20Profile" target="_blank" rel="noreferrer">南亞科技公司簡介 <span data-i18n="sourceBadgeOfficial">官方</span></a>
+              <a href="https://www.nanya.com/en/IR/16/Press%20Release?IRId=11068" target="_blank" rel="noreferrer">2025 全年財務結果 <span data-i18n="sourceBadgeIR">投資人關係</span></a>
+              <a href="https://www.nanya.com/en/IR/39/Financial%20Reports?Year=2025" target="_blank" rel="noreferrer">2025 合併財務報告 <span data-i18n="sourceBadgeIR">投資人關係</span></a>
+              <a href="https://www.nanya.com/en/About/27/Corporate%20Milestone" target="_blank" rel="noreferrer">公司里程碑 <span data-i18n="sourceBadgeOfficial">官方</span></a>
+              <a href="https://www.nanya.com/en/Product/List/450/2478" target="_blank" rel="noreferrer">DDR5 產品清單 <span data-i18n="sourceBadgeProduct">官方產品</span></a>
+              <a href="https://www.nanya.com/en/Product/List/547/6587" target="_blank" rel="noreferrer">LPDDR5/5X 產品清單 <span data-i18n="sourceBadgeProduct">官方產品</span></a>
+              <a href="https://www.nanya.com/en/Product/List/452/6587" target="_blank" rel="noreferrer">KGD LPDDR5/5X 產品清單 <span data-i18n="sourceBadgeProduct">官方產品</span></a>
+              <a href="https://www.nanya.com/en/Product/List/2418/7610" target="_blank" rel="noreferrer">RDIMM 產品清單 <span data-i18n="sourceBadgeProduct">官方產品</span></a>
+              <a href="https://www.trendforce.com.tw/presscenter/news/20260226-12938.html" target="_blank" rel="noreferrer">TrendForce DRAM 產業研究 <span data-i18n="sourceBadgeResearch">研究</span></a>
+              <a href="https://www.reuters.com/world/asia-pacific/nanya-technology-shares-surge-10-after-25-billion-private-placement-2026-03-26/" target="_blank" rel="noreferrer">Reuters 私募新聞 <span data-i18n="sourceBadgeNews">新聞</span></a>
               <a href="https://www.104.com.tw/company/152cvzls?jobsource=index_s_cs" target="_blank" rel="noreferrer" data-i18n="careerSourceLink">104 南亞科技公司頁｜工作機會與職缺資訊</a>
             </div>
           </div>
@@ -6837,7 +6770,7 @@
               </article>
             </div>
             <div class="member-strip" aria-label="G6 team members" style="margin-top:28px;">
-              <span class="member-strip-label"><span data-i18n="membersLabel">G6 Members</span><span data-i18n="memberSwitchHint" style="text-transform: none; font-weight: normal; margin-left: 8px; font-family: var(--font-body); opacity: 0.82;">（點選成員姓名可切換下方影片）</span></span>
+              <span class="member-strip-label"><span data-i18n="membersLabel">第六組成員</span><span data-i18n="memberSwitchHint" style="text-transform: none; font-weight: normal; margin-left: 8px; font-family: var(--font-body); opacity: 0.82;">（點選成員姓名可切換下方影片）</span></span>
               <div class="member-grid">
                 <button class="member-cell member-video-tab is-active" type="button" data-member-name="楊承逸" aria-pressed="true">
                   <span class="member-name">楊承逸</span>
@@ -6886,7 +6819,7 @@
 
                 <div class="member-video-frame" id="memberVideoFrame">
                   <button class="member-video-poster" id="memberVideoPoster" type="button" aria-label="播放楊承逸的影片">
-                    <span class="member-video-poster-kicker">YOUTUBE / REFLECTION</span>
+                    <span class="member-video-poster-kicker">心得影片</span>
                     <strong id="memberVideoPosterName">楊承逸</strong>
                     <span class="member-video-play">
                       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -6906,7 +6839,7 @@
   <div class="story-overlay" id="storyMode" aria-hidden="true">
     <section class="story-frame" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
       <div class="story-head">
-        <span class="story-kicker" id="storyCount" aria-live="polite">STRATEGY STORY / 01</span>
+        <span class="story-kicker" id="storyCount" aria-live="polite">策略故事／01</span>
         <button class="story-close" id="storyCloseBtn" type="button" aria-label="Close presentation" data-i18n="storyClose">Close</button>
       </div>
       <div class="story-slide" id="storySlide"></div>
@@ -6929,8 +6862,8 @@
         <span data-i18n="footerCourse">1142 國際策略管理</span>
         <span data-i18n="footerCourseEn">Strategic Management of Multinational Corporations</span>
         <span data-i18n="footerTeacher">授課教師：梅筱珍</span>
-        <span data-i18n="footerAdvisorEn">指導老師：Prof. Shihmin Lo, Ph.D.</span>
-        <span data-i18n="footerDepartmentEn">Department of International Business Studies, National Chi Nan University</span>
+        <span data-i18n="footerAdvisorEn">指導老師：羅世民 博士</span>
+        <span data-i18n="footerDepartmentEn">國立暨南國際大學國際企業學系</span>
         <span data-i18n="footerDeploy">GitHub Pages Ready</span>
       </div>
     </div>
@@ -6984,8 +6917,7 @@
         strategySimulationLabel: "策略模擬",
         resourcesKicker: "VRIN 資源",
         growthKicker: "成長策略",
-        careerKicker: "CAREER INTELLIGENCE / 職涯洞察",
-        reactorKicker: "KBV／技能到能力",
+        careerKicker: "職涯洞察",
         career1Kicker: "MES／智慧製造",
         career2Kicker: "系統分析／產品驗證",
         career3Kicker: "研發／製程整合",
@@ -7044,13 +6976,13 @@
         project_meta_group_label: "組別",
         project_meta_group_value: "第六組",
         project_meta_advisor_label: "授課教師／指導老師",
-        project_meta_advisor_value: "梅筱珍 教授／Prof. Shihmin Lo, Ph.D.",
+        project_meta_advisor_value: "梅筱珍 教授／羅世民 博士",
         project_meta_department_label: "系所",
-        project_meta_department_value: "Department of International Business Studies, National Chi Nan University",
+        project_meta_department_value: "國立暨南國際大學國際企業學系",
         project_meta_date_label: "繳交日期",
         footerCourseEn: "Strategic Management of Multinational Corporations",
-        footerAdvisorEn: "指導老師：Prof. Shihmin Lo, Ph.D.",
-        footerDepartmentEn: "Department of International Business Studies, National Chi Nan University",
+        footerAdvisorEn: "指導老師：羅世民 博士",
+        footerDepartmentEn: "國立暨南國際大學國際企業學系",
         heroLead: "南亞科技展現台灣記憶體廠在技術升級、產能配置與全球客戶關係中的策略位置。",
         heroPrimary: "開始瀏覽",
         heroSecondary: "進入互動測驗",
@@ -7087,7 +7019,7 @@
         teamProcess4Label: "Step 04",
         teamProcess4Title: "實務對照與驗收",
         teamProcess4Body: "在專案即將收尾時，其中某組員還剛好發現了摩根士丹利（Morgan Stanley）對南亞科的最新外資報告，讓我們得以對照我們的推論與市場最新法人判斷，最後合力完成多載具的測試與驗收。",
-        membersLabel: "G6 Members",
+        membersLabel: "第六組成員",
         memberSwitchHint: "（點選成員姓名可切換下方影片）",
         memberProgramLabel: "系級",
         memberGroupLabel: "組別",
@@ -7144,7 +7076,7 @@
         orgFunctionLabel: "功能",
         orgFunctionMapTitle: "功能支援",
         orgFunctionMapBody: "研發製程、晶圓製造、銷售支援、財務永續與人力資源支撐策略執行。",
-        management_label: "Management Team",
+        management_label: "管理團隊",
         management_title: "治理與執行能力：\u200b把組織結構\u200b轉成策略行動",
         management_copy: "管理團隊不是履歷表，而是董事會、技術、營運與市場執行之間的能力配置。",
         management_card_1_title: "董事會與集團連結",
@@ -7188,52 +7120,52 @@
         sourceSummary: "來源",
         marketSourceNote: "TrendForce 2026/02/26 DRAM 產業統計；Nanya 市占依營收與產業總營收計算。",
         source_basis_note: "資料基礎：南亞科官網、法說資料、TrendForce、Reuters。",
-        lifecycle_label: "Industry Lifecycle",
+        lifecycle_label: "產業生命週期",
         lifecycle_title: "產品線生命週期判斷",
         lifecycle_copy: "DRAM 整體已是成熟且高度循環的產業，但南亞科不同產品線處在不同階段，必須分層配置資源。",
         lifecycle_hint: "左右滑動查看產品線階段",
         lifecycle_prev_label: "上一張生命週期卡片",
         lifecycle_next_label: "下一張生命週期卡片",
-        lifecycle_product_label: "Product",
-        lifecycle_evidence_label: "Evidence",
-        lifecycle_response_label: "Strategic response",
+        lifecycle_product_label: "產品",
+        lifecycle_evidence_label: "依據",
+        lifecycle_response_label: "策略回應",
         lifecycle_card_1_stage: "成熟期／現金流收割",
-        lifecycle_card_1_product: "DDR4 / LPDDR4",
+        lifecycle_card_1_product: "DDR4／LPDDR4",
         lifecycle_card_1_evidence: "成熟 DRAM 仍受價格循環影響，但三大廠轉向 HBM 與高階 DDR5 後，部分成熟製程出現供應缺口。",
-        lifecycle_card_1_response: "維持 cash cow 角色，用穩定現金流支撐 DDR5、RDIMM 與新廠投資。",
+        lifecycle_card_1_response: "維持現金牛角色，用穩定現金流支撐 DDR5、RDIMM 與新廠投資。",
         lifecycle_card_2_stage: "成長期",
-        lifecycle_card_2_product: "DDR5 / RDIMM",
-        lifecycle_card_2_evidence: "AI server 與 general server 需求推升 RDIMM 與 DDR5 採購，南亞科 128GB DDR5 RDIMM 已通過功能測試。",
-        lifecycle_card_2_response: "將 DDR5 / RDIMM 作為中期主力產品，加速客戶驗證與產能配置。",
+        lifecycle_card_2_product: "DDR5／RDIMM",
+        lifecycle_card_2_evidence: "AI 伺服器與一般伺服器需求推升 RDIMM 與 DDR5 採購，南亞科 128GB DDR5 RDIMM 已通過功能測試。",
+        lifecycle_card_2_response: "將 DDR5／RDIMM 作為中期主力產品，加速客戶驗證與產能配置。",
         lifecycle_card_3_stage: "導入至成長期",
-        lifecycle_card_3_product: "KGD / Custom Memory",
+        lifecycle_card_3_product: "KGD／客製化記憶體",
         lifecycle_card_3_evidence: "KGD 與客製化記憶體適合高速、寬溫、特殊封裝與共同開發需求。",
-        lifecycle_card_3_response: "以 KGD 與客製化方案建立 B2B switching costs，避開 HBM 正面軍備競賽。",
+        lifecycle_card_3_response: "以 KGD 與客製化方案建立 B2B 轉換成本，避開 HBM 正面軍備競賽。",
         lifecycle_card_4_stage: "轉型風險／成熟紅海",
-        lifecycle_card_4_product: "MCP / standard consumer DRAM",
+        lifecycle_card_4_product: "MCP／標準消費型 DRAM",
         lifecycle_card_4_evidence: "MCP 與標準消費型 DRAM 面臨成熟市場價格壓力與中國供給擴張。",
         lifecycle_card_4_response: "限制低毛利擴產，把產能導向車用、工控、網通等高黏著度客戶。",
-        competitor_matrix_label: "Competitor Analysis",
-        competitor_matrix_title: "Market Commonality × Resource Similarity",
+        competitor_matrix_label: "競爭者分析",
+        competitor_matrix_title: "市場重疊 × 資源相似",
         competitor_matrix_copy: "以市場重疊與資源相似度判斷主要競爭者帶來的壓力，點選公司查看南亞科應對方向。",
-        competitor_axis_market: "Market Commonality",
-        competitor_axis_resource: "Resource Similarity",
-        competitor_quadrant_1: "高市場重疊 / 高資源相似",
-        competitor_quadrant_2: "低市場重疊 / 高資源相似",
-        competitor_quadrant_3: "低市場重疊 / 低資源相似",
-        competitor_quadrant_4: "高市場重疊 / 低資源相似",
-        competitor_detail_why_label: "Why it matters",
-        competitor_detail_pressure_label: "Direct pressure",
-        competitor_detail_response_label: "Nanya's response",
+        competitor_axis_market: "市場重疊",
+        competitor_axis_resource: "資源相似",
+        competitor_quadrant_1: "高市場重疊／高資源相似",
+        competitor_quadrant_2: "低市場重疊／高資源相似",
+        competitor_quadrant_3: "低市場重疊／低資源相似",
+        competitor_quadrant_4: "高市場重疊／低資源相似",
+        competitor_detail_why_label: "策略意義",
+        competitor_detail_pressure_label: "直接壓力",
+        competitor_detail_response_label: "南亞科回應",
         financeCapexSourceNote: "來源：南亞科技 2025 Q4 Results Press Release；2025 實際 CapEx 為 134 億元，2026 計畫 CapEx 約 500 億元且待董事會核准，新廠設備預計 2027 年初進駐。",
-        portfolioSourceNote: "來源：南亞科技官方 DDR5、LPDDR5/5X、KGD、RDIMM 與 MCP/eMCP/uMCP 產品資料頁；Available / In Development 依官方產品頁呈現。",
-        resourcesSourceNote: "來源：南亞科技官方財務結果與 Corporate Milestone；Value Chain 與 KBV 為本研究依公開資料進行之策略分析。",
-        valueNetSourceNote: "來源：Reuters 2026/03/26 與南亞科技 Corporate Milestone；SanDisk、Kioxia 供應協議與各投資者私募角色依公開資料呈現。",
-        placementTitle: "2026 策略私募投資配置｜約 NT$790 億",
+        portfolioSourceNote: "來源：南亞科技官方 DDR5、LPDDR5/5X、KGD、RDIMM 與 MCP/eMCP/uMCP 產品資料頁；供應中／開發中狀態依官方產品頁呈現。",
+        resourcesSourceNote: "來源：南亞科技官方財務結果與公司里程碑；價值鏈與 KBV 為本研究依公開資料進行之策略分析。",
+        valueNetSourceNote: "來源：Reuters 2026/03/26 與南亞科技公司里程碑；SanDisk、Kioxia 供應協議與各投資者私募角色依公開資料呈現。",
+        placementTitle: "2026 策略私募投資配置｜約新台幣 790 億元",
         placementSourceNote: "Reuters 2026/03/26；金額為概約值，交易性質為策略私募增資。",
         swotS: "台灣少數 DRAM 廠、自主技術、完整產品線與全球客戶支援網絡。",
         swotW: "規模小於 Samsung、SK hynix、Micron，技術與資本密集壓力高。",
-        swotO: "AI/HBM 產能排擠帶動 DDR4 與主流 DDR5 供給吃緊；Edge AI、AI PC 與 AI smartphone 提高單機記憶體含量；China Plus One 提升台灣 DRAM 供應的策略價值。",
+        swotO: "AI/HBM 產能排擠帶動 DDR4 與主流 DDR5 供給吃緊；邊緣 AI、AI PC 與 AI 手機提高單機記憶體含量；中國加一供應鏈策略提升台灣 DRAM 供應的策略價值。",
         swotT: "DRAM 下行循環、價格回落、大廠擴產、先進製程差距、資本支出壓力與中國市場需求波動，仍會影響復甦品質。",
         resourcesTitle: "核心優勢：\u200b築起難以複製的\u200b競爭護城河",
         resourcesLead: "資源評價不只列優勢，而是判斷價值、稀少、模仿難度與替代性。",
@@ -7263,14 +7195,14 @@
         vrin4i: "需要信任、供需條件與技術配合",
         vrin4n: "難由普通買賣關係取代",
         vrin4j: "高策略性資源",
-        dynamic_label: "Dynamic Capabilities",
+        dynamic_label: "動態能力",
         dynamic_title: "動態能力：把週期訊號轉成資源重組",
         dynamic_copy: "南亞科的競爭優勢不只來自既有資源，而是來自辨識外部訊號、捕捉策略機會，並重新配置產品、資本與客戶關係的能力。",
-        dynamic_sensing_title: "Sensing",
-        dynamic_sensing_copy: "偵測 AI server 從 HBM 延伸到 general server、RDIMM 與 conventional DRAM 的需求變化；看見 DDR5、LPDDR5/5X、成熟 DRAM 缺口與地緣供應鏈重組機會。",
-        dynamic_seizing_title: "Seizing",
+        dynamic_sensing_title: "感知機會",
+        dynamic_sensing_copy: "偵測 AI 伺服器從 HBM 延伸到一般伺服器、RDIMM 與傳統 DRAM 的需求變化；看見 DDR5、LPDDR5/5X、成熟 DRAM 缺口與地緣供應鏈重組機會。",
+        dynamic_seizing_title: "掌握機會",
         dynamic_seizing_copy: "透過私募引進 Kioxia、SanDisk、Solidigm、Cisco 等策略投資人；將資金、長期供應協議與策略客戶關係轉成產能投資與需求鎖定。",
-        dynamic_transforming_title: "Transforming",
+        dynamic_transforming_title: "重組資源",
         dynamic_transforming_copy: "從 DDR4／LPDDR4 成熟產品，轉向 DDR5、RDIMM、KGD、客製化 AI 記憶體與新廠量產準備；將價格循環曝險轉為 B2B 利基記憶體與長期客戶關係。",
         cardsTitle: "關鍵字卡\u200b總複習。",
         cardsLead: "章節中已放入即時翻卡；此區集中整理全部策略管理與記憶體產業關鍵詞，方便報告最後複習。",
@@ -7288,7 +7220,7 @@
         growth2Body: "中期策略是降低對低階成熟產品依賴，讓產品組合朝伺服器與 AI 應用移動。",
         growth3Title: "新廠、10 奈米級製程與客戶策略投資",
         growth3Body: "長期策略是建立更穩定的產能與需求來源，並透過客戶入股深化合作。",
-        challenges_label: "Future Challenges",
+        challenges_label: "未來挑戰",
         challenges_title: "未來挑戰與策略建議",
         challenges_copy: "南亞科未來不應追求全產品線 DRAM 領導，而應以集中差異化策略，把現金流、策略股東與客製化記憶體轉成可持續競爭位置。",
         challenges_col_1: "Challenge",
@@ -7328,23 +7260,23 @@
         careerLink2: "製程技術開發工程師：新廠與製程升級",
         careerLink3: "系統分析工程師：產品驗證與客戶導入能力",
         careerLink4: "人才與經驗形成可累積能力",
-        talentSystemLabel: "TALENT SIGNAL / 104 JOBS",
+        talentSystemLabel: "人才訊號／104 職缺",
         talentSystemTitle: "人才作業系統",
         talentSystemCopy: "從職缺資料讀取南亞科的能力缺口。",
         talentNodeGroupLabel: "人才能力節點",
-        talentNode1Meta: "01 / MES",
-        talentNode1: "Smart Fab / 智慧製造",
+        talentNode1Meta: "01／MES",
+        talentNode1: "智慧製造",
         talentNode1Signal: "MES 系統、異常分析、排程資料化",
-        talentNode2Meta: "02 / Node",
-        talentNode2: "Process Migration / 製程升級",
+        talentNode2Meta: "02／製程",
+        talentNode2: "製程升級",
         talentNode2Signal: "製程整合、新技術、新製程開發",
-        talentNode3Meta: "03 / B2B",
-        talentNode3: "Customer Design-in / 客戶導入",
+        talentNode3Meta: "03／B2B",
+        talentNode3: "客戶導入",
         talentNode3Signal: "DRAM 系統驗證、相容性分析、RMA 故障分析",
-        talentDetailLabel: "STRATEGY CAPABILITY",
-        talentRoleNeededLabel: "Role Needed",
-        talentWhyLabel: "Why It Matters",
-        talentSkillsLabel: "Key Skills",
+        talentDetailLabel: "策略能力",
+        talentRoleNeededLabel: "所需職務",
+        talentWhyLabel: "策略意義",
+        talentSkillsLabel: "關鍵技能",
         talentSmartCapability: "智慧製造資料系統",
         talentSmartRole: "軟體開發工程師",
         talentSmartWhy: "把 MES、異常分析、上線測試與排程系統嵌入晶圓廠日常，使新廠營運能被資料化與標準化。",
@@ -7357,17 +7289,17 @@
         talentCustomerRole: "系統分析工程師",
         talentCustomerWhy: "DRAM 記憶體系統驗證、產品量產導入相容性分析、系統應用故障分析與 RMA 分析，能把客戶端問題回饋成可複製的產品導入知識。",
         talentCustomerSkills: "DRAM 系統驗證、相容性分析、故障分析、產品量產導入",
-        talentEvidenceSourceLabel: "Source signal",
-        talentEvidenceSource: "104 job posting",
-        talentEvidencePayLabel: "Pay range",
-        talentEvidenceLogicLabel: "Organizational logic",
+        talentEvidenceSourceLabel: "來源訊號",
+        talentEvidenceSource: "104 職缺",
+        talentEvidencePayLabel: "薪資範圍",
+        talentEvidenceLogicLabel: "組織邏輯",
         talentEvidenceLogic: "KBV",
-        careerTakeawayStripLabel: "Career takeaway",
+        careerTakeawayStripLabel: "職涯結論",
         careerTakeawayStrip: "職缺訊號顯示，南亞科的人才需求不是單純補人，而是把 MES、製程整合與系統驗證與客戶導入經驗沉澱成可重複使用的組織知識。",
         careerTagsLabel: "能力標籤",
         careerSourceLink: "104 南亞科技公司頁｜工作機會與職缺資訊",
         careerSourceNote: "104 南亞科技公司頁與職缺頁：軟體開發工程師、製程技術開發工程師、系統分析工程師。",
-        valueNetTitle: "Value Net 四類角色彙整",
+        valueNetTitle: "價值網四類角色彙整",
         frameworkDisclosureTitle: "本研究採用之分析工具",
         quizTitle: "互動小測驗。",
         quizLead: "答題後會顯示解析與分數，適合互評時快速互動。",
@@ -7394,19 +7326,14 @@
         strategyLabLaunch: "開啟策略實驗室",
         strategyLabKicker: "策略實驗室",
         strategyLabTitle: "南亞科策略實驗室",
-        aspLabTitle: "ASP Shock Lab｜DRAM 景氣敏感度模擬器",
+        aspLabTitle: "DRAM 景氣敏感度模擬器",
         aspLabLead: "拖曳 DRAM 報價、稼動率與 CapEx 壓力，觀察營收指數、毛利壓力、EPS 方向與新廠投資韌性如何變化。此模擬為教學用策略敏感度情境，不代表南亞科財務預測。",
         aspCapexLabel: "CapEx 壓力",
-        scenarioTitle: "Portfolio Scenario Switcher｜產品策略情境切換器",
+        scenarioTitle: "產品策略情境切換器",
         scenarioLead: "切換策略情境，觀察產品點位、資本配置、風險回報與策略意涵如何改變。",
-        universeKicker: "價值網（Value Net）／競合",
+        universeKicker: "價值網／競合",
         universeTitle: "競合宇宙｜南亞科的價值網：從 DRAM 供應商到策略生態系節點",
         universeLead: "價值網不只列出利害關係人，而是檢視南亞科如何在 DRAM 寡占市場中，同時合作、競爭、綁定需求並降低供應鏈風險。",
-        reactorTitle: "Capability Reactor｜技能到策略能力反應爐",
-        reactorLead: "將 104 職缺中的技能配對到南亞科的策略能力，理解 KBV：個人技能如何累積成組織知識。",
-        reactorSkillLabel: "選擇一個技能",
-        reactorBucketLabel: "配對到策略能力",
-
         // Add missing keys
         heroQuestion: "面對三大 DRAM 巨頭寡占與 AI 時代的爆發需求，南亞科如何突圍？",
         heroTakeaway: "把握景氣回溫契機，藉由策略私募與自主研發，全面朝高頻寬及高階伺服器記憶體轉型。",
@@ -7447,37 +7374,37 @@
         strategyChecklistNextLabel: "下一張策略卡片",
         strategyChecklistAriaLabel: "國際策略管理檢核矩陣",
         strategyChecklistTitle: "國際策略管理檢核：南亞科如何成長？",
-        strategyChecklistSummary: "從 2021 年後資料來看，南亞科的成長不是單一策略，而是「有機成長＋相關多角化＋策略聯盟＋集團型垂直支援＋區域擴張」的組合。公司以 1Anm pilot run、DDR5 開發、新 Fab 與 2026 CapEx 建立有機成長基礎；以 DDR5、LPDDR5/5X、KGD、MCP 與模組產品形成 DRAM 核心周邊的相關多角化；以 Kioxia、PieceMakers、SanDisk、Cisco、Solidigm 等夥伴建立技術、股權與供應協議型策略聯盟；並透過台塑集團電子產業鏈取得資源背書與價值鏈支援。相較之下，2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。",
+        strategyChecklistSummary: "從 2021 年後資料來看，南亞科的成長不是單一策略，而是「有機成長＋相關多角化＋策略聯盟＋集團型垂直支援＋區域擴張」的組合。公司以 1Anm 製程試產、DDR5 開發、新廠與 2026 CapEx 建立有機成長基礎；以 DDR5、LPDDR5/5X、KGD、MCP 與模組產品形成 DRAM 核心周邊的相關多角化；以 Kioxia、PieceMakers、SanDisk、Cisco、Solidigm 等夥伴建立技術、股權與供應協議型策略聯盟；並透過台塑集團電子產業鏈取得資源背書與價值鏈支援。相較之下，2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。",
         strategyChecklistJudgementLabel: "南亞科判斷",
         strategyChecklistEvidenceLabel: "2021 年後證據",
         strategyChecklistReadingLabel: "國際策略管理解讀",
         strategyChecklist1Badge: "主軸",
-        strategyChecklist1Concept: "有機成長 Organic Growth",
+        strategyChecklist1Concept: "有機成長",
         strategyChecklist1Judgement: "南亞科的主要成長路徑是有機成長。",
-        strategyChecklist1Evidence: "2021 年第一代 10nm class 製程 1Anm pilot run，並啟動 DDR5 product development；2022 年新 Fab 動土；2026 年計畫 CapEx 約新台幣 500 億元。",
+        strategyChecklist1Evidence: "2021 年第一代 10nm 級 1Anm 製程試產，並啟動 DDR5 產品開發；2022 年新廠動土；2026 年計畫 CapEx 約新台幣 500 億元。",
         strategyChecklist1Reading: "這代表公司主要透過自主研發、製程升級、新廠與設備投資累積能力，而不是靠併購快速擴張。",
         strategyChecklist2Badge: "有",
-        strategyChecklist2Concept: "相關多角化 Related Diversification",
+        strategyChecklist2Concept: "相關多角化",
         strategyChecklist2Judgement: "南亞科的多角化屬於相關多角化，不是跨產業多角化。",
         strategyChecklist2Evidence: "公司仍以 DRAM 為核心，但產品線從標準型 DRAM 延伸至 DDR5、LPDDR5/5X、KGD、MCP/eMCP/uMCP、RDIMM、模組與 Elixir 品牌。",
         strategyChecklist2Reading: "這是 DRAM 核心周邊的相關多角化，用來降低對單一標準品與單一需求週期的依賴。",
         strategyChecklist3Badge: "最關鍵",
-        strategyChecklist3Concept: "策略聯盟 Strategic Alliance",
+        strategyChecklist3Concept: "策略聯盟",
         strategyChecklist3Judgement: "策略聯盟是南亞科突破規模劣勢的核心工具。",
-        strategyChecklist3Evidence: "2024 年與 Kioxia 共同開發 Vertical Channel Transistor DRAM／OCTRAM 技術；同年投資 PieceMakers 合作開發客製化超高頻寬記憶體；2026 年透過約 US$2.5 billion 私募引入 SanDisk、Solidigm、Cisco、Kioxia，並與 SanDisk、Kioxia 建立多年期／長期 DRAM 供應協議。",
+        strategyChecklist3Evidence: "2024 年與 Kioxia 共同開發 Vertical Channel Transistor DRAM／OCTRAM 技術；同年投資 PieceMakers 合作開發客製化超高頻寬記憶體；2026 年透過約 25 億美元私募引入 SanDisk、Solidigm、Cisco、Kioxia，並與 SanDisk、Kioxia 建立多年期／長期 DRAM 供應協議。",
         strategyChecklist3Reading: "這不是單純財務投資，而是技術合作、股權合作、供應協議與需求綁定的組合。",
         strategyChecklist4Badge: "有但需保守解讀",
-        strategyChecklist4Concept: "集團型垂直支援 Group-Based Vertical Support",
+        strategyChecklist4Concept: "集團型垂直支援",
         strategyChecklist4Judgement: "南亞科不宜寫成完整垂直整合，應寫成「集團型垂直支援」。",
-        strategyChecklist4Evidence: "台塑集團官方資料顯示，其半導體垂直整合從 Formosa Sumco 的矽晶圓、南亞科技的 DRAM 研發設計製造銷售，到 Formosa Advanced Tech 的 IC 封裝測試；集團電子事業也包含 PCB 與 IC substrate。",
+        strategyChecklist4Evidence: "台塑集團官方資料顯示，其半導體垂直整合從 Formosa Sumco 的矽晶圓、南亞科技的 DRAM 研發設計製造銷售，到 Formosa Advanced Tech 的 IC 封裝測試；集團電子事業也包含 PCB 與 IC 載板。",
         strategyChecklist4Reading: "這代表南亞科能取得集團資源、電子產業鏈與價值鏈支援，但不應誇大成所有供應鏈環節都由南亞科內部化。",
         strategyChecklist5Badge: "有",
-        strategyChecklist5Concept: "區域擴張 Regional Expansion / International Configuration",
+        strategyChecklist5Concept: "區域擴張與國際化配置",
         strategyChecklist5Judgement: "南亞科的國際化不是單純海外銷售，而是「台灣製造基地＋全球技術支援網絡」。",
-        strategyChecklist5Evidence: "既有資料提到台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務；補充資料顯示日本辦公室提供 SI measurement 與技術支援，歐洲杜塞道夫團隊支援 automotive、industrial、networking、consumer、IoT segments，美國也有 Vermont 與 Texas Design Center。",
+        strategyChecklist5Evidence: "既有資料提到台灣總部支援台灣與東南亞，美國矽谷負責美洲市場，日本東京、德國杜塞道夫與中國深圳提供銷售、技術與客戶服務；補充資料顯示日本辦公室提供 SI 量測與技術支援，歐洲杜塞道夫團隊支援車用、工業、網通、消費性電子與 IoT 應用，美國也有 Vermont 與 Texas 設計中心。",
         strategyChecklist5Reading: "這應整理為區域擴張／國際化配置，而不是只看成海外銷售據點。",
         strategyChecklist6Badge: "非主軸",
-        strategyChecklist6Concept: "併購判斷 M&A",
+        strategyChecklist6Concept: "併購判斷",
         strategyChecklist6Judgement: "2021 年後公開資料未顯示南亞科以大型併購作為主要成長路徑。",
         strategyChecklist6Evidence: "PieceMakers 是策略合作與股權投資；2026 年 SanDisk、Solidigm、Cisco、Kioxia 參與的是私募認股與供應協議，不是南亞科併購對方，也不是對方併購南亞科。",
         strategyChecklist6Reading: "本案例應判斷為「非併購導向」，外部成長主要透過策略投資、私募、長約與技術合作完成。",
@@ -7529,8 +7456,7 @@
         strategySimulationLabel: "Strategy simulation",
         resourcesKicker: "VRIN resources",
         growthKicker: "Growth strategy",
-        careerKicker: "CAREER INTELLIGENCE / Career insights",
-        reactorKicker: "KBV / skills to capability",
+        careerKicker: "Career Intelligence",
         career1Kicker: "MES / Smart manufacturing",
         career2Kicker: "System analysis / product validation",
         career3Kicker: "R&D / Process Integration",
@@ -7947,11 +7873,6 @@
         universeKicker: "Value Net / Co-opetition",
         universeTitle: "Co-opetition Universe | Nanya’s Value Net: From DRAM Supplier to Strategic Ecosystem Node",
         universeLead: "The Value Net shows how Nanya manages customers, suppliers, competitors, and complementors through cooperation, competition, demand lock-in, and supply-chain risk reduction.",
-        reactorTitle: "Capability Reactor | From Job Skills to Strategic Capabilities",
-        reactorLead: "Match job-posting skills to Nanya's strategic capabilities and see how individual skills accumulate into organizational knowledge through the KBV lens.",
-        reactorSkillLabel: "Select a skill",
-        reactorBucketLabel: "Match to a capability",
-
         // Add missing keys
         heroQuestion: "How does Nanya Technology reposition its products, resources, and growth paths amidst the oligopoly of three DRAM giants, the re-evaluation of AI demand, and the addition of strategic private placement partners?",
         heroTakeaway: "Capture the cyclical turn, introduce strategic private placements, and upgrade toward high-capacity and server memory.",
@@ -8061,7 +7982,7 @@
         ["價值網", "把客戶、供應商、競爭者與互補者放進同一張競合地圖。"],
         ["DuPont", "用淨利率、資產週轉率與權益乘數拆解 ROE 變化。"],
         ["CAPM", "用 Beta 連結系統風險與投資人要求報酬率。"],
-        ["AI 記憶體", "由 AI server、Edge AI、AI PC 與資料中心需求帶動的記憶體應用。"],
+        ["AI 記憶體", "由 AI 伺服器、邊緣 AI、AI PC 與資料中心需求帶動的記憶體應用。"],
         ["新廠", "新廠投資代表長期產能、製程升級與資本支出承諾。"],
         ["策略客戶", "SanDisk 與 Kioxia 已公布 DRAM 供應協議；Cisco、Solidigm 為策略投資者。"]
       ],
@@ -8131,7 +8052,7 @@
           { id: "fcf", label: "FCF", title: "自由現金流提醒新廠與製程投資仍是壓力。", body: "FCF = 營運現金流 - 資本支出。近五年 FCF 波動劇烈，2023 年為 -193 億，2025 回正至 52 億元。策略判讀：雖然 2025 轉盈改善了資金基礎，但 2026 計畫 CapEx 高達約 500 億元，代表折舊與新廠支出仍會對未來現金流產生巨大的週期拉扯壓力。", cells: [["2020", "137.5 億"], ["2023", "-193 億"], ["2025", "52 億"], ["策略意涵", "折舊與資本支出拉扯現金流"]] },
           { id: "dupont", label: "DuPont", title: "ROE 波動主因來自淨利率，而不是銷售量。", body: "DuPont 拆解顯示 ROE 從 2021 年的 13.2% 跌至 2023 年的 -4.5%，再回升到 2025 年的 3.9%。資產週轉率相對穩定，這證明獲利波動主要受「淨利率（價格 ASP）」支配。在策略上，南亞科是典型的『價格接受者（Price Taker）』，必須透過升級高階伺服器 DDR5 提高定價權。", cells: [["2021 ROE", "13.2%"], ["2023 ROE", "-4.5%"], ["2025 ROE", "3.9%"], ["策略意涵", "典型價格接受者，亟需定價溢價"]] },
           { id: "beta", label: "Beta", title: "Beta 說明南亞科股票風險與景氣敏感度。", body: "2408.TW 五年 Beta 值為 1.69，相較之下 Micron 為 1.92。在策略上，CAPM 模型反映出 DRAM 股票具有極高的系統性風險溢酬。這並非公司經營失敗，而是高固定成本與產能戰放大了資本市場對其景氣循環的波動敏感度。", cells: [["2408.TW Beta", "1.69"], ["Micron Beta", "1.92"], ["評估方法", "CAPM"], ["策略意涵", "高系統風險，需以資本公允價值為配置考量"]] },
-          { id: "capex", label: "CapEx / New Fab", title: "2026 計畫 CapEx 約為 2025 實際支出的 3.7 倍。", body: "策略判讀：2025 年的轉盈提供了再投資籌碼，董事會待准的 2026 年 500 億元 CapEx 是對未來 10 奈米級新廠（1B/1C 製程良率）與客製化記憶體的長期押注。這考驗資產負債表在下一個下行循環來臨前的防禦能力。", cells: [["2025 實際", "134 億"], ["2026 計畫", "約 500 億"], ["新廠時程", "2027 年初設備進駐"], ["策略意涵", "大舉投資新製程良率以縮小世代差距"]], visual: "capex" }
+          { id: "capex", label: "CapEx／新廠", title: "2026 計畫 CapEx 約為 2025 實際支出的 3.7 倍。", body: "策略判讀：2025 年的轉盈提供了再投資籌碼，董事會待准的 2026 年 500 億元 CapEx 是對未來 10 奈米級新廠（1B/1C 製程良率）與客製化記憶體的長期押注。這考驗資產負債表在下一個下行循環來臨前的防禦能力。", cells: [["2025 實際", "134 億"], ["2026 計畫", "約 500 億"], ["新廠時程", "2027 年初設備進駐"], ["策略意涵", "大舉投資新製程良率以縮小世代差距"]], visual: "capex" }
         ],
         shares: [["Samsung", 36.0, "US$19.30B"], ["SK hynix", 32.1, "US$17.22B"], ["Micron", 22.4, "US$11.98B"], ["Nanya", 1.8, "US$0.97B"]],
         cycleStats: [["前三大", "90.5%"], ["南亞科 QoQ", "+54.7%"], ["DRAM QoQ", "+29.4%"], ["4Q25 標準型 DRAM 合約價", "+45–50%"], ["1Q26 標準型 DRAM 合約價預估", "+90–95%"], ["南亞科 4Q25 營業利益率", "39.1%"]],
@@ -8158,9 +8079,9 @@
           { id: "kgd", label: "KGD LPDDR5/5X", x: 58, y: 48, title: "KGD LPDDR5/5X／策略互補", role: "客製化互補合作", growth: "配合 NAND Flash 夥伴提供系統級封裝方案。", priority: "與策略股東緊密合作，切入利基市場封裝鏈。", customer: "SSD 模組廠、MCP 行動晶片模組商。", body: "8/16Gb 7500 Mbps 開發中，可作為互補技術。", product: "晶圓級 KGD", price: "合作談判約定價格", place: "策略夥伴供應體系", promotion: "客製化解決方案", strategy: "配合策略夥伴進行客製化與互補銷售" },
           { id: "mcp", label: "MCP/eMCP/uMCP", x: 36, y: 42, title: "MCP/eMCP/uMCP／產品覆蓋", role: "產品覆蓋與防守", growth: "中低階手機與嵌入式設備需求，競爭激烈。", priority: "控制資本投入，維持產品組合的完整性以防守客群。", customer: "中低階行動設備、智慧物聯網（IoT）。", body: "官方列有 MCP LPDDR4X、eMCP、uMCP LPDDR4X。", product: "多晶片封裝記憶體", price: "紅海競爭價格", place: "消費性電子通路", promotion: "配套搭售", strategy: "控管資本與產能，避免陷入價格戰紅海" }
         ],
-        positioning: ["南亞科規模較小，不適合與三大廠進行全面低成本規模競爭，應定位為『高彈性之 B2B 策略供應夥伴』。", "目標客戶應聚焦於 AI general server、策略 NAND 夥伴、以及需要多源供應（Second Source）降低風險的國際科技大廠。", "定位優勢應強調台灣獨立製造、台塑集團信用擔保、高品質本地系統驗證支援，與緊密的策略股東同盟關係。"],
+        positioning: ["南亞科規模較小，不適合與三大廠進行全面低成本規模競爭，應定位為『高彈性之 B2B 策略供應夥伴』。", "目標客戶應聚焦於 AI 一般伺服器、策略 NAND 夥伴，以及需要多源供應降低風險的國際科技大廠。", "定位優勢應強調台灣獨立製造、台塑集團信用擔保、高品質本地系統驗證支援，與緊密的策略股東同盟關係。"],
         capabilities: [{ title: "研發製程", body: "1C / 1D 製程開發與客製化記憶體技術，KBV：製程經驗累積構成內部技術隱性護城河。" }, { title: "晶圓製造", body: "計畫 CapEx 約 500 億；新廠設備預計 2027 年初進駐，提供製程遷移實體載體。" }, { title: "產品組合", body: "DDR5、高容量 RDIMM、LPDDR5/5X、KGD 形成從成熟向高階升級的矩陣路徑。" }, { title: "客戶驗證／合作", body: "SanDisk、Kioxia 已公布 DRAM 供應協議，確保高階產能消化通道。" }, { title: "財務回饋", body: "營收 665.87 億、EPS 2.13 提供轉盈再投資籌碼，DuPont 指標顯示 ASP 定價為波動關鍵。" }],
-        organization: ["防守型角色 (Defender)：南亞科以往高度專注成熟製程研發、降低製程成本與維持良率，扮演市場的成熟供應者。", "分析型角色 (Analyzer)：面對 AI 記憶體重估與私募夥伴加入，公司轉向「分析型」組織，在穩定 mature DRAM 現金流的同時，探索 DDR5 RDIMM 與客製化 KGD 等高利基市場機會。", "跨職能能力積累：這需要 MES 軟體開發（智慧製造）、製程開發（新廠推進）、系統驗證與客戶導入（客製化 Design-in）與 ESG 永續管理共同支撐。"]
+        organization: ["防守型角色：南亞科以往高度專注成熟製程研發、降低製程成本與維持良率，扮演市場的成熟供應者。", "分析型角色：面對 AI 記憶體重估與私募夥伴加入，公司轉向「分析型」組織，在穩定成熟 DRAM 現金流的同時，探索 DDR5 RDIMM 與客製化 KGD 等高利基市場機會。", "跨職能能力積累：這需要 MES 軟體開發（智慧製造）、製程開發（新廠推進）、系統驗證與客戶導入，以及 ESG 永續管理共同支撐。"]
       },
       en: {
         finance: [
@@ -8368,7 +8289,7 @@
     const theoryMapData = {
       zh: {
         headers: ["框架", "提出者或理論來源", "分析用途", "對應章節"],
-        rows: [["Porter 五力 / PESTEL", "Porter (1980) / 常用總體環境分析", "判斷產業結構與外部制度環境", "市場分析"], ["DuPont / FCF / CAPM", "DuPont / Jensen (1986) / Sharpe (1964)", "拆解 ROE、自由現金流與系統風險", "財務績效"], ["BCG / GE / Ansoff / STP + 4P", "BCG (1970) / Ansoff (1957) / Kotler & Armstrong", "判斷產品配置、成長路徑與 B2B 定位", "產品配置與市場定位"], ["VRIN / Value Chain", "Barney / Porter (1985)", "判斷資源價值與能力轉化流程", "資源與能力"], ["Value Net", "Brandenburger & Nalebuff (1996)", "說明客戶、互補者、供應商與競爭者的競合網絡", "成長策略與供應鏈合作"], ["組織型態", "Miles & Snow (1978) / Chandler (1962)", "說明策略升級需要的組織能力與人才", "組織能力與人才需求"]]
+        rows: [["Porter 五力／PESTEL", "Porter（1980）／常用總體環境分析", "判斷產業結構與外部制度環境", "市場分析"], ["DuPont／FCF／CAPM", "DuPont／Jensen（1986）／Sharpe（1964）", "拆解 ROE、自由現金流與系統風險", "財務績效"], ["BCG／GE／Ansoff／STP + 4P", "BCG（1970）／Ansoff（1957）／Kotler & Armstrong", "判斷產品配置、成長路徑與 B2B 定位", "產品配置與市場定位"], ["VRIN／價值鏈", "Barney／Porter（1985）", "判斷資源價值與能力轉化流程", "資源與能力"], ["價值網", "Brandenburger & Nalebuff（1996）", "說明客戶、互補者、供應商與競爭者的競合網絡", "成長策略與供應鏈合作"], ["組織型態", "Miles & Snow（1978）／Chandler（1962）", "說明策略升級需要的組織能力與人才", "組織能力與人才需求"]]
       },
       en: {
         headers: ["Framework", "Originator or source", "Analytical use", "Mapped section"],
@@ -8401,10 +8322,10 @@
           }
         },
         scenarios: [
-          { id: "base", label: "基準情境", implication: "維持目前產品配置：DDR4 提供現金流，DDR5 / RDIMM 作為升級主力，LPDDR5 / KGD 以選擇性投資控制風險。", risk: "中", return: "中", capex: "均衡", allocation: [34, 46, 20], positions: {} },
-          { id: "ai", label: "AI 伺服器上行情境", implication: "AI 伺服器與高容量模組需求升溫，使 DDR5 / RDIMM 的成長性與資本優先順序上升。", risk: "中高", return: "高", capex: "伺服器帶動", allocation: [18, 64, 18], positions: { "ddr5": [78, 80], "ddr5-rdimm": [84, 88], "kgd": [64, 58] } },
+          { id: "base", label: "基準情境", implication: "維持目前產品配置：DDR4 提供現金流，DDR5／RDIMM 作為升級主力，LPDDR5／KGD 以選擇性投資控制風險。", risk: "中", return: "中", capex: "均衡", allocation: [34, 46, 20], positions: {} },
+          { id: "ai", label: "AI 伺服器上行情境", implication: "AI 伺服器與高容量模組需求升溫，使 DDR5／RDIMM 的成長性與資本優先順序上升。", risk: "中高", return: "高", capex: "伺服器帶動", allocation: [18, 64, 18], positions: { "ddr5": [78, 80], "ddr5-rdimm": [84, 88], "kgd": [64, 58] } },
           { id: "downcycle", label: "價格下行循環", implication: "DRAM 價格反轉時，DDR4 現金流壓力增加，策略重心轉向防守、現金流與客戶長約。", risk: "高", return: "低", capex: "防守", allocation: [52, 30, 18], positions: { "ddr4": [22, 20], "ddr5": [60, 60], "ddr5-rdimm": [68, 70], "lpddr5": [38, 56] } },
-          { id: "partner", label: "策略夥伴推升", implication: "策略私募與供應協議提高 KGD / LPDDR5 / MCP 的合作價值，南亞科可藉互補方案提高客戶轉換成本。", risk: "中", return: "中高", capex: "夥伴連結", allocation: [24, 42, 34], positions: { "kgd": [70, 64], "lpddr5": [52, 72], "mcp": [46, 50] } }
+          { id: "partner", label: "策略夥伴推升", implication: "策略私募與供應協議提高 KGD／LPDDR5／MCP 的合作價值，南亞科可藉互補方案提高客戶轉換成本。", risk: "中", return: "中高", capex: "夥伴連結", allocation: [24, 42, 34], positions: { "kgd": [70, 64], "lpddr5": [52, 72], "mcp": [46, 50] } }
         ],
         universe: [
           { id: "sandisk", label: "SanDisk", group: "顧客", line: "cooperation", x: 300, y: 86, role: "客戶／互補者", cooperation: "DRAM 供應協議與策略私募，連結 NAND + DRAM 解決方案互補。", competition: "採購談判與替代供應商風險仍存在。", move: "透過長約與共同產品規劃提高轉換成本。" },
@@ -8415,20 +8336,7 @@
           { id: "samsung", label: "Samsung", group: "競爭者", line: "competition", x: 92, y: 344, role: "競爭者", cooperation: "高階產能排擠可能間接創造成熟 DRAM 價格空間。", competition: "規模、製程與價格領導壓力。", move: "避免價格戰，轉向利基產品與策略客戶。" },
           { id: "skhynix", label: "SK hynix", group: "競爭者", line: "competition", x: 116, y: 180, role: "競爭者", cooperation: "HBM 產能配置可能間接牽動主流 DDR5 供給。", competition: "高容量伺服器與先進製程標竿壓力。", move: "以 RDIMM 驗證與客製化記憶體縮小差距。" },
           { id: "suppliers", label: "設備／晶圓", group: "供應商", line: "dependency", x: 300, y: 300, role: "供應商", cooperation: "設備、矽晶圓與材料供應支撐節點遷移。", competition: "關鍵設備與材料集中度提高交期與成本依賴。", move: "用長期採購、製程規劃與資本紀律降低依賴風險。" }
-        ],
-        reactor: {
-          prompt: "先選左側技能，再點右側能力桶。",
-          hint: "這項技能比較接近客戶端驗證，而不是製程良率。試著把它配對到客戶導入。",
-          partial: "此能力可作為部分配對，但需要永續、供應鏈與國際客戶溝通能力；本頁不新增未查證 ESG 職缺。",
-          skills: ["C++", "MES 系統", "SQL / Oracle", "良率分析", "製程整合", "半導體物理", "系統驗證", "相容性分析", "RMA 分析"],
-          buckets: [
-            { id: "yield", label: "1B / 1C 製程良率", skills: ["良率分析", "製程整合", "半導體物理"], role: "製程技術開發工程師", kbv: "製程整合與良率分析是難以快速外包的隱性知識，會累積成製程升級能力。" },
-            { id: "fab", label: "智慧新廠自動化", skills: ["MES 系統", "SQL / Oracle", "C++"], role: "軟體開發工程師", kbv: "當 MES、資料庫與程式能力被嵌入排程、異常分析與新廠營運流程，個人技能會轉化為智慧製造知識。" },
-            { id: "design", label: "客戶導入", skills: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證、相容性分析與 RMA 分析能把客戶端問題回饋成可複製的產品導入知識，是 B2B 記憶體供應商的重要隱性資產。" },
-            { id: "support", label: "全球 B2B 支援", skills: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證與相容性分析經驗能累積成全球 B2B 支援能力。" },
-            { id: "esg", label: "ESG 供應鏈合規", skills: ["英文溝通"], role: "部分配對能力", partial: true, kbv: "需要永續、供應鏈與國際客戶溝通能力；本頁只作策略能力提示，不新增未查證職缺。" }
-          ]
-        }
+        ]
       },
       en: {
         strategyRows: [
@@ -8468,20 +8376,7 @@
           { id: "samsung", label: "Samsung", group: "Competitors", line: "competition", x: 92, y: 344, role: "Competitor", cooperation: "High-end capacity shifts can indirectly create mature DRAM pricing room.", competition: "Scale, process, and pricing leadership pressure.", move: "Avoid price wars and move toward niche products and strategic customers." },
           { id: "skhynix", label: "SK hynix", group: "Competitors", line: "competition", x: 116, y: 180, role: "Competitor", cooperation: "HBM capacity allocation can indirectly affect mainstream DDR5 supply.", competition: "High-capacity server and advanced-node benchmark pressure.", move: "Use RDIMM validation and custom memory to narrow the gap." },
           { id: "suppliers", label: "Equipment / wafers", group: "Suppliers", line: "dependency", x: 300, y: 300, role: "Suppliers", cooperation: "Equipment, wafer, and material supply supports node migration.", competition: "Concentrated equipment and material sources raise lead-time and cost dependence.", move: "Use long-term sourcing, process planning, and capital discipline to reduce dependency risk." }
-        ],
-        reactor: {
-          prompt: "Select a skill on the left, then choose a capability bucket.",
-          hint: "This skill is closer to customer-side validation than process yield. Try matching it with Customer design-in.",
-          partial: "This is a partial match, but it requires sustainability, supply-chain, and international customer communication capability; this page does not invent ESG job postings.",
-          skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "System validation", "Compatibility analysis", "RMA analysis"],
-          buckets: [
-            { id: "yield", label: "1B / 1C process yield", skills: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "Process integration and yield analysis are tacit capabilities that cannot be quickly outsourced, accumulating into process-migration capability." },
-            { id: "fab", label: "Smart fab automation", skills: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "When MES, database, and programming skills are embedded in scheduling, exception analysis, and fab operations, individual skills become smart-manufacturing knowledge." },
-            { id: "design", label: "Customer design-in", skills: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation, compatibility analysis, and RMA analysis turn customer-side issues into repeatable product design-in knowledge, becoming a key tacit asset for a B2B memory supplier." },
-            { id: "support", label: "Global B2B support", skills: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation and compatibility analysis experience accumulate into global B2B support capability." },
-            { id: "esg", label: "ESG supply-chain compliance", skills: ["English communication"], role: "Partially matched capability", partial: true, kbv: "This needs sustainability, supply-chain, and international customer communication capability; it is a strategic capability note, not an invented job posting." }
-          ]
-        }
+        ]
       }
     };
 
@@ -8555,10 +8450,10 @@
 
     const scenarioData = {
       zh: [
-        { id: "base", label: "基準情境", title: "基準情境", implication: "維持目前產品配置：DDR4 提供現金流，DDR5 / RDIMM 作為升級主力，LPDDR5 / KGD 以選擇性投資控制風險。", risk: "均衡", return: "中", capex: "DDR5 45% / KGD 25% / DDR4 30%", allocation: [45, 25, 30], positions: { ddr4: [28, 28], ddr5: [70, 72], "ddr5-rdimm": [76, 82], lpddr5: [42, 68], kgd: [58, 48], mcp: [36, 42] } },
-        { id: "ai", label: "AI 伺服器上行情境", title: "AI 伺服器上行情境", implication: "AI 伺服器與高容量模組需求升溫，使 DDR5 / RDIMM 的成長性與資本優先順序上升。", risk: "執行風險", return: "較高", capex: "DDR5 58% / KGD 24% / DDR4 18%", allocation: [58, 24, 18], positions: { ddr4: [24, 24], ddr5: [78, 82], "ddr5-rdimm": [84, 88], lpddr5: [44, 70], kgd: [64, 58], mcp: [34, 38] } },
-        { id: "downcycle", label: "價格下行循環", title: "價格下行循環", implication: "DRAM 價格反轉時，DDR4 現金流壓力增加，策略重心轉向防守、現金流與客戶長約。", risk: "高", return: "較低", capex: "DDR5 34% / KGD 18% / DDR4 48%", allocation: [34, 18, 48], positions: { ddr4: [24, 20], ddr5: [62, 60], "ddr5-rdimm": [68, 68], lpddr5: [36, 55], kgd: [50, 42], mcp: [30, 32] } },
-        { id: "partner", label: "策略夥伴推升", title: "策略夥伴推升", implication: "策略私募與供應協議提高 KGD / LPDDR5 / MCP 的合作價值，南亞科可藉互補方案提高客戶轉換成本。", risk: "夥伴依賴", return: "選擇性上行", capex: "DDR5 42% / KGD 38% / DDR4 20%", allocation: [42, 38, 20], positions: { ddr4: [26, 30], ddr5: [72, 76], "ddr5-rdimm": [78, 80], lpddr5: [52, 72], kgd: [68, 64], mcp: [48, 50] } }
+        { id: "base", label: "基準情境", title: "基準情境", implication: "維持目前產品配置：DDR4 提供現金流，DDR5／RDIMM 作為升級主力，LPDDR5／KGD 以選擇性投資控制風險。", risk: "均衡", return: "中", capex: "DDR5 45%／KGD 25%／DDR4 30%", allocation: [45, 25, 30], positions: { ddr4: [28, 28], ddr5: [70, 72], "ddr5-rdimm": [76, 82], lpddr5: [42, 68], kgd: [58, 48], mcp: [36, 42] } },
+        { id: "ai", label: "AI 伺服器上行情境", title: "AI 伺服器上行情境", implication: "AI 伺服器與高容量模組需求升溫，使 DDR5／RDIMM 的成長性與資本優先順序上升。", risk: "執行風險", return: "較高", capex: "DDR5 58%／KGD 24%／DDR4 18%", allocation: [58, 24, 18], positions: { ddr4: [24, 24], ddr5: [78, 82], "ddr5-rdimm": [84, 88], lpddr5: [44, 70], kgd: [64, 58], mcp: [34, 38] } },
+        { id: "downcycle", label: "價格下行循環", title: "價格下行循環", implication: "DRAM 價格反轉時，DDR4 現金流壓力增加，策略重心轉向防守、現金流與客戶長約。", risk: "高", return: "較低", capex: "DDR5 34%／KGD 18%／DDR4 48%", allocation: [34, 18, 48], positions: { ddr4: [24, 20], ddr5: [62, 60], "ddr5-rdimm": [68, 68], lpddr5: [36, 55], kgd: [50, 42], mcp: [30, 32] } },
+        { id: "partner", label: "策略夥伴推升", title: "策略夥伴推升", implication: "策略私募與供應協議提高 KGD／LPDDR5／MCP 的合作價值，南亞科可藉互補方案提高客戶轉換成本。", risk: "夥伴依賴", return: "選擇性上行", capex: "DDR5 42%／KGD 38%／DDR4 20%", allocation: [42, 38, 20], positions: { ddr4: [26, 30], ddr5: [72, 76], "ddr5-rdimm": [78, 80], lpddr5: [52, 72], kgd: [68, 64], mcp: [48, 50] } }
       ],
       en: [
         { id: "base", label: "Base Case", title: "Base Case", implication: "Maintain the current portfolio: DDR4 supports cash flow, DDR5/RDIMM drives migration, and LPDDR5/KGD are selectively built to control risk.", risk: "Balanced", return: "Medium", capex: "DDR5 45% / KGD 25% / DDR4 30%", allocation: [45, 25, 30], positions: { ddr4: [28, 28], ddr5: [70, 72], "ddr5-rdimm": [76, 82], lpddr5: [42, 68], kgd: [58, 48], mcp: [36, 42] } },
@@ -8573,41 +8468,6 @@
       competition: "#ff7759",
       technology: "#1863dc",
       dependency: "#93939f"
-    };
-
-    const reactorData = {
-      zh: {
-        skills: ["C++", "MES 系統", "SQL / Oracle", "良率分析", "製程整合", "半導體物理", "系統驗證", "相容性分析", "RMA 分析"],
-        buckets: [
-          { id: "yield", label: "1B / 1C 製程良率", matches: ["良率分析", "製程整合", "半導體物理"], role: "製程技術開發工程師", kbv: "製程整合與良率分析是難以快速外包的隱性知識，會累積成製程升級能力。" },
-          { id: "fab", label: "智慧新廠自動化", matches: ["MES 系統", "SQL / Oracle", "C++"], role: "軟體開發工程師", kbv: "當 MES、資料庫與程式能力被嵌入排程、異常分析與新廠營運流程，個人技能會轉化為智慧製造知識。" },
-          { id: "design", label: "客戶導入", matches: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證、相容性分析與 RMA 分析能把客戶端問題回饋成可複製的產品導入知識。" },
-          { id: "global", label: "全球 B2B 支援", matches: ["系統驗證", "相容性分析", "RMA 分析"], role: "系統分析工程師", kbv: "系統驗證與相容性分析能把技術交付轉化為可重複的 B2B 服務流程。" },
-          { id: "esg", label: "ESG 供應鏈合規", matches: ["英文溝通"], role: "部分配對能力", kbv: "此分類需要永續、供應鏈與國際客戶溝通能力；目前不新增未查證 ESG 職缺。" }
-        ],
-        prompt: "先選擇一項技能，再點選右側策略能力。",
-        success: "合理配對。",
-        hintDesign: "這項技能比較接近客戶端驗證，而不是製程良率。試著把它配對到客戶導入。",
-        hintFab: "這項技能比較接近資料系統或智慧製造，試著配對到智慧新廠自動化。",
-        hintYield: "這項技能更接近製程整合與良率，試著配對到 1B / 1C 製程良率。",
-        genericHint: "這個配對不是最直接的策略能力連結，換一個分類試試。"
-      },
-      en: {
-        skills: ["C++", "MES system", "SQL / Oracle", "Yield analysis", "Process integration", "Semiconductor physics", "System validation", "Compatibility analysis", "RMA analysis"],
-        buckets: [
-          { id: "yield", label: "1B / 1C process yield", matches: ["Yield analysis", "Process integration", "Semiconductor physics"], role: "Process Technology Development Engineer", kbv: "Process integration and yield analysis are tacit capabilities that cannot be quickly outsourced, accumulating into process-migration capability." },
-          { id: "fab", label: "Smart fab automation", matches: ["MES system", "SQL / Oracle", "C++"], role: "Software Development Engineer", kbv: "When MES, database, and programming skills are embedded in scheduling, exception analysis, and fab operations, individual skills become smart-manufacturing knowledge." },
-          { id: "design", label: "Customer design-in", matches: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation, compatibility analysis, and RMA analysis turn customer-side issues into repeatable product design-in knowledge." },
-          { id: "global", label: "Global B2B support", matches: ["System validation", "Compatibility analysis", "RMA analysis"], role: "System Analysis Engineer", kbv: "System validation and compatibility analysis turn technical delivery into a repeatable B2B service process." },
-          { id: "esg", label: "ESG supply-chain compliance", matches: ["English communication"], role: "Partially matched capability", kbv: "This bucket needs sustainability, supply-chain, and international customer communication capability; no unverified ESG job posting is added." }
-        ],
-        prompt: "Select a skill, then match it to a strategic capability.",
-        success: "Reasonable match.",
-        hintDesign: "This skill is closer to customer-side validation than process yield. Try matching it with Customer design-in.",
-        hintFab: "This skill is closer to data systems or smart manufacturing. Try matching it with Smart fab automation.",
-        hintYield: "This skill is closer to process integration and yield. Try matching it with 1B / 1C process yield.",
-        genericHint: "This is not the most direct capability link. Try another bucket."
-      }
     };
 
     let currentLang = localStorage.getItem("nanya-lang") || "zh";
@@ -8627,8 +8487,6 @@
     let universeFocus = "customer";
     let universeAnimationFrame = null;
     let universeMapBuilt = false;
-    let reactorSelectedSkill = null;
-    let reactorLastBucket = null;
     let storyIndex = 0;
     let storyTimer = null;
     let storyAutoActive = false;
@@ -9376,67 +9234,6 @@
       mobile.innerHTML = "";
     }
 
-    function reactorHint(skill) {
-      const data = reactorData[currentLang];
-      if (["System validation", "Compatibility analysis", "RMA analysis", "系統驗證", "相容性分析", "RMA 分析"].includes(skill)) return data.hintDesign;
-      if (["C++", "MES system", "SQL / Oracle", "MES 系統"].includes(skill)) return data.hintFab;
-      if (["Yield analysis", "Process integration", "Semiconductor physics", "良率分析", "製程整合", "半導體物理"].includes(skill)) return data.hintYield;
-      return data.genericHint;
-    }
-
-    function renderCapabilityReactor(message = null) {
-      const skills = qs("#reactorSkills");
-      const buckets = qs("#reactorBuckets");
-      const readout = qs("#reactorReadout");
-      if (!skills || !buckets || !readout) return;
-      const data = reactorData[currentLang];
-      skills.innerHTML = data.skills.map((skill) => `
-        <button class="reactor-chip" type="button" data-skill="${escapeHtml(skill)}" aria-pressed="${skill === reactorSelectedSkill}">
-          ${escapeHtml(skill)}
-        </button>
-      `).join("");
-      buckets.innerHTML = data.buckets.map((bucket) => `
-        <button class="reactor-bucket ${bucket.id === reactorLastBucket ? "is-success" : ""}" type="button" data-bucket="${escapeHtml(bucket.id)}">
-          ${escapeHtml(bucket.label)}
-        </button>
-      `).join("");
-      skills.querySelectorAll("[data-skill]").forEach((button) => {
-        button.addEventListener("click", () => {
-          reactorSelectedSkill = button.dataset.skill;
-          renderCapabilityReactor();
-        });
-      });
-      buckets.querySelectorAll("[data-bucket]").forEach((button) => {
-        const bucket = data.buckets.find((item) => item.id === button.dataset.bucket);
-        button.addEventListener("click", () => {
-          if (!reactorSelectedSkill) {
-            renderCapabilityReactor(data.prompt);
-            return;
-          }
-          if (bucket.matches.includes(reactorSelectedSkill)) {
-            reactorLastBucket = bucket.id;
-            renderCapabilityReactor(data.success);
-            return;
-          }
-          reactorLastBucket = null;
-          renderCapabilityReactor(reactorHint(reactorSelectedSkill));
-        });
-      });
-      const matchedBucket = data.buckets.find((bucket) => bucket.id === reactorLastBucket);
-      if (matchedBucket) {
-        readout.innerHTML = `
-          <span class="lab-kicker">${escapeHtml(message || data.success)}</span>
-          <dl>
-            <dt>${escapeHtml(translations[currentLang].skillLabel)}</dt><dd>${escapeHtml(reactorSelectedSkill)}</dd>
-            <dt>${escapeHtml(translations[currentLang].jobRoleLabel)}</dt><dd>${escapeHtml(matchedBucket.role)}</dd>
-            <dt>KBV</dt><dd>${escapeHtml(matchedBucket.kbv)}</dd>
-          </dl>
-        `;
-      } else {
-        readout.innerHTML = `<p>${escapeHtml(message || data.prompt)}</p>`;
-      }
-    }
-
     function buildStorySlides() {
       const sectionIds = ["top", "company", "market", "finance", "portfolio", "resources", "growth", "career", "integrity", "team"];
       return sectionIds.map((id) => {
@@ -9458,7 +9255,9 @@
       if (!slides.length) return;
       storyIndex = Math.min(Math.max(storyIndex, 0), slides.length - 1);
       const item = slides[storyIndex];
-      count.textContent = `STRATEGY STORY / ${String(storyIndex + 1).padStart(2, "0")}`;
+      count.textContent = currentLang === "zh"
+        ? `策略故事／${String(storyIndex + 1).padStart(2, "0")}`
+        : `STRATEGY STORY / ${String(storyIndex + 1).padStart(2, "0")}`;
       if (storyAutoActive) {
         progress.style.transition = "none";
         progress.style.width = `${(storyIndex / slides.length) * 100}%`;
@@ -9595,14 +9394,14 @@
         skhynix: {
           label: "SK hynix",
           quadrant: "高市場重疊 × 高資源相似",
-          why: "SK hynix 在 AI memory 與 HBM 領域具強勢地位，且與南亞科在一般 DRAM 與部分 server memory 有市場重疊。",
-          pressure: "高階 AI memory 被 SK hynix 等大廠主導，南亞科資本支出不宜追逐同一戰場。",
-          response: "利用大廠轉向 HBM 後留下的 conventional DRAM、DDR5 與 RDIMM 需求缺口。"
+          why: "SK hynix 在 AI 記憶體與 HBM 領域具強勢地位，且與南亞科在一般 DRAM 與部分伺服器記憶體有市場重疊。",
+          pressure: "高階 AI 記憶體被 SK hynix 等大廠主導，南亞科資本支出不宜追逐同一戰場。",
+          response: "利用大廠轉向 HBM 後留下的傳統 DRAM、DDR5 與 RDIMM 需求缺口。"
         },
         micron: {
           label: "Micron",
           quadrant: "高市場重疊 × 高資源相似",
-          why: "Micron 與南亞科同樣服務 DDR、LPDDR、server memory 與全球 B2B 客戶。",
+          why: "Micron 與南亞科同樣服務 DDR、LPDDR、伺服器記憶體與全球 B2B 客戶。",
           pressure: "Micron 具備更大的技術、品牌與客戶廣度。",
           response: "以台灣製造、供應鏈韌性、客製化支援與策略客戶關係建立差異化。"
         },
@@ -10234,8 +10033,8 @@
       if (heroTitle) parts.push(heroTitle);
       if (heroLead) parts.push(heroLead);
       parts.push(currentLang === "zh"
-        ? "Nanya Strategy Lab 提供景氣敏感度、競合宇宙、能力反應爐與產品情境切換，用教學模擬串連策略判讀。"
-        : "Nanya Strategy Lab connects cycle sensitivity, co-opetition mapping, capability matching, and portfolio scenarios as teaching simulations.");
+        ? "南亞科策略實驗室提供景氣敏感度、競合宇宙、人才作業系統與產品情境切換，用教學模擬串連策略判讀。"
+        : "Nanya Strategy Lab connects cycle sensitivity, co-opetition mapping, the Talent Operating System, and portfolio scenarios as teaching simulations.");
 
       // 2. Sections
       const sections = ["company", "market", "finance", "portfolio", "resources", "growth", "career", "quiz", "integrity", "team"];
